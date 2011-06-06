@@ -1,6 +1,19 @@
-function [f, df] = nca_obj(A)
-    
-  global X c;
+function [f, df] = nca_obj(A, X, c)
+%NCA_OBJ Neighbourhood Component Analysis objective function. Returns
+%function value and the first order derivatives.
+%
+%     [f, df] = nca_obj(A, X, c)
+%
+% Inputs:
+%       A dxD - projection matrix.
+%       X DxN - data.
+%       c 1xN - class labels.
+%
+% Outputs:
+%       f 1x1   - function value. 
+%      df 1xD*d - derivative values.
+
+% Dan Oneata, June 2011
 
   f  = 0;
   df = 0;
