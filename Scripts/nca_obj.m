@@ -5,7 +5,7 @@ function [f, df] = nca_obj(A, X, c)
 %     [f, df] = nca_obj(A, X, c)
 %
 % Inputs:
-%       A dxD - projection matrix.
+%       A dxD - projection matrix (d <= D).
 %       X DxN - data.
 %       c 1xN - class labels.
 %
