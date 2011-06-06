@@ -29,7 +29,7 @@ function [X, c] = load_synthetic_data(N, D, type, seed)
       X = [r1*cos(theta1) r2*cos(theta2); r1*sin(theta1) r2*sin(theta2)];
       
       % Add extra D-2 dimensions of Gaussian noise:
-      X = [X; randn(D-2,N)];
+      X = [X; 10*randn(D-2,N)];
     otherwise
       help('load_synthetic_data');
       error('Error: undefined type!');

@@ -1,16 +1,16 @@
 clear all; close all; clc;
 
-% [X,c] = load_synthetic_data(150,7,'circles',2);
+[X,c] = load_synthetic_data(150,7,'circles',2);
 % load('../Datasets/iris.mat');
-load('../Datasets/wine.mat');
+% load('../Datasets/wine.mat');
 % load('../Datasets/transfusion.mat');
 % load('../Datasets/pima.mat');
 % [X c] = load_usps;
 
 % break;
-% 
-% X = X(:,1:20:end);
-% c = c(:,1:20:end);
+
+% X = X(:,1:30:end);
+% c = c(:,1:30:end);
 
 [D N] = size(X);
 % Plot initial data:
