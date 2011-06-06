@@ -30,13 +30,13 @@ X = [X; randn(1,N)*.9; randn(1,N)*.4; randn(1,N)*1.3; ; randn(1,N)*.7];
 D = size(X,1);
 Classes = repmat(classes,D,1);
 c = classes;
-% 
-% class0 = reshape(X(Classes==0),D,[]);
-% class1 = reshape(X(Classes==1),D,[]);
-% 
-% figure,plot3(class0(1,:),class0(2,:),class0(3,:),'ro',...
-%              class1(1,:),class1(2,:),class0(3,:),'b*');
-%          
-%          title('Original data','interpreter','latex')
+
+class0 = reshape(X(Classes==0),D,[]);
+class1 = reshape(X(Classes==1),D,[]);
+
+figure,plot3(class0(1,:),class0(2,:),class0(3,:),'ro',...
+             class1(1,:),class1(2,:),class0(3,:),'b*');
+         
+         title('Original data','interpreter','latex')
 
 %          print -depsc2 orig_data.eps
