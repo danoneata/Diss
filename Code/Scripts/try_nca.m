@@ -1,7 +1,7 @@
 clear all; close all; clc;
 
 % [X,c] = load_synthetic_data(150,7,'circles');
-load('../Datasets/iris.mat');
+
 % load('../Datasets/wine.mat');
 % load('../Datasets/transfusion.mat');
 % load('../Datasets/pima.mat');
@@ -13,6 +13,7 @@ load('../Datasets/iris.mat');
 % X = X(:,1:10:end);
 % c = c(:,1:10:end);
 
+[X, c] = load_data_set('wine');
 [X] = normalize_data(X);
 
 [D N] = size(X);
