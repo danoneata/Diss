@@ -1,0 +1,60 @@
+#!/usr/bin/python
+
+"""Reads in a Matlab/Octave line of the following form:
+function [out1,out2,...] = function_name(input1,input2,...)
+
+And outputs skeleton comments for documentation.
+
+Updated January 2007 to remove tabs.
+I've switched sides on that particular holy war.
+
+Updated January 2009 to match Matlab's documentation style more.
+"""
+
+import fileinput, re, time
+
+txt = fileinput.input()[0]
+out_pat = r'\[?([^[\]=]*)[^A-Za-z_]*'
+fn_name_pat = r'([A-Za-z_][^(]*)'
+in_pat = r'\(([^)]*).*'
+if '=' in txt:
+    mobj = re.match(r'function ' + out_pat + fn_name_pat + in_pat, txt)
+    outstr = mobj.group(1)
+    fn_name = mobj.group(2)
+    instr = mobj.group(3)
+    outputs = re.split(',', outstr)
+    inputs = re.split(',', instr)
+else:
+    mobj = re.match(r'function ' + fn_name_pat + in_pat, txt)
+    fn_name = mobj.group(1)
+    instr = mobj.group(2)
+    outputs = []
+    inputs = re.split(',', instr)
+if inputs[0] == '':
+    inputs = []
+
+# Format considering maximum length of any input or output argument
+allargs = inputs[:]
+allargs.extend(outputs)
+maxlen = max([len(x) for x in allargs])
+outformat = '%%%%     %%%ds ?x? ' % maxlen
+
+print '%' + fn_name.strip().upper() + ' '
+print '%'
+print '%     ' + txt[len('function '):].strip()
+
+if inputs:
+    print '%'
+    print '% Inputs:'
+    for input in inputs:
+        print outformat % input
+
+if outputs:
+    print '%'
+    print '% Outputs:'
+    for output in outputs:
+        print outformat % output
+
+print
+print '% Dan Oneata,', time.strftime('%B %Y', time.localtime())
+
