@@ -1,8 +1,28 @@
-function [E, lambda] = LDA(X, c)
+function E  = LDA(X, c, d)
+%LDA Linear Discriminant Analysis or Fisher Linear's Discriminant
+%
+%     E = LDA(X, c, d)
+%
+% Inputs:
+%           X DxN data. D is the dimensionality and N is the number of
+%             points.
+%           c 1xN label for each of the N points.
+%           d 1x1 dimensionality to reduce the original data. If 
+%           unspecified, d is equal to D.
+%
+% Outputs:
+%           E dxD projection matrix to obtain the LDA transform.
 
-  [c idx] = sort(c, 'ascend');
-  X = X(:,idx);
+% Dan Oneata, June 2011
+
+  D = size(X,1);
+  Sw = zeros(D);
+
+  if ~exist('d','var'),
+    d = D;
+  end
   
+  % Compute mean for each class:
   fn = @mean;
   [rowidx, colidx] = ndgrid(1:size(X,1), c);
   Mu = accumarray([rowidx(:) colidx(:)], X(:), [], fn);
@@ -10,25 +30,28 @@ function [E, lambda] = LDA(X, c)
   cc = unique(c);
   nr_classes = numel(cc);
   
-  D = size(X,1);
-  Cw = zeros(D);
-  
+  % Compute within variance matrix:
   for i = 1:nr_classes,
     xx = X(:, c==cc(i));
     xx = bsxfun(@minus, xx, Mu(:,i));
-    Cw = Cw + xx*xx';
+    Sw = Sw + xx*xx';
   end
   
-  Cb = 1/nr_classes * Mu * Mu';
+  X = bsxfun(@minus, X, mean(X,2));
+  St = X*X';
   
-  C = inv(Cw)*Cb;
+  % Compute between variance matrix:
+  Sb = St - Sw;
   
   % Compute eigenvectors and eigenvalues of the covariance matrix:
-  [V D] = eig(C*C');
+  [V D] = eig(Sb,Sw);
   lambda = diag(D)';
   
   % Sort the eigenvectors in the descending order of the eigenvalues:
-  [lambda idx] = sort(lambda, 'descend');
+  [~, idx] = sort(lambda, 'descend');
   E = V(:,idx);
+  E = E(:,1:d)';
+  % Normalize eigenvectors such that they are orthonormal:
+  E = bsxfun(@rdivide,E,sum(E.^2,2));
     
 end
