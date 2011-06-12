@@ -16,9 +16,13 @@ function view_results(type_transform, dataset, subsample, init, d)
   rr = dlmread(file_name);
   score = ceil(rr(1,1));
   
-  title = [upper(type_transform) ' on \textit{' dataset '}. Score: ' num2str(-score) '.'];
+  title = [upper(type_transform) ' on \textsl{' dataset '}. Score: ' num2str(-score) '.'];
 
   A = reshape(rr(2,:), [], D);            
   plot3_data(A*X, [], c, title);
+  
+  	
+  file_name(end-3:end) = '.eps';
+  print(gcf, '-depsc2', file_name);
 
 end

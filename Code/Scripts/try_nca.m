@@ -18,18 +18,16 @@ clear all; close all; clc;
 
 [D N] = size(X);
 % Plot initial data:
-plot3_data(X,c);
+plot3_data(X, [],c);
 
 fn = @(A)nca_obj(A, X, c);
 
 d = 2;
-A = minimize(randn(D*d,1), fn, 300);
+A = minimize(randn(D*d,1), fn, 20);
 A = reshape(A, [], D);
 
 X2 = A*X;
-plot3_data(X2,c);
-
-return;
+plot3_data(X2, [],c);
 
 % Construct k-d tree:
 depth = floor(log2(N));

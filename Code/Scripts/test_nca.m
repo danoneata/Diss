@@ -13,8 +13,6 @@ function test_nca(dataset, d, init, subsample, nr_trials)
 
 % Dan Oneata, June 2011
 
-  addpath /afs/inf.ed.ac.uk/user/s10/s1053297/Documents/Diss/.
-
   if ~exist('dataset','var'),
     help('test_nca');
     error('No data set specified.');
@@ -29,7 +27,7 @@ function test_nca(dataset, d, init, subsample, nr_trials)
   end
 
   if ~exist('init','var'),
-    init = 'pca';
+    init = 'pca'; 
   end
 
   if ~exist('nr_trials','var'),
@@ -81,7 +79,9 @@ function test_nca(dataset, d, init, subsample, nr_trials)
   fprintf(fid, '%e\n', score);
   fprintf(fid, '%f ', A);
   fclose(fid);
+  
+  view_results('nca', dataset, subsample, init, d);
 
-  clear all;
+  clear all; close all;
 
 end
