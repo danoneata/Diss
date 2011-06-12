@@ -1,26 +1,24 @@
-function plot3_data(X, Y, c, titleX, titleY)
-% PLOT3_DATA Plots data in 3D space.
-%   X - DxN matrix representing the data. If D > 3 then only the first 3
-%   dimensions are used for plotting (i.e., X(1:3,:)).
-%   Y - DxN Additional data. It will be plotted in a subfigure.
-%   c - 1xN vector that specifies the class of each point from X.
-%   titleX - text for data set X.
-%   titleY - text for data set Y.
+function plot3_data(X, c, title_, flags)
+%PLOT3_DATA 
 %
-% Dan Oneata
-% 03/04/2011
+%     plot3_data(X, c, title_, flags)
+%
+% Inputs:
+%          X DxN data. D is the dimensionality and N represents the number
+%            of data points.
+%          c 1xN class labels for each of the N data points.
+%     title_ string to be displayed above the plot.
+%      flags 1x1. If flags(1) is non-zero then axis are removed and the
+%            plot is boxed.
 
-  if ~exist('titleX','var'),
-    titleX = '';
+% Dan Oneata, June 2011
+
+  if ~exist('title_','var'),
+    title_ = '';
   end
   
-  if ~exist('titleY','var'),
-    titleY = '';
-  end
-  
-  nr_subplots = 1;
-  if ~isempty(Y),
-    nr_subplots = 2;
+  if ~exist('flags','var'),
+    flags = 0;
   end
 
   cc = unique(c);
@@ -32,67 +30,39 @@ function plot3_data(X, Y, c, titleX, titleY)
     colors = [colors; rand(len_cc-6,3)];
   end
   
+  style = ['.' 'o' 'x' '+' '*' 's' 'd' 'v' '^' '<' '>' 'p' 'h'];
+  if len_cc > length(style),
+    style = repmat(style, 1, ceil(len_cc/length(style)));
+  end
+  
   if D <= 1,
     help('plot3_data');
     error('Number of dimensions is 1 or less.');
-  elseif D == 2,    % Two dimensional plot.
-    figure; 
-    % First data set.
-    subplot(1,nr_subplots,1);
-    axis square;
-    title(titleX, 'interpreter', 'latex');
-    set(gca,'XTick',[],'YTick',[])
-    hold on;
-    for idx = 1:len_cc,
-      x = X(1:2, c==cc(idx));
-      plot(x(1,:), x(2,:), 'o', 'Color', colors(idx,:));
-    end
-    hold off;
+  else
     
-    if nr_subplots == 2,
-      % Second data set.
-      subplot(1,nr_subplots,2);
-      axis square;
-      set(gca,'XTick',[],'YTick',[])
-      title(titleY, 'interpreter', 'latex');
-      hold on;
+    figure; 
+    axis auto;
+    title(title_, 'interpreter', 'latex');
+    
+    if flags(1),
+      set(gca, 'XTick', [], 'YTick', []);
+      set(gca, 'Box', 'on');
+    end
+    
+    hold on;
+    if D == 2,    % Two dimensional plot.
       for idx = 1:len_cc,
-        x = Y(1:2, c==cc(idx));
-        plot(x(1,:), x(2,:), 'o', 'Color', colors(idx,:));
+        x = X(1:2, c==cc(idx));
+        plot(x(1,:), x(2,:), style(idx), 'Color', colors(idx,:));
       end
       hold off;
-    end
-    
-  elseif D >= 3,    % Three dimensional plot; plotting the first 3 dimensions.
-    figure; 
-    % First data set.
-    subplot(1,nr_subplots,1);
-    axis square;
-%     set(gca,'XTick',[],'YTick',[])
-    title(titleX, 'interpreter', 'latex');
-    hold on;
-    for idx = 1:len_cc,
-      x = X(1:3, c==cc(idx));
-      plot3(x(1,:), x(2,:), x(3,:), 'o', 'Color', colors(idx,:));
+    else    % Three dimensional plot; plotting the first 3 dimensions.
+      for idx = 1:len_cc,
+        x = X(1:3, c==cc(idx));
+        plot3(x(1,:), x(2,:), x(3,:), style(idx), 'Color', colors(idx,:));
+      end
     end
     hold off;
-    
-     if nr_subplots == 2,
-      % Second data set.
-      subplot(1,nr_subplots,2);
-      axis square;
-%       set(gca,'XTick',[],'YTick',[])
-      title(titleY, 'interpreter', 'latex');
-      hold on;
-        for idx = 1:len_cc,
-          x = Y(1:3, c==cc(idx));
-          plot3(x(1,:), x(2,:), x(3,:), 'o', 'Color', colors(idx,:));
-        end
-      hold off;
-    end
   end
-  
-  set(gca, ...
-  'Box'         , 'on');
 
 end
