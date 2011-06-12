@@ -9,14 +9,15 @@ function E = PCA(X, d)
 %
 % Inputs:
 %           X DxN data. D is the dimensionality and N is the number of
-%           points.
+%             points.
 %           d 1x1 dimensionality to reduce the original data. If 
-%           unspecified, d is equal to D.
+%             unspecified, d is equal to D.
 %
 % Outputs:
 %           E dxD (or NxD if N < D, d) projection matrix to obtain the PCA 
-%           transform. It contains the eigenvectors on the rows. These are 
-%           sorted in descending order of their coressponding eigenvalues.
+%             transform. It contains the eigenvectors on the rows. These 
+%             are sorted in descending order of their coressponding 
+%             eigenvalues.
 
 % Dan Oneata, June 2011
 

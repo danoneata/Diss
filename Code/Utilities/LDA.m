@@ -5,7 +5,7 @@ function E  = LDA(X, c, d)
 %
 % Inputs:
 %           X DxN data. D is the dimensionality and N is the number of
-%           points.
+%             points.
 %           c 1xN label for each of the N points.
 %           d 1x1 dimensionality to reduce the original data. If 
 %           unspecified, d is equal to D.
