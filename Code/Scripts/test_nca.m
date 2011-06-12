@@ -98,8 +98,8 @@ function A = test_nca(dataset, d, init, subsample, plot_results, save_results)
   
   % Plot results:
   if plot_results,
-    plot3_data(Ainit*X,c);
-    plot3_data(reshape(A,d,D)*X,c);
+    plot3_data(Ainit*X, c, 'Initial projection');
+    plot3_data(reshape(A,d,D)*X,c, 'Final projection');
   end
 
   % Save results:
