@@ -1,19 +1,25 @@
-function test_nca(dataset, d, init, subsample, nr_trials)
-% TEST_NCA Simple function that tests NCA code for different arguments.
+function test_nca(dataset, d, init, subsample, plot_results, save_results)
+%TEST_NCA Function that tests NCA code for different arguments.
 %
-% Input:
-%   dataset - name of the data set.
-%   subsample - subsamples the given data set in the following way:
-%     X(1:subsample:end). Default subsample=1.
-%   d - dimensions to project to. Default d=2.
-%   init - defines how to initialize the projection matrix A. If init='pca'
-%     use the first d eigenvectors. If init='rand' generates a random
-%     matrix A; there are nr_trials trials and there is selected that A
-%     that achieves the best score. Default nr_trials=50.
+%     test_nca(dataset, d, init, subsample, plot_results, save_results)
+%
+% Inputs:
+%           dataset string that specifies the name of the data set.
+%                 d 1x1 dimensionality to reduce the original data to. 
+%              init string that specifies the method used to initialize the 
+%                   projection matrix. It can be one of the following: 
+%                   'rand', 'pca', 'lda'.
+%         subsample 1x1 defines how to subsample from the given data set.
+%                   The sampling is done in the following manner:
+%                   X(1:subsample:end).
+%      plot_results 1x1 flag. If non-zero the function plots the initial
+%                   and the learnt projection. By default this flag is 0.
+%      save_results 1x1 flag. If non-zero the funtcion save the results:
+%                   the learnt projection matrix and the obtained scored.
+%                   By default this flag is 0.
 
 % Dan Oneata, June 2011
 
-  addpath /afs/inf.ed.ac.uk/user/s10/s1053297/Documents/Diss/.
 
   if ~exist('dataset','var'),
     help('test_nca');
@@ -31,10 +37,17 @@ function test_nca(dataset, d, init, subsample, nr_trials)
   if ~exist('init','var'),
     init = 'pca';
   end
-
-  if ~exist('nr_trials','var'),
-    nr_trials = 50;
+  
+  if ~exist('plot_results','var'),
+    plot_results = 0;
   end
+  
+  if ~exist('save_results','var'),
+    save_results = 0;
+  end
+
+  NR_TRIALS = 50;     % Number of trials to pick the best random projection.
+  NR_ITER   = 300;    % Number of iteration for CGs optimization algorithm.
 
   % Load data:
   [X, c] = load_data_set(dataset);
@@ -50,18 +63,18 @@ function test_nca(dataset, d, init, subsample, nr_trials)
 
   switch init
     case 'pca'
-      [E, lambda] = PCA(X);
-      Ainit = E(:,1:d);
+      Ainit = PCA(X, d);
+    case 'lda'
+      Ainit = LDA(X, c, d);
     case 'rand'
       it = 1;
-      score = -Inf;
-      while it <= nr_trials,
+      score = - Inf;
+      while it <= NR_TRIALS,
         it = it + 1;
-
-        Anew = randn(1,D*d);
-        % Make sure no NaNs will appear?
-        new_score = nca_obj(Anew, X, c);
-
+        
+        Anew =  randn(d,D);
+        new_score = - nca_obj(Anew(:), X, c);
+        
         if new_score > score,
           score = new_score;
           Ainit = Anew;
@@ -70,18 +83,31 @@ function test_nca(dataset, d, init, subsample, nr_trials)
   end
 
   % Apply NCA;
-  fn = @(A)nca_obj(A, X, c);
-  A = minimize(Ainit(:), fn, 300);
-  score = nca_obj(A, X, c);
+  A = minimize(Ainit(:), 'nca_obj', NR_ITER, X, c);
+  
+  % Use the folowing for older versions of MATLAB:
+  % fn = @(A)nca_obj(A, X, c);
+  % A = minimize(Ainit(:), fn, NR_ITER); 
+  
+  score = - nca_obj(Ainit(:), X, c);
+  fprintf('Initial score: %4.2f\r', score);
+  score = - nca_obj(A(:), X, c);
+  fprintf('Final score: %4.2f\r', score);
+  
+  % Plot results:
+  if plot_results,
+    plot3_data(Ainit*X,c);
+    plot3_data(reshape(A,d,D)*X,c);
+  end
 
   % Save results:
-  file_name = ['~/Documents/Diss/Results/nca-' ...
-              dataset '-ss-' num2str(subsample) '-' init '-d-' num2str(d) '.txt'];
-  fid = fopen(file_name, 'w');
-  fprintf(fid, '%e\n', score);
-  fprintf(fid, '%f ', A);
-  fclose(fid);
-
-  clear all;
+  if save_results,
+    file_name = ['~/Documents/Diss/Results/nca-' ...
+                dataset '-ss-' num2str(subsample) '-' init '-d-' num2str(d) '.txt'];
+    fid = fopen(file_name, 'w');
+    fprintf(fid, '%e\n', score);
+    fprintf(fid, '%f ', A);
+    fclose(fid);
+  end
 
 end
