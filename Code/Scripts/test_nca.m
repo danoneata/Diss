@@ -1,7 +1,7 @@
-function test_nca(dataset, d, init, subsample, plot_results, save_results)
+function A = test_nca(dataset, d, init, subsample, plot_results, save_results)
 %TEST_NCA Function that tests NCA code for different arguments.
 %
-%     test_nca(dataset, d, init, subsample, plot_results, save_results)
+%     A = test_nca(dataset, d, init, subsample, plot_results, save_results)
 %
 % Inputs:
 %           dataset string that specifies the name of the data set.
@@ -17,6 +17,9 @@ function test_nca(dataset, d, init, subsample, plot_results, save_results)
 %      save_results 1x1 flag. If non-zero the funtcion save the results:
 %                   the learnt projection matrix and the obtained scored.
 %                   By default this flag is 0.
+%
+% Outputs:
+%                 A dxD learnt projection matrix.
 
 % Dan Oneata, June 2011
 
