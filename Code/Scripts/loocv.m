@@ -1,23 +1,27 @@
 function score = loocv(X,c)
+%LOOCV Computes the leave-one-out cross validation error for 1-NN algorithm
+%that uses Euclidean metric.
+%
+%     score = loocv(X,c)
+%
+% Inputs:
+%          X DxN data. D is the dimensionality and N is the number of
+%            points in the data set.
+%          c 1xN labels for each of the N points. 
+%
+% Outputs:
+%     score  1x1 number of correctly classified points. 
 
-  [D,N] = size(X);
-  score = 0;
+% Dan Oneata, June 2011
 
-  for i = 1:N,
-    X2 = X;
-    X2(:,i) = [];
-    [d_min idx_min] = NN_naive_search(X2,X(:,i));
-    
-    if idx_min >= i,
-      idx_min = idx_min + 1;
-    end
-    
-    d = sum((X(:,idx_min)-X(:,i)).^2,1);
-    assert(d_min==d);
-    
-    if c(idx_min) == c(i),
-      score = score + 1;
-    end
-  end
+  N = size(X,2);
+  
+  dists = square_dist(X, X);
+  dists(1:N+1:N*N) = Inf;
+  
+  [~, min_idxs] = min(dists,[],1);
+  predicted_labels = c(min_idxs);
+  
+  score = N - nnz(c - predicted_labels);
 
 end
