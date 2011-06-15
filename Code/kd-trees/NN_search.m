@@ -1,12 +1,12 @@
 function NN_search(q, kdtree, pos_curr)
 %NN_SEARCH Finds nearest neighbour of the query point from the data that is
-%stored into the given kdtree.
+%stored into the given k-d tree.
 %
 %     NN_search(q, kdtree, pos_curr)
 %
 % Inputs:
 %             q Dx1 query point. 
-%        kdtree array of structures that stores our data. 
+%        kdtree array of structures that stores the k-d tree. 
 %      pos_curr 1x1 index that retains the current position. Initialise 
 %               this with 1. 
 
@@ -14,10 +14,17 @@ function NN_search(q, kdtree, pos_curr)
   
   global pos_best;
   global d_best;
+  global contor;
 
+  if pos_curr > numel(kdtree),
+    return;
+  end
+  
   if isempty(kdtree(pos_curr).point),
     return;
   end
+  
+  contor = contor + 1;
   
   % Check if leaf:
   if ~kdtree(pos_curr).split_dir,
@@ -29,7 +36,7 @@ function NN_search(q, kdtree, pos_curr)
     return;
   end
   
-  % Choose the nearer child:
+  % Choose the nearest child:
   if q(kdtree(pos_curr).split_dir) < ...
       kdtree(pos_curr).point(kdtree(pos_curr).split_dir),
     NN_search(q, kdtree, 2*pos_curr);
@@ -61,15 +68,6 @@ function NN_search(q, kdtree, pos_curr)
 end
 
 function dd = dist2(p,q)
-%DIST Returns squared Euclidean distance between two points.
-% 
-% Inputs:
-%     p Dx1.
-%     q Dx1.
-%
-% Output:
-%    dd 1x1.
-
   dif = p-q;
   dd  = dif'*dif;
 end
