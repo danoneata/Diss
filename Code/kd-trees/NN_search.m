@@ -14,7 +14,6 @@ function NN_search(q, kdtree, pos_curr)
   
   global pos_best;
   global d_best;
-  global contor;
 
   if pos_curr > numel(kdtree),
     return;
@@ -23,8 +22,6 @@ function NN_search(q, kdtree, pos_curr)
   if isempty(kdtree(pos_curr).point),
     return;
   end
-  
-  contor = contor + 1;
   
   % Check if leaf:
   if ~kdtree(pos_curr).split_dir,
