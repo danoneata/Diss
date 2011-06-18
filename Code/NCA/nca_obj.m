@@ -35,7 +35,13 @@ function [f, df] = nca_obj(A, X, c)
     % point x_i and its neighbours x_j:
     dist_neigh = dist_all(c==c(i));
     sum_dist_neigh = sum(dist_neigh);
-    p_i = sum_dist_neigh / sum_dist_all;
+    
+    if sum_dist_all == 0,
+%       p_i = exp( log_sum_exp(Axi, AX, c, c(i)) );
+      p_i = eps;
+    else
+      p_i = sum_dist_neigh / sum_dist_all;
+    end
 
     % Update function value:
     f = f - p_i;
@@ -55,4 +61,13 @@ function [f, df] = nca_obj(A, X, c)
     df = df(:);
   end
     
+end
+
+function log_p_i = log_sum_exp(Axi, AX, c, ci)
+
+  dd = sum( bsxfun(@minus,Axi,AX).^2, 1 );
+  L = max(dd);
+  dd2 = dd(c==ci);
+  log_p_i = log(sum(exp( L - dd ))) - log(sum(exp( L - dd2 )));
+
 end
