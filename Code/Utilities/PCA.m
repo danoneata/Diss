@@ -41,6 +41,9 @@ function E = PCA(X, d)
     lambda = diag(lambda)';
     % Normalise eigenvectors:
     V = (X*V) ./ sqrt( N*repmat(lambda, [D 1]) );
+    if d > N,
+      d = N;
+    end
   end
   
   % Sort the eigenvectors in the descending order of the eigenvalues:
