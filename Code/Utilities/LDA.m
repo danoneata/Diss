@@ -1,3 +1,4 @@
+
 function E  = LDA(X, c, d)
 %LDA Linear Discriminant Analysis or Fisher Linear's Discriminant
 %
@@ -15,11 +16,20 @@ function E  = LDA(X, c, d)
 
 % Dan Oneata, June 2011
 
-  D = size(X,1);
+  [D N] = size(X);
   Sw = zeros(D);
 
   if ~exist('d','var'),
     d = D;
+  end
+  
+  if D > N,
+    EE = PCA(X);
+    X = EE*X;
+    Sw = zeros(N);
+    if d > N,
+      d = N;
+    end
   end
   
   % Compute mean for each class:
@@ -44,8 +54,8 @@ function E  = LDA(X, c, d)
   Sb = St - Sw;
   
   % Compute eigenvectors and eigenvalues of the covariance matrix:
-  [V D] = eig(Sb,Sw);
-  lambda = diag(D)';
+  [V DD] = eig(Sb,Sw);
+  lambda = diag(DD)';
   
   % Sort the eigenvectors in the descending order of the eigenvalues:
   [~, idx] = sort(lambda, 'descend');
@@ -53,5 +63,8 @@ function E  = LDA(X, c, d)
   E = E(:,1:d)';
   % Normalize eigenvectors such that they are orthonormal:
   E = bsxfun(@rdivide,E,sum(E.^2,2));
+  if D > N,
+    E = E*EE;
+  end
     
 end
