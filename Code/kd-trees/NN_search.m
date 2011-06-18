@@ -14,6 +14,10 @@ function NN_search(q, kdtree, pos_curr)
   
   global pos_best;
   global d_best;
+  global contor;
+  global ii;
+  
+  contor(ii) = contor(ii) + 1;
 
   if pos_curr > numel(kdtree),
     return;
