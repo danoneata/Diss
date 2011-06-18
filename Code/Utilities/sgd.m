@@ -20,8 +20,8 @@ function [X_new, f_all, step_all] = sgd(X_old, f, data, labels)
 %   * Add momentum?
 %   * Try other stopping criteria?
 
-  NR_MAX_ITER = 300;
-  BATCH_SIZE = 50;
+  NR_MAX_ITER = 40;
+  BATCH_SIZE = 500;
   
   step = median(abs(X_old))/100;
   X_new = X_old;
@@ -35,16 +35,19 @@ function [X_new, f_all, step_all] = sgd(X_old, f, data, labels)
   while iter < NR_MAX_ITER,
     iter = iter + 1;
     idxs = randperm(N);
+    iter
     
     for i = 1:BATCH_SIZE:N,
       batch = data(:,idxs(i:min(N,i+BATCH_SIZE-1)));
       batch_labels = labels(:,idxs(i:min(N,i+BATCH_SIZE-1)));
       
-      [f_new df_new] = feval(f, X_new, batch, batch_labels);
-
-      step_all(iter) = step;
-      
-      X_new = X_old - step*df_new;
+%       [f_new df_new] = feval(f, X_new, batch, batch_labels);
+% 
+%       step_all(iter) = step;
+%       
+%       X_new = X_old - step*df_new;
+      [X_new f_] = minimize(X_old, f, 3, batch, batch_labels);
+      f_new = f_(end);
     end
     
     if isnan(f_new),
@@ -67,6 +70,7 @@ function [X_new, f_all, step_all] = sgd(X_old, f, data, labels)
       df_old = df_new;    
       f_all(iter) = f_new;
     end
+    loocv(reshape(X_new,2,36)*data,labels)
 %     step = step/iter;
   end
 
