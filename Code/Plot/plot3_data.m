@@ -41,7 +41,7 @@ function plot3_data(X, c, title_, flags)
   else
     
     figure; 
-    axis auto;
+    axis equal;
     title(title_, 'interpreter', 'latex');
     
     if flags(1),
