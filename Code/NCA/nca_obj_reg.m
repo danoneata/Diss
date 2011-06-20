@@ -39,7 +39,11 @@ function [f, df] = nca_obj_reg(A, X, c, lambda)
     % point x_i and its neighbours x_j:
     dist_neigh = dist_all(c==c(i));
     sum_dist_neigh = sum(dist_neigh);
-    p_i = sum_dist_neigh / sum_dist_all;
+    if sum_dist_all == 0,
+      p_i = eps;
+    else
+      p_i = sum_dist_neigh / sum_dist_all;
+    end
 
     % Update function value:
     f = f - p_i;
