@@ -19,7 +19,7 @@ function score = loocv(X,c)
   dists = square_dist(X, X);
   dists(1:N+1:N*N) = Inf;
   
-  [~, min_idxs] = min(dists,[],1);
+  [dummy, min_idxs] = min(dists,[],1);
   predicted_labels = c(min_idxs);
   
   score = N - nnz(c - predicted_labels);

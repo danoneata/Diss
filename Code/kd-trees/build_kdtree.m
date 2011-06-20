@@ -28,7 +28,7 @@ function build_kdtree(points, i)
   % Get splitting direction:
   k = get_direction(points, i);
   % Find pivot:
-  [~, idxs] = sort(points(k,:));
+  [dummy, idxs] = sort(points(k,:));
   idx_median = idxs(ceil((N+1)/2));
   val_median = points(k, idx_median);
 %   points_sorted = points(:, idxs);
