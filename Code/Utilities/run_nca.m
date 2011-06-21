@@ -55,6 +55,10 @@ function [AX, mapping, score] = run_nca(X, c, d, obj, opts)
       A = randn(d,D);
   end
   
+  if D == d,
+    A = eye(D);
+  end
+  
   iter = 0; score = 0;
   converged = false;
   
