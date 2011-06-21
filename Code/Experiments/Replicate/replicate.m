@@ -1,25 +1,33 @@
 % Replicate experiments in paper:
 
+nr_iter = 40;
+
 [X, c] = load_data_set(dataset);
 [D, N] = size(X);
 score_train = zeros(nr_iter, 1);
 score_test  = zeros(nr_iter, 2);
 
 for iter = 1:nr_iter
-  % Split data set into 70 train set and 30 test set:
-  nr_test_points = ceil(30*N/100);
-  nr_train_points = N - nr_test_points;
+  if strcmp(dataset, 'usps'),
+    % For 'usps' data set use 2000 images for training and 5000 for
+    % testing.
+    [X_train, c_train, X_test, c_test] = load_usps_paper(X,c);
+  else
+    % Othrewise split data set into 70 train set and 30 test set:
+    nr_test_points = ceil(30*N/100);
+    nr_train_points = N - nr_test_points;
 
-  idxs = randperm(N);
-  idxs = idxs(1:nr_test_points);
+    idxs = randperm(N);
+    idxs = idxs(1:nr_test_points);
 
-  X_test = X(:, idxs);
-  c_test = c(idxs);
+    X_test = X(:, idxs);
+    c_test = c(idxs);
 
-  X_train = X; 
-  c_train = c;
-  X_train(:, idxs) = [];
-  c_train(:, idxs) = [];
+    X_train = X; 
+    c_train = c;
+    X_train(:, idxs) = [];
+    c_train(:, idxs) = [];
+  end
   
   [AX_train, mapping, score_train(iter)] = run_nca(X_train, c_train, d, [ceil(rand*3) 0]);
   AX_test = transform(X_test, mapping);
