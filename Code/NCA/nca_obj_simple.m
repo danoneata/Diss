@@ -19,7 +19,7 @@ function [f, df] = nca_obj_simple(A, X, c)
   A = reshape(A,[],D);
   C = repmat(c,[D 1]);
   
-  df = zeros(size(A));
+  df = zeros(D);
     
   AX = A*X;
   dist_all = square_dist(AX,AX);
