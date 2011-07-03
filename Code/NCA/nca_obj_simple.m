@@ -39,13 +39,15 @@ function [f, df] = nca_obj_simple(A, X, c)
   f = - sum(p);
   
   if nargout > 1, 
+    K = bsxfun(@rdivide, kern_all, kern_sum)';
+    K = max(K, eps);
     for i=1:N,    
         x_ik = bsxfun(@minus,X(:,i),X); 
         x_ij = reshape(x_ik(C==c(i)),D,[]);
 
         % Update gradient value:
-        df = df + p(i) * bsxfun(@times, kern_all(i,:), x_ik) * x_ik' / kern_sum(i) ...
-            - bsxfun(@times, kern_all(i,c==c(i)), x_ij) * x_ij' / kern_sum(i);
+        df = df + p(i) * bsxfun(@times, K(i,:), x_ik) * x_ik' ...
+            - bsxfun(@times, K(i,c==c(i)), x_ij) * x_ij';
     end
     df = -2*A*df;
     df = df(:);
