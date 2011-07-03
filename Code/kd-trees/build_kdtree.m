@@ -58,6 +58,7 @@ function k = get_direction(points, idx)
 
   switch idx,
     case -1
+      [dummy, k] = max(max(points, [], 2) - min(points, [], 2));
     case -2
     otherwise
       depth = floor(log2(idx));
