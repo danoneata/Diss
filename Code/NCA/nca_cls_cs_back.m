@@ -1,8 +1,8 @@
-function [output] = nca_cls_cs_back(X, c, Q, l, A, moments, Nc)
+function [output] = nca_cls_cs_back(X, c, Q, l, A, moments, Nc, mix_prop)
 %NCA_CLS_CS_BACK Classification using NCA with compact support kernels and
 %background distribution.
 %
-%     [output] = nca_cls_cs_back(X, c, Q, l, A, moments, Nc)
+%     [output] = nca_cls_cs_back(X, c, Q, l, A, moments, Nc, mix_prop)
 %
 % Inputs:
 %                X DxN training data.
@@ -16,6 +16,8 @@ function [output] = nca_cls_cs_back(X, c, Q, l, A, moments, Nc)
 %                      unspecifed, no background distribution is computed.
 %               Nc 1xK number of points from each class. If unspecified,
 %                      this is computed from the given data.
+%         mix_prop 1x1 number that represents the mixing proportion of the
+%                      compact support kernels and the background distribution.
 %
 % Outputs:
 %           output 1x1 if l is specified: output = accuracy: number of 
@@ -49,13 +51,14 @@ function [output] = nca_cls_cs_back(X, c, Q, l, A, moments, Nc)
   fn = @sum;
   [rowidx, colidx] = ndgrid(c, 1:M);
   p_xc = accumarray([rowidx(:) colidx(:)], dd(:), [], fn);
+  p_cx = mix_prop * p_xc / N;
   
   if exist('moments','var') && ~isempty(moments),
-    bd = multivariate_gaussian(Q, c, moments, A);
-    p_xc = p_xc + bd;
+    bd = (1 - mix_prop) * multivariate_gaussian(Q, c, moments, A) / N;
+    bd = bsxfun(@times, bd, Nc');
+    p_cx = p_cx + bd;
   end
   
-  p_cx = bsxfun(@times, p_xc, 1./Nc');
   [dummy, idxs_min] = max(p_cx, [], 1);
   
   if ~exist('l','var') || isempty(l),
