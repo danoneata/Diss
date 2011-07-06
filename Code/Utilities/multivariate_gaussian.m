@@ -18,7 +18,11 @@ function background_dist = multivariate_gaussian(X, c, moments, A)
   C = length(unique(c));
   background_dist = zeros(C,N);
   
-  AX = A*X;
+  if ~exist('A','var') || isempty(A),
+    AX = X;
+  else  
+    AX = A*X;
+  end
   
   for cc = 1:C,
     m = A*moments(cc).mean;
