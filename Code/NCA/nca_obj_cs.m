@@ -1,4 +1,4 @@
-function [f, df] = nca_obj_cs(A, X, c)
+function [f, df] = nca_obj_cs(A, X, c, P1, P2)
 %NCA_OBJ Neighbourhood Component Analysis with compact support kernel 
 %objective function. The used kernel is k(d) = (1-d^2)^2, for d \in \Re.
 %Returns function value and the first order derivatives.

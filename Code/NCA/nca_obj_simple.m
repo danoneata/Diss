@@ -1,4 +1,4 @@
-function [f, df] = nca_obj_simple(A, X, c)
+function [f, df] = nca_obj_simple(A, X, c, P1, P2)
 %NCA_OBJ Neighbourhood Component Analysis objective function. Returns
 %function value and the first order derivatives.
 %
@@ -39,8 +39,9 @@ function [f, df] = nca_obj_simple(A, X, c)
   f = - sum(p);
   
   if nargout > 1, 
-    K = bsxfun(@rdivide, kern_all, kern_sum)';
+    K = bsxfun(@rdivide, kern_all, kern_sum);
     K = max(K, eps);
+    K = K';
     for i=1:N,    
         x_ik = bsxfun(@minus,X(:,i),X); 
         x_ij = reshape(x_ik(C==c(i)),D,[]);
