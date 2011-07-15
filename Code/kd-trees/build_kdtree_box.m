@@ -15,7 +15,7 @@ function kdtr = build_kdtree_box(Apoints, points, size_bucket)
     size_bucket = 30;
   end
   if ~exist('points','var'),
-    point = Apoints;
+    points = Apoints;
   end
   build_kdtree_bounding_boxes(Apoints, points, 1, size_bucket);
   kdtr = kdtree;
