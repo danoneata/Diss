@@ -1,9 +1,9 @@
-function [f, df] = nca_kde(A, X, c)
+function [f, df] = nca_kde(A, X, c, idxs)
 %NCA_KDE Neighbourhood Component Analysis objective function casted as a
 %kernel density estimation problem.
 %Returns function value and the first order derivatives.
 %
-%     [f, df] = nca_kde(A, X, c)
+%     [f, df] = nca_kde(A, X, c, idxs)
 %
 % Inputs:
 %       A dxD - projection matrix (d <= D).
@@ -26,18 +26,22 @@ function [f, df] = nca_kde(A, X, c)
   
   AX = A*X;
   
+  if ~exist('idxs','var'),
+    idxs = 1:N;
+  end
+  
   class(C).kdtree = [];
   for i = 1:C,
-    idxs = c == i;
-    class(i).kdtree = build_kdtree_box(AX(:,idxs), X(:,idxs));
+    ids = c == i;
+    class(i).kdtree = build_kdtree_box(AX(:,ids), X(:,ids));
   end
     
   p = zeros(1,C);
   dp = zeros(d*D,C);
   
-  for i=1:N,
+  for i=1:length(idxs),
     for j = 1:C,
-      [p(j) dp(:,j)] = kde(AX(:,i), X(:,i), class(j).kdtree, 1);
+      [p(j) dp(:,j)] = kde(AX(:,i), X(:,idxs(i)), class(j).kdtree, 1);
     end
 
     ci = c(i);
@@ -57,12 +61,12 @@ function [p dp] = kde(Aq, q, kdtree, i)
   if i > numel(kdtree) || isempty(kdtree(i).split_dir),
     return;
   end 
-  
-  if mindist(kdtree,i,Aq) > 30,
-    p = 0;
-    dp = 0;
-    return
-  end
+%   
+%   if mindist(kdtree,i,Aq) > 30,
+%     p = 0;
+%     dp = 0;
+%     return
+%   end
   
   if ~kdtree(i).split_dir,
     diff = bsxfun(@minus, kdtree(i).Apoints, Aq);
