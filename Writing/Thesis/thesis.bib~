@@ -1,0 +1,632 @@
+@article{bentley1975,
+	author = {Bentley, Jon Louis},
+	title = {Multidimensional binary search trees used for associative searching},
+	journal = {Commun. ACM},
+	volume = {18},
+	issue = {9},
+	month = {September},
+	year = {1975},
+	issn = {0001-0782},
+	pages = {509--517},
+	numpages = {9},
+	url = {http://doi.acm.org/10.1145/361002.361007},
+	doi = {http://doi.acm.org/10.1145/361002.361007},
+	acmid = {361007},
+	publisher = {ACM},
+	address = {New York, NY, USA},
+	keywords = {associative retrieval, attribute, binary search trees, binary tree insertion, information retrieval system, intersection queries, key, nearest neighbor queries, partial match queries},
+}
+
+@article{hastie1996,
+	author = {Trevor Hastie and Robert Tibshirani},
+	title = {Discriminant Adaptive Nearest Neighbor Classification},
+	journal ={IEEE Transactions on Pattern Analysis and Machine Intelligence},
+	volume = {18},
+	issn = {0162-8828},
+	year = {1996},
+	pages = {607-616},
+	doi = {http://doi.ieeecomputersociety.org/10.1109/34.506411},
+	publisher = {IEEE Computer Society},
+	address = {Los Alamitos, CA, USA},
+}
+
+@article{cover1967,
+ 	author = {T. Cover and P. Hart},
+  	booktitle = {Information Theory, IEEE Transactions on},
+	interhash = {888194520edb2184adcae52d2ca6a5bf},
+  	intrahash = {3488a8e727d58b5d87339d37c2a0d92c},
+  	pages = {21- 27},
+  	title = {Nearest neighbor pattern classification},
+      url = {http://ieeexplore.ieee.org/xpl/freeabs_all.jsp?arnumber=1053964},
+  	volume = 13,
+  	year = 1967,
+  	keywords = {classifier proof},
+  	added-at = {2008-07-07T12:04:01.000+0200},
+  	issn = {0018-9448},
+  	description = {Welcome to IEEE Xplore 2.0: Nearest neighbor pattern classification},
+	biburl = {http://www.bibsonomy.org/bibtex/23488a8e727d58b5d87339d37c2a0d92c/cdevries}
+}
+
+@masterhesis{schwehn2010,
+	author = {Benjamin Schwehn},
+	title = {Using the Natural Gradient for training Restricted Boltzmann Machines},
+	year = {2010},
+	school = {University of {E}dinburgh},
+	keywords = {mini-batches, online batches}
+}
+
+@inproceedings{deng1995,
+    	year = {1995},
+    	pages = {1233--1239},
+    	publisher = {Morgan Kaufmann},
+    	address = {San Francisco},
+    	booktitle = {Proceedings of the Twelfth International Joint Conference on Artificial Intellingence},
+    	author = {Kan Deng and Andrew Moore},
+    	title = {Multiresolution Instance-based Learning},
+	keywords = {kernel density estimation, k-d trees}
+}
+
+@inproceedings{lecun1998,
+	original = "orig/lecun-98b.ps.gz",
+	author = "LeCun, Y. and Bottou, L. and Orr, G. and Muller, K.",
+	title = "Efficient BackProp",
+	booktitle =	"Neural Networks: Tricks of the trade",
+	editor = "Orr, G. and Muller K.",
+	publisher = "Springer",
+	year = 1998,
+	keywords = {optimization}
+}
+
+@article{hinton2010,
+  	title={{A practical guide to training restricted Boltzmann machines}},
+	author={Hinton, G.},
+  	journal={Momentum},
+  	volume={9},
+  	pages={1},
+  	year={2010},
+  	publisher={Citeseer},
+  	keywords = {mini-batches, optimization}
+}
+
+@inproceedings{shalev2004,
+	author = {Shalev-Shwartz, S. and Singer, Y. and Ng, A.Y.},
+	booktitle = {Proceedings of the Twenty-First International Conference on Machine Learning},
+	pages = {94},
+	publisher = {ACM},
+	title = {{Online and batch learning of pseudo-metrics}},
+	url = {http://portal.acm.org/citation.cfm?id=1015376},
+	year = {2004},
+	keywords = {online, mini-batches, distance metric learning}
+}
+
+@inproceedings{bar2003,
+	author = {Bar-Hillel, A. and Hertz, T. and Shental, Noam and Weinshall, Daphna},
+	booktitle = {Proceedings of the Twentieth International Conference on Machine Learning},
+	keywords = {clustering, feature selection, learning from partial knowledge, semi-supervised learning},
+	pages = {11},
+	title = {{Learning distance functions using equivalence relations}},
+	url = {http://www.aaai.org/Papers/ICML/2003/ICML03-005.pdf},
+	volume = {20},
+	year = {2003}
+}
+
+@inproceedings{globerson2006,
+	author = {Globerson, Amir and Roweis, Sam},
+	booktitle = {Advances in Neural Information Processing Systems},
+	issn = {1049-5258},
+	pages = {451},
+	publisher = {Citeseer},
+	title = {{Metric learning by collapsing classes}},
+	url = {http://citeseerx.ist.psu.edu/viewdoc/download?doi=10.1.1.61.7998\&amp;rep=rep1\&amp;type=pdf},
+	volume = {18},
+	year = {2006},
+	keywords = {distance metric learning}
+}
+
+@inproceedings{xing2003,
+	author = {Xing, E.P. and Ng, A.Y. and Jordan, M.I. and Russell, Stuart},
+	booktitle = {Advances in Neural Information Processing Systems},
+	issn = {1049-5258},
+	pages = {521--528},
+	publisher = {Citeseer},
+	title = {{Distance metric learning with application to clustering with side-information}},
+	url = {http://citeseerx.ist.psu.edu/viewdoc/download?doi=10.1.1.67.7952\&amp;rep=rep1\&amp;type=pdf},
+	year = {2003},
+	keywords = {distance metric learning}
+}
+
+@inproceedings{shental2006,
+	author = {Shental, N. and Hertz, T. and Weinshall, D. and Pavel, M.},
+	booktitle = {Proceedings of the 7th European Conference on Computer Vision-Part IV},
+	pages = {776----792},
+	publisher = {Springer},
+	title = {{Adjustment learning and relevant component analysis}},
+	url = {http://www.springerlink.com/index/M2UHQPX5JYV4LE8E.pdf},
+	year = {2002},
+	keywords = {distance metric learning}
+}
+
+@article{weinberger2009,
+	author = {Weinberger, K.Q. and Saul, L.K.},
+	issn = {1532-4435},
+	journal = {The Journal of Machine Learning Research},
+	pages = {207--244},
+	publisher = {JMLR. org},
+	title = {{Distance metric learning for large margin nearest neighbor classification}},
+	url = {http://portal.acm.org/citation.cfm?id=1577078},
+	volume = {10},
+	year = {2009},
+	keywords = {distance metric learning, nearest neighbor}
+}
+
+@inproceedings{goldberger2004,
+  	title={{Neighbourhood components analysis}},
+  	booktitle = {Advances in Neural Information Processing Systems},
+  	publisher = {MIT Press},
+ 	author={Goldberger, J. and Roweis, S. and Hinton, G. and Salakhutdinov, R.},
+  	year={2004}
+}
+
+@article{yang2006,
+	author = {Yang, Liu and Jin, R.},
+	journal = {Michigan State Universiy},
+	pages = {1--51},
+	publisher = {Citeseer},
+	title = {{Distance metric learning: A comprehensive survey}},
+	url = {http://citeseerx.ist.psu.edu/viewdoc/download?doi=10.1.1.91.4732\&amp;rep=rep1\&amp;type=pdf},
+	year = {2006},
+	keywords = {distance metric learning, survey}
+}
+
+@inproceedings{fisher1936,
+	author = {Fisher, R.A. and Others},
+	booktitle = {Annals of Eugenics},
+	pages = {179--188},
+	title = {{The use of multiple measurements in taxonomic problems.}},
+	url = {http://digital.library.adelaide.edu.au/dspace/bitstream/2440/15227/1/138.pdf},
+	volume = {7},
+	year = {1936}
+}
+
+@article{holte1993,
+  	title={{Very simple classification rules perform well on most commonly used datasets}},
+  	author={Holte, R.C.},
+  	journal={Machine learning},
+  	volume={11},
+  	number={1},
+  	pages={63--90},
+  	issn={0885-6125},
+  	year={1993},
+  	publisher={Springer}
+}
+
+@inproceedings{moore1997,
+ 	title={Efficient locally weighted polynomial regression predictions},
+ 	author={Andrew Moore and Jeff Schneider and Kan Deng},
+ 	booktitle={Fourteenth International Conference on Machine Learning},
+ 	pages={236--244},
+ 	editor={D. Fisher},
+ 	year={1997},
+        url={http://www.autonlab.org/autonweb/14692},
+        keywords={k-d tree, ball tree, efficient statistical algorithm, memory-based learning}
+}
+
+@conference{liu2003,
+  	title={{Efficient exact k-NN and nonparametric classification in high dimensions}},
+  	author={Liu, T. and Moore, A.W. and Gray, A.},
+  	booktitle={Proceedings of Neural Information Processing Systems},
+  	volume={15},
+  	year={2003},
+  	organization={Citeseer},
+  	keywords={ball trees, k Nearest Neighbour}
+}
+
+@article{shen2006,
+  	title={{Fast gaussian process regression using kd-trees}},
+  	author={Shen, Y. and Ng, A. and Seeger, M.},
+  	journal={Advances in neural information processing systems},
+  	volume={18},
+  	pages={1225},
+  	issn={1049-5258},
+  	year={2006},
+  	publisher={Citeseer},
+  	keywords={locally weighted sum, kd-trees}
+}
+
+@article{atkeson1997,
+  	title={{Locally weighted learning}},
+  	author={Atkeson, C.G. and Moore, A.W. and Schaal, S.},
+  	journal={Artificial intelligence review},
+  	volume={11},
+  	number={1},
+  	pages={11--73},
+  	issn={0269-2821},
+  	year={1997},
+  	publisher={Springer},
+  	keywords={review}
+}
+
+@article{ram2009linear,
+  	title={{Linear time algorithms for pairwise statistical problems}},
+  	author={Ram, P. and Lee, D. and March, W.B. and Gray, A.G.},
+  	journal={Advances in Neural Information Processing Systems},
+  	volume={23},
+  	year={2009},
+  	keywords={dual tree, algorithm analysis}
+}
+
+@conference{lee2006faster,
+  	title={{Faster gaussian summation: Theory and experiment}},
+  	author={Lee, D. and Gray, A.},
+  	booktitle={{Proceedings of the Twenty-second Conference on Uncertainty in Artificial Intelligence}},
+  	year={2006},
+  	organization={Citeseer}
+}
+
+@book{mitchell1997,
+  	author = {Tom M. Mitchell},
+  	publisher = {McGraw-Hill},
+  	title = {Machine Learning},
+	 year = 1997,
+  	keywords = {learning mining pattern}
+}
+
+@book{bishop2006,
+ 	author = {Bishop, Christopher M.},
+ 	title = {Pattern Recognition and Machine Learning (Information Science and Statistics)},
+ 	year = {2006},
+ 	isbn = {0387310738},
+ 	publisher = {Springer-Verlag New York, Inc.},
+ 	address = {Secaucus, NJ, USA}
+} 
+
+@book{russell1996,
+ 	author = {Russell, Stuart J. and Norvig, Peter and Candy, John F. and Malik, Jitendra M. and Edwards, Douglas D.},
+ 	title = {Artificial intelligence: a modern approach},
+ 	year = {1996},
+ 	isbn = {0-13-103805-2},
+ 	publisher = {Prentice-Hall, Inc.},
+ 	address = {Upper Saddle River, NJ, USA},
+} 
+
+@misc{moore1991,
+    	Howpublished = {Extract from PhD Thesis},
+    	Year = {1991},
+    	Booktitle = {University of Cambridge Computer Laboratory Technical Report No. 209},
+    	Note = {Available from \url{http://www.cs.cmu.edu/~awm/papers.html}},
+    	Author = {Andrew Moore},
+    	Title = {A tutorial on kd-trees},
+    	keywords = {k-d trees}
+}
+
+@book{omohundro1991,
+  	title={{Bumptrees for efficient function, constraint, and classification learning}},
+  	author={Omohundro, S.M.},
+  	year={1991},
+  	publisher={Citeseer},
+  	keywords={ball trees}
+}
+
+@book{omohundro1989,
+  	title={{Five balltree construction algorithms}},
+  	author={Omohundro, S.M.},
+  	year={1989},
+  	publisher={Citeseer},
+  	keywords={ball trees}
+}
+
+
+@conference{gray2003,
+  	title={{Nonparametric density estimation: Toward computational tractability}},
+  	author={Gray, A.G. and Moore, A.W.},
+  	booktitle={SIAM International Conference on Data Mining},
+  	volume={2003},
+  	year={2003},
+  	organization={Citeseer},
+  	keywords={dual trees}
+}
+
+@article{gray2001,
+  	title={{`N-Body' problems in statistical learning}},
+  	author={Gray, A.G. and Moore, A.W.},
+  	journal={Advances in neural information processing systems},
+  	pages={521--527},
+  	issn={1049-5258},
+  	year={2001},
+  	publisher={Citeseer}
+}
+
+@article{hinton2003,
+  	title={{Stochastic neighbor embedding}},
+  	author={Hinton, G. and Roweis, S.},
+  	journal={Advances in neural information processing systems},
+  	pages={857--864},
+  	issn={1049-5258},
+  	year={2003},
+  	publisher={Citeseer}
+}
+
+@phdthesis{lang2009,
+	author = {Dustin Lang},
+	title = {Astrometry.net: {A}utomatic recognition and calibration of
+astronomical images},
+	year = {2009},
+	school = {University of Toronto},
+	keywords = {k-d trees}
+}
+
+@phdthesis{singh2010,
+	author = {Natasha Singh-Miller},
+	title = {Neighborhood Analysis Methods in Acoustic Modeling for
+	Automatic Speech Recognition},
+	year = {2010},
+	school = {Massachusetts Institute of Technology},
+	keywords = {NCA}
+}
+
+@phdthesis{martin1995,
+  	title={Instance-based learning: Nearest Neighbour with Generalisation},
+  	author={Martin, B.},
+  	year={1995},
+  	school={University of Waikato},
+  	keywords={instance based, nearest neighbours, nn}
+}
+
+@inproceedings{gray2003b,
+    	Year = {2003},
+    	Booktitle = {Artificial Intelligence and Statistics},
+    	Author = {Alexander Gray, Andrew Moore},
+    	Title = {Rapid Evaluation of Multiple Density Models},
+    	keywords = {kernel density estimation, KDE, k-d trees, dual trees}
+}
+
+@article{kurniawati1998,
+  	title={{Efficient nearest-neighbour searches using weighted euclidean metrics}},
+  	author={Kurniawati, R. and Jin, J. and Shepherd, J.},
+  	journal={Advances in Databases},
+  	pages={64--76},
+  	year={1998},	
+	publisher={Springer},
+	keywords={k-nn, distance metric}
+}
+
+@article{yen2010,
+  	title={{Applying Multiple KD-Trees in High Dimensional Nearest Neighbor Searching}},
+  	author={Yen, S.H. and Shih, C.Y. and Li, T.K. and Chang, H.W.},
+  	journal={International Journal of Circuits, Systems and Signal Processing},
+  	year={2010},
+  	keywords={k-nn, k-d trees, high many dimensions}
+}
+
+@article{aggarwal2001,
+  	title={{On the surprising behavior of distance metrics in high dimensional space}},
+  	author={Aggarwal, C. and Hinneburg, A. and Keim, D.},
+  	journal={Database Theory—ICDT 2001},
+  	pages={420--434},
+  	year={2001},
+  	publisher={Springer},
+  	keywords={high dimensionality, curse of dimensionality, distance metrics}
+
+}
+
+@article{beyer1999,
+  	title={{When is ``nearest neighbor'' meaningful?}},
+  	author={Beyer, K. and Goldstein, J. and Ramakrishnan, R. and Shaft, U.},
+  	journal={Database Theory—ICDT’99},
+  	pages={217--235},
+  	year={1999},
+  	publisher={Springer},
+  	keywords={nearest neighbour, high dimensionality, NN, curse of dimensionality}
+}
+
+@conference{houle2010,
+  	title={{Can Shared-Neighbor Distances Defeat the Curse of Dimensionality?}},
+  	author={Houle, M. and Kriegel, H.P. and Kr{\\"o}ger, P. and Schubert, E. and Zimek, A.},
+  	booktitle={Scientific and Statistical Database Management},
+  	pages={482--500},
+  	year={2010},
+  	organization={Springer},
+  	keywords={nearest neighbours, NN, high dimensionality, curse of dimensionality, distance}
+}
+
+@article{hinneburg2000,
+  	title={{What is the nearest neighbor in high dimensional spaces?}},
+  	author={Hinneburg, E. and Aggarwal, C. and Keim, D.A. and Hinneburg, A.},
+  	year={2000},
+	publisher={Citeseer},
+	keywords={nearest neighbours, NN, high dimensionality, curse of dimensionality, distance}
+}
+
+@article{radovanovic2010,
+  	title={{Hubs in space: Popular nearest neighbors in high-dimensional data}},
+  	author={Radovanovic, M. and Nanopoulos, A. and Ivanovic, M.},
+  	journal={Journal of Machine Learning Research},
+  	volume={11},
+  	pages={2487--2531},
+  	year={2010},
+	keywords={nearest neighbours, NN, high dimensionality, curse of dimensionality, hubness}
+}
+
+
+@article{fix1989,
+  	title={{Discriminatory analysis. Nonparametric discrimination: Consistency properties}},
+  	author={Fix, E. and Hodges, J.L.},
+  	journal={International Statistical Review/Revue Internationale de Statistique},
+  	volume={57},
+  	number={3},
+  	pages={238--247},
+  	issn={0306-7734},
+  	year={1989},
+  	publisher={JSTOR}
+}
+
+@article{silverman1989,
+  	title={E. Fix and JL Hodges (1951): An Important Contribution to Nonparametric Discriminant Analysis and Density Estimation: Commentary on Fix and Hodges (1951)},
+  	author={Silverman, BW and Jones, MC},
+  	journal={International Statistical Review/Revue Internationale de Statistique},
+  	volume={57},
+  	number={3},
+  	pages={233--238},
+  	issn={0306-7734},
+  	year={1989},
+  	publisher={JSTOR}
+}
+
+@article{friedman1977,
+ 	author = {Friedman, Jerome H. and Bentley, Jon Louis and Finkel, Raphael Ari},
+ 	title = {An Algorithm for Finding Best Matches in Logarithmic Expected Time},
+ 	journal = {ACM Trans. Math. Softw.},
+ 	volume = {3},
+ 	issue = {3},
+ 	month = {September},
+ 	year = {1977},
+ 	issn = {0098-3500},
+ 	pages = {209--226},
+ 	numpages = {18},
+ 	url = {http://doi.acm.org/10.1145/355744.355745},
+ 	doi = {http://doi.acm.org/10.1145/355744.355745},
+ 	acmid = {355745},
+ 	publisher = {ACM},
+	address = {New York, NY, USA},
+}
+
+@book{moore2000,
+  	title={{The anchors hierarchy: Using the triangle inequality to survive high dimensional data}},
+  	author={Moore, A.W.},
+  	year={2000},
+  	publisher={Citeseer}
+}
+
+@conference{moore1994,
+  	title={{Efficient algorithms for minimizing cross validation error}},
+  	author={Moore, A.W. and Lee, M.S.},
+  	booktitle={Proceedings of the Eleventh International Conference on Machine Learning},
+  	pages={190--198},
+  	year={1994},
+  	organization={Citeseer}
+}
+
+@article{pearson1901,
+  	title={{On lines and planes of closest fit to systems of points in space}},
+  	author={Pearson, K.},
+  	journal={Philosophical Magazine Series 6},
+  	volume={2},
+  	number={11},
+  	pages={559--572},
+  	issn={1941-5982},
+  	year={1901},
+  	publisher={Taylor \& Francis},
+  	keywords = {PCA, karhunen loeve}
+}
+
+@conference{salakhutdinov2007,
+  	title={{Learning a nonlinear embedding by preserving class neighbourhood structure}},
+  	author={Salakhutdinov, R. and Hinton, G.},
+  	booktitle={AI and Statistics},
+  	volume={1},
+  	number={2},
+  	year={2007},
+  	organization={Citeseer},
+  	keywords = {nonlinear NCA}
+}
+
+@article{liu2006,
+  title={{Discriminant common vectors versus neighbourhood components analysis and Laplacianfaces: A comparative study in small sample size problem}},
+  author={Liu, J. and Chen, S.},
+  journal={Image and Vision Computing},
+  volume={24},
+  number={3},
+  pages={249--262},
+  issn={0262-8856},
+  year={2006},
+..publisher={Elsevier},
+  keywords={NCA}
+}
+
+@conference{singh2007,
+  title={{Dimensionality reduction for speech recognition using neighborhood components analysis}},
+  author={Singh-Miller, N. and Collins, M. and Hazen, T.J.},
+  booktitle={Proceedings of Interspeech-07},
+  pages={1158--1161},
+  year={2007},
+  organization={Citeseer}
+}
+
+@article{chatpatanasiri2010,
+  title={{A new kernelization framework for Mahalanobis distance learning algorithms}},
+  author={Chatpatanasiri, R. and Korsrilabutr, T. and Tangchanachaianan, P. and Kijsirikul, B.},
+  journal={Neurocomputing},
+  volume={73},
+  number={10-12},
+  pages={1570--1579},
+  issn={0925-2312},
+  year={2010},
+  publisher={Elsevier}
+}
+
+@conference{slaney2008,
+  title={{Learning a metric for music similarity}},
+  author={Slaney, M. and Weinberger, K. and White, W.},
+  booktitle={ISMIR 2008: proceedings of the 9th International Conference of Music Information Retrieval},
+  pages={313},
+  isbn={0615248497},
+  year={2008},
+  organization={Lulu. com}
+}
+
+@conference{weinberger2007,
+  title={{Metric learning for kernel regression}},
+  author={Weinberger, K.Q. and Tesauro, G.},
+  booktitle={Eleventh international conference on artificial intelligence and statistics},
+  pages={608--615},
+  year={2007},
+  organization={Citeseer}
+}
+
+@conference{beygelzimer2006,
+  title={{Cover trees for nearest neighbor}},
+  author={Beygelzimer, A. and Kakade, S. and Langford, J.},
+  booktitle={Proceedings of the 23rd international conference on Machine learning},
+  pages={97--104},
+  isbn={1595933832},
+  year={2006},
+  organization={ACM}
+}
+
+@article{lang2005,
+  title={{Empirical testing of fast kernel density estimation algorithms}},
+  author={Lang, D. and Klaas, M. and de Freitas, N.},
+  journal={UBC Technical report},
+  volume={2},
+  year={2005},
+  publisher={Citeseer},
+  keywords={k-d trees, fast kernel density estimation}
+}
+
+@inproceedings{davis2007,
+  title={Information-theoretic metric learning},
+  author={Davis, J.V. and Kulis, B. and Jain, P. and Sra, S. and Dhillon, I.S.},
+  booktitle={Proceedings of the 24th international conference on Machine learning},
+  pages={209--216},
+  year={2007},
+  organization={ACM}
+}
+
+@article{dekel2010,
+  title={Optimal distributed online prediction using mini-batches},
+  author={Dekel, O. and Gilad-Bachrach, R. and Shamir, O. and Xiao, L.},
+  journal={Arxiv preprint arXiv:1012.1367},
+  year={2010},
+  keywords={mini-batches}
+}
+
+@article{gonzalez1985clustering,
+  title={Clustering to minimize the maximum intercluster distance* 1},
+  author={Gonzalez, T.F.},
+  journal={Theoretical Computer Science},
+  volume={38},
+  pages={293--306},
+  year={1985},
+  publisher={Elsevier}
+  keywords={farthest point clustering}
+}

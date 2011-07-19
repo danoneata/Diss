@@ -1,0 +1,44 @@
+\begin{thebibliography}{}
+
+\bibitem[Bentley, 1975]{bentley1975}
+Bentley, J.~L. (1975).
+\newblock Multidimensional binary search trees used for associative searching.
+\newblock {\em Commun. ACM}, 18:509--517.
+
+\bibitem[Goldberger et~al., 2004]{goldberger2004}
+Goldberger, J., Roweis, S., Hinton, G., and Salakhutdinov, R. (2004).
+\newblock {Neighbourhood components analysis}.
+\newblock In {\em Advances in Neural Information Processing Systems}. MIT
+  Press.
+
+\bibitem[Gray and Moore, 2003]{gray2003}
+Gray, A. and Moore, A. (2003).
+\newblock {Nonparametric density estimation: Toward computational
+  tractability}.
+\newblock In {\em SIAM International Conference on Data Mining}, volume 2003.
+  Citeseer.
+
+\bibitem[Holte, 1993]{holte1993}
+Holte, R. (1993).
+\newblock {Very simple classification rules perform well on most commonly used
+  datasets}.
+\newblock {\em Machine learning}, 11(1):63--90.
+
+\bibitem[Moore, 1991]{moore1991}
+Moore, A. (1991).
+\newblock A tutorial on kd-trees.
+\newblock Extract from PhD Thesis.
+\newblock Available from \url{http://www.cs.cmu.edu/~awm/papers.html}.
+
+\bibitem[Omohundro, 1989]{omohundro1989}
+Omohundro, S. (1989).
+\newblock {\em {Five balltree construction algorithms}}.
+\newblock Citeseer.
+
+\bibitem[Omohundro, 1991]{omohundro1991}
+Omohundro, S. (1991).
+\newblock {\em {Bumptrees for efficient function, constraint, and
+  classification learning}}.
+\newblock Citeseer.
+
+\end{thebibliography}
