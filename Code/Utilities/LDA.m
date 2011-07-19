@@ -62,7 +62,7 @@ function E  = LDA(X, c, d)
   E = V(:,idx);
   E = E(:,1:d)';
   % Normalize eigenvectors such that they are orthonormal:
-  E = bsxfun(@rdivide,E,sum(E.^2,2));
+  E = bsxfun(@rdivide,E,sqrt(sum(E.^2,2)));
   if D > N,
     E = E*EE;
   end

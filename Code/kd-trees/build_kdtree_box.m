@@ -12,10 +12,10 @@ function kdtr = build_kdtree_box(Apoints, points, size_bucket)
 
   global kdtree;
   if ~exist('size_bucket','var'),
-    size_bucket = 30;
+    size_bucket = 50;
   end
   if ~exist('points','var'),
-    point = Apoints;
+    points = Apoints;
   end
   build_kdtree_bounding_boxes(Apoints, points, 1, size_bucket);
   kdtr = kdtree;
@@ -39,8 +39,10 @@ function build_kdtree_bounding_boxes(Apoints, points, i, size_bucket)
     % Mark leaf accordingly as no split is needed:
     kdtree(i).Apoints = Apoints;
     kdtree(i).points = points;
+    kdtree(i).nr_points = N;
     kdtree(i).split_dir = 0;
-    kdtree(i).mu = mean(Apoints,2);
+    kdtree(i).mu = mean(points,2);
+    kdtree(i).Amu = mean(Apoints,2);
     kdtree(i).min = min(Apoints,[],2);
     kdtree(i).max = max(Apoints,[],2);
     return;
@@ -55,8 +57,10 @@ function build_kdtree_bounding_boxes(Apoints, points, i, size_bucket)
   
   kdtree(i).Apoints = [];
   kdtree(i).points = [];
+  kdtree(i).nr_points = N;
   kdtree(i).split_dir = k;
-  kdtree(i).mu = mean(Apoints,2);
+  kdtree(i).mu = mean(points,2);
+  kdtree(i).Amu = mean(Apoints,2);
   kdtree(i).min = min(Apoints,[],2);
   kdtree(i).max = max(Apoints,[],2);
   
