@@ -1,0 +1,161 @@
+\documentclass{beamer}
+%\usefonttheme{serif}
+\usetheme{default}
+\usecolortheme{dove}
+\usefonttheme[stillsansseriflarge]{serif}
+
+%\usepackage{kerkis}
+%\usepackage{kmath}
+\usepackage{pdfpages}
+\usepackage[utf8x]{inputenc}
+\usepackage{enumerate}
+\usepackage{amsmath}
+\usepackage{listings}
+\usepackage{tikz}
+\usepackage{courier}
+\usepackage{bbold}
+
+\usepackage{epsfig}
+\usepackage{graphicx}
+\usepackage{url}
+\usepackage{caption}
+\usepackage{booktabs}
+\usepackage{color}
+\usepackage{shortbold}
+
+\title{Fast low-rank metric learning}
+\author{Dan-Theodor Onea\c{t}\u{a}}
+\date{July 25, 2011}
+
+\begin{document}
+  \begin{frame}
+    \titlepage
+  \end{frame}
+  
+  \section{Introduction}
+  \begin{frame}
+	\frametitle{Neighbourhood component analysis}
+	\mode<article>{
+		  		Neighbourhood component analysis (NCA) builds on the well-known classification method $k$ nearest neighbours ($k$NN). Instead of using the plain Euclidean metric for computing the distances, NCA proposes to learn a more general metric from the training data. In this case, the metric used is a Mahalanobis-like distance. For the classic Mahalanobis metric, we have $\SB=(\operatorname{cov}\{\mathcal{X}\})^{-1}$. We can generalize and use any $\SB$, as long at it is positive definite. This allows to learn different metrics that are specific for our tasks: on the same data set multiple tasks can be performed, so $\SB$ its dependent on the task.
+		  		
+		  		A nice remark is that learning a Mahalanobis distance metric is equivalent to learning a projection matrix:
+		  		\begin{align*}
+			  		d&=\sqrt{(\xB_i-\xB_j)^{\textrm{T}}\SB(\xB_i-\xB_j)}\\
+			  		 &=\sqrt{(\xB_i-\xB_j)^{\textrm{T}}\AB^{\textrm{T}}\AB(\xB_i-\xB_j)}\\
+			  		 &=\sqrt{(\AB\xB_i-\AB\xB_j)^{\textrm{T}}(\AB\xB_i-\AB\xB_j)}.
+			  	\end{align*}
+			  	
+				The matrix $\SB$ or $\AB$ are achieved by maximizing an objective function that is equivalent to the number of correctly classified points.
+				
+				$p_i$ can be viewed as the probability of the point $i$ of getting the right label.
+		  		
+		  		Summary:
+	  		}
+  	\begin{itemize}
+	  	\item Learns a Mahalanobis-like distance metric $\SB$: 
+		  	\[
+			  	d_\SB(\xB_i,\xB_j)=\sqrt{(\xB_i-\xB_j)^{\textrm{T}}\SB(\xB_i-\xB_j)}.
+		  	\]
+		\item Equivalent to a linear transformation: $\SB = \AB^{\textrm{T}}\AB \Rightarrow$
+			\[
+				d_\SB(\xB_i,\xB_j)=d_\IB(\AB\xB_i,\AB\xB_j).
+			\]
+	  	
+	\end{itemize}
+  \end{frame}
+  
+  \begin{frame}
+  	\begin{itemize}
+  		\item Objective function: expected number of correctly classified points 
+  			$f(\SB) = \sum_i p_i,$
+	  		where $p_i=\frac{ \sum_{j\in C_i} \exp\{-d_\SB(\xB_i,\xB_j)\} }{\sum_k \exp\{-d_\SB(\xB_i,\xB_k)\}}$.
+  	\end{itemize}
+  	
+  	\vspace{0.3cm}
+  	\hrulefill
+  	
+  	\begin{columns}[t]
+  		\begin{column}{5cm}
+  			Positive things:
+  			\begin{itemize}
+  				\item Improves classification
+  				\item Dimensionality reduction
+  				\item Assumption-free.
+  			\end{itemize}
+  		\end{column}
+  		\begin{column}{5cm}
+  			Possible issues:
+	  		\begin{itemize}
+		  		\item $f(\SB)$ is not convex
+		  		\item Gradient is expensive to evaluate $\mathcal{O}(N^2D^2)$
+		  		\item How to do classification.
+	  		\end{itemize}
+  		\end{column}
+  	\end{columns}
+  \end{frame}
+  
+  \section{Methods}
+  \begin{frame}
+  	\frametitle{Sub-sampling}
+  	\begin{itemize}
+  		\item Easy to implement.
+  		\item Reduces the general cost: $\mathcal{O}(n^2D^2)$.
+  	\end{itemize}
+  	\mode<article>{
+	  	\begin{tabular}{l}
+	  		\toprule
+	  		Learning algorithm\\
+	  		\midrule
+		  	Choose a subset $\mathcal{D}_n \subseteq \mathcal{D} = \{\xB_1,\cdots,\xB_N\}$.\\
+		  	Learn $\AB$ on $\mathcal{D}_n$: $\AB \leftarrow \text{maximize}(f(\AB),\mathcal{D}_n)$\\
+		  	\bottomrule
+	  	\end{tabular}
+	  	\begin{tabular}{l}
+		  	\toprule
+		  	Testing algorithm\\
+		  	\midrule
+		  	Project the query point $\xB^*$ into the transformed space $\AB\xB^*$.\\
+		  	Use the whole data set $\mathcal{D}^{\AB}=\{\AB\xB_1,\cdots,\AB\xB_N\}$.\\
+		  	Classify $\AB\xB^*$ using $k$NN on $\mathcal{D}^\AB$.\\
+		  	\bottomrule
+	  	\end{tabular}
+  	}
+  \end{frame}
+  
+  \begin{frame}
+	  \frametitle{Mini-batches}
+	  \begin{enumerate}
+		  \item Randomly selected mini-batches
+		  \item Batches formed by clustering:
+		  	\begin{itemize}
+			  	\item Farthest-point clustering
+			  	\item Recursive projection clustering
+			  	\item Agglomerative clustering.
+		  	\end{itemize}
+	  \end{enumerate}
+  \end{frame}
+  
+  \begin{frame}
+	  \frametitle{Stochastic learning}
+	  \begin{itemize}
+		  \item Instead of updating $\AB$ after one sweep through the entire data set, update it more often.
+	  \end{itemize}
+  \end{frame}
+  
+  \begin{frame}
+  	\frametitle{Approximate computations \& $k$-d trees}
+  \end{frame}
+  
+  \begin{frame}
+  	\frametitle{NCA as kernel denisity estiamtion}
+  \end{frame}
+  
+  \begin{frame}
+	\frametitle{Exact computations \& compact support kernels}
+  \end{frame}
+  
+  \begin{frame}
+	  \frametitle{Next...}
+  \end{frame}
+  
+\end{document}

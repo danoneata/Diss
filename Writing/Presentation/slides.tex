@@ -1,0 +1,64 @@
+\documentclass{beamer}
+%\usefonttheme{serif}
+\usetheme{default}
+\usecolortheme{dove}
+\usefonttheme[stillsansseriflarge]{serif}
+
+%\usepackage{kerkis}
+%\usepackage{kmath}
+\usepackage{pdfpages}
+\usepackage[utf8x]{inputenc}
+\usepackage{enumerate}
+\usepackage{amsmath}
+\usepackage{listings}
+\usepackage{tikz}
+\usepackage{courier}
+\usepackage{bbold}
+
+\usepackage{epsfig}
+\usepackage{graphicx}
+\usepackage{url}
+\usepackage{caption}
+\usepackage{booktabs}
+\usepackage{color}
+\usepackage{shortbold}
+
+\title{Fast low-rank metric learning}
+\author{Dan-Theodor Onea\c{t}\u{a}}
+\date{July 25, 2011}
+
+\begin{document}
+  \begin{frame}
+    \titlepage
+  \end{frame}
+  
+  \section{Preamble}
+  \begin{frame}
+	\frametitle{$k$ nearest neighbours}
+	\begin{columns}
+		\begin{column}{7cm}
+			 \begin{itemize}
+				 \item Simple, yet powerful classifier.
+				 \item $d(\xB_i,\xB_j)=\sqrt{(\xB_i-\xB_j)^{\textrm{T}}(\xB_i-\xB_j)}$
+			 \end{itemize}
+		\end{column}
+		\begin{column}{5cm}
+			\includegraphics<1>[width=5cm]{images/Preparing/knn-init}
+			\includegraphics<2>[width=5cm]{images/Preparing/knn-query}
+%			 \includegraphics<2>[width=5cm]{images/faces}
+%			 \includegraphics<3>[width=5cm]{images/face-recog}
+%			 \includegraphics<4>[width=5cm]{images/expression-recog}
+			 \centering{
+				\only<1-2>{\phantom{Face recognition}}
+%			 	\only<3>{Face recognition}
+%			 	\only<4>{Expression recognition}
+			 	}
+		\end{column}
+	\end{columns}
+  \end{frame}
+  
+  \begin{frame}
+  	\frametitle{Neighbourhood component analysis}
+  \end{frame}
+  
+\end{document}
