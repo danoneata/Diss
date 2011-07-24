@@ -1,8 +1,8 @@
-This is pdfTeX, Version 3.1415926-1.40.10 (TeX Live 2009/Debian) (format=pdflatex 2011.6.3)  23 JUL 2011 20:07
+This is pdfTeX, Version 3.1415926-1.40.10 (TeX Live 2009/Debian) (format=pdflatex 2011.6.3)  24 JUL 2011 01:51
 entering extended mode
  %&-line parsing enabled.
-**slides.tex
-(./slides.tex
+**main.slides.tex
+(./main.slides.tex
 LaTeX2e <2009/09/24>
 Babel <v3.8l> and hyphenation patterns for english, usenglishmax, dumylang, noh
 yphenation, loaded.
@@ -793,8 +793,8 @@ Package hyperref Warning: Composite letter `\textcedilla+t'
 Package hyperref Warning: Glyph not defined in PD1 encoding,
 (hyperref)                removing `\u' on input line 27.
 
-(./slides.aux)
-\openout1 = `slides.aux'.
+(./main.slides.aux)
+\openout1 = `main.slides.aux'.
 
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 30.
 LaTeX Font Info:    ... okay on input line 30.
@@ -875,17 +875,16 @@ Package: refcount 2008/08/11 v3.1 Data extraction from references (HO)
 )
 LaTeX Info: Redefining \ref on input line 30.
 LaTeX Info: Redefining \pageref on input line 30.
- (./slides.out)
-(./slides.out)
+ (./main.slides.out) (./main.slides.out)
 \@outlinefile=\write5
-\openout5 = `slides.out'.
+\openout5 = `main.slides.out'.
 
 \AtBeginShipoutBox=\box60
  ABD: EveryShipout initializing macros
 \c@lstlisting=\count182
 Package caption Info: Begin \AtBeginDocument code.
 Package caption Info: End \AtBeginDocument code.
- (./slides.nav)
+ (./main.slides.nav)
 
 LaTeX Font Warning: Font shape `OT1/cmr/m/n' in size <4> not available
 (Font)              size <5> substituted on input line 33.
@@ -893,66 +892,180 @@ LaTeX Font Warning: Font shape `OT1/cmr/m/n' in size <4> not available
 [1
 
 {/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}]
-LaTeX Font Info:    Try loading font information for U+msa on input line 58.
+LaTeX Font Info:    Try loading font information for U+msa on input line 66.
 
 (/usr/share/texmf-texlive/tex/latex/amsfonts/umsa.fd
 File: umsa.fd 2009/06/22 v3.00 AMS symbols A
 )
-LaTeX Font Info:    Try loading font information for U+msb on input line 58.
+LaTeX Font Info:    Try loading font information for U+msb on input line 66.
 
 (/usr/share/texmf-texlive/tex/latex/amsfonts/umsb.fd
 File: umsb.fd 2009/06/22 v3.00 AMS symbols B
 )
-<images/Preparing/knn-init.pdf, id=44, 180.675pt x 147.55125pt>
-File: images/Preparing/knn-init.pdf Graphic file (type pdf)
+<images/knn-init.pdf, id=52, 355.3275pt x 282.05376pt>
+File: images/knn-init.pdf Graphic file (type pdf)
 
-<use images/Preparing/knn-init.pdf> [2
+<use images/knn-init.pdf> [2
 
- <./images/Preparing/knn-init.pdf>]
-<images/Preparing/knn-query.pdf, id=79, 180.675pt x 147.55125pt>
-File: images/Preparing/knn-query.pdf Graphic file (type pdf)
+ <./images/knn-init.pdf>]
+<images/knn-q.pdf, id=90, 355.3275pt x 282.05376pt>
+File: images/knn-q.pdf Graphic file (type pdf)
+ <use images/knn-q.pdf>
+[3
 
-<use images/Preparing/knn-query.pdf> [3
+ <./images/knn-q.pdf>] <images/knn-1.pdf, id=118, 355.3275pt x 282.05376pt>
+File: images/knn-1.pdf Graphic file (type pdf)
 
- <./images/Preparing/knn-query.pdf>]
-[4
+<use images/knn-1.pdf> [4
+
+ <./images/knn-1.pdf>]
+<images/knn-7.pdf, id=146, 355.3275pt x 282.05376pt>
+File: images/knn-7.pdf Graphic file (type pdf)
+ <use images/knn-7.pdf>
+[5
+
+ <./images/knn-7.pdf>] <images/faces.pdf, id=174, 496.59428pt x 541.76303pt>
+File: images/faces.pdf Graphic file (type pdf)
+
+<use images/faces.pdf> [6
+
+ <./images/faces.pdf>]
+<images/face-recog.pdf, id=205, 496.59428pt x 541.76303pt>
+File: images/face-recog.pdf Graphic file (type pdf)
+
+<use images/face-recog.pdf> [7
+
+ <./images/face-recog.pdf>]
+<images/expression-recog.pdf, id=236, 496.59428pt x 541.76303pt>
+File: images/expression-recog.pdf Graphic file (type pdf)
+
+<use images/expression-recog.pdf> [8
+
+ <./images/expression-recog.pdf>]
+<images/mahalanobis.pdf, id=266, 355.3275pt x 282.05376pt>
+File: images/mahalanobis.pdf Graphic file (type pdf)
+
+<use images/mahalanobis.pdf>
+Overfull \hbox (1.11171pt too wide) in paragraph at lines 93--93
+ [][] 
+ []
+
+[9
+
+ <./images/mahalanobis.pdf>]
+<images/euclidean.pdf, id=298, 361.35pt x 279.0425pt>
+File: images/euclidean.pdf Graphic file (type pdf)
+
+<use images/euclidean.pdf>
+Overfull \hbox (5.11876pt too wide) in paragraph at lines 93--93
+ [][] 
+ []
+
+[10
+
+ <./images/euclidean.pdf>]
+Overfull \hbox (37.51143pt too wide) detected at line 120
+[] \OML/cmm/m/it/10.95 f\OT1/cmr/m/n/10.95 (\OT1/cmr/bx/n/10.95 S\OT1/cmr/m/n/1
+0.95 ) = [] \OML/cmm/m/it/10.95 p\OT1/cmr/m/n/10.95 (\OT1/cmr/bx/n/10.95 x[] \O
+MS/cmsy/m/n/10.95 2 [] \OT1/cmr/bx/n/10.95 x[]\OT1/cmr/m/n/10.95 )\OML/cmm/m/it
+/10.95 :
+ []
+
+[11
+
+] <images/wine-rand-2-5.pdf, id=355, 454.69875pt x 374.39874pt>
+File: images/wine-rand-2-5.pdf Graphic file (type pdf)
+
+<use images/wine-rand-2-5.pdf>
+LaTeX Font Info:    Try loading font information for OT1+pcr on input line 153.
+
+
+(/usr/share/texmf-texlive/tex/latex/psnfss/ot1pcr.fd
+File: ot1pcr.fd 2001/06/04 font definitions for OT1/pcr.
+) [12
+
+ <./images/wine-rand-2-5.pdf>] <images/wine-rand-2-6.pdf, id=391, 454.69875pt x
+ 374.39874pt>
+File: images/wine-rand-2-6.pdf Graphic file (type pdf)
+
+<use images/wine-rand-2-6.pdf> [13
+
+ <./images/wine-rand-2-6.pdf>]
+<images/wine-pca-2-5.pdf, id=424, 454.69875pt x 374.39874pt>
+File: images/wine-pca-2-5.pdf Graphic file (type pdf)
+
+<use images/wine-pca-2-5.pdf> [14
+
+ <./images/wine-pca-2-5.pdf>]
+<images/wine-pca-2-6.pdf, id=454, 454.69875pt x 374.39874pt>
+File: images/wine-pca-2-6.pdf Graphic file (type pdf)
+
+<use images/wine-pca-2-6.pdf> [15
+
+ <./images/wine-pca-2-6.pdf>] [16
+
+] [17
+
+]
+[18
+
+] [19
+
+] [20
+
+] [21
 
 ]
 \tf@nav=\write6
-\openout6 = `slides.nav'.
+\openout6 = `main.slides.nav'.
 
 \tf@toc=\write7
-\openout7 = `slides.toc'.
+\openout7 = `main.slides.toc'.
 
 \tf@snm=\write8
-\openout8 = `slides.snm'.
+\openout8 = `main.slides.snm'.
 
- (./slides.aux)
+ (./main.slides.aux)
 
 LaTeX Font Warning: Size substitutions with differences
 (Font)              up to 1.0pt have occurred.
 
  ) 
 Here is how much of TeX's memory you used:
- 17212 strings out of 495061
- 303992 string characters out of 1182622
- 393821 words of memory out of 3000000
- 19956 multiletter control sequences out of 15000+50000
- 14607 words of font info for 56 fonts, out of 3000000 for 9000
+ 17408 strings out of 495061
+ 307562 string characters out of 1182622
+ 393464 words of memory out of 3000000
+ 20097 multiletter control sequences out of 15000+50000
+ 16588 words of font info for 63 fonts, out of 3000000 for 9000
  28 hyphenation exceptions out of 8191
- 45i,14n,51p,332b,604s stack positions out of 5000i,500n,10000p,200000b,50000s
-</usr/share/texmf-texlive/fonts/type1/public/amsfonts/cm/cmbx10.pfb></usr/sha
-re/texmf-texlive/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/share/texmf-te
-xlive/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/share/texmf-texlive/fonts
-/type1/public/amsfonts/cm/cmmi12.pfb></usr/share/texmf-texlive/fonts/type1/publ
-ic/amsfonts/cm/cmmi8.pfb></usr/share/texmf-texlive/fonts/type1/public/amsfonts/
-cm/cmr10.pfb></usr/share/texmf-texlive/fonts/type1/public/amsfonts/cm/cmr8.pfb>
-</usr/share/texmf-texlive/fonts/type1/public/amsfonts/cm/cmss12.pfb></usr/share
-/texmf-texlive/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/share/texmf-texl
-ive/fonts/type1/public/amsfonts/symbols/msam10.pfb>
-Output written on slides.pdf (4 pages, 115406 bytes).
+ 45i,14n,51p,337b,686s stack positions out of 5000i,500n,10000p,200000b,50000s
+pdfTeX warning (dest): name{Navigation22} has been referenced but does not ex
+ist, replaced by a fixed one
+
+{/usr/share/texmf-texlive/fonts/enc/dvips/base/8r.enc}</usr/share/texmf-texlive
+/fonts/type1/public/amsfonts/cm/cmbx10.pfb></usr/share/texmf-texlive/fonts/type
+1/public/amsfonts/cm/cmbx12.pfb></usr/share/texmf-texlive/fonts/type1/public/am
+sfonts/cm/cmbx6.pfb></usr/share/texmf-texlive/fonts/type1/public/amsfonts/cm/cm
+bx8.pfb></usr/share/texmf-texlive/fonts/type1/public/amsfonts/cm/cmex10.pfb></u
+sr/share/texmf-texlive/fonts/type1/public/amsfonts/cmextra/cmex8.pfb></usr/shar
+e/texmf-texlive/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/share/texmf-tex
+live/fonts/type1/public/amsfonts/cm/cmmi12.pfb></usr/share/texmf-texlive/fonts/
+type1/public/amsfonts/cm/cmmi6.pfb></usr/share/texmf-texlive/fonts/type1/public
+/amsfonts/cm/cmmi8.pfb></usr/share/texmf-texlive/fonts/type1/public/amsfonts/cm
+/cmr10.pfb></usr/share/texmf-texlive/fonts/type1/public/amsfonts/cm/cmr12.pfb><
+/usr/share/texmf-texlive/fonts/type1/public/amsfonts/cm/cmr6.pfb></usr/share/te
+xmf-texlive/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/share/texmf-texlive/f
+onts/type1/public/amsfonts/cm/cmss10.pfb></usr/share/texmf-texlive/fonts/type1/
+public/amsfonts/cm/cmss12.pfb></usr/share/texmf-texlive/fonts/type1/public/amsf
+onts/cm/cmsy10.pfb></usr/share/texmf-texlive/fonts/type1/public/amsfonts/cm/cms
+y6.pfb></usr/share/texmf-texlive/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr
+/share/texmf-texlive/fonts/type1/public/amsfonts/cm/cmti10.pfb></usr/share/texm
+f-texlive/fonts/type1/public/amsfonts/symbols/msam10.pfb></usr/share/texmf-texl
+ive/fonts/type1/public/amsfonts/symbols/msam7.pfb></usr/share/texmf-texlive/fon
+ts/type1/urw/courier/ucrr8a.pfb>
+Output written on main.slides.pdf (21 pages, 681822 bytes).
 PDF statistics:
- 167 PDF objects out of 1000 (max. 8388607)
- 10 named destinations out of 1000 (max. 500000)
- 51 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 717 PDF objects out of 1000 (max. 8388607)
+ 47 named destinations out of 1000 (max. 500000)
+ 122 words of extra memory for PDF output out of 10000 (max. 10000000)
 

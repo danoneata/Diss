@@ -1,0 +1,199 @@
+\documentclass{beamer}
+%\usefonttheme{serif}
+\usetheme{default}
+\usecolortheme{dove}
+\usefonttheme[stillsansseriflarge]{serif}
+
+%\usepackage{kerkis}
+%\usepackage{kmath}
+\usepackage{pdfpages}
+% \usepackage[utf8x]{inputenc}
+\usepackage{enumerate}
+\usepackage{amsmath}
+\usepackage{listings}
+\usepackage{tikz}
+\usepackage{courier}
+% \usepackage{bbold}
+
+\usepackage{epsfig}
+\usepackage{graphicx}
+\usepackage{url}
+\usepackage{caption}
+\usepackage{booktabs}
+\usepackage{color}
+\usepackage{shortbold}
+
+\title{Fast low-rank metric learning}
+\author{Dan-Theodor Onea\c{t}\u{a}}
+\date{July 25, 2011}
+
+\begin{document}
+  \begin{frame}
+    \titlepage
+  \end{frame}
+  
+  \section{Preamble}
+  \begin{frame}
+	\frametitle{$k$ nearest neighbours}
+	\begin{columns}
+		\begin{column}{7cm}
+			 \begin{itemize}
+				 \item Simple, yet powerful classifier.
+				 \item Eucildean distance: \[
+							      d(\xB_i,\xB_j)=\sqrt{(\xB_i-\xB_j)^{\textrm{T}}(\xB_i-\xB_j)}
+				                           \]
+
+			 \end{itemize}
+		\end{column}
+		\begin{column}{5cm}
+			\includegraphics<1>[width=5cm]{images/knn-init}
+			\includegraphics<2>[width=5cm]{images/knn-q}
+			\includegraphics<3>[width=5cm]{images/knn-1}
+			\includegraphics<4>[width=5cm]{images/knn-7}
+			\includegraphics<5>[width=5cm]{images/faces}
+			\includegraphics<6>[width=5cm]{images/face-recog}
+			\includegraphics<7>[width=5cm]{images/expression-recog}
+			 \centering{
+				\only<1-2>{\phantom{$k=1$}}
+				\only<3>{$k=1$}
+				\only<4>{$k=7$}
+				\only<5>{\phantom{Face recognition}}
+			 	\only<6>{Face recognition}
+			 	\only<7>{Expression recognition}
+			 	}
+		\end{column}
+	\end{columns}
+  \end{frame}
+  
+  \section{Neighbourhood component analysis}
+  \begin{frame}
+  	\frametitle{Neighbourhood component analysis}
+		\begin{columns}
+		\begin{column}{7cm}
+			 \begin{itemize}
+				 \item Learns a Mahalanobis metric
+				    \[
+				      d_\SB(\xB_i,\xB_j) = \sqrt{(\xB_i-\xB_j)^{\textrm{T}}{\color{blue}\SB}(\xB_i-\xB_j)}
+				    \]
+				\item Equivalent to a linear transformation:
+				      $d_\SB(\xB_i,\xB_j) = d_\IB(\AB\xB_i,\AB\xB_j)$
+
+			 \end{itemize}
+		\end{column}
+		\begin{column}{5cm}
+			\centering\includegraphics<1>[height=4cm]{images/mahalanobis}
+			\centering\includegraphics<2>[height=4cm]{images/euclidean}
+
+			 \centering{
+				\only<1-2>{\phantom{$k=1$}}
+
+			 	}
+		\end{column}
+	\end{columns}
+  \end{frame}
+
+  \begin{frame}
+    \frametitle{How to learn a metric?}
+  	\frametitle{Neighbourhood component analysis}
+		\begin{columns}
+		\begin{column}{7cm}
+			 \begin{enumerate}
+				 \item Find $\SB$ that maximizes leave-one-out cross-validation score.
+				\item Soft version:
+				  $p(\xB_i\in\mbox{class}\; c) = \frac{\sum_{j\in c} \exp\{-d_\SB(\xB_i,\xB_j)\}}{\sum_{k} \exp\{-d_\SB(\xB_i,\xB_k)\}}$
+				  \[
+				   \mbox{Maximize}\;f(\SB)=\sum_i p(\xB_i \in \mbox{true class of}\;\xB_i).
+				  \]
+
+			 \end{enumerate}
+		\end{column}
+		\begin{column}{5cm}
+% 			\includegraphics<1>[width=5cm]{images/knn-init}
+% 			\includegraphics<2>[width=5cm]{images/knn-q}
+
+			 \centering{
+				\only<1-2>{\phantom{$k=1$}}
+
+			 	}
+		\end{column}
+	\end{columns}
+  \end{frame}
+
+  \section{Optimization}
+   \begin{frame}
+      \frametitle{Optimizing $f(\SB)$}
+      \begin{columns}
+		\begin{column}{7cm}
+			 \begin{itemize}
+			    \item Use $\nabla_{\SB}f(\SB)$ for an optimization algorithm: \textit{e.g.}, gradient ascent, conjugate gradients. 
+			    \item How to initialise? Use random $\SB$, PCA, LDA, logistic regression directions.
+			 \end{itemize}
+		\end{column}
+		\begin{column}{5cm}
+			\centering{
+			\phantom{\includegraphics<1>[height=4cm]{images/wine-rand-2-5}}
+			\includegraphics<2>[height=4cm]{images/wine-rand-2-5}
+			\includegraphics<3>[height=4cm]{images/wine-rand-2-6}
+			\includegraphics<4>[height=4cm]{images/wine-pca-2-5}
+			\includegraphics<5>[height=4cm]{images/wine-pca-2-6}
+			  }
+			 \centering{
+				\only<1>{\phantom{\texttt{A=randn(d,D)}}}
+				\only<2>{\texttt{A=randn(d,D)}}
+				\only<3>{\texttt{A=minimize('nca',A)}}
+				\only<4>{\texttt{A=eig(X*X'/N)}}
+				\only<5>{\texttt{A=minimize('nca',A)}}  
+			 	}
+		\end{column}
+	\end{columns}
+	\vspace{2cm}
+	\only<1>{\begin{flushright}{\phantom{\tiny Data set: \texttt{wine}.}}
+	\end{flushright}}
+	\only<2-5>{\begin{flushright}{\tiny 	\color{gray}Data set: \texttt{wine}.}
+	\end{flushright}}
+
+   \end{frame} 
+
+     \begin{frame}
+      \frametitle{Speeding the computations}
+      \begin{columns}
+		\begin{column}{7cm}
+			 \begin{enumerate}
+			    \item Sub-sample the data set.
+			    \item Use mini-batches:
+				\begin{itemize}
+				  \item Randomly
+				  \item Clustering
+				\end{itemize}
+			 \end{enumerate}
+		\end{column}
+		\begin{column}{5cm}
+% 			\includegraphics<1>[width=5cm]{images/knn-init}
+% 			\includegraphics<2>[width=5cm]{images/knn-q}
+
+			 \centering{
+				\only<1-2>{\phantom{$k=1$}}
+
+			 	}
+		\end{column}
+	\end{columns}
+   \end{frame}
+
+  \begin{frame}
+   \frametitle{Approximate computations}
+  \end{frame}
+
+  \begin{frame}
+   \frametitle{Exact computations}
+  \end{frame}
+
+  \begin{frame}
+      \frametitle{Future work}
+   \end{frame}
+
+  \begin{frame}
+      \frametitle{Conclusions}
+   \end{frame}
+
+  
+\end{document}

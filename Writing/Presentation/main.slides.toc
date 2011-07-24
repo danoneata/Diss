@@ -1,0 +1,4 @@
+\beamer@endinputifotherversion {3.07pt}
+\beamer@sectionintoc {1}{Preamble}{2}{0}{1}
+\beamer@sectionintoc {2}{Neighbourhood component analysis}{9}{0}{2}
+\beamer@sectionintoc {3}{Optimization}{12}{0}{3}
