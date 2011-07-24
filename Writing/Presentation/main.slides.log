@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-1.40.10 (TeX Live 2009/Debian) (format=pdflatex 2011.6.3)  24 JUL 2011 01:51
+This is pdfTeX, Version 3.1415926-1.40.10 (TeX Live 2009/Debian) (format=pdflatex 2011.6.3)  24 JUL 2011 22:02
 entering extended mode
  %&-line parsing enabled.
 **main.slides.tex
@@ -892,79 +892,157 @@ LaTeX Font Warning: Font shape `OT1/cmr/m/n' in size <4> not available
 [1
 
 {/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}]
-LaTeX Font Info:    Try loading font information for U+msa on input line 66.
+LaTeX Font Info:    Try loading font information for U+msa on input line 65.
 
 (/usr/share/texmf-texlive/tex/latex/amsfonts/umsa.fd
 File: umsa.fd 2009/06/22 v3.00 AMS symbols A
 )
-LaTeX Font Info:    Try loading font information for U+msb on input line 66.
+LaTeX Font Info:    Try loading font information for U+msb on input line 65.
 
 (/usr/share/texmf-texlive/tex/latex/amsfonts/umsb.fd
 File: umsb.fd 2009/06/22 v3.00 AMS symbols B
 )
+Overfull \hbox (0.97272pt too wide) detected at line 65
+\OML/cmm/m/it/10.95 d\OT1/cmr/m/n/10.95 (\OT1/cmr/bx/n/10.95 x[]\OML/cmm/m/it/1
+0.95 ; \OT1/cmr/bx/n/10.95 x[]\OT1/cmr/m/n/10.95 ) = []
+ []
+
 <images/knn-init.pdf, id=52, 355.3275pt x 282.05376pt>
 File: images/knn-init.pdf Graphic file (type pdf)
 
-<use images/knn-init.pdf> [2
+<use images/knn-init.pdf>
+Overfull \hbox (14.22636pt too wide) detected at line 65
+[][][] $[]$[][][][][][][][] $[]$[][][][][][] 
+ []
+
+[2
 
  <./images/knn-init.pdf>]
+Overfull \hbox (0.97272pt too wide) detected at line 65
+\OML/cmm/m/it/10.95 d\OT1/cmr/m/n/10.95 (\OT1/cmr/bx/n/10.95 x[]\OML/cmm/m/it/1
+0.95 ; \OT1/cmr/bx/n/10.95 x[]\OT1/cmr/m/n/10.95 ) = []
+ []
+
 <images/knn-q.pdf, id=90, 355.3275pt x 282.05376pt>
 File: images/knn-q.pdf Graphic file (type pdf)
  <use images/knn-q.pdf>
+Overfull \hbox (14.22636pt too wide) detected at line 65
+[][][] $[]$[][][][][][][][] $[]$[][][][][][] 
+ []
+
 [3
 
- <./images/knn-q.pdf>] <images/knn-1.pdf, id=118, 355.3275pt x 282.05376pt>
-File: images/knn-1.pdf Graphic file (type pdf)
+ <./images/knn-q.pdf>]
+Overfull \hbox (0.97272pt too wide) detected at line 65
+\OML/cmm/m/it/10.95 d\OT1/cmr/m/n/10.95 (\OT1/cmr/bx/n/10.95 x[]\OML/cmm/m/it/1
+0.95 ; \OT1/cmr/bx/n/10.95 x[]\OT1/cmr/m/n/10.95 ) = []
+ []
 
-<use images/knn-1.pdf> [4
+<images/knn-1.pdf, id=118, 355.3275pt x 282.05376pt>
+File: images/knn-1.pdf Graphic file (type pdf)
+ <use images/knn-1.pdf>
+Overfull \hbox (14.22636pt too wide) detected at line 65
+[][][] $[]$[][][][][][][][] $[]$[][][][][][] 
+ []
+
+[4
 
  <./images/knn-1.pdf>]
+Overfull \hbox (0.97272pt too wide) detected at line 65
+\OML/cmm/m/it/10.95 d\OT1/cmr/m/n/10.95 (\OT1/cmr/bx/n/10.95 x[]\OML/cmm/m/it/1
+0.95 ; \OT1/cmr/bx/n/10.95 x[]\OT1/cmr/m/n/10.95 ) = []
+ []
+
 <images/knn-7.pdf, id=146, 355.3275pt x 282.05376pt>
 File: images/knn-7.pdf Graphic file (type pdf)
  <use images/knn-7.pdf>
+Overfull \hbox (14.22636pt too wide) detected at line 65
+[][][] $[]$[][][][][][][][] $[]$[][][][][][] 
+ []
+
 [5
 
- <./images/knn-7.pdf>] <images/faces.pdf, id=174, 496.59428pt x 541.76303pt>
-File: images/faces.pdf Graphic file (type pdf)
+ <./images/knn-7.pdf>]
+Overfull \hbox (0.97272pt too wide) detected at line 65
+\OML/cmm/m/it/10.95 d\OT1/cmr/m/n/10.95 (\OT1/cmr/bx/n/10.95 x[]\OML/cmm/m/it/1
+0.95 ; \OT1/cmr/bx/n/10.95 x[]\OT1/cmr/m/n/10.95 ) = []
+ []
 
-<use images/faces.pdf> [6
+<images/faces.pdf, id=174, 496.59428pt x 541.76303pt>
+File: images/faces.pdf Graphic file (type pdf)
+ <use images/faces.pdf>
+Overfull \hbox (14.22636pt too wide) detected at line 65
+[][][] $[]$[][][][][][][][] $[]$[][][][][][] 
+ []
+
+[6
 
  <./images/faces.pdf>]
+Overfull \hbox (0.97272pt too wide) detected at line 65
+\OML/cmm/m/it/10.95 d\OT1/cmr/m/n/10.95 (\OT1/cmr/bx/n/10.95 x[]\OML/cmm/m/it/1
+0.95 ; \OT1/cmr/bx/n/10.95 x[]\OT1/cmr/m/n/10.95 ) = []
+ []
+
 <images/face-recog.pdf, id=205, 496.59428pt x 541.76303pt>
 File: images/face-recog.pdf Graphic file (type pdf)
 
-<use images/face-recog.pdf> [7
+<use images/face-recog.pdf>
+Overfull \hbox (14.22636pt too wide) detected at line 65
+[][][] $[]$[][][][][][][][] $[]$[][][][][][] 
+ []
+
+[7
 
  <./images/face-recog.pdf>]
+Overfull \hbox (0.97272pt too wide) detected at line 65
+\OML/cmm/m/it/10.95 d\OT1/cmr/m/n/10.95 (\OT1/cmr/bx/n/10.95 x[]\OML/cmm/m/it/1
+0.95 ; \OT1/cmr/bx/n/10.95 x[]\OT1/cmr/m/n/10.95 ) = []
+ []
+
 <images/expression-recog.pdf, id=236, 496.59428pt x 541.76303pt>
 File: images/expression-recog.pdf Graphic file (type pdf)
 
-<use images/expression-recog.pdf> [8
+<use images/expression-recog.pdf>
+Overfull \hbox (14.22636pt too wide) detected at line 65
+[][][] $[]$[][][][][][][][] $[]$[][][][][][] 
+ []
+
+[8
 
  <./images/expression-recog.pdf>]
+Overfull \hbox (13.913pt too wide) detected at line 92
+\OML/cmm/m/it/10.95 d[]\OT1/cmr/m/n/10.95 (\OT1/cmr/bx/n/10.95 x[]\OML/cmm/m/it
+/10.95 ; \OT1/cmr/bx/n/10.95 x[]\OT1/cmr/m/n/10.95 ) = []
+ []
+
 <images/mahalanobis.pdf, id=266, 355.3275pt x 282.05376pt>
 File: images/mahalanobis.pdf Graphic file (type pdf)
 
 <use images/mahalanobis.pdf>
-Overfull \hbox (1.11171pt too wide) in paragraph at lines 93--93
- [][] 
+Overfull \hbox (14.22636pt too wide) detected at line 92
+[][][] $[]$[][][][][][][][] $[]$[][][][][][] 
  []
 
 [9
 
  <./images/mahalanobis.pdf>]
-<images/euclidean.pdf, id=298, 361.35pt x 279.0425pt>
+Overfull \hbox (13.913pt too wide) detected at line 92
+\OML/cmm/m/it/10.95 d[]\OT1/cmr/m/n/10.95 (\OT1/cmr/bx/n/10.95 x[]\OML/cmm/m/it
+/10.95 ; \OT1/cmr/bx/n/10.95 x[]\OT1/cmr/m/n/10.95 ) = []
+ []
+
+<images/euclidean.pdf, id=297, 361.35pt x 279.0425pt>
 File: images/euclidean.pdf Graphic file (type pdf)
 
 <use images/euclidean.pdf>
-Overfull \hbox (5.11876pt too wide) in paragraph at lines 93--93
- [][] 
+Overfull \hbox (14.22636pt too wide) detected at line 92
+[][][] $[]$[][][][][][][][] $[]$[][][][][][] 
  []
 
 [10
 
  <./images/euclidean.pdf>]
-Overfull \hbox (37.51143pt too wide) detected at line 120
+Overfull \hbox (37.51143pt too wide) detected at line 119
 [] \OML/cmm/m/it/10.95 f\OT1/cmr/m/n/10.95 (\OT1/cmr/bx/n/10.95 S\OT1/cmr/m/n/1
 0.95 ) = [] \OML/cmm/m/it/10.95 p\OT1/cmr/m/n/10.95 (\OT1/cmr/bx/n/10.95 x[] \O
 MS/cmsy/m/n/10.95 2 [] \OT1/cmr/bx/n/10.95 x[]\OT1/cmr/m/n/10.95 )\OML/cmm/m/it
@@ -973,47 +1051,79 @@ MS/cmsy/m/n/10.95 2 [] \OT1/cmr/bx/n/10.95 x[]\OT1/cmr/m/n/10.95 )\OML/cmm/m/it
 
 [11
 
-] <images/wine-rand-2-5.pdf, id=355, 454.69875pt x 374.39874pt>
+] <images/wine-rand-2-5.pdf, id=354, 454.69875pt x 374.39874pt>
 File: images/wine-rand-2-5.pdf Graphic file (type pdf)
 
 <use images/wine-rand-2-5.pdf>
-LaTeX Font Info:    Try loading font information for OT1+pcr on input line 153.
+LaTeX Font Info:    Try loading font information for OT1+pcr on input line 152.
 
 
 (/usr/share/texmf-texlive/tex/latex/psnfss/ot1pcr.fd
 File: ot1pcr.fd 2001/06/04 font definitions for OT1/pcr.
 ) [12
 
- <./images/wine-rand-2-5.pdf>] <images/wine-rand-2-6.pdf, id=391, 454.69875pt x
+ <./images/wine-rand-2-5.pdf>] <images/wine-rand-2-6.pdf, id=392, 454.69875pt x
  374.39874pt>
 File: images/wine-rand-2-6.pdf Graphic file (type pdf)
 
 <use images/wine-rand-2-6.pdf> [13
 
  <./images/wine-rand-2-6.pdf>]
-<images/wine-pca-2-5.pdf, id=424, 454.69875pt x 374.39874pt>
+<images/wine-pca-2-5.pdf, id=423, 454.69875pt x 374.39874pt>
 File: images/wine-pca-2-5.pdf Graphic file (type pdf)
 
 <use images/wine-pca-2-5.pdf> [14
 
  <./images/wine-pca-2-5.pdf>]
-<images/wine-pca-2-6.pdf, id=454, 454.69875pt x 374.39874pt>
+<images/wine-pca-2-6.pdf, id=452, 454.69875pt x 374.39874pt>
 File: images/wine-pca-2-6.pdf Graphic file (type pdf)
 
 <use images/wine-pca-2-6.pdf> [15
 
- <./images/wine-pca-2-6.pdf>] [16
+ <./images/wine-pca-2-6.pdf>]
+<images/s51.pdf, id=481, 282.05376pt x 282.05376pt>
+File: images/s51.pdf Graphic file (type pdf)
+ <use images/s51.pdf>
+[16
 
-] [17
+ <./images/s51.pdf>] <images/s52.pdf, id=512, 282.05376pt x 282.05376pt>
+File: images/s52.pdf Graphic file (type pdf)
 
-]
+<use images/s52.pdf> [17
+
+ <./images/s52.pdf>]
+<images/s53.pdf, id=540, 282.05376pt x 282.05376pt>
+File: images/s53.pdf Graphic file (type pdf)
+ <use images/s53.pdf>
 [18
 
-] [19
+ <./images/s53.pdf>] <images/s54.pdf, id=568, 282.05376pt x 282.05376pt>
+File: images/s54.pdf Graphic file (type pdf)
 
-] [20
+<use images/s54.pdf> [19
 
-] [21
+ <./images/s54.pdf>]
+<images/s55.pdf, id=597, 282.05376pt x 282.05376pt>
+File: images/s55.pdf Graphic file (type pdf)
+ <use images/s55.pdf>
+[20
+
+ <./images/s55.pdf>] <images/s56.pdf, id=625, 282.05376pt x 282.05376pt>
+File: images/s56.pdf Graphic file (type pdf)
+
+<use images/s56.pdf> [21
+
+ <./images/s56.pdf>]
+<images/s57.pdf, id=652, 282.05376pt x 282.05376pt>
+File: images/s57.pdf Graphic file (type pdf)
+ <use images/s57.pdf>
+[22
+
+ <./images/s57.pdf>] [23
+
+] [24
+
+] [25
 
 ]
 \tf@nav=\write6
@@ -1032,14 +1142,14 @@ LaTeX Font Warning: Size substitutions with differences
 
  ) 
 Here is how much of TeX's memory you used:
- 17408 strings out of 495061
- 307562 string characters out of 1182622
- 393464 words of memory out of 3000000
- 20097 multiletter control sequences out of 15000+50000
- 16588 words of font info for 63 fonts, out of 3000000 for 9000
+ 17449 strings out of 495061
+ 308193 string characters out of 1182622
+ 393465 words of memory out of 3000000
+ 20124 multiletter control sequences out of 15000+50000
+ 16073 words of font info for 61 fonts, out of 3000000 for 9000
  28 hyphenation exceptions out of 8191
  45i,14n,51p,337b,686s stack positions out of 5000i,500n,10000p,200000b,50000s
-pdfTeX warning (dest): name{Navigation22} has been referenced but does not ex
+pdfTeX warning (dest): name{Navigation26} has been referenced but does not ex
 ist, replaced by a fixed one
 
 {/usr/share/texmf-texlive/fonts/enc/dvips/base/8r.enc}</usr/share/texmf-texlive
@@ -1053,19 +1163,18 @@ live/fonts/type1/public/amsfonts/cm/cmmi12.pfb></usr/share/texmf-texlive/fonts/
 type1/public/amsfonts/cm/cmmi6.pfb></usr/share/texmf-texlive/fonts/type1/public
 /amsfonts/cm/cmmi8.pfb></usr/share/texmf-texlive/fonts/type1/public/amsfonts/cm
 /cmr10.pfb></usr/share/texmf-texlive/fonts/type1/public/amsfonts/cm/cmr12.pfb><
-/usr/share/texmf-texlive/fonts/type1/public/amsfonts/cm/cmr6.pfb></usr/share/te
-xmf-texlive/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/share/texmf-texlive/f
-onts/type1/public/amsfonts/cm/cmss10.pfb></usr/share/texmf-texlive/fonts/type1/
-public/amsfonts/cm/cmss12.pfb></usr/share/texmf-texlive/fonts/type1/public/amsf
-onts/cm/cmsy10.pfb></usr/share/texmf-texlive/fonts/type1/public/amsfonts/cm/cms
-y6.pfb></usr/share/texmf-texlive/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr
-/share/texmf-texlive/fonts/type1/public/amsfonts/cm/cmti10.pfb></usr/share/texm
-f-texlive/fonts/type1/public/amsfonts/symbols/msam10.pfb></usr/share/texmf-texl
-ive/fonts/type1/public/amsfonts/symbols/msam7.pfb></usr/share/texmf-texlive/fon
-ts/type1/urw/courier/ucrr8a.pfb>
-Output written on main.slides.pdf (21 pages, 681822 bytes).
+/usr/share/texmf-texlive/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/share/te
+xmf-texlive/fonts/type1/public/amsfonts/cm/cmss10.pfb></usr/share/texmf-texlive
+/fonts/type1/public/amsfonts/cm/cmss12.pfb></usr/share/texmf-texlive/fonts/type
+1/public/amsfonts/cm/cmsy10.pfb></usr/share/texmf-texlive/fonts/type1/public/am
+sfonts/cm/cmsy6.pfb></usr/share/texmf-texlive/fonts/type1/public/amsfonts/cm/cm
+sy8.pfb></usr/share/texmf-texlive/fonts/type1/public/amsfonts/cm/cmti10.pfb></u
+sr/share/texmf-texlive/fonts/type1/public/amsfonts/symbols/msam10.pfb></usr/sha
+re/texmf-texlive/fonts/type1/public/amsfonts/symbols/msam7.pfb></usr/share/texm
+f-texlive/fonts/type1/urw/courier/ucrr8a.pfb>
+Output written on main.slides.pdf (25 pages, 763222 bytes).
 PDF statistics:
- 717 PDF objects out of 1000 (max. 8388607)
- 47 named destinations out of 1000 (max. 500000)
- 122 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 837 PDF objects out of 1000 (max. 8388607)
+ 55 named destinations out of 1000 (max. 500000)
+ 157 words of extra memory for PDF output out of 10000 (max. 10000000)
 

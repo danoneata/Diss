@@ -36,24 +36,23 @@
   \begin{frame}
 	\frametitle{$k$ nearest neighbours}
 	\begin{columns}
-		\begin{column}{7cm}
+		\begin{column}{6.3cm}
 			 \begin{itemize}
 				 \item Simple, yet powerful classifier.
 				 \item Eucildean distance: \[
 							      d(\xB_i,\xB_j)=\sqrt{(\xB_i-\xB_j)^{\textrm{T}}(\xB_i-\xB_j)}
 				                           \]
-
 			 \end{itemize}
 		\end{column}
-		\begin{column}{5cm}
-			\includegraphics<1>[width=5cm]{images/knn-init}
-			\includegraphics<2>[width=5cm]{images/knn-q}
-			\includegraphics<3>[width=5cm]{images/knn-1}
-			\includegraphics<4>[width=5cm]{images/knn-7}
-			\includegraphics<5>[width=5cm]{images/faces}
-			\includegraphics<6>[width=5cm]{images/face-recog}
-			\includegraphics<7>[width=5cm]{images/expression-recog}
-			 \centering{
+		\begin{column}{7cm}
+			\includegraphics<1>[height=4.5cm]{images/knn-init}
+			\includegraphics<2>[height=4.5cm]{images/knn-q}
+			\includegraphics<3>[height=4.5cm]{images/knn-1}
+			\includegraphics<4>[height=4.5cm]{images/knn-7}
+			\includegraphics<5>[height=4.5cm]{images/faces}
+			\includegraphics<6>[height=4.5cm]{images/face-recog}
+			\includegraphics<7>[height=4.5cm]{images/expression-recog}
+			 \centering{\\
 				\only<1-2>{\phantom{$k=1$}}
 				\only<3>{$k=1$}
 				\only<4>{$k=7$}
@@ -69,20 +68,20 @@
   \begin{frame}
   	\frametitle{Neighbourhood component analysis}
 		\begin{columns}
-		\begin{column}{7cm}
+		\begin{column}{6.3cm}
 			 \begin{itemize}
 				 \item Learns a Mahalanobis metric
 				    \[
-				      d_\SB(\xB_i,\xB_j) = \sqrt{(\xB_i-\xB_j)^{\textrm{T}}{\color{blue}\SB}(\xB_i-\xB_j)}
+				      d_\SB(\xB_i,\xB_j) = \sqrt{(\xB_i-\xB_j)^{\textrm{T}}\SB(\xB_i-\xB_j)}
 				    \]
 				\item Equivalent to a linear transformation:
 				      $d_\SB(\xB_i,\xB_j) = d_\IB(\AB\xB_i,\AB\xB_j)$
 
 			 \end{itemize}
 		\end{column}
-		\begin{column}{5cm}
-			\centering\includegraphics<1>[height=4cm]{images/mahalanobis}
-			\centering\includegraphics<2>[height=4cm]{images/euclidean}
+		\begin{column}{7cm}
+			\centering\includegraphics<1>[height=4.5cm]{images/mahalanobis}
+			\centering\includegraphics<2>[height=4.5cm]{images/euclidean}
 
 			 \centering{
 				\only<1-2>{\phantom{$k=1$}}
@@ -112,7 +111,7 @@
 % 			\includegraphics<2>[width=5cm]{images/knn-q}
 
 			 \centering{
-				\only<1-2>{\phantom{$k=1$}}
+% 				\only<1-2>{\phantom{$k=1$}}
 
 			 	}
 		\end{column}
@@ -146,16 +145,16 @@
 			 	}
 		\end{column}
 	\end{columns}
-	\vspace{2cm}
-	\begin{flushright}{\tiny \color{gray}Data set: \texttt{wine}.}
-	\end{flushright}
+% 	\vspace{2cm}
+% 	\begin{flushright}{\tiny \color{gray}Data set: \texttt{wine}.}
+% 	\end{flushright}
 
    \end{frame} 
 
      \begin{frame}
       \frametitle{Speeding the computations}
       \begin{columns}
-		\begin{column}{7cm}
+		\begin{column}{5cm}
 			 \begin{enumerate}
 			    \item Sub-sample the data set.
 			    \item Use mini-batches:
@@ -165,13 +164,19 @@
 				\end{itemize}
 			 \end{enumerate}
 		\end{column}
-		\begin{column}{5cm}
-% 			\includegraphics<1>[width=5cm]{images/knn-init}
-% 			\includegraphics<2>[width=5cm]{images/knn-q}
-
+		\begin{column}{7cm}
+			\centering{
+			\includegraphics<1>[height=6cm]{images/s51}
+			\includegraphics<2>[height=6cm]{images/s52}
+			\includegraphics<3>[height=6cm]{images/s53}
+			\includegraphics<4>[height=6cm]{images/s54}
+			\includegraphics<5>[height=6cm]{images/s55}
+			\includegraphics<6>[height=6cm]{images/s56}
+			\includegraphics<7>[height=6cm]{images/s57}
+			  }\\
 			 \centering{
-				\only<1-2>{\phantom{$k=1$}}
-
+			    \only<1>{\phantom{Recursive projection clustering}}
+			    \only<2->{Recursive projection clustering}
 			 	}
 		\end{column}
 	\end{columns}

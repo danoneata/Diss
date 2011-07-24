@@ -47,8 +47,6 @@ function plot_(X, c, title_, flags)
     
     if flags(1),
       set(gca, 'XTick', [], 'YTick', []);
-      set(gca, 'Box', 'on');
-      set(gcf,'PaperPosition',[0, 0, 3.1, 3.1]);
     end
     
     hold on;
