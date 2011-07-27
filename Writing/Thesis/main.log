@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-1.40.10 (MiKTeX 2.8) (preloaded format=pdflatex 2010.6.8)  27 JUL 2011 14:24
+This is pdfTeX, Version 3.1415926-1.40.10 (MiKTeX 2.8) (preloaded format=pdflatex 2010.6.8)  27 JUL 2011 17:26
 entering extended mode
 **main.tex
 (D:\Diss\Writing\Thesis\main.tex
@@ -280,24 +280,45 @@ Package: multicol 2008/12/05 v1.6h multicolumn formatting (FMi)
 \mult@nat@firstbox=\box54
 \colbreak@box=\box55
 )
+("D:\Programs\MiKTeX 2.8\tex\latex\graphics\graphicx.sty"
+Package: graphicx 1999/02/16 v1.0f Enhanced LaTeX Graphics (DPC,SPQR)
+\Gin@req@height=\dimen150
+\Gin@req@width=\dimen151
+)
+("D:\Programs\MiKTeX 2.8\tex\latex\subfigure\subfigure.sty"
+Package: subfigure 2002/07/30 v2.1.4 subfigure package
+\subfigtopskip=\skip55
+\subfigcapskip=\skip56
+\subfigcaptopadj=\dimen152
+\subfigbottomskip=\skip57
+\subfigcapmargin=\dimen153
+\subfiglabelskip=\skip58
+\c@subfigure=\count128
+\c@lofdepth=\count129
+\c@subtable=\count130
+\c@lotdepth=\count131
+
+****************************************
+* Local config file subfigure.cfg used *
+****************************************
+("D:\Programs\MiKTeX 2.8\tex\latex\subfigure\subfigure.cfg")
+\subfig@top=\skip59
+\subfig@bottom=\skip60
+)
 (D:\Diss\Writing\Thesis\main.aux (D:\Diss\Writing\Thesis\chapters/chap3.aux)
-(D:\Diss\Writing\Thesis\chapters/chap4.aux
-
-LaTeX Warning: Label `eq:cs-1' multiply defined.
-
-))
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 86.
-LaTeX Font Info:    ... okay on input line 86.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 86.
-LaTeX Font Info:    ... okay on input line 86.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 86.
-LaTeX Font Info:    ... okay on input line 86.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 86.
-LaTeX Font Info:    ... okay on input line 86.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 86.
-LaTeX Font Info:    ... okay on input line 86.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 86.
-LaTeX Font Info:    ... okay on input line 86.
+(D:\Diss\Writing\Thesis\chapters/chap4.aux))
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 88.
+LaTeX Font Info:    ... okay on input line 88.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 88.
+LaTeX Font Info:    ... okay on input line 88.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 88.
+LaTeX Font Info:    ... okay on input line 88.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 88.
+LaTeX Font Info:    ... okay on input line 88.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 88.
+LaTeX Font Info:    ... okay on input line 88.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 88.
+LaTeX Font Info:    ... okay on input line 88.
 
 *geometry* driver: auto-detecting
 *geometry* detected driver: pdftex
@@ -333,19 +354,20 @@ LaTeX Font Info:    ... okay on input line 86.
 
 ("D:\Programs\MiKTeX 2.8\tex\context\base\supp-pdf.tex"
 [Loading MPS to PDF converter (version 2006.09.02).]
-\scratchcounter=\count128
-\scratchdimen=\dimen150
+\scratchcounter=\count132
+\scratchdimen=\dimen154
 \scratchbox=\box56
-\nofMPsegments=\count129
-\nofMParguments=\count130
+\nofMPsegments=\count133
+\nofMParguments=\count134
 \everyMPshowfont=\toks24
-\MPscratchCnt=\count131
-\MPscratchDim=\dimen151
-\MPnumerator=\count132
+\MPscratchCnt=\count135
+\MPscratchDim=\dimen155
+\MPnumerator=\count136
 \everyMPtoPDFconversion=\toks25
 )
 Package caption Info: Begin \AtBeginDocument code.
 Package caption Info: float package is loaded.
+Package caption Info: subfigure package is loaded.
 Package caption Info: End \AtBeginDocument code.
  <images/thesis-shield.pdf, id=1, 364.36125pt x 369.38pt>
 File: images/thesis-shield.pdf Graphic file (type pdf)
@@ -363,16 +385,19 @@ ages/thesis-shield.pdf>] [1
 ]
 (D:\Diss\Writing\Thesis\chapters/chap3.tex
 Chapter 1.
-[1
+<images/mog.pdf, id=25, 170.6375pt x 175.65625pt>
+File: images/mog.pdf Graphic file (type pdf)
+ <use images/mog.pdf> [1
 
 
 
 ]
 
 LaTeX Font Warning: Font shape `OT1/cmss/m/it' in size <12> not available
-(Font)              Font shape `OT1/cmss/m/sl' tried instead on input line 62.
+(Font)              Font shape `OT1/cmss/m/sl' tried instead on input line 49.
 
-[2]) [3] (D:\Diss\Writing\Thesis\chapters/chap4.tex
+[2 <D:/Diss/Writing/Thesis/images/mog.pdf>]) [3]
+(D:\Diss\Writing\Thesis\chapters/chap4.tex
 Chapter 2.
 LaTeX Font Info:    Try loading font information for OMS+cmr on input line 5.
 ("D:\Programs\MiKTeX 2.8\tex\latex\base\omscmr.fd"
@@ -380,47 +405,55 @@ File: omscmr.fd 1999/05/25 v2.5h Standard LaTeX font definitions
 )
 LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <12> not available
 (Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 5.
- [4
+
+<images/sub-sample-1.pdf, id=58, 334.24875pt x 268.00125pt>
+File: images/sub-sample-1.pdf Graphic file (type pdf)
+
+<use images/sub-sample-1.pdf>
+<images/sub-sample-2.pdf, id=59, 334.24875pt x 268.00125pt>
+File: images/sub-sample-2.pdf Graphic file (type pdf)
+
+<use images/sub-sample-2.pdf> [4
 
 
 
-] [5] [6] [7]) [8]
-(D:\Diss\Writing\Thesis\main.bbl) [9
+] [5 <D:/Diss/Writing/Thesis/images/sub-sample-1.pdf> <D:/Diss/Writing/Thesis/i
+mages/sub-sample-2.pdf>] [6] [7] [8]) [9]
+(D:\Diss\Writing\Thesis\main.bbl) [10
 
 
 ] (D:\Diss\Writing\Thesis\main.aux
 (D:\Diss\Writing\Thesis\chapters/chap3.aux)
-(D:\Diss\Writing\Thesis\chapters/chap4.aux))
-
-LaTeX Warning: There were multiply-defined labels.
-
- ) 
+(D:\Diss\Writing\Thesis\chapters/chap4.aux)) ) 
 Here is how much of TeX's memory you used:
- 4624 strings out of 495285
- 64681 string characters out of 3180831
- 141103 words of memory out of 3000000
- 7749 multiletter control sequences out of 15000+200000
- 12799 words of font info for 45 fonts, out of 3000000 for 9000
+ 4860 strings out of 495285
+ 68107 string characters out of 3180831
+ 142966 words of memory out of 3000000
+ 7970 multiletter control sequences out of 15000+200000
+ 14180 words of font info for 50 fonts, out of 3000000 for 9000
  14 hyphenation exceptions out of 8191
- 43i,17n,40p,682b,592s stack positions out of 5000i,500n,10000p,200000b,50000s
-<D:/Programs/MiKTeX 2.8/fonts/type1/public/amsfonts/cm/cmbx12.pfb><D:/Program
-s/MiKTeX 2.8/fonts/type1/public/amsfonts/cm/cmbx8.pfb><D:/Programs/MiKTeX 2.8/f
-onts/type1/public/amsfonts/cm/cmex10.pfb><D:/Programs/MiKTeX 2.8/fonts/type1/pu
-blic/amsfonts/cm/cmmi12.pfb><D:/Programs/MiKTeX 2.8/fonts/type1/public/amsfonts
-/cm/cmmi6.pfb><D:/Programs/MiKTeX 2.8/fonts/type1/public/amsfonts/cm/cmmi8.pfb>
-<D:/Programs/MiKTeX 2.8/fonts/type1/public/amsfonts/cm/cmr10.pfb><D:/Programs/M
-iKTeX 2.8/fonts/type1/public/amsfonts/cm/cmr12.pfb><D:/Programs/MiKTeX 2.8/font
-s/type1/public/amsfonts/cm/cmr6.pfb><D:/Programs/MiKTeX 2.8/fonts/type1/public/
-amsfonts/cm/cmr8.pfb><D:/Programs/MiKTeX 2.8/fonts/type1/public/amsfonts/cm/cms
-s12.pfb><D:/Programs/MiKTeX 2.8/fonts/type1/public/amsfonts/cm/cmssbx10.pfb><D:
-/Programs/MiKTeX 2.8/fonts/type1/public/amsfonts/cm/cmssi12.pfb><D:/Programs/Mi
-KTeX 2.8/fonts/type1/public/amsfonts/cm/cmsy10.pfb><D:/Programs/MiKTeX 2.8/font
-s/type1/public/amsfonts/cm/cmsy6.pfb><D:/Programs/MiKTeX 2.8/fonts/type1/public
-/amsfonts/cm/cmsy8.pfb><D:/Programs/MiKTeX 2.8/fonts/type1/public/amsfonts/cm/c
-mti12.pfb><D:/Programs/MiKTeX 2.8/fonts/type1/public/amsfonts/cm/cmtt12.pfb>
-Output written on main.pdf (14 pages, 255333 bytes).
+ 43i,17n,40p,682b,594s stack positions out of 5000i,500n,10000p,200000b,50000s
+<D:/Programs/MiKTeX 2.8/fonts/typ
+e1/public/amsfonts/cm/cmbx10.pfb><D:/Programs/MiKTeX 2.8/fonts/type1/public/ams
+fonts/cm/cmbx12.pfb><D:/Programs/MiKTeX 2.8/fonts/type1/public/amsfonts/cm/cmbx
+8.pfb><D:/Programs/MiKTeX 2.8/fonts/type1/public/amsfonts/cm/cmex10.pfb><D:/Pro
+grams/MiKTeX 2.8/fonts/type1/public/amsfonts/cm/cmmi12.pfb><D:/Programs/MiKTeX 
+2.8/fonts/type1/public/amsfonts/cm/cmmi6.pfb><D:/Programs/MiKTeX 2.8/fonts/type
+1/public/amsfonts/cm/cmmi7.pfb><D:/Programs/MiKTeX 2.8/fonts/type1/public/amsfo
+nts/cm/cmmi8.pfb><D:/Programs/MiKTeX 2.8/fonts/type1/public/amsfonts/cm/cmr10.p
+fb><D:/Programs/MiKTeX 2.8/fonts/type1/public/amsfonts/cm/cmr12.pfb><D:/Program
+s/MiKTeX 2.8/fonts/type1/public/amsfonts/cm/cmr6.pfb><D:/Programs/MiKTeX 2.8/fo
+nts/type1/public/amsfonts/cm/cmr8.pfb><D:/Programs/MiKTeX 2.8/fonts/type1/publi
+c/amsfonts/cm/cmss12.pfb><D:/Programs/MiKTeX 2.8/fonts/type1/public/amsfonts/cm
+/cmssbx10.pfb><D:/Programs/MiKTeX 2.8/fonts/type1/public/amsfonts/cm/cmssi12.pf
+b><D:/Programs/MiKTeX 2.8/fonts/type1/public/amsfonts/cm/cmsy10.pfb><D:/Program
+s/MiKTeX 2.8/fonts/type1/public/amsfonts/cm/cmsy6.pfb><D:/Programs/MiKTeX 2.8/f
+onts/type1/public/amsfonts/cm/cmsy8.pfb><D:/Programs/MiKTeX 2.8/fonts/type1/pub
+lic/amsfonts/cm/cmti12.pfb><D:/Programs/MiKTeX 2.8/fonts/type1/public/amsfonts/
+cm/cmtt12.pfb>
+Output written on main.pdf (15 pages, 319119 bytes).
 PDF statistics:
- 123 PDF objects out of 1000 (max. 8388607)
+ 149 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
- 6 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 21 words of extra memory for PDF output out of 10000 (max. 10000000)
 

@@ -4,7 +4,7 @@
 \contentsline {chapter}{\numberline {2}Reducing the computational cost}{4}
 \contentsline {section}{\numberline {2.1}Sub-sampling}{4}
 \contentsline {section}{\numberline {2.2}Mini-batches}{5}
-\contentsline {section}{\numberline {2.3}Stochastic learning}{7}
-\contentsline {section}{\numberline {2.4}Approximate computations}{7}
-\contentsline {section}{\numberline {2.5}Exact computations}{7}
-\contentsline {chapter}{Bibliography}{9}
+\contentsline {section}{\numberline {2.3}Stochastic learning}{8}
+\contentsline {section}{\numberline {2.4}Approximate computations}{8}
+\contentsline {section}{\numberline {2.5}Exact computations}{8}
+\contentsline {chapter}{Bibliography}{10}

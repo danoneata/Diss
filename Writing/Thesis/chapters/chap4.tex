@@ -16,7 +16,15 @@ Sub-sampling is the simplest idea that can help speeding up the computations. Fo
  \]
  If $n$ is the size of the sub-set then the cost of the gradient is reduced to $\mathcal{O}(n^2D^2)$. After the projection matrix $\AB$ is learnt, it can be applied to the whole data set and all the data points are used for classification.
 
-While easy to implement, this method discards a lot of information available. Also it is affected by the fact the sub-sampled data has a thinner distribution than the real data. (Add pictures to illustrate the thinning problem.)
+While easy to implement, this method discards a lot of information available. Also it is affected by the fact the sub-sampled data has a thinner distribution than the real data. 
+
+\begin{figure}
+  \centering
+  \subfigure[Learnt projection $\AB$ on the sub-sampled data set $\mathcal{D}_n$.]{\label{fig:sub-sampling-1}\includegraphics[width=0.48\textwidth]{images/sub-sample-1}}
+\subfigure[The projection $\AB$ applied to the whole data set $\mathcal{D}$.]{\label{fig:sub-sampling-2}\includegraphics[width=0.48\textwidth]{images/sub-sample-2}}
+  \caption{Result of sub-sampling method on \texttt{wine}. There were used one third of the original data set for training, \textit{i.e.}, $n = N/3$. We note that the points that belong to the sub-set $\mathcal{D}_n$ are perfectly separated. But after applying the metric to the whole data there appear different misclassifications. The effects are even more acute if we use smaller sub-sets.}
+  \label{fig:sub-sampling}
+\end{figure}
 
 \section{Mini-batches}
 \label{sec:mini-batches}
@@ -143,7 +151,7 @@ For the simple replacement of the exponential kernel, we have preferred a simpli
 				(1-u^2)^2& \mbox{if } u \in [-1;1]\\
 				0& \mbox{otherwise}.\\
 			\end{cases}
-			\label{eq:cs-1}
+			\label{eq:cs-2}
 	\end{align}
 	
 	The width of the kernel's support $a$ will be integrated in the projection matrix $\AB$, similarly as the widths for the Gaussian kernel are absorbed by $\AB$ for the classic NCA.

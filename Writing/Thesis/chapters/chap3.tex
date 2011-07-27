@@ -1,4 +1,5 @@
 \chapter{Neighbourhood component analysis}
+\label{ch:nca}
 
 \section{General presentation}
 \label{sec:general-presentation}
@@ -17,6 +18,14 @@ where $\xB_{ij} = \xB_i - \xB_j$.
 
 \section{Class-conditional kernel density estimation interpretation}
 \label{sec:cc-kde}
+
+\begin{figure}
+  \centering
+  \subfigure[Illustration of the class as a mixture of Gaussians.]{\label{fig:mog}\includegraphics[width=6cm]{images/mog}}
+%\subfigure[The projection $\AB$ applied to the whole data set $\mathcal{D}$.]{\label{fig:sub-sampling-2}\includegraphics[width=0.48\textwidth]{images/sub-sample-2}}
+  \caption{Formulating NCA as a class-conditional kernel density estimation framework.}
+  \label{fig:kde}
+\end{figure}
 
 In this section we will present NCA into a class-conditional kernel density estimation framework. This interpretation will allow us to understand what are the assumptions behind NCA. Moreover, this also offers the possibility of altering the model in a suitable way that is efficient for computations. We will see this in the sections \ref{sec:approximate} and \ref{sec:exact-computations}. Similar ideas were previously presented by and , but the following were derived independently and they offer different insights. The following interpretation was inspired by the probabilistic $k$NN presented by \citet{barber2011}.
 
