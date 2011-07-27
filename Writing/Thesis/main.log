@@ -1,24 +1,26 @@
-This is pdfTeXk, Version 3.141592-1.40.3 (Web2C 7.5.6) (format=pdflatex 2010.9.2)  19 JUL 2011 15:55
+This is pdfTeX, Version 3.1415926-1.40.10 (MiKTeX 2.8) (preloaded format=pdflatex 2010.6.8)  27 JUL 2011 14:24
 entering extended mode
- %&-line parsing enabled.
 **main.tex
-(./main.tex
-LaTeX2e <2005/12/01>
-Babel <v3.8h> and hyphenation patterns for english, usenglishmax, dumylang, noh
-yphenation, arabic, basque, bulgarian, coptic, welsh, czech, slovak, german, ng
-erman, danish, esperanto, spanish, catalan, galician, estonian, farsi, finnish,
- french, greek, monogreek, ancientgreek, croatian, hungarian, interlingua, ibyc
-us, indonesian, icelandic, italian, latin, mongolian, dutch, norsk, polish, por
-tuguese, pinyin, romanian, russian, slovenian, uppersorbian, serbian, swedish, 
-turkish, ukenglish, ukrainian, loaded.
-(./infthesis.cls
+(D:\Diss\Writing\Thesis\main.tex
+LaTeX2e <2009/09/24>
+Babel <v3.8l> and hyphenation patterns for english, dumylang, nohyphenation, ge
+rman, ngerman, german-x-2009-06-19, ngerman-x-2009-06-19, french, loaded.
+(D:\Diss\Writing\Thesis\infthesis.cls
 Document Class: infthesis 2011/02/02 v3.5 School of Informatics Thesis Class
-(/usr/share/texmf/tex/latex/geometry/geometry.sty
-Package: geometry 2002/07/08 v3.2 Page Geometry
+("D:\Programs\MiKTeX 2.8\tex\latex\geometry\geometry.sty"
+Package: geometry 2010/03/13 v5.3 Page Geometry
 
-(/usr/share/texmf/tex/latex/graphics/keyval.sty
+("D:\Programs\MiKTeX 2.8\tex\latex\graphics\keyval.sty"
 Package: keyval 1999/03/16 v1.13 key=value parser (DPC)
 \KV@toks@=\toks14
+)
+("D:\Programs\MiKTeX 2.8\tex\generic\oberdiek\ifpdf.sty"
+Package: ifpdf 2010/01/28 v2.1 Provides the ifpdf switch (HO)
+Package ifpdf Info: pdfTeX in pdf mode detected.
+)
+("D:\Programs\MiKTeX 2.8\tex\generic\oberdiek\ifvtex.sty"
+Package: ifvtex 2010/03/01 v1.5 Switches for detecting VTeX and its modes (HO)
+Package ifvtex Info: VTeX not detected.
 )
 \Gm@cnth=\count79
 \Gm@cntv=\count80
@@ -27,42 +29,42 @@ Package: keyval 1999/03/16 v1.13 key=value parser (DPC)
 \Gm@wd@mp=\dimen103
 \Gm@odd@mp=\dimen104
 \Gm@even@mp=\dimen105
+\Gm@layoutwidth=\dimen106
+\Gm@layoutheight=\dimen107
+\Gm@layouthoffset=\dimen108
+\Gm@layoutvoffset=\dimen109
 \Gm@dimlist=\toks15
 
-(/usr/share/texmf/tex/xelatex/xetexconfig/geometry.cfg))
-(/usr/share/texmf/tex/latex/base/ifthen.sty
+("D:\Programs\MiKTeX 2.8\tex\latex\geometry\geometry.cfg"))
+("D:\Programs\MiKTeX 2.8\tex\latex\base\ifthen.sty"
 Package: ifthen 2001/05/26 v1.1c Standard LaTeX ifthen package (DPC)
 )
-(/usr/share/texmf/tex/latex/graphics/graphics.sty
-Package: graphics 2006/02/20 v1.0o Standard LaTeX Graphics (DPC,SPQR)
+("D:\Programs\MiKTeX 2.8\tex\latex\graphics\graphics.sty"
+Package: graphics 2009/02/05 v1.0o Standard LaTeX Graphics (DPC,SPQR)
 
-(/usr/share/texmf/tex/latex/graphics/trig.sty
+("D:\Programs\MiKTeX 2.8\tex\latex\graphics\trig.sty"
 Package: trig 1999/03/16 v1.09 sin cos tan (DPC)
 )
-(/usr/share/texmf/tex/latex/config/graphics.cfg
+("D:\Programs\MiKTeX 2.8\tex\latex\00miktex\graphics.cfg"
 File: graphics.cfg 2007/01/18 v1.5 graphics configuration of teTeX/TeXLive
 )
-Package graphics Info: Driver file: pdftex.def on input line 90.
+Package graphics Info: Driver file: pdftex.def on input line 91.
 
-(/usr/share/texmf/tex/latex/pdftex-def/pdftex.def
-File: pdftex.def 2007/01/08 v0.04d Graphics/color for pdfTeX
+("D:\Programs\MiKTeX 2.8\tex\latex\pdftex-def\pdftex.def"
+File: pdftex.def 2010/02/14 v0.04n Graphics/color for pdfTeX
 \Gread@gobject=\count82
 ))
-(/usr/share/texmf/tex/latex/tools/xspace.sty
+("D:\Programs\MiKTeX 2.8\tex\latex\tools\xspace.sty"
 Package: xspace 2006/05/08 v1.12 Space after command names (DPC,MH)
 )
-(/usr/share/texmf/tex/latex/common/logos/eushield.sty
-Package: eushield 2006/08/28\ v1.1\ Commands for including the EU shield graphi
+(D:\Diss\Writing\Thesis\eushield.sty
+Package: eushield 2000/11/23\ v1.0\ Commands for including the EU shield graphi
 c
-
-(/usr/share/texmf/tex/generic/oberdiek/ifpdf.sty
-Package: ifpdf 2006/02/20 v1.4 Provides the ifpdf switch (HO)
-Package ifpdf Info: pdfTeX in pdf mode detected.
-))
-(/usr/share/texmf/tex/latex/base/report.cls
-Document Class: report 2005/09/16 v1.4f Standard LaTeX document class
-(/usr/share/texmf/tex/latex/base/size12.clo
-File: size12.clo 2005/09/16 v1.4f Standard LaTeX file (size option)
+)
+("D:\Programs\MiKTeX 2.8\tex\latex\base\report.cls"
+Document Class: report 2007/10/19 v1.4h Standard LaTeX document class
+("D:\Programs\MiKTeX 2.8\tex\latex\base\size12.clo"
+File: size12.clo 2007/10/19 v1.4h Standard LaTeX file (size option)
 )
 \c@part=\count83
 \c@chapter=\count84
@@ -75,267 +77,350 @@ File: size12.clo 2005/09/16 v1.4f Standard LaTeX file (size option)
 \c@table=\count91
 \abovecaptionskip=\skip41
 \belowcaptionskip=\skip42
-\bibindent=\dimen106
+\bibindent=\dimen110
 )
-(/usr/share/texmf/tex/latex/pslatex/pslatex.sty
-Package: pslatex 1996/07/24 v1.2 pslatex emulation (DPC)
-LaTeX Font Info:    Redeclaring symbol font `operators' on input line 65.
-LaTeX Font Info:    Overwriting symbol font `operators' in version `normal'
-(Font)                  OT1/cmr/m/n --> OT1/ptmcm/m/n on input line 65.
-LaTeX Font Info:    Overwriting symbol font `operators' in version `bold'
-(Font)                  OT1/cmr/bx/n --> OT1/ptmcm/m/n on input line 65.
-LaTeX Font Info:    Redeclaring symbol font `letters' on input line 66.
-LaTeX Font Info:    Overwriting symbol font `letters' in version `normal'
-(Font)                  OML/cmm/m/it --> OML/ptmcm/m/it on input line 66.
-LaTeX Font Info:    Overwriting symbol font `letters' in version `bold'
-(Font)                  OML/cmm/b/it --> OML/ptmcm/m/it on input line 66.
-LaTeX Font Info:    Redeclaring symbol font `symbols' on input line 67.
-LaTeX Font Info:    Overwriting symbol font `symbols' in version `normal'
-(Font)                  OMS/cmsy/m/n --> OMS/pzccm/m/n on input line 67.
-LaTeX Font Info:    Overwriting symbol font `symbols' in version `bold'
-(Font)                  OMS/cmsy/b/n --> OMS/pzccm/m/n on input line 67.
-LaTeX Font Info:    Redeclaring symbol font `largesymbols' on input line 68.
-LaTeX Font Info:    Overwriting symbol font `largesymbols' in version `normal'
-(Font)                  OMX/cmex/m/n --> OMX/psycm/m/n on input line 68.
-LaTeX Font Info:    Overwriting symbol font `largesymbols' in version `bold'
-(Font)                  OMX/cmex/m/n --> OMX/psycm/m/n on input line 68.
-\symbold=\mathgroup4
-\symitalic=\mathgroup5
-LaTeX Font Info:    Redeclaring math alphabet \mathbf on input line 74.
-LaTeX Font Info:    Overwriting math alphabet `\mathbf' in version `normal'
-(Font)                  OT1/cmr/bx/n --> OT1/ptm/bx/n on input line 74.
-LaTeX Font Info:    Overwriting math alphabet `\mathbf' in version `bold'
-(Font)                  OT1/cmr/bx/n --> OT1/ptm/bx/n on input line 74.
-LaTeX Font Info:    Redeclaring math alphabet \mathit on input line 75.
-LaTeX Font Info:    Overwriting math alphabet `\mathit' in version `normal'
-(Font)                  OT1/cmr/m/it --> OT1/ptm/m/it on input line 75.
-LaTeX Font Info:    Overwriting math alphabet `\mathit' in version `bold'
-(Font)                  OT1/cmr/bx/it --> OT1/ptm/m/it on input line 75.
-)
-(/usr/share/texmf/tex/latex/sectsty/sectsty.sty
+("D:\Programs\MiKTeX 2.8\tex\latex\sectsty\sectsty.sty"
 Package: sectsty 2002/02/25 v2.0.2 Commands to change all sectional heading sty
 les
 )
-(/usr/share/texmf/tex/latex/caption/caption.sty
-Package: caption 2007/01/07 v3.0k Customising captions (AR)
+("D:\Programs\MiKTeX 2.8\tex\latex\caption\caption.sty"
+Package: caption 2010/01/09 v3.1m Customizing captions (AR)
 
-(/usr/share/texmf/tex/latex/caption/caption3.sty
-Package: caption3 2007/01/07 v3.0k caption3 kernel (AR)
-\captionmargin=\dimen107
-\captionmarginx=\dimen108
-\captionwidth=\dimen109
-\captionindent=\dimen110
-\captionparindent=\dimen111
-\captionhangindent=\dimen112
-)))
-(/usr/share/texmf/tex/latex/natbib/natbib.sty
-Package: natbib 2007/02/05 8.0 (PWD)
+("D:\Programs\MiKTeX 2.8\tex\latex\caption\caption3.sty"
+Package: caption3 2010/01/14 v3.1m caption3 kernel (AR)
+\captionmargin=\dimen111
+\captionmargin@=\dimen112
+\captionwidth=\dimen113
+\caption@indent=\dimen114
+\caption@parindent=\dimen115
+\caption@hangindent=\dimen116
+)
+\c@ContinuedFloat=\count92
+))
+("D:\Programs\MiKTeX 2.8\tex\latex\natbib\natbib.sty"
+Package: natbib 2009/11/07 8.31a (PWD, AO)
 \bibhang=\skip43
 \bibsep=\skip44
-LaTeX Info: Redefining \cite on input line 602.
-\c@NAT@ctr=\count92
+LaTeX Info: Redefining \cite on input line 694.
+\c@NAT@ctr=\count93
 )
-(/usr/share/texmf/tex/latex/html/url.sty
-Package: url 1999/03/02  ver 1.4  Verb mode for urls, email addresses, and file
- names
-) (./main.aux (./chap1.aux))
-\openout1 = `main.aux'.
-
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 79.
-LaTeX Font Info:    ... okay on input line 79.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 79.
-LaTeX Font Info:    ... okay on input line 79.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 79.
-LaTeX Font Info:    ... okay on input line 79.
-LaTeX Font Info:    Checking defaults for OMS/pzccm/m/n on input line 79.
-LaTeX Font Info:    Try loading font information for OMS+pzccm on input line 79
-.
-
-(/usr/share/texmf/tex/latex/psnfss/omspzccm.fd
-File: omspzccm.fd 2000/01/03 Fontinst v1.801 font definitions for OMS/pzccm.
+("D:\Programs\MiKTeX 2.8\tex\latex\ltxmisc\url.sty"
+\Urlmuskip=\muskip10
+Package: url 2006/04/12  ver 3.3  Verb mode for urls, etc.
 )
-LaTeX Font Info:    ... okay on input line 79.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 79.
-LaTeX Font Info:    ... okay on input line 79.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 79.
-LaTeX Font Info:    ... okay on input line 79.
--------------------- Geometry parameters
-paper: a4paper
-landscape: --
-twocolumn: --
-twoside: --
-asymmetric: --
-h-parts: 113.81102pt, 412.56497pt, 71.13188pt
-v-parts: 56.9055pt, 674.33032pt, 113.81102pt
-hmarginratio: --
-vmarginratio: --
-lines: --
-heightrounded: --
-bindingoffset: 0.0pt
-truedimen: --
-includehead: --
-includefoot: --
-includemp: --
-driver: pdftex
--------------------- Page layout dimensions and switches
-\paperwidth  597.50787pt
-\paperheight 845.04684pt
-\textwidth  412.56497pt
-\textheight 674.33032pt
-\oddsidemargin  41.54103pt
-\evensidemargin 41.54103pt
-\topmargin  -52.36449pt
-\headheight 12.0pt
-\headsep    25.0pt
-\footskip   30.0pt
-\marginparwidth 35.0pt
-\marginparsep   10.0pt
-\columnsep  10.0pt
-\skip\footins  10.8pt plus 4.0pt minus 2.0pt
-\hoffset 0.0pt
-\voffset 0.0pt
-\mag 1000
+(D:\Diss\Writing\Thesis\shortbold.sty)
+("D:\Programs\MiKTeX 2.8\tex\latex\ams\math\amsmath.sty"
+Package: amsmath 2000/07/18 v2.13 AMS math features
+\@mathmargin=\skip45
 
-(1in=72.27pt, 1cm=28.45pt)
------------------------
+For additional information on amsmath, use the `?' option.
+("D:\Programs\MiKTeX 2.8\tex\latex\ams\math\amstext.sty"
+Package: amstext 2000/06/29 v2.01
 
-(/usr/share/texmf/tex/context/base/supp-pdf.tex
+("D:\Programs\MiKTeX 2.8\tex\latex\ams\math\amsgen.sty"
+File: amsgen.sty 1999/11/30 v2.0
+\@emptytoks=\toks16
+\ex@=\dimen117
+))
+("D:\Programs\MiKTeX 2.8\tex\latex\ams\math\amsbsy.sty"
+Package: amsbsy 1999/11/29 v1.2d
+\pmbraise@=\dimen118
+)
+("D:\Programs\MiKTeX 2.8\tex\latex\ams\math\amsopn.sty"
+Package: amsopn 1999/12/14 v2.01 operator names
+)
+\inf@bad=\count94
+LaTeX Info: Redefining \frac on input line 211.
+\uproot@=\count95
+\leftroot@=\count96
+LaTeX Info: Redefining \overline on input line 307.
+\classnum@=\count97
+\DOTSCASE@=\count98
+LaTeX Info: Redefining \ldots on input line 379.
+LaTeX Info: Redefining \dots on input line 382.
+LaTeX Info: Redefining \cdots on input line 467.
+\Mathstrutbox@=\box26
+\strutbox@=\box27
+\big@size=\dimen119
+LaTeX Font Info:    Redeclaring font encoding OML on input line 567.
+LaTeX Font Info:    Redeclaring font encoding OMS on input line 568.
+\macc@depth=\count99
+\c@MaxMatrixCols=\count100
+\dotsspace@=\muskip11
+\c@parentequation=\count101
+\dspbrk@lvl=\count102
+\tag@help=\toks17
+\row@=\count103
+\column@=\count104
+\maxfields@=\count105
+\andhelp@=\toks18
+\eqnshift@=\dimen120
+\alignsep@=\dimen121
+\tagshift@=\dimen122
+\tagwidth@=\dimen123
+\totwidth@=\dimen124
+\lineht@=\dimen125
+\@envbody=\toks19
+\multlinegap=\skip46
+\multlinetaggap=\skip47
+\mathdisplay@stack=\toks20
+LaTeX Info: Redefining \[ on input line 2666.
+LaTeX Info: Redefining \] on input line 2667.
+)
+("D:\Programs\MiKTeX 2.8\tex\latex\mh\mathtools.sty"
+Package: mathtools 2008/08/01 v1.06 mathematical typesetting tools (MH)
+
+("D:\Programs\MiKTeX 2.8\tex\latex\tools\calc.sty"
+Package: calc 2007/08/22 v4.3 Infix arithmetic (KKT,FJ)
+\calc@Acount=\count106
+\calc@Bcount=\count107
+\calc@Adimen=\dimen126
+\calc@Bdimen=\dimen127
+\calc@Askip=\skip48
+\calc@Bskip=\skip49
+LaTeX Info: Redefining \setlength on input line 76.
+LaTeX Info: Redefining \addtolength on input line 77.
+\calc@Ccount=\count108
+\calc@Cskip=\skip50
+)
+("D:\Programs\MiKTeX 2.8\tex\latex\mh\mhsetup.sty"
+Package: mhsetup 2010/01/21 v1.2a programming setup (MH)
+)
+\g_MT_multlinerow_int=\count109
+\l_MT_multwidth_dim=\dimen128
+)
+("D:\Programs\MiKTeX 2.8\tex\latex\booktabs\booktabs.sty"
+Package: booktabs 2005/04/14 v1.61803 publication quality tables
+\heavyrulewidth=\dimen129
+\lightrulewidth=\dimen130
+\cmidrulewidth=\dimen131
+\belowrulesep=\dimen132
+\belowbottomsep=\dimen133
+\aboverulesep=\dimen134
+\abovetopsep=\dimen135
+\cmidrulesep=\dimen136
+\cmidrulekern=\dimen137
+\defaultaddspace=\dimen138
+\@cmidla=\count110
+\@cmidlb=\count111
+\@aboverulesep=\dimen139
+\@belowrulesep=\dimen140
+\@thisruleclass=\count112
+\@lastruleclass=\count113
+\@thisrulewidth=\dimen141
+)
+("D:\Programs\MiKTeX 2.8\tex\latex\algorithms\algorithm.sty"
+Package: algorithm 2009/08/24 v0.1 Document Style `algorithm' - floating enviro
+nment
+
+("D:\Programs\MiKTeX 2.8\tex\latex\float\float.sty"
+Package: float 2001/11/08 v1.3d Float enhancements (AL)
+\c@float@type=\count114
+\float@exts=\toks21
+\float@box=\box28
+\@float@everytoks=\toks22
+\@floatcapt=\box29
+)
+\@float@every@algorithm=\toks23
+\c@algorithm=\count115
+)
+("D:\Programs\MiKTeX 2.8\tex\latex\algorithms\algorithmic.sty"
+Package: algorithmic 2009/08/24 v0.1 Document Style `algorithmic'
+\c@ALC@unique=\count116
+\c@ALC@line=\count117
+\c@ALC@rem=\count118
+\c@ALC@depth=\count119
+\ALC@tlm=\skip51
+\algorithmicindent=\skip52
+)
+("D:\Programs\MiKTeX 2.8\tex\latex\tools\multicol.sty"
+Package: multicol 2008/12/05 v1.6h multicolumn formatting (FMi)
+\c@tracingmulticols=\count120
+\mult@box=\box30
+\multicol@leftmargin=\dimen142
+\c@unbalance=\count121
+\c@collectmore=\count122
+\doublecol@number=\count123
+\multicoltolerance=\count124
+\multicolpretolerance=\count125
+\full@width=\dimen143
+\page@free=\dimen144
+\premulticols=\dimen145
+\postmulticols=\dimen146
+\multicolsep=\skip53
+\multicolbaselineskip=\skip54
+\partial@page=\box31
+\last@line=\box32
+\mult@rightbox=\box33
+\mult@grightbox=\box34
+\mult@gfirstbox=\box35
+\mult@firstbox=\box36
+\@tempa=\box37
+\@tempa=\box38
+\@tempa=\box39
+\@tempa=\box40
+\@tempa=\box41
+\@tempa=\box42
+\@tempa=\box43
+\@tempa=\box44
+\@tempa=\box45
+\@tempa=\box46
+\@tempa=\box47
+\@tempa=\box48
+\@tempa=\box49
+\@tempa=\box50
+\@tempa=\box51
+\@tempa=\box52
+\@tempa=\box53
+\c@columnbadness=\count126
+\c@finalcolumnbadness=\count127
+\last@try=\dimen147
+\multicolovershoot=\dimen148
+\multicolundershoot=\dimen149
+\mult@nat@firstbox=\box54
+\colbreak@box=\box55
+)
+(D:\Diss\Writing\Thesis\main.aux (D:\Diss\Writing\Thesis\chapters/chap3.aux)
+(D:\Diss\Writing\Thesis\chapters/chap4.aux
+
+LaTeX Warning: Label `eq:cs-1' multiply defined.
+
+))
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 86.
+LaTeX Font Info:    ... okay on input line 86.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 86.
+LaTeX Font Info:    ... okay on input line 86.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 86.
+LaTeX Font Info:    ... okay on input line 86.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 86.
+LaTeX Font Info:    ... okay on input line 86.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 86.
+LaTeX Font Info:    ... okay on input line 86.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 86.
+LaTeX Font Info:    ... okay on input line 86.
+
+*geometry* driver: auto-detecting
+*geometry* detected driver: pdftex
+*geometry* verbose mode - [ preamble ] result:
+* driver: pdftex
+* paper: a4paper
+* layout: a4paper
+* switch(es): 
+* h-part:(L,W,R)=(113.81102pt, 412.56497pt, 71.13188pt)
+* v-part:(T,H,B)=(56.9055pt, 674.33032pt, 113.81102pt)
+* \paperwidth=597.50787pt
+* \paperheight=845.04684pt
+* \textwidth=412.56497pt
+* \textheight=674.33032pt
+* \oddsidemargin=41.54103pt
+* \evensidemargin=41.54103pt
+* \topmargin=-52.36449pt
+* \headheight=12.0pt
+* \headsep=25.0pt
+* \footskip=30.0pt
+* \marginparwidth=35.0pt
+* \marginparsep=10.0pt
+* \columnsep=10.0pt
+* \skip\footins=10.8pt plus 4.0pt minus 2.0pt
+* \hoffset=0.0pt
+* \voffset=0.0pt
+* \mag=1000
+* \@twocolumnfalse
+* \@twosidefalse
+* \@mparswitchfalse
+* \@reversemarginfalse
+* (1in=72.27pt, 1cm=28.453pt)
+
+("D:\Programs\MiKTeX 2.8\tex\context\base\supp-pdf.tex"
 [Loading MPS to PDF converter (version 2006.09.02).]
-\scratchcounter=\count93
-\scratchdimen=\dimen113
-\scratchbox=\box26
-\nofMPsegments=\count94
-\nofMParguments=\count95
-\MPscratchCnt=\count96
-\MPscratchDim=\dimen114
-\MPnumerator=\count97
-\everyMPtoPDFconversion=\toks16
-) (/usr/share/texmf/tex/latex/ragged2e/ragged2e.sty
-Package: ragged2e 2003/03/25 v2.04 ragged2e Package (MS)
-
-(/usr/share/texmf/tex/latex/everysel/everysel.sty
-Package: everysel 1999/06/08 v1.03 EverySelectfont Package (MS)
-LaTeX Info: Redefining \selectfont on input line 125.
+\scratchcounter=\count128
+\scratchdimen=\dimen150
+\scratchbox=\box56
+\nofMPsegments=\count129
+\nofMParguments=\count130
+\everyMPshowfont=\toks24
+\MPscratchCnt=\count131
+\MPscratchDim=\dimen151
+\MPnumerator=\count132
+\everyMPtoPDFconversion=\toks25
 )
-\CenteringLeftskip=\skip45
-\RaggedLeftLeftskip=\skip46
-\RaggedRightLeftskip=\skip47
-\CenteringRightskip=\skip48
-\RaggedLeftRightskip=\skip49
-\RaggedRightRightskip=\skip50
-\CenteringParfillskip=\skip51
-\RaggedLeftParfillskip=\skip52
-\RaggedRightParfillskip=\skip53
-\JustifyingParfillskip=\skip54
-\CenteringParindent=\skip55
-\RaggedLeftParindent=\skip56
-\RaggedRightParindent=\skip57
-\JustifyingParindent=\skip58
-)
-LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <20.74> not available
-(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 85.
-LaTeX Font Info:    Font shape `OT1/phv/bx/n' in size <20.74> not available
-(Font)              Font shape `OT1/phv/b/n' tried instead on input line 85.
-LaTeX Font Info:    Font shape `OT1/phv/b/n' will be
-(Font)              scaled to size 18.66588pt on input line 85.
- [1
+Package caption Info: Begin \AtBeginDocument code.
+Package caption Info: float package is loaded.
+Package caption Info: End \AtBeginDocument code.
+ <images/thesis-shield.pdf, id=1, 364.36125pt x 369.38pt>
+File: images/thesis-shield.pdf Graphic file (type pdf)
 
-{/usr/share/texmf/fonts/map/pdftex/updmap/pdftex.map}]
-LaTeX Font Info:    Font shape `OT1/phv/m/n' will be
-(Font)              scaled to size 10.79993pt on input line 85.
-LaTeX Font Info:    Font shape `OT1/phv/bx/n' in size <12> not available
-(Font)              Font shape `OT1/phv/b/n' tried instead on input line 85.
-LaTeX Font Info:    Font shape `OT1/phv/b/n' will be
-(Font)              scaled to size 10.79993pt on input line 85.
- [1
+<use images/thesis-shield.pdf> [1
+
+{C:/ProgramData/MiKTeX/2.8/pdftex/config/pdftex.map} <D:/Diss/Writing/Thesis/im
+ages/thesis-shield.pdf>] [1
 
 ] [2] [3]
-LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <24.88> not available
-(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 101.
-LaTeX Font Info:    Font shape `OT1/phv/bx/n' in size <24.88> not available
-(Font)              Font shape `OT1/phv/b/n' tried instead on input line 101.
-LaTeX Font Info:    Font shape `OT1/phv/b/n' will be
-(Font)              scaled to size 22.39185pt on input line 101.
- (./main.toc
-LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <12> not available
-(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 1.
-)
+(D:\Diss\Writing\Thesis\main.toc)
 \tf@toc=\write3
-\openout3 = `main.toc'.
-
  [4
 
 ]
-\openout2 = `chap1.aux'.
-
- (./chap1.tex
+(D:\Diss\Writing\Thesis\chapters/chap3.tex
 Chapter 1.
-LaTeX Font Info:    Try loading font information for OT1+ptmcm on input line 4.
-
-(/usr/share/texmf/tex/latex/psnfss/ot1ptmcm.fd
-File: ot1ptmcm.fd 2000/01/03 Fontinst v1.801 font definitions for OT1/ptmcm.
-)
-LaTeX Font Info:    Try loading font information for OML+ptmcm on input line 4.
-
-
-(/usr/share/texmf/tex/latex/psnfss/omlptmcm.fd
-File: omlptmcm.fd 2000/01/03 Fontinst v1.801 font definitions for OML/ptmcm.
-)
-LaTeX Font Info:    Try loading font information for OMX+psycm on input line 4.
-
-
-(/usr/share/texmf/tex/latex/psnfss/omxpsycm.fd
-File: omxpsycm.fd 2000/01/03 Fontinst v1.801 font definitions for OMX/psycm.
-)
-LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <9> not available
-(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 4.
-LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <7> not available
-(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 4.
-LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <10> not available
-(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 6.
-LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <7.4> not available
-(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 6.
-LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <6> not available
-(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 6.
- [1
+[1
 
 
 
 ]
-LaTeX Font Info:    Font shape `OMS/ptm/m/n' in size <12> not available
-(Font)              Font shape `OMS/pzccm/m/n' tried instead on input line 12.
+
+LaTeX Font Warning: Font shape `OT1/cmss/m/it' in size <12> not available
+(Font)              Font shape `OT1/cmss/m/sl' tried instead on input line 62.
+
+[2]) [3] (D:\Diss\Writing\Thesis\chapters/chap4.tex
+Chapter 2.
+LaTeX Font Info:    Try loading font information for OMS+cmr on input line 5.
+("D:\Programs\MiKTeX 2.8\tex\latex\base\omscmr.fd"
+File: omscmr.fd 1999/05/25 v2.5h Standard LaTeX font definitions
 )
-LaTeX Font Info:    Font shape `OT1/phv/m/it' in size <12> not available
-(Font)              Font shape `OT1/phv/m/sl' tried instead on input line 113.
-LaTeX Font Info:    Font shape `OT1/phv/m/sl' will be
-(Font)              scaled to size 10.79993pt on input line 113.
- [2] (./main.bbl) [3
+LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <12> not available
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 5.
+ [4
 
 
-]
-(./main.aux (./chap1.aux)) )
-(\end occurred inside a group at level 1)
 
-### simple group (level 1) entered at line 1 ({)
-### bottom level 
+] [5] [6] [7]) [8]
+(D:\Diss\Writing\Thesis\main.bbl) [9
+
+
+] (D:\Diss\Writing\Thesis\main.aux
+(D:\Diss\Writing\Thesis\chapters/chap3.aux)
+(D:\Diss\Writing\Thesis\chapters/chap4.aux))
+
+LaTeX Warning: There were multiply-defined labels.
+
+ ) 
 Here is how much of TeX's memory you used:
- 2605 strings out of 256216
- 36007 string characters out of 1917073
- 87755 words of memory out of 1500000
- 5840 multiletter control sequences out of 10000+200000
- 46262 words of font info for 89 fonts, out of 1200000 for 2000
- 645 hyphenation exceptions out of 8191
- 42i,8n,40p,1373b,269s stack positions out of 5000i,500n,6000p,200000b,15000s
-{/usr/share/texmf/fonts/enc/dvips/base/8r.enc}</usr/share/texmf
-/fonts/type1/bluesky/cm/cmsy10.pfb></usr/share/texmf/fonts/type1/urw/courier/uc
-rr8a.pfb></usr/share/texmf/fonts/type1/urw/helvetic/uhvb8a.pfb></usr/share/texm
-f/fonts/type1/urw/helvetic/uhvr8a.pfb></usr/share/texmf/fonts/type1/urw/helveti
-c/uhvro8a.pfb></usr/share/texmf/fonts/type1/urw/times/utmb8a.pfb></usr/share/te
-xmf/fonts/type1/urw/times/utmr8a.pfb></usr/share/texmf/fonts/type1/urw/times/ut
-mri8a.pfb>
-Output written on main.pdf (8 pages, 81798 bytes).
+ 4624 strings out of 495285
+ 64681 string characters out of 3180831
+ 141103 words of memory out of 3000000
+ 7749 multiletter control sequences out of 15000+200000
+ 12799 words of font info for 45 fonts, out of 3000000 for 9000
+ 14 hyphenation exceptions out of 8191
+ 43i,17n,40p,682b,592s stack positions out of 5000i,500n,10000p,200000b,50000s
+<D:/Programs/MiKTeX 2.8/fonts/type1/public/amsfonts/cm/cmbx12.pfb><D:/Program
+s/MiKTeX 2.8/fonts/type1/public/amsfonts/cm/cmbx8.pfb><D:/Programs/MiKTeX 2.8/f
+onts/type1/public/amsfonts/cm/cmex10.pfb><D:/Programs/MiKTeX 2.8/fonts/type1/pu
+blic/amsfonts/cm/cmmi12.pfb><D:/Programs/MiKTeX 2.8/fonts/type1/public/amsfonts
+/cm/cmmi6.pfb><D:/Programs/MiKTeX 2.8/fonts/type1/public/amsfonts/cm/cmmi8.pfb>
+<D:/Programs/MiKTeX 2.8/fonts/type1/public/amsfonts/cm/cmr10.pfb><D:/Programs/M
+iKTeX 2.8/fonts/type1/public/amsfonts/cm/cmr12.pfb><D:/Programs/MiKTeX 2.8/font
+s/type1/public/amsfonts/cm/cmr6.pfb><D:/Programs/MiKTeX 2.8/fonts/type1/public/
+amsfonts/cm/cmr8.pfb><D:/Programs/MiKTeX 2.8/fonts/type1/public/amsfonts/cm/cms
+s12.pfb><D:/Programs/MiKTeX 2.8/fonts/type1/public/amsfonts/cm/cmssbx10.pfb><D:
+/Programs/MiKTeX 2.8/fonts/type1/public/amsfonts/cm/cmssi12.pfb><D:/Programs/Mi
+KTeX 2.8/fonts/type1/public/amsfonts/cm/cmsy10.pfb><D:/Programs/MiKTeX 2.8/font
+s/type1/public/amsfonts/cm/cmsy6.pfb><D:/Programs/MiKTeX 2.8/fonts/type1/public
+/amsfonts/cm/cmsy8.pfb><D:/Programs/MiKTeX 2.8/fonts/type1/public/amsfonts/cm/c
+mti12.pfb><D:/Programs/MiKTeX 2.8/fonts/type1/public/amsfonts/cm/cmtt12.pfb>
+Output written on main.pdf (14 pages, 255333 bytes).
 PDF statistics:
- 62 PDF objects out of 1000 (max. 8388607)
- 0 named destinations out of 1000 (max. 131072)
- 1 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 123 PDF objects out of 1000 (max. 8388607)
+ 0 named destinations out of 1000 (max. 500000)
+ 6 words of extra memory for PDF output out of 10000 (max. 10000000)
 

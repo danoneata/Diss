@@ -1,9 +1,20 @@
 \begin{thebibliography}{}
 
+\bibitem[Barber, 2011]{barber2011}
+Barber, D. (2011).
+\newblock {\em {Bayesian Reasoning and Machine Learning}}.
+\newblock {Cambridge University Press}.
+\newblock In press.
+
 \bibitem[Bentley, 1975]{bentley1975}
 Bentley, J.~L. (1975).
 \newblock Multidimensional binary search trees used for associative searching.
 \newblock {\em Commun. ACM}, 18:509--517.
+
+\bibitem[Chalupka, 2011]{chalupka2011}
+Chalupka, K. (2011).
+\newblock Empirical evaluation of {G}aussian {P}rocess approximation
+  algorithms.
 
 \bibitem[Goldberger et~al., 2004]{goldberger2004}
 Goldberger, J., Roweis, S., Hinton, G., and Salakhutdinov, R. (2004).
@@ -11,12 +22,16 @@ Goldberger, J., Roweis, S., Hinton, G., and Salakhutdinov, R. (2004).
 \newblock In {\em Advances in Neural Information Processing Systems}. MIT
   Press.
 
+\bibitem[Gonzalez, 1985]{gonzalez1985}
+Gonzalez, T. (1985).
+\newblock Clustering to minimize the maximum intercluster distance.
+\newblock {\em Theoretical Computer Science}, 38:293--306.
+
 \bibitem[Gray and Moore, 2003]{gray2003}
 Gray, A. and Moore, A. (2003).
 \newblock {Nonparametric density estimation: Toward computational
   tractability}.
 \newblock In {\em SIAM International Conference on Data Mining}, volume 2003.
-  Citeseer.
 
 \bibitem[Holte, 1993]{holte1993}
 Holte, R. (1993).
@@ -33,12 +48,10 @@ Moore, A. (1991).
 \bibitem[Omohundro, 1989]{omohundro1989}
 Omohundro, S. (1989).
 \newblock {\em {Five balltree construction algorithms}}.
-\newblock Citeseer.
 
 \bibitem[Omohundro, 1991]{omohundro1991}
 Omohundro, S. (1991).
 \newblock {\em {Bumptrees for efficient function, constraint, and
   classification learning}}.
-\newblock Citeseer.
 
 \end{thebibliography}
