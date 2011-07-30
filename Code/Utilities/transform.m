@@ -11,6 +11,13 @@ function [Xt] = transform(X, t)
 % Dan Oneata, June 2011
 
     Xt = bsxfun(@minus, X, t.mean);
-    Xt = t.A * Xt;
+    if isfield(t,'A'),
+      A = t.A;
+    elseif isfield(t,'std'),
+      A = t.std;
+    else
+      error('Inexistent field!');
+    end
+    Xt = A * Xt;
 
 end
