@@ -1,6 +1,6 @@
-close all;
+clear all; clc;
 
-d = 2;          % Dimensionality to reduce to.
+d = 5;          % Dimensionality to reduce to.
 init = 3;       % randn, PCA, LDA or RCA.
 m = 30;         % Number of points to look at per iteration.
 p = 5/100;      % Percentage of points used for cross-validation.
@@ -14,12 +14,12 @@ else
   root_path = '~/Documents/Diss/Results/snca-mnist/';
 end
 
-% [X,c] = load_data_set('mnist-train-256');   % Train data set.
-% [Xt,ct] = load_data_set('mnist-test-256');  % Test data set.
+[X,c] = load_data_set('mnist-train-256');   % Train data set.
+[Xt,ct] = load_data_set('mnist-test-256');  % Test data set.
 
-[X,c] = load_data_set('balance');
+% [X,c] = load_data_set('usps');
 % [Xt,ct] = load_data_set('landsat-test');
-[X,c,Xt,ct]=split_data(X,c);
+% [X,c,Xt,ct]=split_data(X,c);
 
 tic;
 [mapping, to_plot] = run_sNCA('nca_obj_o1', X, c, d, [init m p lambda t0 max_iter]);
@@ -36,9 +36,10 @@ score_nn  = NN_score(AX,c,AXt,ct);
 score_nca = nca_score(AX,c,AXt,ct);
 
 % Save resutls:
+image_nr = ceil(rand*1000);
 fid = fopen([root_path 'results.txt'], 'a');
-fprintf(fid, 'd = %d\ninit = %d\nm = %d\np = %2.3f\nlambda = %2.3f\nt0 = %2.3f\n'...
-         , d, init, m, p, lambda, t0); 
+fprintf(fid, 'im_nr = %d\nd = %d\ninit = %d\nm = %d\np = %2.3f\nlambda = %2.3f\nt0 = %2.3f\n'...
+         , image_nr, d, init, m, p, lambda, t0); 
 fprintf(fid, 'time = %10.15f\n', total_time);
 fprintf(fid, 'NN score: %2.3f\nNCA score: %2.3f\n',score_nn*100,score_nca*100);
 fprintf(fid, '---\n');
@@ -53,5 +54,5 @@ xlabel('iterNumber');
 ylabel('error');
 
 set(gcf, 'PaperPositionMode', 'auto');
-print -depsc2 1.eps
-close;
+print(gcf, '-depsc2', [root_path  num2str(image_nr) '.eps']);
+close all;
