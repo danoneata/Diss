@@ -8,7 +8,11 @@ lambda = 1;     % Learning rate first hyperparameter.
 t0 = 50;        % Learning rate second hyperparameter.
 max_iter = 3000;% Maximum number of iterations.
 
-root_path = 'D:\Diss\Results\snca-mnist\';
+if ~isunix,
+  root_path = 'D:\Diss\Results\snca-mnist\';
+else
+  root_path = '~/Documents/Diss/Results/snca-mnist/';
+end
 
 % [X,c] = load_data_set('mnist-train-256');   % Train data set.
 % [Xt,ct] = load_data_set('mnist-test-256');  % Test data set.
