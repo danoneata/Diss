@@ -1,5 +1,50 @@
 \chapter{Background}
 
 \section{Theoretical background}
+\label{sec:theoretical-background}
+
+A distance metric represents a function or a mapping from a pair of inputs to a scalar proportional to the dissimilarity of the inputs. Additionally, in order to be a proper distance, the given function ought to be non-negative, symmetric and it should respect the triangle inequality. The most common and used metric is the standard Euclidean distance. It often appears and is very useful in many geometrical situations, when distances between points need to be calculated. However, it has two major drawbacks that are problematic especially in machine learning applications. First of all, Euclidean distance is sensitive to scaling. Whilst in mathematical problems this does not constitute an issue, in real situations, we may have features that are measured in different units (e.g., seconds, kilograms, etc.) and we will obtain different distances between our data points if we change the scalings on some axis. The other problem is the fact that it does not take into consideration the correlations in the data structure. It can often happen that more attributes reflect the same information present in the data and, consequently, the distance is strongly influenced by those attributes. Take the example of face recognition: there the pixels from the image background are highly correlated and they usually reflect the same information, i.e., the colour of the background.
+
+The standard notation is $d(\mathbf{x},\mathbf{y})$ and it represents a function that calculates the distance between two inputs $\mathbf{x}$ and $\mathbf{y}$ (column vectors in a $D$ dimensional space $\mathbf{x},\mathbf{y}\in \mathbb{R}^D$). Esentially, the metric maps a pair from $\mathbb{R}^D\times \mathbb{R}^D$ to a real number scalar. 
+
+Formally, $d:\mathbb{R}^D\times \mathbb{R}^D \to \mathbb{R}$ is a metric if for any $\mathbf{x,y,z}\in \mathbb{R}^D$ the following properties hold \cite{Kochanski2009}:
+\begin{itemize}
+ \item Non-negativity: $d(\mathbf{x},\mathbf{y}) \ge 0$.
+ \item Distinguishability: $d(\mathbf{x},\mathbf{y})=0 \Leftrightarrow  \mathbf{x}=\mathbf{y}$.
+ \item Symmetry: $d(\mathbf{x},\mathbf{y})=d(\mathbf{y},\mathbf{x})$.
+ \item Triangle Inequality: $d(\mathbf{x},\mathbf{y})\leq d(\mathbf{x},\mathbf{z}) + d(\mathbf{z},\mathbf{y})$.
+\end{itemize}
+
+Now we can relate the previous definition with the most common and used example: Euclidean distance. This is defined as:
+\begin{align}
+ d_E(\mathbf{x},\mathbf{y}) = \sqrt{(\mathbf{x-y})^T(\mathbf{x-y})}, \mbox{ with }\mathbf{x,y}\in \mathbb{R}^D.
+\end{align}
+
+Unfortunately, the Euclidean distance has two major drawbacks that are problematic especially in machine learning applications\footnote{\url{http://matlabdatamining.blogspot.com/2006/11/mahalanobis-distance.html}}:
+\begin{itemize}
+ \item{ \textbf{Sensitivity to variable scaling}. In geometrical situations, all variables are measured in the same units of length; for some of the real data variability is stronger on certain dimensions than on others. Naturally, we try to compensate the acute difference; so we want components with high variability to receive less weight than those with low variability. We can obtain this by simply rescaling the components with corresponding values $(s_i)_{i=\overline{1,D}}$: 
+  \begin{align}
+   d(\mathbf{x},\mathbf{y}) &= \sqrt{\left(\frac{x_1-y_1}{s_1}\right)^2+\cdots+\left(\frac{x_D-y_D}{s_D}\right)^2} = \notag\\
+   &= \sqrt{(\mathbf{x-y})^TS^{-1}(\mathbf{x-y})} \label{eq:new-distance}
+  \end{align}
+ where $S^{-1}=\operatorname{diag}(s_1^2,\cdots,s_D^2)$. 
+ }
+ \item{ \textbf{Invariance to correlated variables}. Euclidean distance does not take into account the correlations in the data structure. For face images, for example, the pixels in the background, usually have the same colour, especially if they are close to each other; if these pixels differ strongly for other picture of the same person, we will be heavily penalized, because their number is large and the distance will be influenced by them. Therefore, we should not take into account all these variables since they reflect the same information (i.e., the color of the background). Intuitively, we want our distance metric to reflect the correlation in the data. This can be easily achieved by replacing $S$ in Equation \eqref{eq:new-distance} with the covariance matrix of the data.
+ \begin{align}
+ d(\mathbf{x},\mathbf{y}) = \sqrt{(\mathbf{x-y})^TS^{-1}(\mathbf{x-y})}, \mbox{ with } S = \operatorname{cov}(\mathcal{X})
+ \label{eq:mahalnobis-distance}
+ \end{align}
+ where $\mathcal{X}$ is the dataset $\mathcal{X}=(\mathbf{x}_i)_{i=\overline{1,N}}$. 
+ }
+\end{itemize}
+Equation \eqref{eq:mahalnobis-distance} is the standard definition of the Mahalanobis distance. Since we do not care for any variance in the data, but just for that is representative for our particular task (as discussed in Section \ref{sec:introduction}), we will consider different matrices $S$ that are suitable for the given query. 
+
+However there are some conditions that $S$ should respect. First of all, we note that $d(\mathbf{x},0)=\lVert \mathbf{x}\lVert = \sqrt{\mathbf{x}^TS^{-1}\mathbf{x}}$ which imposes $\mathbf{x}^TS^{-1}\mathbf{x} \geq 0, \forall \mathbf{x}$---this means that $S^{-1}$ must be a positive semi-definite matrix. 
+
+We note that we can use Cholesky decomposition and write $S^{-1}=L^TL$, which gives $\lVert \mathbf{x} \lVert = \sqrt{(L\mathbf{x})^T(L\mathbf{x})}$. $L$ can be viewed as a linear transformation of the data. Also, using $L$ we can define parametrize our problem by defining a family of metrics over the input space. So the problem of finding a suitable distance metric is virtually equivalent to the problem of finding a good linear transformation and we will discuss these two variants interchangeably.
 
 \section{Related methods}
+
+\citet{xing2003} proposed learning a Mahalanobis-like distance metric for clustering in a semi-supervised context. There are specified pairs of similar data points and the algorithm tries to find that linear projection that minimizes the distance between these pairs (without collapsing the whole data set to a single point). This approach is formulated as a convex optimization with constraints which can be solved using an iterative procedure, such as Newton-Raphson. The solution is local optima free, but this also means that the method assumes that the data set is uni-modal. This is a strong assumption and it does not coagulate well with the more liberal $k$NN. Apart from this, the training time is also a problem as the iterative process is costly for large data sets.
+
+Relevant Component Analysis (RCA; \citealp{bar2003, shental2006}) is another method that makes use of the labels of the classes in a semi-supervised way to provide a distance metric. More precisely, RCA uses the so-called chunklet information. A chunklet contains points from the same class, but the class label is not known; data points that belong to the same chunklet have the same label, while data points from different chunklets do not necessarily belong to different classes. The main idea behind RCA is to find a linear transformation which ``whitens'' the data with respect to the averaged within-chunklet covariance matrix \citep{weinberger2009}. Compared to the method of \citet{xing2003}, RCA has the advantage of presenting a closed form solution, but it has even stricter assumptions about the data: it considers that the data points in each class are normally distributed so they can be described using only second order statistics \citep{goldberger2004}.

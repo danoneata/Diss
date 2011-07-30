@@ -1,5 +1,11 @@
 \begin{thebibliography}{}
 
+\bibitem[Bar-Hillel et~al., 2003]{bar2003}
+Bar-Hillel, A., Hertz, T., Shental, N., and Weinshall, D. (2003).
+\newblock {Learning distance functions using equivalence relations}.
+\newblock In {\em Proceedings of the Twentieth International Conference on
+  Machine Learning}, volume~20, page~11.
+
 \bibitem[Barber, 2011]{barber2011}
 Barber, D. (2011).
 \newblock {\em {Bayesian Reasoning and Machine Learning}}.
@@ -11,10 +17,37 @@ Bentley, J.~L. (1975).
 \newblock Multidimensional binary search trees used for associative searching.
 \newblock {\em Commun. ACM}, 18:509--517.
 
+\bibitem[Beyer et~al., 1999]{beyer1999}
+Beyer, K., Goldstein, J., Ramakrishnan, R., and Shaft, U. (1999).
+\newblock {When is ``nearest neighbor'' meaningful?}
+\newblock {\em Database Theory—ICDT’99}, pages 217--235.
+
+\bibitem[Bishop, 2006]{bishop2006}
+Bishop, C.~M. (2006).
+\newblock {\em Pattern Recognition and Machine Learning (Information Science
+  and Statistics)}.
+\newblock Springer-Verlag New York, Inc., Secaucus, NJ, USA.
+
 \bibitem[Chalupka, 2011]{chalupka2011}
 Chalupka, K. (2011).
 \newblock Empirical evaluation of {G}aussian {P}rocess approximation
   algorithms.
+
+\bibitem[Cover and Hart, 1967]{cover1967}
+Cover, T. and Hart, P. (1967).
+\newblock Nearest neighbor pattern classification.
+\newblock 13:21-- 27.
+
+\bibitem[Deng and Moore, 1995]{deng1995}
+Deng, K. and Moore, A. (1995).
+\newblock Multiresolution instance-based learning.
+\newblock In {\em Proceedings of the Twelfth International Joint Conference on
+  Artificial Intellingence}, pages 1233--1239, San Francisco. Morgan Kaufmann.
+
+\bibitem[Friedman et~al., 1977]{friedman1977}
+Friedman, J.~H., Bentley, J.~L., and Finkel, R.~A. (1977).
+\newblock An algorithm for finding best matches in logarithmic expected time.
+\newblock {\em ACM Trans. Math. Softw.}, 3:209--226.
 
 \bibitem[Goldberger et~al., 2004]{goldberger2004}
 Goldberger, J., Roweis, S., Hinton, G., and Salakhutdinov, R. (2004).
@@ -33,25 +66,54 @@ Gray, A. and Moore, A. (2003).
   tractability}.
 \newblock In {\em SIAM International Conference on Data Mining}, volume 2003.
 
+\bibitem[Hinneburg et~al., 2000]{hinneburg2000}
+Hinneburg, E., Aggarwal, C., Keim, D., and Hinneburg, A. (2000).
+\newblock {What is the nearest neighbor in high dimensional spaces?}
+
 \bibitem[Holte, 1993]{holte1993}
 Holte, R. (1993).
 \newblock {Very simple classification rules perform well on most commonly used
   datasets}.
 \newblock {\em Machine learning}, 11(1):63--90.
 
-\bibitem[Moore, 1991]{moore1991}
-Moore, A. (1991).
-\newblock A tutorial on kd-trees.
-\newblock Extract from PhD Thesis.
-\newblock Available from \url{http://www.cs.cmu.edu/~awm/papers.html}.
+\bibitem[Mitchell, 1997]{mitchell1997}
+Mitchell, T.~M. (1997).
+\newblock {\em Machine Learning}.
+\newblock McGraw-Hill.
+
+\bibitem[Moore, 2000]{moore2000}
+Moore, A. (2000).
+\newblock {\em {The anchors hierarchy: Using the triangle inequality to survive
+  high dimensional data}}.
+\newblock Citeseer.
 
 \bibitem[Omohundro, 1989]{omohundro1989}
 Omohundro, S. (1989).
 \newblock {\em {Five balltree construction algorithms}}.
 
-\bibitem[Omohundro, 1991]{omohundro1991}
-Omohundro, S. (1991).
-\newblock {\em {Bumptrees for efficient function, constraint, and
-  classification learning}}.
+\bibitem[Russell et~al., 1996]{russell1996}
+Russell, S.~J., Norvig, P., Candy, J.~F., Malik, J.~M., and Edwards, D.~D.
+  (1996).
+\newblock {\em Artificial intelligence: a modern approach}.
+\newblock Prentice-Hall, Inc., Upper Saddle River, NJ, USA.
+
+\bibitem[Singh-Miller, 2010]{singh2010}
+Singh-Miller, N. (2010).
+\newblock {\em Neighborhood Analysis Methods in Acoustic Modeling for Automatic
+  Speech Recognition}.
+\newblock PhD thesis, Massachusetts Institute of Technology.
+
+\bibitem[Weinberger and Saul, 2009]{weinberger2009}
+Weinberger, K. and Saul, L. (2009).
+\newblock {Distance metric learning for large margin nearest neighbor
+  classification}.
+\newblock {\em The Journal of Machine Learning Research}, 10:207--244.
+
+\bibitem[Xing et~al., 2003]{xing2003}
+Xing, E., Ng, A., Jordan, M., and Russell, S. (2003).
+\newblock {Distance metric learning with application to clustering with
+  side-information}.
+\newblock In {\em Advances in Neural Information Processing Systems}, pages
+  521--528.
 
 \end{thebibliography}

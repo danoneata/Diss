@@ -7,6 +7,10 @@ The style file: apalike.bst
 Database file #1: bibliography/thesis.bib
 Warning--entry type for "chalupka2011" isn't style-file defined
 --line 58 of file bibliography/thesis.bib
+Warning--I didn't find a database entry for "fix1951"
+Warning--I didn't find a database entry for "Kochanski2009"
+Warning--I didn't find a database entry for "shental2006"
+Warning--empty journal in cover1967
+Warning--empty journal in hinneburg2000
 Warning--empty publisher in omohundro1989
-Warning--empty publisher in omohundro1991
-(There were 3 warnings)
+(There were 7 warnings)

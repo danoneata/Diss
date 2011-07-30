@@ -169,7 +169,7 @@ The gradient of the kernel:
 \begin{align}
 	\frac{\partial}{\partial\AB}k(d_{ij}) 
 	&= 	\frac{\partial}{\partial\AB}\left[(1-d_{ij}^2)^2\cdot\mathrm{I}(\left|d_{ij}\right|\le 1)\right]\\
-	&= -4\AB(1-d_{ij}^2)^2  \xB_{ij} \xB_{ij}^\mathrm{T} \cdot \mathrm{I}(\left|d_{ij}\right|\le 1),
+	&= -4\AB(1-d_{ij}^2)  \xB_{ij} \xB_{ij}^\mathrm{T} \cdot \mathrm{I}(\left|d_{ij}\right|\le 1),
 \end{align}
 where $d_{ij}^2 = d(\AB\xB_i;\AB\xB_j)$, $\xB_{ij}=\xB_i-\xB_j$ and $\mathrm{I}(\cdot)$ is the indicator function that return 1 when its argument is true and 0 when its argument is false.
 
@@ -185,3 +185,37 @@ The gradient of the new objective function:
 
 The main concern with this method is what happens when points lie outside the compact support of any other point in the data set. So care must be taken at initialisation. One way would be to initialise with a very small scale $\AB$. However, this means that there is no gain in speed for at least the first iterations. It might be better to use the principal components for initialisation. 
 
+\begin{itemize}
+	\item Speedings comes from the fact only few gradient components need to be computed. A nice way of further accelerating this is again via $k$-d trees. This time they can be used for range search. 
+	\item Note regarding the gradient: it was written in this form for simplicity. However, in an implementation it is not recommended to divide each term by $1-d_{ij}^2$; there might results cases that are not determined. Better is to compute the kernel values in two steps.
+\end{itemize}
+
+\section{NCA with compact support kernels and background distribution}
+\label{sec:nca-cs-back}
+
+
+\begin{figure}
+  \centering\includegraphics[width=6cm]{images/nca-cs-back}
+  \caption{Neighbourhood component analysis with compact support kernels and background distribution. Main assumption: each class is class is a mixture of compact support distributions $k(\xB|\xB_j)$ plus the normal background distribution $\mathcal{N}(\xB|\muB,\SigmaB)$.}
+  \label{fig:cs-back}
+\end{figure}
+
+\begin{itemize}
+	\item An extended variant of the previous scenario. We take care of the points that might remain unallocated by using a background distribution. This extension comes on naturally after the CC-KDE formulation. We can change the assumptions regarding the underlying distribution of a class $p(\xB_i|c)$. So, in this case, we consider that a point can be generated from a class by either a compact distribution from each point $k_\text{CS}(\xB_i|\xB_j)$ or by a global normal distribution that is specific to the whole class $\mathcal{N}(\xB_i|\muB_c,\SigmaB_c)$. So, the class-conditional distribution is given by the sum of these components:
+	\begin{align}
+		p(\xB_i|c) = \beta \mathcal{N}(\xB_i|\muB_c,\SigmaB_c) + (1-\beta) \frac{1}{N_c}\sum_{j\in c} k_\text{CS}(\xB_i|\xB_j),
+		\label{eq:nca-cs-back-1}
+	\end{align}
+	where $\beta$ is the mixing coefficient between the background distribution and the compact support model and $\muB_c$ and $\SigmaB_c$ are the sample mean and covariance of the class $c$.
+	\item It is unclear how we can choose the mixing proportion $\beta$. By setting $\beta = \frac{1}{N_c+1}$ we will give equal weights to the background distribution as to the compact-support distribution. Setting it too large means that the model will favour convex classes. On one hand, this might diminish NCA's power. One of its strengths lies in the ability to work on non-convex classes. On the other hand, some of the classes  This can be fitted as a parameter during the optimization process. The gradient with respect to $\beta$ can be easily derived and it is easy to evaluate it as the quantities required for this should also be computed for the function evaluation. 
+	\item This model can be used by plugging equation \ref{eq:nca-cs-back-1} into the set of equations \ref{eq:nca-cc-kde-bayes}, \ref{eq:nca-cc-kde-obj} and \ref{eq:nca-cc-kde-grad} from section \ref{sec:cc-kde}. 
+	\item We give here the gradient for the background distribution with respect to the point positions (the full derivation can be found in the appendix). 
+	\item It might be useful to note that projecting the points $\{\xB_i\}_{i=1}^N$ into a new space $\{\AB\xB_i\}_{i=1}^N$ will change the sample mean $\muB_c$ to $\AB\muB_c$ and the sample covariance $\SigmaB_c$ to $\AB\SigmaB_c\AB^\mathrm{T}$. Hence, we have:
+	\begin{align}
+		\frac{\partial}{\partial \AB} \mathcal{N}(\AB\xB_i&|\AB\muB_c, \AB\SigmaB_c \AB^\mathrm{T}) = \mathcal{N}(\AB\xB_i|\AB\muB_c, \AB\SigmaB_c \AB^\mathrm{T})\notag\\
+		&\times \{ -(\AB\SigmaB_c \AB^\mathrm{T})^{-1}\AB\SigmaB_c
+		+\vB \vB ^ \mathrm{T} \AB \SigmaB_c - \vB (\xB - \muB_c)^\mathrm{T}
+		\},
+	\end{align}
+	where $\vB = (\AB\SigmaB_c \AB^\mathrm{T})^{-1}\AB(\xB - \muB_c)$.
+\end{itemize}

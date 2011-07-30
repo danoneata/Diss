@@ -1,10 +1,16 @@
-\contentsline {chapter}{\numberline {1}Neighbourhood component analysis}{1}
-\contentsline {section}{\numberline {1.1}General presentation}{1}
-\contentsline {section}{\numberline {1.2}Class-conditional kernel density estimation interpretation}{1}
-\contentsline {chapter}{\numberline {2}Reducing the computational cost}{4}
-\contentsline {section}{\numberline {2.1}Sub-sampling}{4}
-\contentsline {section}{\numberline {2.2}Mini-batches}{5}
-\contentsline {section}{\numberline {2.3}Stochastic learning}{8}
-\contentsline {section}{\numberline {2.4}Approximate computations}{8}
-\contentsline {section}{\numberline {2.5}Exact computations}{8}
-\contentsline {chapter}{Bibliography}{10}
+\contentsline {chapter}{\numberline {1}Introduction}{1}
+\contentsline {chapter}{\numberline {2}Background}{4}
+\contentsline {section}{\numberline {2.1}Theoretical background}{4}
+\contentsline {section}{\numberline {2.2}Related methods}{6}
+\contentsline {chapter}{\numberline {3}Neighbourhood component analysis}{8}
+\contentsline {section}{\numberline {3.1}General presentation}{8}
+\contentsline {section}{\numberline {3.2}Practical notes}{8}
+\contentsline {section}{\numberline {3.3}Class-conditional kernel density estimation interpretation}{9}
+\contentsline {chapter}{\numberline {4}Reducing the computational cost}{11}
+\contentsline {section}{\numberline {4.1}Sub-sampling}{11}
+\contentsline {section}{\numberline {4.2}Mini-batches}{12}
+\contentsline {section}{\numberline {4.3}Stochastic learning}{15}
+\contentsline {section}{\numberline {4.4}Approximate computations}{15}
+\contentsline {section}{\numberline {4.5}Exact computations}{15}
+\contentsline {section}{\numberline {4.6}NCA with compact support kernels and background distribution}{16}
+\contentsline {chapter}{Bibliography}{19}

@@ -16,6 +16,20 @@ By differentiating with respect to $A$, we obtain the gradient:
 \end{align}
 where $\xB_{ij} = \xB_i - \xB_j$. 
 
+%\begin{itemize}
+%	\item 
+%\end{itemize}
+
+\section{Practical notes}
+
+\begin{itemize}
+	\item Initialization.
+	\item Optimization methods. Conjugate gradients, gradient descent, bold driver heuristic. 
+	\item Numerical issues: log-sum-exp trick, data normalization.
+	\item Regularization: favours 1NN, not sure if optimal thing to do. Might try regularization, as pointed out in \citep{singh2010}. Give equations.
+	\item Further idea: Dimensionality annealing. Regularize each column gradually.
+\end{itemize}
+
 \section{Class-conditional kernel density estimation interpretation}
 \label{sec:cc-kde}
 
@@ -51,6 +65,7 @@ Using the mixture of Gaussians assumption, we have that the probability of a poi
 However, we are interested on the inverse probability, given a point $\xB_i$ what is the probability of $\xB_i$ belonging to class $c$. We can obtain an expression for $p(c|\xB_i)$ using Bayes' theorem:
 \begin{align}
 	p(c|\xB_i) = \frac{p(\xB_i|c)p(c)}{p(c|\xB_i)} = \frac{p(\xB_i|c)p(c)}{\sum_{c} p(\xB_i|c)p(c)}.
+	\label{eq:nca-cc-kde-bayes}
 \end{align}
 
 Now if further consider the classes to be equal probable (which might a reasonable assumption if we have no a priori information) we arrive at result that resembles the expression of $p_i$ (see equation):
@@ -68,6 +83,7 @@ Now if further consider the classes to be equal probable (which might a reasonab
 We are interested in predicting the correct class of the point $\xB_i$. So we try to find that linear transformation $\AB$ that maximises the class conditional probability of this point $p(c_i|\xB_i)$ to its true class $c_i$. 
 \begin{align}
 	f(\AB) = \sum_i p(c_i|\AB\xB_i).
+	\label{eq:nca-cc-kde-obj}
 \end{align}.
 
 The gradient of the objective function is the following:
@@ -92,4 +108,5 @@ The gradient of the objective function is the following:
 	  				\sum_c p(\AB\xB_i|c)p(c)
 	  			}
 	  	     \right \}.
+	\label{eq:nca-cc-kde-grad}
 \end{align}
