@@ -23,9 +23,22 @@ function [output] = NN_score(X_train, c_train, X_test, c_test, A)
     A = eye(size(X_test,1));
   end
   
-  sd = square_dist(A*X_train, A*X_test);
-  [dummy, idxs_min] = min(sd, [], 1);
-  c_predicted = c_train(idxs_min);
+  if size(X_train,2) > 3000 || size(X_test,2) > 3000,
+    N = size(X_test,2);
+    c_predicted = zeros(1,N);
+    
+    AX_train = A*X_train;
+    
+    for i = 1:N,
+      sd = square_dist(AX_train, A*X_test(:,i));
+      [dummy, idxs_min] = min(sd, [], 1);
+      c_predicted(i) = c_train(idxs_min);  
+    end
+  else  
+    sd = square_dist(A*X_train, A*X_test);
+    [dummy, idxs_min] = min(sd, [], 1);
+    c_predicted = c_train(idxs_min);
+  end
   
   if ~exist('c_test','var') || isempty(c_test),
     output = c_predicted;
