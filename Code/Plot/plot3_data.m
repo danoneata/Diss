@@ -25,12 +25,13 @@ function plot3_data(X, c, title_, flags)
   len_cc = length(cc);
   D = size(X,1);
   
-  colors = [1 0 0; 0 1 0; 0 0 1; 1 1 0; 1 0 1; 0 1 1];
-  if len_cc > 6,
-    colors = [colors; rand(len_cc-6,3)];
+  mm = hsv(16);
+  colors = [mm(1,:); mm(10,:); [0.3 0.8 0.3]; mm(5,:); mm(16,:); mm(13,:)];
+  if len_cc > length(colors),
+    colors = [colors; rand(15,3)];
   end
   
-  style = ['.' 'o' 'x' '+' '*' 's' 'd' 'v' '^' '<' '>' 'p' 'h'];
+  style = ['*' 'o' '+' '.' 's' 'd' 'v' '^' '<' '>' 'p' 'h'];
   if len_cc > length(style),
     style = repmat(style, 1, ceil(len_cc/length(style)));
   end
@@ -42,7 +43,7 @@ function plot3_data(X, c, title_, flags)
     
     figure; 
     axis equal;
-    title(title_, 'interpreter', 'latex');
+    title(title_, 'interpreter', 'latex', 'FontSize', 14);
     
     if flags(1),
       set(gca, 'XTick', [], 'YTick', []);
