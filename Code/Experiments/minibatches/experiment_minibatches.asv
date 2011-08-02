@@ -1,0 +1,17 @@
+close all;
+d = 15;
+
+% [X,c] = load_data_set('mnist-train-256');
+% [X,c,Xt,ct]=split_data(X,c);
+[X,c] = load_data_set('usps');
+[Xt,ct] = load_data_set('mnist-test-256');
+
+[mapping] = run_nca_minibatches('nca_obj_simple', X, c, d, [1 500 0.05]);
+AX = transform(X, mapping);
+AXt = transform(Xt, mapping);
+
+plot3_data(AX,c);
+plot3_data(AXt,ct);
+
+score_nn  = NN_score(AX,c,AXt,ct);
+% score_nca = nca_cls('nca_obj_simple', AX, c, AXt, ct);
