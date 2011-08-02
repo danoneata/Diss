@@ -1,0 +1,35 @@
+im_nr = 354
+d = 5
+init = 3
+m = 2000
+p = 0.050
+lambda = 1.000
+t0 = 50.000
+time = 3908.735206733738300
+NN score: 88.160
+NCA score: 90.030
+---
+im_nr = 926
+d = 5
+init = 3
+m = 2000
+p = 0.050
+lambda = 1.000
+t0 = 50.000
+time = 1314.643029939071500
+NN score: 84.230
+NCA score: 88.030
+---
+im_nr = 469
+d = 5
+init = 3
+m = 2000
+p = 0.050
+lambda = 1.000
+t0 = 50.000
+time = 3379.974088382745300
+it = 190
+it_best = 170
+NN score: 87.370
+NCA score: 89.760
+---
