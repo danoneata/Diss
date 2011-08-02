@@ -44,6 +44,11 @@ Deng, K. and Moore, A. (1995).
 \newblock In {\em Proceedings of the Twelfth International Joint Conference on
   Artificial Intellingence}, pages 1233--1239, San Francisco. Morgan Kaufmann.
 
+\bibitem[Fisher and Others, 1936]{fisher1936}
+Fisher, R. and Others (1936).
+\newblock {The use of multiple measurements in taxonomic problems.}
+\newblock In {\em Annals of Eugenics}, volume~7, pages 179--188.
+
 \bibitem[Friedman et~al., 1977]{friedman1977}
 Friedman, J.~H., Bentley, J.~L., and Finkel, R.~A. (1977).
 \newblock An algorithm for finding best matches in logarithmic expected time.
@@ -81,6 +86,12 @@ Mitchell, T.~M. (1997).
 \newblock {\em Machine Learning}.
 \newblock McGraw-Hill.
 
+\bibitem[Moore, 1991]{moore1991}
+Moore, A. (1991).
+\newblock A tutorial on kd-trees.
+\newblock Extract from PhD Thesis.
+\newblock Available from \url{http://www.cs.cmu.edu/~awm/papers.html}.
+
 \bibitem[Moore, 2000]{moore2000}
 Moore, A. (2000).
 \newblock {\em {The anchors hierarchy: Using the triangle inequality to survive
@@ -91,11 +102,21 @@ Moore, A. (2000).
 Omohundro, S. (1989).
 \newblock {\em {Five balltree construction algorithms}}.
 
+\bibitem[Pearson, 1901]{pearson1901}
+Pearson, K. (1901).
+\newblock {On lines and planes of closest fit to systems of points in space}.
+\newblock {\em Philosophical Magazine Series 6}, 2(11):559--572.
+
 \bibitem[Russell et~al., 1996]{russell1996}
 Russell, S.~J., Norvig, P., Candy, J.~F., Malik, J.~M., and Edwards, D.~D.
   (1996).
 \newblock {\em Artificial intelligence: a modern approach}.
 \newblock Prentice-Hall, Inc., Upper Saddle River, NJ, USA.
+
+\bibitem[Shen et~al., 2006]{shen2006}
+Shen, Y., Ng, A., and Seeger, M. (2006).
+\newblock {Fast gaussian process regression using kd-trees}.
+\newblock {\em Advances in neural information processing systems}, 18:1225.
 
 \bibitem[Singh-Miller, 2010]{singh2010}
 Singh-Miller, N. (2010).
@@ -108,6 +129,12 @@ Weinberger, K. and Saul, L. (2009).
 \newblock {Distance metric learning for large margin nearest neighbor
   classification}.
 \newblock {\em The Journal of Machine Learning Research}, 10:207--244.
+
+\bibitem[Weinberger and Tesauro, 2007]{weinberger2007}
+Weinberger, K. and Tesauro, G. (2007).
+\newblock {Metric learning for kernel regression}.
+\newblock In {\em Eleventh international conference on artificial intelligence
+  and statistics}, pages 608--615.
 
 \bibitem[Xing et~al., 2003]{xing2003}
 Xing, E., Ng, A., Jordan, M., and Russell, S. (2003).

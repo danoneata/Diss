@@ -78,7 +78,7 @@ There are different possibilities for splitting the data-set:
 		\label{alg:rpc}  
 		\begin{algorithmic}                    % enter the algorithmic environment
 			\REQUIRE Data set $\mathcal{D}=\{\xB_1,\cdots,\xB_N\}$ and $n$ size of clusters.
-			\IF {$n < N$}
+			\IF {$N < n$}
 				\STATE New cluster: $i\leftarrow i+1$.
 				\RETURN current points as a cluster: $\mathcal{M}_i \leftarrow \mathcal{D}$.
 			\ELSE
@@ -125,11 +125,151 @@ There are different possibilities for splitting the data-set:
 \section{Stochastic learning}
 \label{sec:stochastic-learning}
 
+The following technique is theoretically justified by stochastic approximation arguments. The main idea is to get an unbiased estimator of the gradient by looking only at a few points and how they relate to the entire data set.
+
+More precisely, in the classical learning setting, we update our parameter $\AB$ after we have considered each point $\xB_i$ in the data set. In the stochastic learning procedure, we update $\AB$ more frequently by considering only $n$ randomly selected points. As in the previous case, we still need to compute $\{p_i\}_{i=1}^n$ using all the $N$ points. It should be further stressed the difference to the mini-batches approach; there, the contributions are calculated only between the $n$ points that belong to the mini-batch. 
+
+The objective function that we need to optimize at each iteration and its gradient are given by the next equations:
+\begin{align}
+	f_\text{sNCA}(\AB) = \sum_{i=1}^n p_i\\
+	\frac{\partial f_\text{sNCA}}{\partial \AB} = \sum_{i=1}^{n} \frac{\partial p_i}{\partial \AB}
+	\label{eq:snca-grad}
+\end{align}
+This means that the theoretical cost of the stochastic learning method will scale with $nN$.
+
+	\begin{algorithm} 
+		\caption{Stochastic learning for NCA (sNCA)} 
+		\label{alg:sNCA}  
+		\begin{algorithmic}                    
+			\REQUIRE Data set $\mathcal{D}=\{\xB_1,\cdots,\xB_N\}$, $n$ number of points to consider for the gradient estimation, $\AB$ initial linear transformation.
+			\REPEAT
+				\STATE Split data $\mathcal{D}$ into groups $\mathcal{M}_i$ of size $n$.\
+				\FORALL {$\mathcal{M}_i$}
+					\STATE {Update parameter using gradient given by Equation \ref{eq:snca-grad}: \STATE $\AB\leftarrow \AB - \eta\frac{\partial f_\text{sNCA}(\AB,\mathcal{M}_i)}{\partial\AB}$.}
+					\STATE {Update learning rate $\eta$.}
+				\ENDFOR
+			\UNTIL {convergence.}
+		\end{algorithmic}
+	\end{algorithm}
+
+Note: this idea might be used easily and robustly for on-line learning. Given a new point $\xB_{N+1}$ we update $\AB$ using the derivative $\frac{\partial p_{N+1}}{\partial \AB}$.
 
 \section{Approximate computations}
 \label{sec:approximate}
 
+A straightforward way of speeding up the computations was previously mentioned in the original paper \citep{goldberger2004} and in some NCA related work \citep{weinberger2007, singh2010}. This method involves pruning small terms in the original objective function. We then use an approximated objective function and its corresponding gradient for the optimization process.
 
+The motivation lies in the fact that the contributions $p_{ij}$ decay very quickly with distance:
+ \[
+ 	p_{ij} \propto \exp\{-d(\AB\xB_i;\AB\xB_j)^2\}.
+ \] 
+ 
+ The evolution of the contributions during the training period is depicted in Figure.  We notice that most of the values $p_{ij}$ are insignificant compared to the largest contribution. This suggests that we might be able to preserve the accuracy of our estimations even if we discard a large part of the neighbours.
+
+So, \citet{weinberger2007} choose to use only the top $m = 1000$ neighbours for each point $\xB_i$. Also they disregard those points that are farther away than $d_{\max}=34$ units from the query point: $p_{ij} = 0, \forall \xB_j$ such that $d(\AB\xB_i;\AB\xB_j)>d_{\max}$. While useful in practical situations, these suggestions lack of a principled description: how can we optimally choose $m$ and $d_{\max}$ in a general setting? We would also like to be able to estimate the error introduced by the approximations.
+
+We correct those drawbacks by making use of the KDE formulation of NCA (see Section \ref{sec:cc-kde}) and adapting existing ideas for fast KDE \citep{deng1995,gray2003} to our particular application. We will use a class of accelerated methods that are based on data partitioning structures (\textit{e.g.}, $k$-d trees, ball trees). As we shall shortly see, these provide us with means to quickly find only the neighbours $\xB_j$ that give significant values $p_{ij}$ for any query point $\xB_i$. 
+%Hence, we will be able to compute an approximated value of the true class-conditional probability $p(\xB_i|c) = \sum_{j\in c} k(\xB_i|\xB_j),\forall i,c.$
+%
+%A question still remains: given a point $\xB_i$ how can we \textit{quickly} ? It is clear that only the nearby points will contribute to $p_i$, while the points that are further away can be ignored. A framework that provides us with means of doing this is the $k$-d tree.
+
+\subsection{$k$-d trees}
+\label{subsec:k-d-trees}
+
+The $k$ dimensional tree structure ($k$-d tree; \citealp{bentley1975}) organises the data in a binary tree using axis-aligned splitting planes. The $k$-d tree has the property to place close in the tree those points that live nearby in the original geometrical space. This makes such structures efficient mechanisms for nearest neighbour searches \citep{friedman1977} or range searches \citep{moore1991}.
+
+There are different flavours of $k$-d trees. We choose for our application a variant of $k$-d tree that uses bounding boxes to describe the position of the points. Intuitively, we can imagine each node of the tree as a bounding hyper-rectangle in the $D$ dimensional space of our data. The root node will represent the whole data set and it can be viewed as an hyper-rectangle that contains all the data points (see Figure \ref{fig:kdtree-1}). Its children will contain disjoint subsets of the points contained by their parent (see Figure \ref{fig:kdtree-2}).
+
+\begin{figure}
+  \centering
+  \subfigure[Root node]{\label{fig:kdtree-1}\includegraphics[width=0.45\textwidth]{images/kdtree-1}}
+\subfigure[First level]{\label{fig:kdtree-2}\includegraphics[width=0.45\textwidth]{images/kdtree-2}}
+\\
+  \subfigure[Second level]{\label{fig:kdtree-3}\includegraphics[width=0.45\textwidth]{images/kdtree-3}}
+\subfigure[Last level]{\label{fig:kdtree-4}\includegraphics[width=0.45\textwidth]{images/kdtree-4}}
+  \caption{Illustration of the $k$-d tree with bounding boxes at different levels of depths.}
+  \label{fig:kdtree}
+\end{figure}
+
+The tree building is done recursively and it starts from the root node. At each node we have to select which points of the current node are contained by each of the children; this is equivalent of saying we need to select the direction and the position of the split. Because the splitting directions are axis aligned, we can choose it from $D$ possible planes. One can choose this randomly or the use each of the directions in a successive manner. However, a more common approach, which we adopt is to split along the direction that presents the largest variance: 
+\begin{align}
+	\text{Splitting direction} \leftarrow \operatorname{argmax}_{d} (\max_ix_{id} - \min_ix_{id}).
+	\label{eq:splitting-direction}
+\end{align}
+This results in a better clustering of the points. Otherwise it might happen that points situated in the same node can still be further away. We choose the splitting value to be the median value of the points contained by the current node. This guarantees us a balanced tree.
+
+	\begin{algorithm} 
+		\caption{$k$-d tree building algorithm} 
+		\label{alg:kd-tree-build}  
+		\begin{algorithmic}                    % enter the algorithmic environment
+			\REQUIRE Data set $\mathcal{D}=\{\xB_1,\cdots,\xB_N\}$, $i$ position in tree and $m$ number of points in leaves.
+			\IF {$N < m$}
+				\STATE Mark node $i$ as leaf: \texttt{splitting\_direction(i)=-1}.
+				\STATE Add points to leaf: \texttt{points(i)}$\leftarrow \mathcal{D}$.
+				\RETURN
+			\ENDIF
+				\STATE {Choose splitting direction $d$ using Equation \ref{eq:splitting-direction}:}
+				\STATE {\texttt{splitting\_direction(i)=}$d$.}
+				\STATE {Find the median value $\tilde{x}_d$ on the selected splitting direction $d$:}
+				\STATE {\texttt{splitting\_value(i)=}$\tilde{x}_d$.}
+				\STATE {Determine points to the left $\mathcal{D}_{\le\tilde{\xB}}$ and to the right  $\mathcal{D}_{>\tilde{\xB}}$ of the median $\tilde{x}_d$.}
+				\STATE {Continue recursive building on these subsets:}
+				\STATE {Build left child \texttt{build\_kdtree(}$\mathcal{D}_{\le\tilde{\xB}}$\texttt{,2*i)}.}
+				\STATE {Build right child \texttt{build\_kdtree(}$\mathcal{D}_{>\tilde{\xB}}$\texttt{,2*i+1)}.}
+%							$\mathcal{D}_{>\tilde{\xB}}=\{\xB\in\mathcal{D}|\xB>\tilde{\xB}\}$
+		\end{algorithmic}
+	\end{algorithm}
+	
+	\begin{itemize}
+		\item It is important to stress that the performance of $k$-d trees quickly degrades with the number of dimensions the data lives in. Also the structure of the data is important. Less structure means more searches. These aspects are illustrated in Figure. 
+		\item So we will be able to efficiently use $k$-d trees only when learning a low-rank $\AB$ that projects the data points in a low dimensional space.
+	\end{itemize}
+	
+%organize the data in a binary tree structure using axis-aligned splitting planes of the data space. Each node in the tree represents a data point and it also contains a splitting direction (this is usually denoted by an integer from 1 to $k$). The splitting plane is often chosen to be perpendicular on the dimension with the largest variance and to go through the median point (this results in a balanced tree). Furthermore, a non-leaf node has two successors: the sub-tree rooted at the left successor contains the points that are situated at the left of the splitting plane, while the sub-tree rooted at the right successor of the splitting plane contains the points that are situated at the right of the splitting plane. 
+
+\subsection{Approximate kernel density estimation}
+\label{subsec:approx-kde}
+
+\begin{itemize}
+	\item The following ideas are mostly inspired by previous work on fast kernel density estimators \citep{gray2003,shen2006}.
+	\item The goal is to compute $p(\xB)$. In the kernel density estimation, we estimate the unknown probability density function as follows: $p(\xB_i) = \frac{1}{N}\sum_{j=1} Nk(\xB_i|\xB_j)$. If the number of samples $N$ is large then $p(\xB_i)$ can approximated to high degree of precision by discarding lots of the data. A question still remains: how can we do this in a sensible manner? 
+	\item Given a query point $\xB$ and a group of points $G$ we can replace each individual contribution $k(\xB|\xB_j), \xB_j\in G$, with $k(\xB|\xB_g)$. This last quantity is specific for the group and will be common for all points in $G$. There are two ways to obtain a reasonable value for $k(\xB|\xB_g)$: either approximate $\xB_g$ first and then compute $k(\xB|\xB_g)$; here $\xB_g$ can be the mean of the points in the group. The second possibility is to approximate $k(\xB|\xB_g)$ directly; one possibility is $k(\xB|\xB_g) = \frac{\min_jk(\xB|\xB_j) + \max_jk(\xB|\xB_j)}{2}$. We prefer the second option, because it does not need to store mean of the points from $G$. Also, we will see that the minimum and maximum contributions have to be computed to decide whether to prune or not; so no further computational expense is introduced by using this approximation.
+	\item We can see that the maximum error for each point in the group that is introduced by such an approximation is $\frac{\max_jk(\xB|\xB_j) - \min_jk(\xB|\xB_j)}{2}$. This can be controlled to be small; for example, we can decide to approximate only when the group is far away from the query point or when the kernel contribution is almost constant for the points within the group. However, it is better to consider the error relative to the total quantity we want to estimate. But we do not know the total sum before hand so we will use an upper bound $p(\xB) < p_{\text{SoFar}}(\xB) + \max k(\xB|\xB_j) $. This means that the order in which we accumulate it is important. 
+	\item By using $k$-d trees our groups will be hyper-rectangles. So in order to prune we test that the largest and the smallest contribution within the hyper-rectangle varies a little. We start at with a large group, the root of the tree, that contains all the points and then recurs on its children until there is no need to and we can approximate. 
+\end{itemize}
+
+\subsection{Approximate KDE for NCA}
+\label{subsec:approx-KDE-for-NCA}
+	\begin{itemize}
+		\item NCA was formulated as a class-conditional kernel density estimation problem. So we evaluate $p(\xB|c),\forall c$ and for each class we build a $k$-d tree. We will obtain an approximated version of the objective function. To obtain the gradient of this new objective function we can use Equation \ref{eq:nca-cc-kde-grad}. The derivative of $p(\AB\xB|c)$ will be different only for those groups where we do approximations. So, for such a group we obtain the following gradient:
+		\begin{align}
+			\frac{\partial}{\partial \AB} \sum_{j\in G} k(\AB\xB|\AB\xB_j) &\approx \frac{\partial}{\partial \AB} \frac{1}{2} \left\{\min_{j\in G} k(\AB\xB|\AB\xB_j) + \max_{j\in G} k(\AB\xB|\AB\xB_j)\right\}\notag\\
+			& = \frac{1}{2}\left\{ \frac{\partial}{\partial \AB} k(\AB\xB|\AB\xB_c) + \frac{\partial}{\partial \AB} k(\AB\xB|\AB\xB_f) \right\},
+		\end{align}
+		where $\AB\xB_c$ denotes the closest point in $G$ to the query point $\AB\xB$ and $\AB\xB_f$ is the farthest point in $G$ to $\AB\xB$. Here we made use of the fact the kernel function is a monotonic function of the distance. So the closest point gives the maximum contribution, while the farthest point contributes the least.
+	\end{itemize}
+	
+	
+	\begin{algorithm} 
+		\caption{Approximate NCA objective function and gradient computation} 
+		\label{alg:cc-kde-nca}  
+		\begin{algorithmic}                    % enter the algorithmic environment
+			\REQUIRE Projection matrix $\AB$, data set $\mathcal{D}=\{\xB_1,\cdots,\xB_N\}$ and error~$\epsilon$.
+			\FORALL {classes $c$}
+				\STATE {Build $k$-d tree for the points in class $c$.}
+			\ENDFOR 
+			\FORALL {data points $\xB_i$}
+				\FORALL {classes $c$}
+					\STATE {Compute estimated probability $\hat{p}(\AB\xB_i|c)$ and the corresponding derivatives $\frac{\partial}{\partial \AB} \hat{p}(\AB\xB_i|c)$  using approximated KDE Algorithm:}
+%					\STATE {\texttt{[p(c),dp(c)]=NCA\_recursive(kdtree(c))}}
+				\ENDFOR
+				\STATE Compute soft probability $\hat{p}_i \equiv \hat{p}(c|\AB\xB_i) = \frac{\hat{p}(\AB\xB_i|c_i)}{\sum_{c}\hat{p}(\AB\xB_i|c)}$.
+				\STATE Compute gradient $\frac{\partial}{\partial \AB} \hat{p}$ using Equation \ref{eq:nca-cc-kde-grad}.
+				\STATE Update function value and gradient value.
+			\ENDFOR
+		\end{algorithmic}
+	\end{algorithm}
+	
 \section{Exact computations}
 \label{sec:exact-computations}
 

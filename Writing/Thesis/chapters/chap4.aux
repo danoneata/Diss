@@ -1,45 +1,81 @@
 \relax 
-\@writefile{toc}{\contentsline {chapter}{\numberline {4}Reducing the computational cost}{11}}
+\@writefile{toc}{\contentsline {chapter}{\numberline {4}Reducing the computational cost}{13}}
 \@writefile{lof}{\addvspace {10\p@ }}
 \@writefile{lot}{\addvspace {10\p@ }}
-\newlabel{ch:reducing}{{4}{11}}
-\@writefile{toc}{\contentsline {section}{\numberline {4.1}Sub-sampling}{11}}
-\newlabel{sec:sub-sampling}{{4.1}{11}}
+\newlabel{ch:reducing}{{4}{13}}
+\@writefile{toc}{\contentsline {section}{\numberline {4.1}Sub-sampling}{13}}
+\newlabel{sec:sub-sampling}{{4.1}{13}}
 \citation{gonzalez1985}
 \citation{chalupka2011}
-\newlabel{fig:sub-sampling-1}{{4.1(a)}{12}}
-\newlabel{sub@fig:sub-sampling-1}{{(a)}{12}}
-\newlabel{fig:sub-sampling-2}{{4.1(b)}{12}}
-\newlabel{sub@fig:sub-sampling-2}{{(b)}{12}}
-\@writefile{lof}{\contentsline {figure}{\numberline {4.1}{\ignorespaces Result of sub-sampling method on \texttt  {wine}. There were used one third of the original data set for training, \textit  {i.e.}, $n = N/3$. We note that the points that belong to the sub-set $\mathcal  {D}_n$ are perfectly separated. But after applying the metric to the whole data there appear different misclassifications. The effects are even more acute if we use smaller sub-sets.\relax }}{12}}
-\@writefile{lof}{\contentsline {subfigure}{\numberline{(a)}{\ignorespaces {Learnt projection $\mathbf {A}$ on the sub-sampled data set $\mathcal {D}_n$.}}}{12}}
-\@writefile{lof}{\contentsline {subfigure}{\numberline{(b)}{\ignorespaces {The projection $\mathbf {A}$ applied to the whole data set $\mathcal {D}$.}}}{12}}
-\newlabel{fig:sub-sampling}{{4.1}{12}}
-\@writefile{toc}{\contentsline {section}{\numberline {4.2}Mini-batches}{12}}
-\newlabel{sec:mini-batches}{{4.2}{12}}
-\@writefile{loa}{\contentsline {algorithm}{\numberline {4.1}{\ignorespaces Training algorithm using mini-batches formed by clustering\relax }}{13}}
-\newlabel{alg:mini-batches}{{4.1}{13}}
-\@writefile{loa}{\contentsline {algorithm}{\numberline {4.2}{\ignorespaces Farthest point clustering\relax }}{13}}
-\newlabel{alg:fpc}{{4.2}{13}}
-\@writefile{loa}{\contentsline {algorithm}{\numberline {4.3}{\ignorespaces Recursive projection clustering\relax }}{14}}
-\newlabel{alg:rpc}{{4.3}{14}}
-\@writefile{toc}{\contentsline {section}{\numberline {4.3}Stochastic learning}{15}}
-\newlabel{sec:stochastic-learning}{{4.3}{15}}
-\@writefile{toc}{\contentsline {section}{\numberline {4.4}Approximate computations}{15}}
-\newlabel{sec:approximate}{{4.4}{15}}
-\@writefile{toc}{\contentsline {section}{\numberline {4.5}Exact computations}{15}}
-\newlabel{sec:exact-computations}{{4.5}{15}}
-\newlabel{eq:cs-1}{{4.1}{15}}
-\newlabel{eq:cs-2}{{4.2}{15}}
-\newlabel{eq:nca-cs-grad}{{4.7}{16}}
-\@writefile{toc}{\contentsline {section}{\numberline {4.6}NCA with compact support kernels and background distribution}{16}}
-\newlabel{sec:nca-cs-back}{{4.6}{16}}
-\@writefile{lof}{\contentsline {figure}{\numberline {4.2}{\ignorespaces Neighbourhood component analysis with compact support kernels and background distribution. Main assumption: each class is class is a mixture of compact support distributions $k(\mathbf  {x}|\mathbf  {x}_j)$ plus the normal background distribution $\mathcal  {N}(\mathbf  {x}|\unhbox \voidb@x \hbox {\relax \mathversion  {bold}$\mu $},\unhbox \voidb@x \hbox {\relax \mathversion  {bold}$\Sigma $})$.\relax }}{17}}
-\newlabel{fig:cs-back}{{4.2}{17}}
-\newlabel{eq:nca-cs-back-1}{{4.8}{17}}
+\newlabel{fig:sub-sampling-1}{{4.1(a)}{14}}
+\newlabel{sub@fig:sub-sampling-1}{{(a)}{14}}
+\newlabel{fig:sub-sampling-2}{{4.1(b)}{14}}
+\newlabel{sub@fig:sub-sampling-2}{{(b)}{14}}
+\@writefile{lof}{\contentsline {figure}{\numberline {4.1}{\ignorespaces Result of sub-sampling method on \texttt  {wine}. There were used one third of the original data set for training, \textit  {i.e.}, $n = N/3$. We note that the points that belong to the sub-set $\mathcal  {D}_n$ are perfectly separated. But after applying the metric to the whole data there appear different misclassifications. The effects are even more acute if we use smaller sub-sets.\relax }}{14}}
+\@writefile{lof}{\contentsline {subfigure}{\numberline{(a)}{\ignorespaces {Learnt projection $\mathbf {A}$ on the sub-sampled data set $\mathcal {D}_n$.}}}{14}}
+\@writefile{lof}{\contentsline {subfigure}{\numberline{(b)}{\ignorespaces {The projection $\mathbf {A}$ applied to the whole data set $\mathcal {D}$.}}}{14}}
+\newlabel{fig:sub-sampling}{{4.1}{14}}
+\@writefile{toc}{\contentsline {section}{\numberline {4.2}Mini-batches}{14}}
+\newlabel{sec:mini-batches}{{4.2}{14}}
+\@writefile{loa}{\contentsline {algorithm}{\numberline {4.1}{\ignorespaces Training algorithm using mini-batches formed by clustering\relax }}{15}}
+\newlabel{alg:mini-batches}{{4.1}{15}}
+\@writefile{loa}{\contentsline {algorithm}{\numberline {4.2}{\ignorespaces Farthest point clustering\relax }}{15}}
+\newlabel{alg:fpc}{{4.2}{15}}
+\@writefile{loa}{\contentsline {algorithm}{\numberline {4.3}{\ignorespaces Recursive projection clustering\relax }}{16}}
+\newlabel{alg:rpc}{{4.3}{16}}
+\citation{goldberger2004}
+\citation{weinberger2007,singh2010}
+\@writefile{toc}{\contentsline {section}{\numberline {4.3}Stochastic learning}{17}}
+\newlabel{sec:stochastic-learning}{{4.3}{17}}
+\newlabel{eq:snca-grad}{{4.2}{17}}
+\@writefile{loa}{\contentsline {algorithm}{\numberline {4.4}{\ignorespaces Stochastic learning for NCA (sNCA)\relax }}{17}}
+\newlabel{alg:sNCA}{{4.4}{17}}
+\citation{weinberger2007}
+\citation{deng1995,gray2003}
+\citation{bentley1975}
+\citation{friedman1977}
+\citation{moore1991}
+\@writefile{toc}{\contentsline {section}{\numberline {4.4}Approximate computations}{18}}
+\newlabel{sec:approximate}{{4.4}{18}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.4.1}$k$-d trees}{18}}
+\newlabel{subsec:k-d-trees}{{4.4.1}{18}}
+\newlabel{fig:kdtree-1}{{4.2(a)}{19}}
+\newlabel{sub@fig:kdtree-1}{{(a)}{19}}
+\newlabel{fig:kdtree-2}{{4.2(b)}{19}}
+\newlabel{sub@fig:kdtree-2}{{(b)}{19}}
+\newlabel{fig:kdtree-3}{{4.2(c)}{19}}
+\newlabel{sub@fig:kdtree-3}{{(c)}{19}}
+\newlabel{fig:kdtree-4}{{4.2(d)}{19}}
+\newlabel{sub@fig:kdtree-4}{{(d)}{19}}
+\@writefile{lof}{\contentsline {figure}{\numberline {4.2}{\ignorespaces Illustration of the $k$-d tree with bounding boxes at different levels of depths.\relax }}{19}}
+\@writefile{lof}{\contentsline {subfigure}{\numberline{(a)}{\ignorespaces {Root node}}}{19}}
+\@writefile{lof}{\contentsline {subfigure}{\numberline{(b)}{\ignorespaces {First level}}}{19}}
+\@writefile{lof}{\contentsline {subfigure}{\numberline{(c)}{\ignorespaces {Second level}}}{19}}
+\@writefile{lof}{\contentsline {subfigure}{\numberline{(d)}{\ignorespaces {Last level}}}{19}}
+\newlabel{fig:kdtree}{{4.2}{19}}
+\citation{gray2003,shen2006}
+\newlabel{eq:splitting-direction}{{4.3}{20}}
+\@writefile{loa}{\contentsline {algorithm}{\numberline {4.5}{\ignorespaces $k$-d tree building algorithm\relax }}{20}}
+\newlabel{alg:kd-tree-build}{{4.5}{20}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.4.2}Approximate kernel density estimation}{21}}
+\newlabel{subsec:approx-kde}{{4.4.2}{21}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.4.3}Approximate KDE for NCA}{22}}
+\newlabel{subsec:approx-KDE-for-NCA}{{4.4.3}{22}}
+\@writefile{loa}{\contentsline {algorithm}{\numberline {4.6}{\ignorespaces Approximate NCA objective function and gradient computation\relax }}{22}}
+\newlabel{alg:cc-kde-nca}{{4.6}{22}}
+\@writefile{toc}{\contentsline {section}{\numberline {4.5}Exact computations}{22}}
+\newlabel{sec:exact-computations}{{4.5}{22}}
+\newlabel{eq:cs-1}{{4.5}{23}}
+\newlabel{eq:cs-2}{{4.6}{23}}
+\newlabel{eq:nca-cs-grad}{{4.11}{24}}
+\@writefile{toc}{\contentsline {section}{\numberline {4.6}NCA with compact support kernels and background distribution}{24}}
+\newlabel{sec:nca-cs-back}{{4.6}{24}}
+\newlabel{eq:nca-cs-back-1}{{4.12}{24}}
+\@writefile{lof}{\contentsline {figure}{\numberline {4.3}{\ignorespaces Neighbourhood component analysis with compact support kernels and background distribution. Main assumption: each class is class is a mixture of compact support distributions $k(\mathbf  {x}|\mathbf  {x}_j)$ plus the normal background distribution $\mathcal  {N}(\mathbf  {x}|\unhbox \voidb@x \hbox {\relax \mathversion  {bold}$\mu $},\unhbox \voidb@x \hbox {\relax \mathversion  {bold}$\Sigma $})$.\relax }}{25}}
+\newlabel{fig:cs-back}{{4.3}{25}}
 \@setckpt{chapters/chap4}{
-\setcounter{page}{19}
-\setcounter{equation}{9}
+\setcounter{page}{27}
+\setcounter{equation}{13}
 \setcounter{enumi}{2}
 \setcounter{enumii}{0}
 \setcounter{enumiii}{0}
@@ -53,17 +89,17 @@
 \setcounter{subsubsection}{0}
 \setcounter{paragraph}{0}
 \setcounter{subparagraph}{0}
-\setcounter{figure}{2}
+\setcounter{figure}{3}
 \setcounter{table}{0}
 \setcounter{ContinuedFloat}{0}
 \setcounter{NAT@ctr}{0}
 \setcounter{parentequation}{0}
 \setcounter{float@type}{8}
-\setcounter{algorithm}{3}
-\setcounter{ALC@unique}{23}
-\setcounter{ALC@line}{9}
-\setcounter{ALC@rem}{9}
-\setcounter{ALC@depth}{1}
+\setcounter{algorithm}{6}
+\setcounter{ALC@unique}{55}
+\setcounter{ALC@line}{11}
+\setcounter{ALC@rem}{11}
+\setcounter{ALC@depth}{0}
 \setcounter{subfigure}{0}
 \setcounter{lofdepth}{1}
 \setcounter{subtable}{0}

@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-1.40.10 (MiKTeX 2.8) (preloaded format=pdflatex 2010.6.8)  30 JUL 2011 11:20
+This is pdfTeX, Version 3.1415926-1.40.10 (MiKTeX 2.8) (preloaded format=pdflatex 2010.6.8)  2 AUG 2011 17:01
 entering extended mode
 **main.tex
 (D:\Diss\Writing\Thesis\main.tex
@@ -315,22 +315,25 @@ Package: amsfonts 2009/06/22 v3.00 Basic AMSFonts support
 LaTeX Font Info:    Overwriting math alphabet `\mathfrak' in version `bold'
 (Font)                  U/euf/m/n --> U/euf/b/n on input line 96.
 ))
+("D:\Programs\MiKTeX 2.8\tex\latex\psnfss\courier.sty"
+Package: courier 2005/04/12 PSNFSS-v9.2a (WaS) 
+)
 (D:\Diss\Writing\Thesis\main.aux (D:\Diss\Writing\Thesis\chapters/chap1.aux)
 (D:\Diss\Writing\Thesis\chapters/chap2.aux)
 (D:\Diss\Writing\Thesis\chapters/chap3.aux)
 (D:\Diss\Writing\Thesis\chapters/chap4.aux))
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 89.
-LaTeX Font Info:    ... okay on input line 89.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 89.
-LaTeX Font Info:    ... okay on input line 89.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 89.
-LaTeX Font Info:    ... okay on input line 89.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 89.
-LaTeX Font Info:    ... okay on input line 89.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 89.
-LaTeX Font Info:    ... okay on input line 89.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 89.
-LaTeX Font Info:    ... okay on input line 89.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 93.
+LaTeX Font Info:    ... okay on input line 93.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 93.
+LaTeX Font Info:    ... okay on input line 93.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 93.
+LaTeX Font Info:    ... okay on input line 93.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 93.
+LaTeX Font Info:    ... okay on input line 93.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 93.
+LaTeX Font Info:    ... okay on input line 93.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 93.
+LaTeX Font Info:    ... okay on input line 93.
 
 *geometry* driver: auto-detecting
 *geometry* detected driver: pdftex
@@ -427,7 +430,7 @@ LaTeX Warning: Reference `sec:background' on page 2 undefined on input line 14.
 )
 
 LaTeX Font Warning: Font shape `OT1/cmss/m/it' in size <12> not available
-(Font)              Font shape `OT1/cmss/m/sl' tried instead on input line 123.
+(Font)              Font shape `OT1/cmss/m/sl' tried instead on input line 127.
 
 
 [2] [3] (D:\Diss\Writing\Thesis\chapters/chap2.tex
@@ -447,7 +450,17 @@ File: omscmr.fd 1999/05/25 v2.5h Standard LaTeX font definitions
 )
 LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <12> not available
 (Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 12.
- [5]
+LaTeX Font Info:    Try loading font information for OT1+pcr on input line 23.
+
+("D:\Programs\MiKTeX 2.8\tex\latex\psnfss\ot1pcr.fd"
+File: ot1pcr.fd 2001/06/04 font definitions for OT1/pcr.
+)
+Underfull \hbox (badness 10000) in paragraph at lines 23--23
+[][]$\OT1/pcr/m/n/10 http : / / matlabdatamining . blogspot . com / 2006 / 11 /
+$
+ []
+
+[5]
 
 LaTeX Warning: Reference `sec:introduction' on page 6 undefined on input line 4
 0.
@@ -458,48 +471,78 @@ e 50.
 
 ) [6] [7] (D:\Diss\Writing\Thesis\chapters/chap3.tex
 Chapter 3.
-<images/mog.pdf, id=57, 170.6375pt x 175.65625pt>
-File: images/mog.pdf Graphic file (type pdf)
- <use images/mog.pdf> [8
+[8
 
 
 
 ]
-[9 <D:/Diss/Writing/Thesis/images/mog.pdf>]) [10]
+
+Package natbib Warning: Citation `Weinberger2009' on page 9 undefined on input 
+line 47.
+
+[9] <images/mog.pdf, id=67, 170.6375pt x 175.65625pt>
+File: images/mog.pdf Graphic file (type pdf)
+ <use images/mog.pdf>
+[10 <D:/Diss/Writing/Thesis/images/mog.pdf>] [11]) [12]
 (D:\Diss\Writing\Thesis\chapters/chap4.tex
 Chapter 4.
-<images/sub-sample-1.pdf, id=83, 334.24875pt x 268.00125pt>
+<images/sub-sample-1.pdf, id=90, 334.24875pt x 268.00125pt>
 File: images/sub-sample-1.pdf Graphic file (type pdf)
 
 <use images/sub-sample-1.pdf>
-<images/sub-sample-2.pdf, id=84, 334.24875pt x 268.00125pt>
+<images/sub-sample-2.pdf, id=91, 334.24875pt x 268.00125pt>
 File: images/sub-sample-2.pdf Graphic file (type pdf)
 
-<use images/sub-sample-2.pdf> [11
+<use images/sub-sample-2.pdf> [13
 
 
 
-] [12 <D:/Diss/Writing/Thesis/images/sub-sample-1.pdf> <D:/Diss/Writing/Thesis/
-images/sub-sample-2.pdf>] [13] [14] [15]
-<images/nca-cs-back.pdf, id=108, 168.63pt x 186.6975pt>
+] [14 <D:/Diss/Writing/Thesis/images/sub-sample-1.pdf> <D:/Diss/Writing/Thesis/
+images/sub-sample-2.pdf>] [15] [16] [17]
+[18] <images/kdtree-1.pdf, id=117, 296.10625pt x 252.945pt>
+File: images/kdtree-1.pdf Graphic file (type pdf)
+
+<use images/kdtree-1.pdf>
+<images/kdtree-2.pdf, id=118, 296.10625pt x 252.945pt>
+File: images/kdtree-2.pdf Graphic file (type pdf)
+
+<use images/kdtree-2.pdf>
+<images/kdtree-3.pdf, id=119, 296.10625pt x 252.945pt>
+File: images/kdtree-3.pdf Graphic file (type pdf)
+
+<use images/kdtree-3.pdf>
+<images/kdtree-4.pdf, id=120, 296.10625pt x 252.945pt>
+File: images/kdtree-4.pdf Graphic file (type pdf)
+
+<use images/kdtree-4.pdf> [19 <D:/Diss/Writing/Thesis/images/kdtree-1.pdf> <D:/
+Diss/Writing/Thesis/images/kdtree-2.pdf> <D:/Diss/Writing/Thesis/images/kdtree-
+3.pdf> <D:/Diss/Writing/Thesis/images/kdtree-4.pdf>] [20]
+Overfull \hbox (21.25002pt too wide) in paragraph at lines 235--236
+\OT1/cmr/m/n/12 the un-known prob-a-bil-ity den-sity func-tion as fol-lows: $\O
+ML/cmm/m/it/12 p\OT1/cmr/m/n/12 (\OT1/cmr/bx/n/12 x[]\OT1/cmr/m/n/12 ) = [] [][
+] \OML/cmm/m/it/12 Nk\OT1/cmr/m/n/12 (\OT1/cmr/bx/n/12 x[]\OMS/cmsy/m/n/12 j\OT
+1/cmr/bx/n/12 x[]\OT1/cmr/m/n/12 )$.
+ []
+
+[21] [22] [23] <images/nca-cs-back.pdf, id=146, 168.63pt x 186.6975pt>
 File: images/nca-cs-back.pdf Graphic file (type pdf)
 
-<use images/nca-cs-back.pdf> [16] [17 <D:/Diss/Writing/Thesis/images/nca-cs-bac
-k.pdf>]) [18] (D:\Diss\Writing\Thesis\main.bbl
+<use images/nca-cs-back.pdf> [24] [25 <D:/Diss/Writing/Thesis/images/nca-cs-bac
+k.pdf>]) [26] (D:\Diss\Writing\Thesis\main.bbl
 Missing character: There is no â in font cmti12!
 Missing character: There is no € in font cmti12!
 Missing character: There is no ” in font cmti12!
 Missing character: There is no â in font cmti12!
 Missing character: There is no € in font cmti12!
 Missing character: There is no ™ in font cmti12!
- [19
+ [27
 
 
 ])
 
 Package natbib Warning: There were undefined citations.
 
-[20] (D:\Diss\Writing\Thesis\main.aux
+[28] (D:\Diss\Writing\Thesis\main.aux
 (D:\Diss\Writing\Thesis\chapters/chap1.aux)
 (D:\Diss\Writing\Thesis\chapters/chap2.aux)
 (D:\Diss\Writing\Thesis\chapters/chap3.aux)
@@ -507,39 +550,42 @@ Package natbib Warning: There were undefined citations.
 
 LaTeX Warning: There were undefined references.
 
+
+LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
+
  ) 
 Here is how much of TeX's memory you used:
- 5230 strings out of 495285
- 72880 string characters out of 3180831
- 146497 words of memory out of 3000000
- 8299 multiletter control sequences out of 15000+200000
- 18669 words of font info for 69 fonts, out of 3000000 for 9000
+ 5337 strings out of 495285
+ 74757 string characters out of 3180831
+ 147968 words of memory out of 3000000
+ 8394 multiletter control sequences out of 15000+200000
+ 21210 words of font info for 78 fonts, out of 3000000 for 9000
  14 hyphenation exceptions out of 8191
- 43i,17n,40p,1647b,594s stack positions out of 5000i,500n,10000p,200000b,50000s
-<D:/Programs/MiKTeX 2.8/fonts/type1/public/amsfonts/cm/cmbx10.pfb><D:/Program
-s/MiKTeX 2.8/fonts/type1/public/amsfonts/cm/cmbx12.pfb><D:/Programs/MiKTeX 2.8/
-fonts/type1/public/amsfonts/cm/cmbx8.pfb><D:/Programs/MiKTeX 2.8/fonts/type1/pu
-blic/amsfonts/cm/cmex10.pfb><D:/Programs/MiKTeX 2.8/fonts/type1/public/amsfonts
-/cm/cmmi12.pfb><D:/Programs/MiKTeX 2.8/fonts/type1/public/amsfonts/cm/cmmi6.pfb
-><D:/Programs/MiKTeX 2.8/fonts/type1/public/amsfonts/cm/cmmi7.pfb><D:/Programs/
-MiKTeX 2.8/fonts/type1/public/amsfonts/cm/cmmi8.pfb><D:/Programs/MiKTeX 2.8/fon
-ts/type1/public/amsfonts/cm/cmmib10.pfb><D:/Programs/MiKTeX 2.8/fonts/type1/pub
-lic/amsfonts/cm/cmr10.pfb><D:/Programs/MiKTeX 2.8/fonts/type1/public/amsfonts/c
-m/cmr12.pfb><D:/Programs/MiKTeX 2.8/fonts/type1/public/amsfonts/cm/cmr6.pfb><D:
-/Programs/MiKTeX 2.8/fonts/type1/public/amsfonts/cm/cmr7.pfb><D:/Programs/MiKTe
-X 2.8/fonts/type1/public/amsfonts/cm/cmr8.pfb><D:/Programs/MiKTeX 2.8/fonts/typ
-e1/public/amsfonts/cm/cmss12.pfb><D:/Programs/MiKTeX 2.8/fonts/type1/public/ams
-fonts/cm/cmssbx10.pfb><D:/Programs/MiKTeX 2.8/fonts/type1/public/amsfonts/cm/cm
-ssi12.pfb><D:/Programs/MiKTeX 2.8/fonts/type1/public/amsfonts/cm/cmsy10.pfb><D:
-/Programs/MiKTeX 2.8/fonts/type1/public/amsfonts/cm/cmsy6.pfb><D:/Programs/MiKT
-eX 2.8/fonts/type1/public/amsfonts/cm/cmsy8.pfb><D:/Programs/MiKTeX 2.8/fonts/t
-ype1/public/amsfonts/cm/cmti12.pfb><D:/Programs/MiKTeX 2.8/fonts/type1/public/a
-msfonts/cm/cmtt10.pfb><D:/Programs/MiKTeX 2.8/fonts/type1/public/amsfonts/cm/cm
-tt12.pfb><D:/Programs/MiKTeX 2.8/fonts/type1/public/amsfonts/symbols/msbm10.pfb
->
-Output written on main.pdf (25 pages, 449179 bytes).
+ 43i,17n,40p,1647b,596s stack positions out of 5000i,500n,10000p,200000b,50000s
+{D:/Programs/MiKTeX 2.8/fonts/enc/dvips/fontname/8r.enc}<D:/Programs/MiKTeX 2
+.8/fonts/type1/public/amsfonts/cm/cmbx10.pfb><D:/Programs/MiKTeX 2.8/fonts/type
+1/public/amsfonts/cm/cmbx12.pfb><D:/Programs/MiKTeX 2.8/fonts/type1/public/amsf
+onts/cm/cmbx8.pfb><D:/Programs/MiKTeX 2.8/fonts/type1/public/amsfonts/cm/cmex10
+.pfb><D:/Programs/MiKTeX 2.8/fonts/type1/public/amsfonts/cmextra/cmex8.pfb><D:/
+Programs/MiKTeX 2.8/fonts/type1/public/amsfonts/cm/cmmi12.pfb><D:/Programs/MiKT
+eX 2.8/fonts/type1/public/amsfonts/cm/cmmi6.pfb><D:/Programs/MiKTeX 2.8/fonts/t
+ype1/public/amsfonts/cm/cmmi7.pfb><D:/Programs/MiKTeX 2.8/fonts/type1/public/am
+sfonts/cm/cmmi8.pfb><D:/Programs/MiKTeX 2.8/fonts/type1/public/amsfonts/cm/cmmi
+b10.pfb><D:/Programs/MiKTeX 2.8/fonts/type1/public/amsfonts/cm/cmr10.pfb><D:/Pr
+ograms/MiKTeX 2.8/fonts/type1/public/amsfonts/cm/cmr12.pfb><D:/Programs/MiKTeX 
+2.8/fonts/type1/public/amsfonts/cm/cmr6.pfb><D:/Programs/MiKTeX 2.8/fonts/type1
+/public/amsfonts/cm/cmr7.pfb><D:/Programs/MiKTeX 2.8/fonts/type1/public/amsfont
+s/cm/cmr8.pfb><D:/Programs/MiKTeX 2.8/fonts/type1/public/amsfonts/cm/cmss12.pfb
+><D:/Programs/MiKTeX 2.8/fonts/type1/public/amsfonts/cm/cmssbx10.pfb><D:/Progra
+ms/MiKTeX 2.8/fonts/type1/public/amsfonts/cm/cmssi12.pfb><D:/Programs/MiKTeX 2.
+8/fonts/type1/public/amsfonts/cm/cmsy10.pfb><D:/Programs/MiKTeX 2.8/fonts/type1
+/public/amsfonts/cm/cmsy6.pfb><D:/Programs/MiKTeX 2.8/fonts/type1/public/amsfon
+ts/cm/cmsy8.pfb><D:/Programs/MiKTeX 2.8/fonts/type1/public/amsfonts/cm/cmti12.p
+fb><D:/Programs/MiKTeX 2.8/fonts/type1/public/amsfonts/symbols/msbm10.pfb><D:/P
+rograms/MiKTeX 2.8/fonts/type1/urw/courier/ucrr8a.pfb>
+Output written on main.pdf (33 pages, 527540 bytes).
 PDF statistics:
- 213 PDF objects out of 1000 (max. 8388607)
+ 251 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
- 26 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 46 words of extra memory for PDF output out of 10000 (max. 10000000)
 
