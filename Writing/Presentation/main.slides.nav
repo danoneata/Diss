@@ -11,23 +11,27 @@
 \headcommand {\beamer@subsectionpages {2}{8}}
 \headcommand {\slideentry {2}{0}{3}{9/10}{}{0}}
 \headcommand {\beamer@framepages {9}{10}}
-\headcommand {\slideentry {2}{0}{4}{11/11}{}{0}}
-\headcommand {\beamer@framepages {11}{11}}
-\headcommand {\sectionentry {3}{Optimization}{12}{Optimization}{0}}
-\headcommand {\beamer@sectionpages {9}{11}}
-\headcommand {\beamer@subsectionpages {9}{11}}
-\headcommand {\slideentry {3}{0}{5}{12/15}{}{0}}
-\headcommand {\beamer@framepages {12}{15}}
-\headcommand {\slideentry {3}{0}{6}{16/22}{}{0}}
-\headcommand {\beamer@framepages {16}{22}}
-\headcommand {\slideentry {3}{0}{7}{23/23}{}{0}}
-\headcommand {\beamer@framepages {23}{23}}
-\headcommand {\slideentry {3}{0}{8}{24/24}{}{0}}
-\headcommand {\beamer@framepages {24}{24}}
-\headcommand {\slideentry {3}{0}{9}{25/25}{}{0}}
-\headcommand {\beamer@framepages {25}{25}}
-\headcommand {\beamer@partpages {1}{25}}
-\headcommand {\beamer@subsectionpages {12}{25}}
-\headcommand {\beamer@sectionpages {12}{25}}
-\headcommand {\beamer@documentpages {25}}
-\headcommand {\def \inserttotalframenumber {9}}
+\headcommand {\slideentry {2}{0}{4}{11/12}{}{0}}
+\headcommand {\beamer@framepages {11}{12}}
+\headcommand {\sectionentry {3}{Optimization}{13}{Optimization}{0}}
+\headcommand {\beamer@sectionpages {9}{12}}
+\headcommand {\beamer@subsectionpages {9}{12}}
+\headcommand {\slideentry {3}{0}{5}{13/16}{}{0}}
+\headcommand {\beamer@framepages {13}{16}}
+\headcommand {\sectionentry {4}{Methods}{17}{Methods}{0}}
+\headcommand {\beamer@sectionpages {13}{16}}
+\headcommand {\beamer@subsectionpages {13}{16}}
+\headcommand {\slideentry {4}{0}{6}{17/23}{}{0}}
+\headcommand {\beamer@framepages {17}{23}}
+\headcommand {\slideentry {4}{0}{7}{24/40}{}{0}}
+\headcommand {\beamer@framepages {24}{40}}
+\headcommand {\sectionentry {5}{Work plan}{41}{Work plan}{0}}
+\headcommand {\beamer@sectionpages {17}{40}}
+\headcommand {\beamer@subsectionpages {17}{40}}
+\headcommand {\slideentry {5}{0}{8}{41/43}{}{0}}
+\headcommand {\beamer@framepages {41}{43}}
+\headcommand {\beamer@partpages {1}{43}}
+\headcommand {\beamer@subsectionpages {41}{43}}
+\headcommand {\beamer@sectionpages {41}{43}}
+\headcommand {\beamer@documentpages {43}}
+\headcommand {\def \inserttotalframenumber {8}}

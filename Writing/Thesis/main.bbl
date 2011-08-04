@@ -81,6 +81,12 @@ Holte, R. (1993).
   datasets}.
 \newblock {\em Machine learning}, 11(1):63--90.
 
+\bibitem[Lang, 2009]{lang2009}
+Lang, D. (2009).
+\newblock {\em Astrometry.net: {A}utomatic recognition and calibration of
+  astronomical images}.
+\newblock PhD thesis, University of Toronto.
+
 \bibitem[Mitchell, 1997]{mitchell1997}
 Mitchell, T.~M. (1997).
 \newblock {\em Machine Learning}.

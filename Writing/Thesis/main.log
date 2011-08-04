@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-1.40.10 (MiKTeX 2.8) (preloaded format=pdflatex 2010.6.8)  2 AUG 2011 17:01
+This is pdfTeX, Version 3.1415926-1.40.10 (MiKTeX 2.8) (preloaded format=pdflatex 2010.6.8)  4 AUG 2011 16:01
 entering extended mode
 **main.tex
 (D:\Diss\Writing\Thesis\main.tex
@@ -403,11 +403,11 @@ LaTeX Font Info:    Try loading font information for U+msb on input line 3.
 
 ("D:\Programs\MiKTeX 2.8\tex\latex\amsfonts\umsb.fd"
 File: umsb.fd 2009/06/22 v3.00 AMS symbols B
-))
-\tf@toc=\write3
- [4
+) [4
 
-]
+])
+\tf@toc=\write3
+ [5]
 (D:\Diss\Writing\Thesis\chapters/chap1.tex
 Chapter 1.
 
@@ -475,74 +475,73 @@ Chapter 3.
 
 
 
-]
-
-Package natbib Warning: Citation `Weinberger2009' on page 9 undefined on input 
-line 47.
-
-[9] <images/mog.pdf, id=67, 170.6375pt x 175.65625pt>
+] [9] <images/mog.pdf, id=68, 170.6375pt x 175.65625pt>
 File: images/mog.pdf Graphic file (type pdf)
  <use images/mog.pdf>
-[10 <D:/Diss/Writing/Thesis/images/mog.pdf>] [11]) [12]
+[10 <D:/Diss/Writing/Thesis/images/mog.pdf>] [11] [12] [13] [14] [15]) [16]
 (D:\Diss\Writing\Thesis\chapters/chap4.tex
 Chapter 4.
-<images/sub-sample-1.pdf, id=90, 334.24875pt x 268.00125pt>
+<images/sub-sample-1.pdf, id=107, 334.24875pt x 268.00125pt>
 File: images/sub-sample-1.pdf Graphic file (type pdf)
 
 <use images/sub-sample-1.pdf>
-<images/sub-sample-2.pdf, id=91, 334.24875pt x 268.00125pt>
+<images/sub-sample-2.pdf, id=108, 334.24875pt x 268.00125pt>
 File: images/sub-sample-2.pdf Graphic file (type pdf)
 
-<use images/sub-sample-2.pdf> [13
+<use images/sub-sample-2.pdf> [17
 
 
 
-] [14 <D:/Diss/Writing/Thesis/images/sub-sample-1.pdf> <D:/Diss/Writing/Thesis/
-images/sub-sample-2.pdf>] [15] [16] [17]
-[18] <images/kdtree-1.pdf, id=117, 296.10625pt x 252.945pt>
+] [18 <D:/Diss/Writing/Thesis/images/sub-sample-1.pdf> <D:/Diss/Writing/Thesis/
+images/sub-sample-2.pdf>] [19] [20] [21]
+<images/contributions.pdf, id=131, 397.485pt x 300.12125pt>
+File: images/contributions.pdf Graphic file (type pdf)
+
+<use images/contributions.pdf> [22 <D:/Diss/Writing/Thesis/images/contributions
+.pdf>] <images/kdtree-1.pdf, id=155, 296.10625pt x 252.945pt>
 File: images/kdtree-1.pdf Graphic file (type pdf)
 
 <use images/kdtree-1.pdf>
-<images/kdtree-2.pdf, id=118, 296.10625pt x 252.945pt>
+<images/kdtree-2.pdf, id=156, 296.10625pt x 252.945pt>
 File: images/kdtree-2.pdf Graphic file (type pdf)
 
 <use images/kdtree-2.pdf>
-<images/kdtree-3.pdf, id=119, 296.10625pt x 252.945pt>
+<images/kdtree-3.pdf, id=157, 296.10625pt x 252.945pt>
 File: images/kdtree-3.pdf Graphic file (type pdf)
 
 <use images/kdtree-3.pdf>
-<images/kdtree-4.pdf, id=120, 296.10625pt x 252.945pt>
+<images/kdtree-4.pdf, id=158, 296.10625pt x 252.945pt>
 File: images/kdtree-4.pdf Graphic file (type pdf)
 
-<use images/kdtree-4.pdf> [19 <D:/Diss/Writing/Thesis/images/kdtree-1.pdf> <D:/
-Diss/Writing/Thesis/images/kdtree-2.pdf> <D:/Diss/Writing/Thesis/images/kdtree-
-3.pdf> <D:/Diss/Writing/Thesis/images/kdtree-4.pdf>] [20]
-Overfull \hbox (21.25002pt too wide) in paragraph at lines 235--236
+<use images/kdtree-4.pdf> [23] [24 <D:/Diss/Writing/Thesis/images/kdtree-1.pdf>
+ <D:/Diss/Writing/Thesis/images/kdtree-2.pdf> <D:/Diss/Writing/Thesis/images/kd
+tree-3.pdf> <D:/Diss/Writing/Thesis/images/kdtree-4.pdf>] [25]
+Overfull \hbox (21.25002pt too wide) in paragraph at lines 412--417
 \OT1/cmr/m/n/12 the un-known prob-a-bil-ity den-sity func-tion as fol-lows: $\O
 ML/cmm/m/it/12 p\OT1/cmr/m/n/12 (\OT1/cmr/bx/n/12 x[]\OT1/cmr/m/n/12 ) = [] [][
 ] \OML/cmm/m/it/12 Nk\OT1/cmr/m/n/12 (\OT1/cmr/bx/n/12 x[]\OMS/cmsy/m/n/12 j\OT
 1/cmr/bx/n/12 x[]\OT1/cmr/m/n/12 )$.
  []
 
-[21] [22] [23] <images/nca-cs-back.pdf, id=146, 168.63pt x 186.6975pt>
+[26] [27] [28] [29] <images/nca-cs-back.pdf, id=190, 168.63pt x 186.6975pt>
 File: images/nca-cs-back.pdf Graphic file (type pdf)
 
-<use images/nca-cs-back.pdf> [24] [25 <D:/Diss/Writing/Thesis/images/nca-cs-bac
-k.pdf>]) [26] (D:\Diss\Writing\Thesis\main.bbl
+<use images/nca-cs-back.pdf> [30 <D:/Diss/Writing/Thesis/images/nca-cs-back.pdf
+>] [31]) [32] (D:\Diss\Writing\Thesis\main.bbl
 Missing character: There is no â in font cmti12!
 Missing character: There is no € in font cmti12!
 Missing character: There is no ” in font cmti12!
 Missing character: There is no â in font cmti12!
 Missing character: There is no € in font cmti12!
 Missing character: There is no ™ in font cmti12!
- [27
+ [33
 
 
 ])
 
 Package natbib Warning: There were undefined citations.
 
-[28] (D:\Diss\Writing\Thesis\main.aux
+[34] (D:\Diss\Writing\Thesis\main.aux
 (D:\Diss\Writing\Thesis\chapters/chap1.aux)
 (D:\Diss\Writing\Thesis\chapters/chap2.aux)
 (D:\Diss\Writing\Thesis\chapters/chap3.aux)
@@ -550,42 +549,41 @@ Package natbib Warning: There were undefined citations.
 
 LaTeX Warning: There were undefined references.
 
-
-LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
-
  ) 
 Here is how much of TeX's memory you used:
- 5337 strings out of 495285
- 74757 string characters out of 3180831
- 147968 words of memory out of 3000000
- 8394 multiletter control sequences out of 15000+200000
- 21210 words of font info for 78 fonts, out of 3000000 for 9000
+ 5356 strings out of 495285
+ 75192 string characters out of 3180831
+ 148118 words of memory out of 3000000
+ 8411 multiletter control sequences out of 15000+200000
+ 21511 words of font info for 79 fonts, out of 3000000 for 9000
  14 hyphenation exceptions out of 8191
  43i,17n,40p,1647b,596s stack positions out of 5000i,500n,10000p,200000b,50000s
 {D:/Programs/MiKTeX 2.8/fonts/enc/dvips/fontname/8r.enc}<D:/Programs/MiKTeX 2
 .8/fonts/type1/public/amsfonts/cm/cmbx10.pfb><D:/Programs/MiKTeX 2.8/fonts/type
 1/public/amsfonts/cm/cmbx12.pfb><D:/Programs/MiKTeX 2.8/fonts/type1/public/amsf
-onts/cm/cmbx8.pfb><D:/Programs/MiKTeX 2.8/fonts/type1/public/amsfonts/cm/cmex10
-.pfb><D:/Programs/MiKTeX 2.8/fonts/type1/public/amsfonts/cmextra/cmex8.pfb><D:/
-Programs/MiKTeX 2.8/fonts/type1/public/amsfonts/cm/cmmi12.pfb><D:/Programs/MiKT
-eX 2.8/fonts/type1/public/amsfonts/cm/cmmi6.pfb><D:/Programs/MiKTeX 2.8/fonts/t
-ype1/public/amsfonts/cm/cmmi7.pfb><D:/Programs/MiKTeX 2.8/fonts/type1/public/am
-sfonts/cm/cmmi8.pfb><D:/Programs/MiKTeX 2.8/fonts/type1/public/amsfonts/cm/cmmi
-b10.pfb><D:/Programs/MiKTeX 2.8/fonts/type1/public/amsfonts/cm/cmr10.pfb><D:/Pr
-ograms/MiKTeX 2.8/fonts/type1/public/amsfonts/cm/cmr12.pfb><D:/Programs/MiKTeX 
-2.8/fonts/type1/public/amsfonts/cm/cmr6.pfb><D:/Programs/MiKTeX 2.8/fonts/type1
-/public/amsfonts/cm/cmr7.pfb><D:/Programs/MiKTeX 2.8/fonts/type1/public/amsfont
-s/cm/cmr8.pfb><D:/Programs/MiKTeX 2.8/fonts/type1/public/amsfonts/cm/cmss12.pfb
-><D:/Programs/MiKTeX 2.8/fonts/type1/public/amsfonts/cm/cmssbx10.pfb><D:/Progra
-ms/MiKTeX 2.8/fonts/type1/public/amsfonts/cm/cmssi12.pfb><D:/Programs/MiKTeX 2.
-8/fonts/type1/public/amsfonts/cm/cmsy10.pfb><D:/Programs/MiKTeX 2.8/fonts/type1
-/public/amsfonts/cm/cmsy6.pfb><D:/Programs/MiKTeX 2.8/fonts/type1/public/amsfon
-ts/cm/cmsy8.pfb><D:/Programs/MiKTeX 2.8/fonts/type1/public/amsfonts/cm/cmti12.p
-fb><D:/Programs/MiKTeX 2.8/fonts/type1/public/amsfonts/symbols/msbm10.pfb><D:/P
-rograms/MiKTeX 2.8/fonts/type1/urw/courier/ucrr8a.pfb>
-Output written on main.pdf (33 pages, 527540 bytes).
+onts/cm/cmbx8.pfb><D:/Programs/MiKTeX 2.8/fonts/type1/public/amsfonts/cm/cmcsc1
+0.pfb><D:/Programs/MiKTeX 2.8/fonts/type1/public/amsfonts/cm/cmex10.pfb><D:/Pro
+grams/MiKTeX 2.8/fonts/type1/public/amsfonts/cmextra/cmex8.pfb><D:/Programs/MiK
+TeX 2.8/fonts/type1/public/amsfonts/cm/cmmi10.pfb><D:/Programs/MiKTeX 2.8/fonts
+/type1/public/amsfonts/cm/cmmi12.pfb><D:/Programs/MiKTeX 2.8/fonts/type1/public
+/amsfonts/cm/cmmi6.pfb><D:/Programs/MiKTeX 2.8/fonts/type1/public/amsfonts/cm/c
+mmi7.pfb><D:/Programs/MiKTeX 2.8/fonts/type1/public/amsfonts/cm/cmmi8.pfb><D:/P
+rograms/MiKTeX 2.8/fonts/type1/public/amsfonts/cm/cmmib10.pfb><D:/Programs/MiKT
+eX 2.8/fonts/type1/public/amsfonts/cm/cmr10.pfb><D:/Programs/MiKTeX 2.8/fonts/t
+ype1/public/amsfonts/cm/cmr12.pfb><D:/Programs/MiKTeX 2.8/fonts/type1/public/am
+sfonts/cm/cmr6.pfb><D:/Programs/MiKTeX 2.8/fonts/type1/public/amsfonts/cm/cmr7.
+pfb><D:/Programs/MiKTeX 2.8/fonts/type1/public/amsfonts/cm/cmr8.pfb><D:/Program
+s/MiKTeX 2.8/fonts/type1/public/amsfonts/cm/cmss12.pfb><D:/Programs/MiKTeX 2.8/
+fonts/type1/public/amsfonts/cm/cmssbx10.pfb><D:/Programs/MiKTeX 2.8/fonts/type1
+/public/amsfonts/cm/cmssi12.pfb><D:/Programs/MiKTeX 2.8/fonts/type1/public/amsf
+onts/cm/cmsy10.pfb><D:/Programs/MiKTeX 2.8/fonts/type1/public/amsfonts/cm/cmsy6
+.pfb><D:/Programs/MiKTeX 2.8/fonts/type1/public/amsfonts/cm/cmsy8.pfb><D:/Progr
+ams/MiKTeX 2.8/fonts/type1/public/amsfonts/cm/cmti12.pfb><D:/Programs/MiKTeX 2.
+8/fonts/type1/public/amsfonts/symbols/msbm10.pfb><D:/Programs/MiKTeX 2.8/fonts/
+type1/urw/courier/ucrr8a.pfb>
+Output written on main.pdf (40 pages, 583216 bytes).
 PDF statistics:
- 251 PDF objects out of 1000 (max. 8388607)
+ 298 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
- 46 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 51 words of extra memory for PDF output out of 10000 (max. 10000000)
 

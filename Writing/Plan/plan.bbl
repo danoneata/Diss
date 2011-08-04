@@ -1,0 +1,53 @@
+\begin{thebibliography}{}
+
+\bibitem[Globerson and Roweis, 2006]{globerson2006}
+Globerson, A. and Roweis, S. (2006).
+\newblock {Metric learning by collapsing classes}.
+\newblock In {\em Advances in Neural Information Processing Systems},
+  volume~18, page 451.
+
+\bibitem[Keller et~al., 2006]{keller2006}
+Keller, P., Mannor, S., and Precup, D. (2006).
+\newblock Automatic basis function construction for approximate dynamic
+  programming and reinforcement learning.
+\newblock In {\em Proceedings of the 23rd international conference on Machine
+  learning}, pages 449--456. ACM.
+
+\bibitem[Salakhutdinov and Hinton, 2007]{salakhutdinov2007}
+Salakhutdinov, R. and Hinton, G. (2007).
+\newblock {Learning a nonlinear embedding by preserving class neighbourhood
+  structure}.
+\newblock In {\em AI and Statistics}, volume~1.
+
+\bibitem[Shental et~al., 2002]{shental2002}
+Shental, N., Hertz, T., Weinshall, D., and Pavel, M. (2002).
+\newblock {Adjustment learning and relevant component analysis}.
+\newblock In {\em Proceedings of the 7th European Conference on Computer
+  Vision-Part IV}, pages 776--792. Springer.
+
+\bibitem[Singh-Miller, 2010]{singh2010}
+Singh-Miller, N. (2010).
+\newblock {\em Neighborhood Analysis Methods in Acoustic Modeling for Automatic
+  Speech Recognition}.
+\newblock PhD thesis, Massachusetts Institute of Technology.
+
+\bibitem[Weinberger and Saul, 2009]{weinberger2009}
+Weinberger, K. and Saul, L. (2009).
+\newblock {Distance metric learning for large margin nearest neighbor
+  classification}.
+\newblock {\em The Journal of Machine Learning Research}, 10:207--244.
+
+\bibitem[Weinberger and Tesauro, 2007]{weinberger2007}
+Weinberger, K. and Tesauro, G. (2007).
+\newblock {Metric learning for kernel regression}.
+\newblock In {\em Eleventh international conference on artificial intelligence
+  and statistics}, pages 608--615.
+
+\bibitem[Xing et~al., 2003]{xing2003}
+Xing, E., Ng, A., Jordan, M., and Russell, S. (2003).
+\newblock {Distance metric learning with application to clustering with
+  side-information}.
+\newblock In {\em Advances in Neural Information Processing Systems}, pages
+  521--528.
+
+\end{thebibliography}

@@ -1,3 +1,4 @@
+
 \documentclass{beamer}
 %\usefonttheme{serif}
 \usetheme{default}
@@ -13,6 +14,7 @@
 \usepackage{listings}
 \usepackage{tikz}
 \usepackage{courier}
+\usepackage{xcolor}
 % \usepackage{bbold}
 
 \usepackage{epsfig}
@@ -39,7 +41,7 @@
 		\begin{column}{6.3cm}
 			 \begin{itemize}
 				 \item Simple, yet powerful classifier.
-				 \item Eucildean distance: \[
+				 \item Euclidean distance: \[
 							      d(\xB_i,\xB_j)=\sqrt{(\xB_i-\xB_j)^{\textrm{T}}(\xB_i-\xB_j)}
 				                           \]
 			 \end{itemize}
@@ -54,8 +56,8 @@
 			\includegraphics<7>[height=4.5cm]{images/expression-recog}
 			 \centering{\\
 				\only<1-2>{\phantom{$k=1$}}
-				\only<3>{$k=1$}
-				\only<4>{$k=7$}
+				\only<3>{Decision boundaries for $k=1$}
+				\only<4>{Decision boundaries for $k=7$}
 				\only<5>{\phantom{Face recognition}}
 			 	\only<6>{Face recognition}
 			 	\only<7>{Expression recognition}
@@ -66,7 +68,7 @@
   
   \section{Neighbourhood component analysis}
   \begin{frame}
-  	\frametitle{Neighbourhood component analysis}
+  	\frametitle{Neighbourhood component analysis\\ \small{\color{gray} (Goldberger et at, 2004)}}
 		\begin{columns}
 		\begin{column}{6.3cm}
 			 \begin{itemize}
@@ -84,8 +86,8 @@
 			\centering\includegraphics<2>[height=4.5cm]{images/euclidean}
 
 			 \centering{
-				\only<1-2>{\phantom{$k=1$}}
-
+				\only<1>{Mahalanobis metric}	
+				\only<2>{Euclidean metric in $\AB\XB$}	
 			 	}
 		\end{column}
 	\end{columns}
@@ -93,23 +95,36 @@
 
   \begin{frame}
     \frametitle{How to learn a metric?}
-  	\frametitle{Neighbourhood component analysis}
+  	\frametitle{Neighbourhood component analysis\\ \small{\color{gray} (Goldberger et at, 2004)}}
 		\begin{columns}
-		\begin{column}{7cm}
+		\begin{column}{6cm}
 			 \begin{enumerate}
-				 \item Find $\SB$ that maximizes leave-one-out cross-validation score.
+				 \item Find $\AB$ that maximizes leave-one-out cross-validation score.
 				\item Soft version:
-				  $p(\xB_i\in\mbox{class}\; c) = \frac{\sum_{j\in c} \exp\{-d_\SB(\xB_i,\xB_j)\}}{\sum_{k} \exp\{-d_\SB(\xB_i,\xB_k)\}}$
-				  \[
-				   \mbox{Maximize}\;f(\SB)=\sum_i p(\xB_i \in \mbox{true class of}\;\xB_i).
-				  \]
+					\only<1>{
+				  \begin{align*}
+				  &p(\xB_i\in\mbox{class}\; c) = \\
+				  &\frac{\sum_{j\in c}\exp\{-d_\SB^2(\xB_i,\xB_j)\}}{\sum_{k} \exp\{-d_\SB^2(\xB_i,\xB_k)\}}
+				  \end{align*} 
+				  }
+				  \only<2>{
+				  				  \begin{align*}
+				  				  &p(\xB_i\in\mbox{class}\; c) = \\
+				  				  &\frac{{\color{red!90}\sum_{j\in c}\exp\{-d_\SB^2(\xB_i,\xB_j)\}}}{\sum_{k} \exp\{-d_\SB^2(\xB_i,\xB_k)\}}
+				  				  \end{align*} 
+				  				  }
+				  \begin{align*}
+				   &\mbox{Maximize} f(\AB)\\
+				   &=\sum_i p(\xB_i \in \mbox{true class of}\;\xB_i).
+				  \end{align*}
 
 			 \end{enumerate}
 		\end{column}
-		\begin{column}{5cm}
-% 			\includegraphics<1>[width=5cm]{images/knn-init}
-% 			\includegraphics<2>[width=5cm]{images/knn-q}
-
+		\begin{column}{5.5cm}
+		\centering{
+ 			\includegraphics<1>[height=4.5cm]{images/s31}
+ 			\includegraphics<2>[height=4.5cm]{images/s32}
+			}
 			 \centering{
 % 				\only<1-2>{\phantom{$k=1$}}
 
@@ -120,28 +135,28 @@
 
   \section{Optimization}
    \begin{frame}
-      \frametitle{Optimizing $f(\SB)$}
+      \frametitle{Optimizing $f(\AB)$}
       \begin{columns}
-		\begin{column}{7cm}
+		\begin{column}{6cm}
 			 \begin{itemize}
-			    \item Use $\nabla_{\SB}f(\SB)$ for an optimization algorithm: \textit{e.g.}, gradient ascent, conjugate gradients. 
-			    \item How to initialise? Use random $\SB$ or most discriminative projections given by PCA, LDA or logistic regression.
+			    \item Use $\nabla_{\AB}f(\AB)$ for an optimization algorithm: \textit{e.g.}, gradient ascent, conjugate gradients. 
+			    \item How to initialise? Use random $\AB$ or most discriminative projections given by PCA, LDA or logistic regression.
 			 \end{itemize}
 		\end{column}
-		\begin{column}{5cm}
+		\begin{column}{6cm}
 			\centering{
-% 			\phantom{\includegraphics<1>[height=4cm]{images/wine-rand-2-5}}
-			\includegraphics<1>[height=4cm]{images/wine-rand-2-5}
-			\includegraphics<2>[height=4cm]{images/wine-rand-2-6}
-			\includegraphics<3>[height=4cm]{images/wine-pca-2-5}
-			\includegraphics<4>[height=4cm]{images/wine-pca-2-6}
+% 			\phantom{\includegraphics<1>[height=5.3cm]{images/wine-rand-2-5}}
+			\includegraphics<1>[height=5.3cm]{images/wine-rand-2-5}
+			\includegraphics<2>[height=5.3cm]{images/wine-rand-2-6}
+			\includegraphics<3>[height=5.3cm]{images/wine-pca-2-5}
+			\includegraphics<4>[height=5.3cm]{images/wine-pca-2-6}
 			  }
 			 \centering{
 % 				\only<1>{\phantom{\texttt{A=randn(d,D)}}}
 				\only<1>{\texttt{A=randn(d,D)}}
-				\only<2>{\texttt{A=minimize('nca',A)}}
+				\only<2>{\texttt{A=maximize('nca',A)}}
 				\only<3>{\texttt{A=eig(X*X'/N)}}
-				\only<4>{\texttt{A=minimize('nca',A)}}  
+				\only<4>{\texttt{A=maximize('nca',A)}}  
 			 	}
 		\end{column}
 	\end{columns}
@@ -151,8 +166,9 @@
 
    \end{frame} 
 
+		\section{Methods}
      \begin{frame}
-      \frametitle{Speeding the computations}
+      \frametitle{Speeding up the computations}
       \begin{columns}
 		\begin{column}{5cm}
 			 \begin{enumerate}
@@ -166,17 +182,17 @@
 		\end{column}
 		\begin{column}{7cm}
 			\centering{
-			\includegraphics<1>[height=6cm]{images/s51}
-			\includegraphics<2>[height=6cm]{images/s52}
-			\includegraphics<3>[height=6cm]{images/s53}
-			\includegraphics<4>[height=6cm]{images/s54}
-			\includegraphics<5>[height=6cm]{images/s55}
-			\includegraphics<6>[height=6cm]{images/s56}
-			\includegraphics<7>[height=6cm]{images/s57}
+			\includegraphics<1>[height=6cm]{images/s551}
+			\includegraphics<2>[height=6cm]{images/s552}
+			\includegraphics<3>[height=6cm]{images/s554}
+			\includegraphics<4>[height=6cm]{images/s553}
+			\includegraphics<5>[height=6cm]{images/s52}
+			\includegraphics<6>[height=6cm]{images/s55}
+			\includegraphics<7>[height=6cm]{images/s56}
 			  }\\
 			 \centering{
-			    \only<1>{\phantom{Recursive projection clustering}}
-			    \only<2->{Recursive projection clustering}
+			    \only<1-4>{Sub-sampling example}
+			    \only<5->{Recursive projection clustering}
 			 	}
 		\end{column}
 	\end{columns}
@@ -184,19 +200,125 @@
 
   \begin{frame}
    \frametitle{Approximate computations}
+   \begin{columns}
+   		\begin{column}{5cm}
+   			 \begin{itemize}
+   			    \item Each contribution $p_{ij} \propto \exp\{-d^2(\AB\xB_i,\AB\xB_j)\}$.
+   			    \item Cast NCA into class conditional kernel density estimation problem: $p(\xB_i|c)$.
+   			    \item Use $k$-d trees for fast density estimation.
+   			 \end{itemize}
+   		\end{column}
+   		\begin{column}{7cm}
+   			\centering{
+   			\includegraphics<1>[height=5.5cm]{images/contributions}
+   			\includegraphics<2>[height=5.5cm]{images/s61}
+   			\includegraphics<3>[height=5.5cm]{images/s62}
+   			\includegraphics<4>[height=5.5cm]{images/s63}
+   			\includegraphics<5>[height=5.5cm]{images/s64}
+   			\includegraphics<6>[height=5.5cm]{images/s65}
+   			\includegraphics<7>[height=5.5cm]{images/s67}
+   			\includegraphics<8>[height=5.5cm]{images/s68}
+   			\includegraphics<9>[height=5.5cm]{images/s69}
+   			\includegraphics<10>[height=5.5cm]{images/s610}
+  			\includegraphics<11>[height=5.5cm]{images/s611}
+  			\includegraphics<12>[height=5.5cm]{images/s612}
+  			\includegraphics<13>[height=5.5cm]{images/s613}
+   			\includegraphics<14>[height=5.5cm]{images/s614}
+  			\includegraphics<15>[height=5.5cm]{images/s615}
+   			\includegraphics<16>[height=5.5cm]{images/s616}
+   			\includegraphics<17>[height=5.5cm]{images/s617}
+   			}\\
+   			 \centering{
+   			    \only<1>{How $p_{ij}$ varies during training}
+   			    \only<2-6>{$k$-d tree example}
+   			    \only<7->{CC-KDE example: $p(\xB_i|c=\mbox{red})$}
+   			 	}
+   		\end{column}
+   	\end{columns}
   \end{frame}
 % 
 %   \begin{frame}
 %    \frametitle{Exact computations}
 %   \end{frame}
 
+	\section{Work plan}
   \begin{frame}
-      \frametitle{Future work}
+  	  \only<1>{\frametitle{Work done}}
+      \only<2-3>{\frametitle{Remaining work}}
+         \begin{columns}
+         		\begin{column}{6cm}
+         			\begin{itemize}
+	         			\item Introduction
+	         			\item Background
+	         				\begin{itemize}
+		         				\item Theoretical background
+		         				\item Related methods
+	         				\end{itemize}
+	         			\item Neighbourhood component analysis
+	         				\begin{itemize}
+		         				\item General presentation
+		         				\only<1>{ \color{blue!70!black}
+		         				\item Practical issues
+		         				\item Interpreting NCA as class-conditional density estimation
+		         				 problem
+		         				 }
+		         				 \only<2-3>{
+		         				 \item Practical issues
+	 		         			  \item Interpreting NCA as class-conditional density estimation
+			 problem
+		         				 }
+	         				\end{itemize}
+         			\end{itemize}
+         		\end{column}
+         		\begin{column}{6cm}
+         				\begin{itemize}
+         					\only<1>{
+         					{\color{blue!70!black} 
+		         			\item Reducing computational cost
+		         			}
+		         				\begin{itemize}
+		         					{\color{blue!70!black}
+			         				\item Sub-sampling
+			         				\item Mini-batches
+			         				\item Stochastic learning
+			         				\item Approximate computations
+			         				\item Exact computations using compact support kernels
+			         				\item NCA with compact support kernels and background distribution
+			         				}
+		         				\end{itemize}
+		         				
+		         				}
+		         			\only<2-3>{
+		         			\item Reducing computational cost
+		         				\begin{itemize}
+			         				\item Sub-sampling
+			         				\item Mini-batches
+			         				\item Stochastic learning
+			         				\item Approximate computations
+			         				\item Exact computations using compact support kernels
+			         				\item NCA with compact support kernels and background distribution
+		         				\end{itemize}
+		         			}
+		         			\item 
+		         			\only<1>{Evaluation (on large data sets)}
+		         			\only<2-3>{\color{red!50!black}Evaluation (on large data sets)}
+%		         				\begin{itemize}
+%		         				\end{itemize}
+		         			\item 
+		         			\only<1>{Conclusions}
+		         			\only<2-3>{\color{red!50!black}Conclusions}
+	         			\end{itemize}
+         		\end{column}
+       		\end{columns}
+       		\begin{flushright}
+       			         				\only<1-2>{\phantom{\textsc{Thank you!}}}
+       				         			\only<3>{\textsc{Thank you!}}
+       				         			\end{flushright}
    \end{frame}
 
-  \begin{frame}
-      \frametitle{Conclusions}
-   \end{frame}
+%  \begin{frame}
+%      \frametitle{Conclusions}
+%   \end{frame}
 
   
 \end{document}

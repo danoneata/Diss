@@ -4,19 +4,22 @@
 \contentsline {section}{\numberline {2.2}Related methods}{6}
 \contentsline {chapter}{\numberline {3}Neighbourhood component analysis}{8}
 \contentsline {section}{\numberline {3.1}General presentation}{8}
-\contentsline {section}{\numberline {3.2}Practical notes}{8}
-\contentsline {subsection}{\numberline {3.2.1}Optimization methods}{8}
-\contentsline {subsection}{\numberline {3.2.2}Initialization}{8}
-\contentsline {subsection}{\numberline {3.2.3}Numerical issues}{10}
-\contentsline {section}{\numberline {3.3}Class-conditional kernel density estimation interpretation}{10}
-\contentsline {chapter}{\numberline {4}Reducing the computational cost}{13}
-\contentsline {section}{\numberline {4.1}Sub-sampling}{13}
-\contentsline {section}{\numberline {4.2}Mini-batches}{14}
-\contentsline {section}{\numberline {4.3}Stochastic learning}{17}
-\contentsline {section}{\numberline {4.4}Approximate computations}{18}
-\contentsline {subsection}{\numberline {4.4.1}$k$-d trees}{18}
-\contentsline {subsection}{\numberline {4.4.2}Approximate kernel density estimation}{21}
-\contentsline {subsection}{\numberline {4.4.3}Approximate KDE for NCA}{22}
-\contentsline {section}{\numberline {4.5}Exact computations}{22}
-\contentsline {section}{\numberline {4.6}NCA with compact support kernels and background distribution}{24}
-\contentsline {chapter}{Bibliography}{27}
+\contentsline {section}{\numberline {3.2}Class-conditional kernel density estimation interpretation}{10}
+\contentsline {section}{\numberline {3.3}Practical notes}{12}
+\contentsline {subsection}{\numberline {3.3.1}Optimization methods}{12}
+\contentsline {subsection}{\numberline {3.3.2}Initialization}{13}
+\contentsline {subsection}{\numberline {3.3.3}Numerical issues}{14}
+\contentsline {subsection}{\numberline {3.3.4}Regularization}{15}
+\contentsline {subsection}{\numberline {3.3.5}Doing classification}{15}
+\contentsline {subsection}{\numberline {3.3.6}Dimensionality annealing}{16}
+\contentsline {chapter}{\numberline {4}Reducing the computational cost}{17}
+\contentsline {section}{\numberline {4.1}Sub-sampling}{17}
+\contentsline {section}{\numberline {4.2}Mini-batches}{18}
+\contentsline {section}{\numberline {4.3}Stochastic learning}{21}
+\contentsline {section}{\numberline {4.4}Approximate computations}{22}
+\contentsline {subsection}{\numberline {4.4.1}$k$-d trees}{23}
+\contentsline {subsection}{\numberline {4.4.2}Approximate kernel density estimation}{26}
+\contentsline {subsection}{\numberline {4.4.3}Approximate KDE for NCA}{27}
+\contentsline {section}{\numberline {4.5}Exact computations}{28}
+\contentsline {section}{\numberline {4.6}NCA with compact support kernels and background distribution}{30}
+\contentsline {chapter}{Bibliography}{33}
