@@ -1,21 +1,18 @@
 \chapter{Reducing the computational cost}
 \label{ch:reducing}
 
-As emphasized in Section \ref{sec:general-presentation}, applying Neighbourhood Component Analysis (NCA) is computationaly expensive. The evaluation of the objective function needs all the pairwise distances to be calculated. This makes the cost of the operation quadratic in the size of the data set. In practice it becomes prohibitive to apply NCA on large data sets. However, there exist some previous related work that applies NCA on large data sets. 
-
-This chapter presents a different flavoured ideas and methods that can be applied to speed up the NCA. In an interesting point of view, each of the following methods can be regarded as change of the original objective function and hence of the entire model. 
-
-% \begin{itemize}
-% 	\item As mentioned in section , evaluating the objective function needs
-% computing all the pairwise distances between the points. Also, the evaluating
-% the gradient is expensive. This is done in $\mathcal{O}(N^2D^2)$ flops. So it is
-% not trivial to successfully use NCA on large data sets.
-% 	\item  Most of the methods rely on the fact that
-% the learnt metric is low ranked.
-% 	\item Every method presented can be regarded as an alteration of the original
-% objective function. We basically change our objective function such that the new
-% objective will have a reduced cost.
-% \end{itemize}
+\begin{itemize}
+	\item As mentioned in section , evaluating the objective function needs
+computing all the pairwise distances between the points. Also, the evaluating
+the gradient is expensive. This is done in $\mathcal{O}(N^2D^2)$ flops. So it is
+not trivial to successfully use NCA on large data sets.
+	\item This chapter presents a wide palette of ideas and methods that can be
+applied to speed up the computations. Most of the methods rely on the fact that
+the learnt metric is low ranked.
+	\item Every method presented can be regarded as an alteration of the original
+objective function. We basically change our objective function such that the new
+objective will have a reduced cost.
+\end{itemize}
 
 \section{Sub-sampling}
 \label{sec:sub-sampling}
@@ -448,9 +445,11 @@ We use $k$-d trees to form groups of points $G$ that will be described as hyper-
  
 We recall that NCA was formulated as a class-conditional kernel density estimation problem, Section \ref{sec:cc-kde}. By combining ideas from the previous two subsections, we can develop an NCA specific approximation algorithm.
 
-There are some differences from the classical KDE approximation. In this case, we deal with class-conditional probabilities $p(\AB\xB_i|c),\forall c$. So each class $c$ needs to be treated separately: we build a $k$-d tree with the projected data points $\{\AB\xB_j\}_{j\in c}$ and calculate the estimated probability $\hat{p}(\AB\xB_i|c)$ for each class. Another distictintion is that for NCA our final interest are the objective function and its gradient. We can easily obtain an approximated version of the objective function by replacing $p(\AB\xB_i|c)$ with the approximated $\hat{p}(\AB\xB_i|c)$ in Equation \ref{eq:nca-cc-kde-obj}. 
-To obtain the gradient of this new objective function we can use Equation
-\ref{eq:nca-cc-kde-grad}. The derivative of $\frac{\partial}{\partial \AB}\hat{p}(\AB\xB|c)$ will be different only for those groups where we do approximations. So, for such a group we obtain:
+There are some differences from the classical KDE approximation. In this case, we deal with class-conditional probabilities $p(\xB_i|c),\forall c$. So each class $c$ needs to be treated separately: we build a $k$-d tree and calculate the estimated probability $\hat{p}(\xB_i|c)$ for each class. Another distictintion is that for NCA our final interest are the objective function and its gradient. We can easily obtain an approximated version of the objective function if we have $\hat{p}(\xB_i|c)$, Equation \ref{eq:nca-cc-kde-obj} To
+obtain the gradient of this new objective function we can use Equation
+\ref{eq:nca-cc-kde-grad}. The derivative of $p(\AB\xB|c)$ will be different only
+for those groups where we do approximations. So, for such a group we obtain the
+following gradient:
 		\begin{align}
 			\frac{\partial}{\partial \AB} \sum_{j\in G} k(\AB\xB|\AB\xB_j) &\approx
 \frac{\partial}{\partial \AB} \frac{1}{2} \left\{\min_{j\in G}
@@ -460,9 +459,9 @@ k(\AB\xB|\AB\xB_j) + \max_{j\in G} k(\AB\xB|\AB\xB_j)\right\}\notag\\
 		\end{align}
 		where $\AB\xB_c$ denotes the closest point in $G$ to the query point $\AB\xB$
 and $\AB\xB_f$ is the farthest point in $G$ to $\AB\xB$. Here we made use of the
-fact the kernel function is a monotonic function of the distance. This means that the closest
-point gives the maximum contribution, while the farthest point the
-minimum.
+fact the kernel function is a monotonic function of the distance. So the closest
+point gives the maximum contribution, while the farthest point contributes the
+least.
 	
 	\begin{algorithm}
 		\caption{Approximate NCA objective function and gradient computation} 

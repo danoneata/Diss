@@ -1,4 +1,5 @@
-This is BibTeX, Version 0.99cThe top-level auxiliary file: main.aux
+This is BibTeX, Version 0.99c (Web2C 7.5.6)
+The top-level auxiliary file: main.aux
 A level-1 auxiliary file: chapters/chap1.aux
 A level-1 auxiliary file: chapters/chap2.aux
 A level-1 auxiliary file: chapters/chap3.aux
@@ -6,11 +7,52 @@ A level-1 auxiliary file: chapters/chap4.aux
 The style file: apalike.bst
 Database file #1: bibliography/thesis.bib
 Warning--entry type for "chalupka2011" isn't style-file defined
---line 58 of file bibliography/thesis.bib
+--line 115 of file bibliography/thesis.bib
 Warning--I didn't find a database entry for "fix1951"
 Warning--I didn't find a database entry for "Kochanski2009"
 Warning--I didn't find a database entry for "shental2006"
 Warning--empty journal in cover1967
 Warning--empty journal in hinneburg2000
 Warning--empty publisher in omohundro1989
+You've used 29 entries,
+            1935 wiz_defined-function locations,
+            645 strings with 7895 characters,
+and the built_in function-call counts, 10991 in all, are:
+= -- 1096
+> -- 368
+< -- 31
++ -- 122
+- -- 118
+* -- 824
+:= -- 1876
+add.period$ -- 88
+call.type$ -- 29
+change.case$ -- 196
+chr.to.int$ -- 29
+cite$ -- 32
+duplicate$ -- 486
+empty$ -- 811
+format.name$ -- 161
+if$ -- 2213
+int.to.chr$ -- 1
+int.to.str$ -- 0
+missing$ -- 31
+newline$ -- 147
+num.names$ -- 87
+pop$ -- 211
+preamble$ -- 1
+purify$ -- 204
+quote$ -- 0
+skip$ -- 372
+stack$ -- 0
+substring$ -- 730
+swap$ -- 89
+text.length$ -- 10
+text.prefix$ -- 0
+top$ -- 0
+type$ -- 162
+warning$ -- 3
+while$ -- 91
+width$ -- 0
+write$ -- 372
 (There were 7 warnings)

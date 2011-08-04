@@ -56,7 +56,7 @@ highlight=LaTeX
 line=12
 mode=LaTeX
 open=true
-order=1
+order=0
 
 [item:infthesis.cls]
 archive=true
@@ -66,7 +66,7 @@ highlight=LaTeX
 line=96
 mode=LaTeX
 open=true
-order=2
+order=1
 
 [item:main.tex]
 archive=true
@@ -75,7 +75,7 @@ encoding=UTF-8
 highlight=LaTeX
 line=58
 mode=LaTeX
-open=true
+open=false
 order=0
 
 [item:thesis.bib]
@@ -86,7 +86,7 @@ highlight=BibTeX
 line=629
 mode=BibTeX
 open=true
-order=3
+order=2
 
 [item:thesis.kilepr]
 archive=true

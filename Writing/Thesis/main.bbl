@@ -1,5 +1,10 @@
 \begin{thebibliography}{}
 
+\bibitem[Alexander~Gray, 2003]{gray2003b}
+Alexander~Gray, A.~M. (2003).
+\newblock Rapid evaluation of multiple density models.
+\newblock In {\em Artificial Intelligence and Statistics}.
+
 \bibitem[Bar-Hillel et~al., 2003]{bar2003}
 Bar-Hillel, A., Hertz, T., Shental, N., and Weinshall, D. (2003).
 \newblock {Learning distance functions using equivalence relations}.
@@ -64,6 +69,12 @@ Goldberger, J., Roweis, S., Hinton, G., and Salakhutdinov, R. (2004).
 Gonzalez, T. (1985).
 \newblock Clustering to minimize the maximum intercluster distance.
 \newblock {\em Theoretical Computer Science}, 38:293--306.
+
+\bibitem[Gray and Moore, 2001]{gray2001}
+Gray, A. and Moore, A. (2001).
+\newblock {`N-Body' problems in statistical learning}.
+\newblock {\em Advances in neural information processing systems}, pages
+  521--527.
 
 \bibitem[Gray and Moore, 2003]{gray2003}
 Gray, A. and Moore, A. (2003).

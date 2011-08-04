@@ -1,7 +1,7 @@
 \chapter{Reducing the computational cost}
 \label{ch:reducing}
 
-As emphasized in Section \ref{sec:general-presentation}, applying Neighbourhood Component Analysis (NCA) is computationaly expensive. The evaluation of the objective function needs all the pairwise distances to be calculated. This makes the cost of the operation quadratic in the size of the data set. In practice it becomes prohibitive to apply NCA on large data sets. However, there exist some previous related work that applies NCA on large data sets. 
+As emphasized in Section \ref{sec:general-presentation}, applying Neighbourhood Component Analysis (NCA) is computationaly expensive. The evaluation of the objective function needs all the pairwise distances to be calculated. This makes the cost of the operation quadratic in the size of the data set. In practice it becomes prohibitive to apply NCA on large data sets. However, there exist some previous related work that tries 
 
 This chapter presents a different flavoured ideas and methods that can be applied to speed up the NCA. In an interesting point of view, each of the following methods can be regarded as change of the original objective function and hence of the entire model. 
 

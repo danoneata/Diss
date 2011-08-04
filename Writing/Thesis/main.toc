@@ -19,7 +19,7 @@
 \contentsline {section}{\numberline {4.4}Approximate computations}{22}
 \contentsline {subsection}{\numberline {4.4.1}$k$-d trees}{23}
 \contentsline {subsection}{\numberline {4.4.2}Approximate kernel density estimation}{26}
-\contentsline {subsection}{\numberline {4.4.3}Approximate KDE for NCA}{27}
+\contentsline {subsection}{\numberline {4.4.3}Approximate KDE for NCA}{28}
 \contentsline {section}{\numberline {4.5}Exact computations}{28}
-\contentsline {section}{\numberline {4.6}NCA with compact support kernels and background distribution}{30}
+\contentsline {section}{\numberline {4.6}NCA with compact support kernels and background distribution}{31}
 \contentsline {chapter}{Bibliography}{33}
