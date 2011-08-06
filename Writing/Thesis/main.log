@@ -1,4 +1,4 @@
-This is pdfTeXk, Version 3.141592-1.40.3 (Web2C 7.5.6) (format=pdflatex 2010.9.2)  5 AUG 2011 00:55
+This is pdfTeXk, Version 3.141592-1.40.3 (Web2C 7.5.6) (format=pdflatex 2010.9.2)  6 AUG 2011 19:07
 entering extended mode
  %&-line parsing enabled.
 **main.tex
@@ -506,18 +506,19 @@ File: images/mog.pdf Graphic file (type pdf)
 
  (./chapters/chap4.tex
 Chapter 4.
-<images/sub-sample-1.pdf, id=109, 334.24875pt x 268.00125pt>
+[17
+
+
+
+] <images/sub-sample-1.pdf, id=112, 334.24875pt x 268.00125pt>
 File: images/sub-sample-1.pdf Graphic file (type pdf)
 
 <use images/sub-sample-1.pdf>
-<images/sub-sample-2.pdf, id=110, 334.24875pt x 268.00125pt>
+<images/sub-sample-2.pdf, id=113, 334.24875pt x 268.00125pt>
 File: images/sub-sample-2.pdf Graphic file (type pdf)
 
-<use images/sub-sample-2.pdf> [17
-
-
-
-] [18 <./images/sub-sample-1.pdf> <./images/sub-sample-2.pdf>] [19] [20] [21]
+<use images/sub-sample-2.pdf> [18 <./images/sub-sample-1.pdf> <./images/sub-sam
+ple-2.pdf>] [19] [20] [21]
 <images/contributions.pdf, id=135, 407.5225pt x 300.12125pt>
 File: images/contributions.pdf Graphic file (type pdf)
 
@@ -566,11 +567,11 @@ LaTeX Warning: There were undefined references.
 Here is how much of TeX's memory you used:
  4545 strings out of 256216
  60745 string characters out of 1917073
- 122832 words of memory out of 1500000
+ 122831 words of memory out of 1500000
  7681 multiletter control sequences out of 10000+200000
  21520 words of font info for 79 fonts, out of 1200000 for 2000
  645 hyphenation exceptions out of 8191
- 42i,17n,40p,1647b,547s stack positions out of 5000i,500n,6000p,200000b,15000s
+ 42i,17n,40p,1647b,569s stack positions out of 5000i,500n,6000p,200000b,15000s
 {/usr/share/texmf/fonts/enc/dvips/base/8r.enc}</usr/share/texmf/fonts/type1/b
 luesky/cm/cmbx10.pfb></usr/share/texmf/fonts/type1/bluesky/cm/cmbx12.pfb></usr/
 share/texmf/fonts/type1/bluesky/cm/cmbx8.pfb></usr/share/texmf/fonts/type1/blue
@@ -589,7 +590,7 @@ ype1/bluesky/cm/cmsy6.pfb></usr/share/texmf/fonts/type1/bluesky/cm/cmsy8.pfb></
 usr/share/texmf/fonts/type1/bluesky/cm/cmti12.pfb></usr/share/texmf/fonts/type1
 /public/cmex/fmex8.pfb></usr/share/texmf/fonts/type1/bluesky/ams/msbm10.pfb></u
 sr/share/texmf/fonts/type1/urw/courier/ucrr8a.pfb>
-Output written on main.pdf (40 pages, 450689 bytes).
+Output written on main.pdf (40 pages, 453435 bytes).
 PDF statistics:
  311 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 131072)

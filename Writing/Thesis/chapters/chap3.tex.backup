@@ -51,9 +51,9 @@
 	\end{align}
 	where $\xB_{ij} = \xB_i - \xB_j$. The interested reader can find the derivation of the gradient in the appendix. 
 	
-	It is useful to note that NCA's objective function is not convex. So care must be taken to avoid poor local optima. The choice of initialization and of the optimization method affect the quality of the final solution. Section \ref{sec:practical-notes} discusses these and other practical issues. On the other hand, the non-convexity property has its advantage. It allows NCA to get good results on more complicated data sets that are not non convex. 
+	It is important to note that NCA's objective function is not convex. So care must be taken to avoid poor local optima. The choice of initialization and of the optimization method affect the quality of the final solution. Section \ref{sec:practical-notes} discusses these and other practical issues. On the other hand, the non-convexity property has its advantage. It allows NCA to get good results on more complicated data sets that are not non convex. 
 
-	Another important aspect is the computational cost of the method. For each point, we need to compute all the pairwise distances $d_{ij}$ which has the cost of $\mathcal{O}(dN^2)$. But prior to that, we have to compute the point projections $\{\AB\xB_i\}_{i=1}^N$; this operation is done in $\mathcal{O}(dDN)$ flops. So the total cost of evaluating the objective function $f(\AB)$ is  $\mathcal{O}(dDN+dN^2)$. Chapter \ref{ch:reducing} treats NCA's computational drawback; there are presented different ideas of speeding up the computations.
+	Another important aspect is the computational cost of the method. For each point we need to compute all the pairwise distances. This has the cost of $\mathcal{O}(dN^2)$. Actually, the a function evaluation is in $\mathcal{O}(dDN^2)$. Chapter \ref{ch:reducing} presents different ideas of reducing the computational cost.
 	
 	The general scenario in which NCA is applied can be described by the training and testing steps:
 	describe algorithm.
