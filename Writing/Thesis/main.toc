@@ -9,7 +9,7 @@
 \contentsline {subsection}{\numberline {3.3.1}Optimization methods}{12}
 \contentsline {subsection}{\numberline {3.3.2}Initialization}{13}
 \contentsline {subsection}{\numberline {3.3.3}Numerical issues}{14}
-\contentsline {subsection}{\numberline {3.3.4}Regularization}{15}
+\contentsline {subsection}{\numberline {3.3.4}Regularization}{16}
 \contentsline {subsection}{\numberline {3.3.5}Doing classification}{16}
 \contentsline {subsection}{\numberline {3.3.6}Dimensionality annealing}{16}
 \contentsline {chapter}{\numberline {4}Reducing the computational cost}{17}

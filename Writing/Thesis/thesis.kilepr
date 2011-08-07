@@ -16,6 +16,14 @@ src_extensions=.tex .ltx .latex .dtx .ins
 MakeIndex=
 QuickBuild=
 
+[document-settings,item:bibliography/thesis.bib]
+Bookmarks=
+Encoding=UTF-8
+Highlighting=BibTeX
+Indentation Mode=
+Mode=BibTeX
+ReadWrite=true
+
 [document-settings,item:chap1.tex]
 Bookmarks=
 Encoding=UTF-8
@@ -64,13 +72,15 @@ Indentation Mode=
 Mode=LaTeX
 ReadWrite=true
 
-[document-settings,item:thesis.bib]
-Bookmarks=
-Encoding=UTF-8
-Highlighting=BibTeX
-Indentation Mode=
-Mode=BibTeX
-ReadWrite=true
+[item:bibliography/thesis.bib]
+archive=true
+column=16
+encoding=UTF-8
+highlight=BibTeX
+line=660
+mode=BibTeX
+open=true
+order=2
 
 [item:chap1.tex]
 archive=true
@@ -94,10 +104,10 @@ order=5
 
 [item:chapters/chap3.tex]
 archive=true
-column=26
+column=165
 encoding=UTF-8
 highlight=LaTeX
-line=55
+line=352
 mode=LaTeX
 open=true
 order=6
@@ -124,23 +134,13 @@ order=1
 
 [item:main.tex]
 archive=true
-column=28
+column=0
 encoding=UTF-8
 highlight=LaTeX
-line=40
+line=9
 mode=LaTeX
 open=true
 order=3
-
-[item:thesis.bib]
-archive=true
-column=19
-encoding=UTF-8
-highlight=BibTeX
-line=141
-mode=BibTeX
-open=true
-order=2
 
 [item:thesis.kilepr]
 archive=true
@@ -152,6 +152,10 @@ mode=
 open=false
 order=-1
 
+[view-settings,view=0,item:bibliography/thesis.bib]
+CursorColumn=16
+CursorLine=660
+
 [view-settings,view=0,item:chap1.tex]
 CursorColumn=36
 CursorLine=12
@@ -161,8 +165,8 @@ CursorColumn=0
 CursorLine=0
 
 [view-settings,view=0,item:chapters/chap3.tex]
-CursorColumn=26
-CursorLine=55
+CursorColumn=165
+CursorLine=352
 
 [view-settings,view=0,item:chapters/chap4.tex]
 CursorColumn=15
@@ -173,9 +177,5 @@ CursorColumn=7
 CursorLine=96
 
 [view-settings,view=0,item:main.tex]
-CursorColumn=28
-CursorLine=40
-
-[view-settings,view=0,item:thesis.bib]
-CursorColumn=19
-CursorLine=141
+CursorColumn=0
+CursorLine=9

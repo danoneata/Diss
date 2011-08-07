@@ -144,7 +144,7 @@ clusters.
 				\STATE {Project all data points onto the line defined by $\xB_j$ and
 $\xB_k$. (Give equation?)}
 				\STATE {Select the median value $\tilde{\xB}$ from the projected points.}
-				\STATE {Recurse on the data points above and below $\tilde{\xB}$:
+				\STATE {Recurs on the data points above and below $\tilde{\xB}$:
 $\text{RPC}(\mathcal{D}_{>\tilde{\xB}})$ and
 $\text{RPC}(\mathcal{D}_{\le\tilde{\xB}})$.}
 %							$\mathcal{D}_{>\tilde{\xB}}=\{\xB\in\mathcal{D}|\xB>\tilde{\xB}\}$

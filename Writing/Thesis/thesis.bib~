@@ -627,6 +627,26 @@ astronomical images},
   volume={38},
   pages={293--306},
   year={1985},
-  publisher={Elsevier}
+  publisher={Elsevier},
   keywords={farthest point clustering}
 }
+
+@inproceedings{weizman2007,
+  title={A classification-based linear projection of labeled hyperspectral data},
+  author={Weizman, L. and Goldberger, J.},
+  booktitle={Geoscience and Remote Sensing Symposium, 2007. IGARSS 2007. IEEE International},
+  pages={3202--3205},
+  year={2007},
+  organization={IEEE}
+}
+
+@article{butman2008,
+  title={Face recognition using classification-based linear projections},
+  author={Butman, M. and Goldberger, J.},
+  journal={EURASIP Journal on Advances in Signal Processing},
+  volume={2008},
+  pages={1--7},
+  year={2008},
+  publisher={Hindawi Publishing Corp.}
+}
+

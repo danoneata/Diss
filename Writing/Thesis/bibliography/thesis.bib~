@@ -658,7 +658,7 @@ astronomical images},
   organization={IEEE}
 }
 
-@book{bishop1995,
+@book{bishop1995neural,
   title={Neural networks for pattern recognition},
   author={Bishop, C.M.},
   year={1995},

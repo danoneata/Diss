@@ -34,12 +34,13 @@
 	
 	The objective function considers each point in the data set and incorporates their probability of belonging to the true class:
 	\begin{align}
-		f(\AB) &= \sum_{i=1}^N p_i\\
+		f(\AB) &= \sum_{i=1}^N p_i\notag\\
 			   &= \sum_{i=1}^N \sum_{j\in c_i} \frac{
 								\exp(-d_{ij}^2)
 							  }{
 								\sum_{k\neq i}\exp(-d_{ik}^2)
 							  }.
+	\label{eq:nca-obj}
 	\end{align}
 	The score given by the objective function can be interpreted as the expected number of the correctly classified points.
 	
@@ -51,9 +52,9 @@
 	\end{align}
 	where $\xB_{ij} = \xB_i - \xB_j$. The interested reader can find the derivation of the gradient in the appendix. 
 	
-	It is important to note that NCA's objective function is not convex. So care must be taken to avoid poor local optima. The choice of initialization and of the optimization method affect the quality of the final solution. Section \ref{sec:practical-notes} discusses these and other practical issues. On the other hand, the non-convexity property has its advantage. It allows NCA to get good results on more complicated data sets that are not non convex. 
+	It is useful to note that NCA's objective function is not convex. So care must be taken to avoid poor local optima. The choice of initialization and of the optimization method affect the quality of the final solution. Section \ref{sec:practical-notes} discusses these and other practical issues. On the other hand, the non-convexity property has its advantage. It allows NCA to get good results on more complicated data sets that are not non convex. 
 
-	Another important aspect is the computational cost of the method. For each point we need to compute all the pairwise distances. This has the cost of $\mathcal{O}(dN^2)$. Actually, the a function evaluation is in $\mathcal{O}(dDN^2)$. Chapter \ref{ch:reducing} presents different ideas of reducing the computational cost.
+	Another important aspect is the computational cost of the method. For each point, we need to compute all the pairwise distances $d_{ij}$ which has the cost of $\mathcal{O}(dN^2)$. But prior to that, we have to compute the point projections $\{\AB\xB_i\}_{i=1}^N$; this operation is done in $\mathcal{O}(dDN)$ flops. So the total cost of evaluating the objective function $f(\AB)$ is  $\mathcal{O}(dDN+dN^2)$. Chapter \ref{ch:reducing} treats NCA's computational drawback; there are presented different ideas of speeding up the computations.
 	
 	The general scenario in which NCA is applied can be described by the training and testing steps:
 	describe algorithm.
@@ -187,62 +188,90 @@
 \subsection{Optimization methods}
 \label{subsec:optimization}
 
-\begin{itemize}
-    \item We have the first-order gradient information; so, we
-        can use any gradient based method.
-    \item Gradient descent is an iterative algorithm that uses
-        first-order information to find a minimum of a
-        function. At each step, it proposes to go in the
-        steepest direction, \ie, the direction with largest
-        gradient. It is a very simple to implement method, but
-        suffers from known convergence drawbacks. For example,
-        there might appear the zig-zagging effect it depends
-        on some critical parameters which make it difficult to
-        use in practice. These are the learning rate $\eta$
-        and the convergence conditions.
-    \item Common choices for $\eta$ are either using a
-        constant step or decrease it gradually. Using a
-        constant step size can make the algorithm diverge.
-    \item There are different other heuristics that make this
-        more efficient. One of these is the bold-driver trick.
-    \item A learning rate decreasing procedure is to set
-        $\eta=\frac{\eta_0}{t + t_0}$, where $t$ represents
-        the iteration number, $\eta_0$ and $t_0$ are
-        constants. So, we end up with two hyper-parameters
-        instead of one. There are various trick of tuning
-        them. Leon Bottou mentions that a common value for
-        $\eta_0$ is to be equal to the regularization variable
-        and $t_0$ should then be selected such that the
-        updates . In our implementation, because we did not
-        use a regularization term, we set $\eta_0$ to a fix
-        value and then we did an exponential search for $t_0$.
-    \item One might also try to use momentum. For further
-        useful advice on optimization one should consult
-        BackProp.
-    \item An improved version of the gradient descent is the
-        conjugate gradients algorithm. This has better
-        convergence.
-\end{itemize}
+	The function $f(\AB)$, equation \ref{eq:nca-obj}, can be maximised using any gradient based optimizer. We considered two popular approaches for our implementation: gradient ascent and conjugate gradients. These are only briefly presented here. The interested reader is pointed to \citet{bishop1995}.
+
+	\subsubsection*{Gradient ascent}
+
+	Gradient ascent is one of the simplest optimisation methods. It is an iterative algorithm that aims to find the maximum of a function by following the gradient direction at each step. The entire procedure is summarized by algorithm \ref{alg:gd}.
+      
+	\begin{algorithm} 
+		\caption{Gradient ascent (batch version)} 
+		\label{alg:gd}  
+		\begin{algorithmic}[1]                    % enter the algorithmic environment
+			\REQUIRE Data set $\mathcal{D}=\{\xB_1,\cdots,\xB_N\}$.
+			\STATE{ Get initial $\AB_0$ } \label{alg:gd-init}
+			\REPEAT
+				\STATE {Update parameter: $\AB_{t+1}\leftarrow \AB_{t} + \eta\frac{\partial
+f(\AB_{t},\mathcal{D})}{\partial\AB}$}
+				\STATE {Update learning rate $\eta$}
+				\STATE {$t\leftarrow t+1$}
+			\UNTIL {convergence}
+			\RETURN $\AB_{t}$.
+		\end{algorithmic}
+	\end{algorithm}
+
+	There are three aspects we need to carefully consider:
+	\begin{enumerate}
+	 \item The algorithm starts the search in the parameter space from the an initial parameter~$\AB_0$. Different values for $\AB_0$ will give different final solutions. In the NCA context, initialization is related to finding a good initial linear transformation; this is discussed  separately in subsection \ref{subsec:initialization}. For the moment, we can assume the values of $\AB_0$ are randomly chosen.
+	 \item The parameter $\eta$ is called \textit{step size} or, in neural networks related literature, it also known as \textit{learning rate}. As name suggests, $\eta$ controls how much we move the parameter in the gradient direction. 
+
+	The learning rate can be either fixed or adaptive. For the first case, choosing the correct value for $\eta$ is critical. If $\eta$ is set too large, the algorithm diverges. On the other hand, a small $\eta$ results in slow convergence. 
+
+	Usually, a variable learning rate $\eta$ is preferred since its more flexible. The ``bold driver'' is a heuristic for modifying $\eta$ during training.
+
+% 	A popular choice for an 
+	 \item Stopping criterion. 
+	\end{enumerate}
+
+
+% 	The notation $\frac{\partial f(\AB_t,\mathcal{D})}{\partial \AB}$
+
+	\subsubsection*{Conjugate gradients}
+	
+
+% \begin{itemize}
+%     \item We have the first-order gradient information; so, we
+%         can use any gradient based method.
+%     \item Gradient descent is an iterative algorithm that uses
+%         first-order information to find a minimum of a
+%         function. At each step, it proposes to go in the
+%         steepest direction, \ie, the direction with largest
+%         gradient. It is a very simple to implement method, but
+%         suffers from known convergence drawbacks. For example,
+%         there might appear the zig-zagging effect it depends
+%         on some critical parameters which make it difficult to
+%         use in practice. These are the learning rate $\eta$
+%         and the convergence conditions.
+%     \item Common choices for $\eta$ are either using a
+%         constant step or decrease it gradually. Using a
+%         constant step size can make the algorithm diverge.
+%     \item There are different other heuristics that make this
+%         more efficient. One of these is the bold-driver trick.
+%     \item A learning rate decreasing procedure is to set
+%         $\eta=\frac{\eta_0}{t + t_0}$, where $t$ represents
+%         the iteration number, $\eta_0$ and $t_0$ are
+%         constants. So, we end up with two hyper-parameters
+%         instead of one. There are various trick of tuning
+%         them. Leon Bottou mentions that a common value for
+%         $\eta_0$ is to be equal to the regularization variable
+%         and $t_0$ should then be selected such that the
+%         updates . In our implementation, because we did not
+%         use a regularization term, we set $\eta_0$ to a fix
+%         value and then we did an exponential search for $t_0$.
+%     \item One might also try to use momentum. For further
+%         useful advice on optimization one should consult
+%         BackProp.
+%     \item An improved version of the gradient descent is the
+%         conjugate gradients algorithm. This has better
+%         convergence.
+% \end{itemize}
 
 \subsection{Initialization}
 \label{subsec:initialization}
 
-\begin{itemize}
-    \item Important, because the function is not convex; we
-        obtain different final solutions by using different
-        starting points. In general, it is good idea to try
-        multiple initial seeds and then select that $\AB$ that
-        achieved the highest score.
-    \item The simplest solution is to randomly choose values
-        for the projection matrix $\AB$. We also tried to
-        initialize with other linear transformations whose
-        computational cost is cheap compared to NCA: principal
-        component analysis (PCA; \citealp{pearson1901}),
-        linear discriminant analysis (LDA;
-        \citealp{fisher1936}) and relevant component analysis
-        (RCA; \citealp{bar2003}).
-    \item For completeness, we give the equations and further notes for these
-methods here:
+    Initialization is important because the function $f(\AB)$ is not convex. The quality of the final solution relies on the starting point of the optimisation algorithm. A general rule of thumb is to try multiple initial seeds and select that final $\AB$ that gives the highest score.
+
+    We have already mentioned random initialization in subsection \ref{subsec:optimization}. Beside this, we can linear transformations that are cheap to compute. Such examples include  principal component analysis (PCA; \citealp{pearson1901}), linear discriminant analysis (LDA; \citealp{fisher1936}) and relevant component analysis (RCA; \citealp{bar2003}). For completeness, we give here the equations and also include further notes:
         \begin{itemize}
             \item  PCA finds an orthogonal linear
                 transformation of the data. This is
@@ -267,7 +296,7 @@ c}(\mathbf{x}_i-\boldsymbol{\muB}_c)(\mathbf{x}_i-\boldsymbol{\mu}_c)\tr.\label{
             The projection matrix $\AB$ that achieves this maximization consists
 of the eigenvectors of $\SB_W^{-1}\SB_B$.
 
-            We note that, unlike PCA, LDA makes use of the class labels and this
+            Unlike PCA, LDA makes use of the class labels and this
 usually guarantees a better initial projection.
 
             \item RCA finds a linear transformation $\AB$
@@ -281,84 +310,77 @@ usually guarantees a better initial projection.
                 $\AB=\SB_W^{-1/2}$.
         \end{itemize}
 
-        The methods above can be used for low-rank
-        initialization as well: select only the top $d$ most
-        discriminative eigenvectors, \ie, those that have the
+        If the projection is full-rank, $\AB\in\mathbb{R}^{D\times D}$, other obvious initializations are the identity matrix $\AB=\mathrm{I}_D$ and the Mahalanobis linear transformation $\AB=\SB^{-1/2}$.
+
+	If we want to learn a low-rank projection, $\AB \in \mathbb{R}^{d\times D},d<D$, then we can still use the eigendecomposition based methods. We construct $\AB$ using only the top $d$ most
+        discriminative eigenvectors, \ie, those eigenvectors that have the
         highest eigenvalues associated.
 
-        From our experiments, we can conclude that a good
-        initialization reflects in a good solution. For small
-        and simple data sets this is not that obvious, but for
-        large data sets the differences are more pregnant.
-\end{itemize}
+        From our experiments, we conclude that a good
+        initialization reflects in a good solution and a better convergence; this benefits are more evident
+        large data sets. As advertised in , we found RCA to work the best. Figure depicts initialization effects on a small data set.
 
 \subsection{Numerical issues}
 \label{subsec:numerical-issues}
 
-\begin{itemize}
-    \item There are situations when we end up in the
-        undetermined case $\frac{0}{0}$ while computing the
-        soft assignments $p_i$. This happens when the point
-        $\xB_i$ is far away from the rest of the points such
-        that $p_{ij}$ is 0 in numerical precision. To make an
-        idea of how big the distance between two points need
-        to be such the contribution is zero, we give the
-        example for \textsc{Matlab}: if \texttt{d>30} then
-        \texttt{exp(-d\^{}2)=0}
-    \item Unfortunately, this happens often in practice. The
-        most obvious case is when we are dealing with
-        outliers. But there are also other scenarios. The
-        scale of the axes can be large and the linear
-        projection $\AB$ cannot compensate for this. In this
-        situation, we end up with almost all the points having
-        this problem. This can also happen during training: a
-        point might get ``thrown away'' during an update of
-        $\AB$.
-    \item A simple way to alleviate this is by normalizing the
-        data, \ie, centering and making it unit variance:
+	Numerical problems can easily appear when computing the soft assignments $p_i$. If a point
+        $\xB_i$ is far away from the rest of the points, the stochastic probabilities $p_{ij}, \forall j,$ are all 0 in numerical precision. Consequently, the result $p_i$ is undetermined: $\frac{0}{0}$. 
+	To make an idea of how far $\xB_i$ has to be for this to happen, let us consider an example in \textsc{Matlab}. The answer to 
+        \texttt{exp(-d\^{}2)} is \texttt{0} whenever \texttt{d} exceeds \texttt{30} units.
+	This is problematic in practice, since distances larger than 30 often appear. Some common cases include data sets that contain outliers or data sets that present a large scale. 
+
+	The large scale effect can be partially alleviated if we initialize $\AB$ with small values. This is idea was used by Laurens van der Maaten in his implementation: \texttt{A = 0.01*randn(d,D)}. However, this does not guarantee to compensate the scale variation for any data set.
+
+% 	projection $\AB$ does not compensate for the scale
+
+	A more robust solution is to normalize the
+        data, \ie, centre and making it unit variance:
         \begin{align}
             x_{ij} \leftarrow \frac{x_{ij} - \mu_j}{\sigma_j}, i =
-\{1,\cdots,N\}, j = \{1,\cdots,D\}.
+	    \{1,\cdots,N\}, j = \{1,\cdots,D\}.
         \end{align}
-        In this case we have to store these characteristics
-        and then apply them on the test data. The total
-        projection will the combination of two successive
-        linear transformations:
+        In this case, we have to store the initial mean and variance of the data
+        and, at test time, transform the test data accordingly: subtract the mean and scale it using the variance coefficients. The variance scaling can be regarded as a linear transformation. We can combine this transformation with the learnt transformation $\AB$ and get:
         \begin{align}
-            \AB \leftarrow \AB_{\text{learnt}}  \cdot \begin{pmatrix}
+            \AB_{\text{total}} \leftarrow \AB  \cdot \begin{pmatrix}
                   \sigma_1 &  \cdots & 0 \\
                   \vdots  &   \ddots & \vdots  \\
                   0 & \cdots & \sigma_D
                  \end{pmatrix}.
         \end{align}
-    \item Because this does not guarantee the lack of
-        numerical problem, we further corrected this issue by
-        replacing each \texttt{NaN} with a very small value.
-        This was inspired by Laurens van der Maaten
-        implementation and we made use of it due to its
-        simplicity. A more rigorous way of dealing with this
-        would be by using the log-sum-exp trick. This idea is
-        presented in detail in the appendix.
 
-\end{itemize}
+	
+	In general, data normalization avoids numerical issues for the first iterations. But during training, the scale of $\AB$ increases and data points can be ``thrown'' away. We adopt a rather simplistic approach to avoid any numerical problems: replace $p_i$ with a very small value whenever we are in the $\frac{0}{0}$ case, as in Laurens van der Maaten implementation. In \texttt{Matlab}, this is done using the following command \texttt{max(p\_i,eps)}. 
+    
+	A more robust more rigorous way of dealing with this by multiplying both the numerator and denominator of $p_i$ with a certain quantity $\exp(L)$:
+	\begin{align}
+	  p_i = \frac{\sum_{j\in c_i} \exp(L-d_{ij}^2)}{\sum_{k\neq i} \exp(L-d_{ik}^2)},
+	\end{align}
+	where $L = \min_{k\neq i} d_{ik}^2$. This value of $L$ ensures that at least one term in the denominator does not undeflow.
+
+	In our implementation, we preferred the previous trick because of its simplicity and speed.
 
 \subsection{Regularization}
 \label{subsec:regularization}
 
-\begin{itemize}
-    \item NCA favours 1NN and large scale linear projections
-        $\AB$. This is not usually the optimal thing.
-    \item We can correct this using regularization, as pointed
-        out in \citep{singh2010}.
-        \begin{align}
+  NCA original objective function has the tendency to increase the scale of the linear projection $\AB$. A point is happy if it has a neighbour from the same class as him and if they are very far away from the rest. So NCA favours 1 nearest neighbour. In practice, this is not however the optimal thing to do. \citet{singh2010} and suggested the introduction of a regularization term to prevent this
+
+\begin{align}
             g(\AB) = f(\AB) - \lambda \sum_{i=1}^d\sum_{j=1}^D A_{ij}^2.\\
             \frac{\partial g}{\partial \AB} = \frac{\partial f}{\partial \AB} -
 2\lambda\AB.
         \end{align}
-    \item On the other hand, it is not clear how to set the
-        regularization parameter $\lambda$ and how to choose
-        the number of nearest neighbours for classification.
-\end{itemize}
+
+% \begin{itemize}
+%     \item NCA favours 1NN and large scale linear projections
+%         $\AB$. This is not usually the optimal thing.
+%     \item We can correct this using regularization, as pointed
+%         out in \citep{singh2010}.
+%         
+%     \item On the other hand, it is not clear how to set the
+%         regularization parameter $\lambda$ and how to choose
+%         the number of nearest neighbours for classification.
+% \end{itemize}
 
 \subsection{Doing classification}
 \label{subsec:doing-classification}

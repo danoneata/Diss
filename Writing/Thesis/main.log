@@ -1,4 +1,4 @@
-This is pdfTeXk, Version 3.141592-1.40.3 (Web2C 7.5.6) (format=pdflatex 2010.9.2)  6 AUG 2011 19:07
+This is pdfTeXk, Version 3.141592-1.40.3 (Web2C 7.5.6) (format=pdflatex 2010.9.2)  7 AUG 2011 23:46
 entering extended mode
  %&-line parsing enabled.
 **main.tex
@@ -554,21 +554,21 @@ Missing character: There is no ™ in font cmti12!
  [33
 
 
-])
+] [34])
 
 Package natbib Warning: There were undefined citations.
 
-[34] (./main.aux (./chapters/chap1.aux) (./chapters/chap2.aux)
+[35] (./main.aux (./chapters/chap1.aux) (./chapters/chap2.aux)
 (./chapters/chap3.aux) (./chapters/chap4.aux))
 
 LaTeX Warning: There were undefined references.
 
  ) 
 Here is how much of TeX's memory you used:
- 4545 strings out of 256216
- 60745 string characters out of 1917073
- 122831 words of memory out of 1500000
- 7681 multiletter control sequences out of 10000+200000
+ 4550 strings out of 256216
+ 60802 string characters out of 1917073
+ 122928 words of memory out of 1500000
+ 7686 multiletter control sequences out of 10000+200000
  21520 words of font info for 79 fonts, out of 1200000 for 2000
  645 hyphenation exceptions out of 8191
  42i,17n,40p,1647b,569s stack positions out of 5000i,500n,6000p,200000b,15000s
@@ -590,9 +590,9 @@ ype1/bluesky/cm/cmsy6.pfb></usr/share/texmf/fonts/type1/bluesky/cm/cmsy8.pfb></
 usr/share/texmf/fonts/type1/bluesky/cm/cmti12.pfb></usr/share/texmf/fonts/type1
 /public/cmex/fmex8.pfb></usr/share/texmf/fonts/type1/bluesky/ams/msbm10.pfb></u
 sr/share/texmf/fonts/type1/urw/courier/ucrr8a.pfb>
-Output written on main.pdf (40 pages, 453435 bytes).
+Output written on main.pdf (41 pages, 456486 bytes).
 PDF statistics:
- 311 PDF objects out of 1000 (max. 8388607)
+ 314 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 131072)
  51 words of extra memory for PDF output out of 10000 (max. 10000000)
 

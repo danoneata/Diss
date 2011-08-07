@@ -27,11 +27,21 @@ Beyer, K., Goldstein, J., Ramakrishnan, R., and Shaft, U. (1999).
 \newblock {When is ``nearest neighbor'' meaningful?}
 \newblock {\em Database Theory—ICDT’99}, pages 217--235.
 
+\bibitem[Bishop, 1995]{bishop1995}
+Bishop, C. (1995).
+\newblock {\em Neural networks for pattern recognition}.
+\newblock Oxford university press.
+
 \bibitem[Bishop, 2006]{bishop2006}
 Bishop, C.~M. (2006).
 \newblock {\em Pattern Recognition and Machine Learning (Information Science
   and Statistics)}.
 \newblock Springer-Verlag New York, Inc., Secaucus, NJ, USA.
+
+\bibitem[Butman and Goldberger, 2008]{butman2008}
+Butman, M. and Goldberger, J. (2008).
+\newblock Face recognition using classification-based linear projections.
+\newblock {\em EURASIP Journal on Advances in Signal Processing}, 2008:1--7.
 
 \bibitem[Chalupka, 2011]{chalupka2011}
 Chalupka, K. (2011).
