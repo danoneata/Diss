@@ -1,0 +1,120 @@
+\chapter{Further results}
+\label{app:results}
+
+\section{Initialization}
+\label{app:sec:initialization}
+
+This section provides examples of NCA projections on various data sets using different initializations. This is particularly useful to contrast the importance of initializations. Also it shows how NCA typically performs on small sized data sets. 
+
+% The objective function is maximized using conjugate gradients and the entire data sets are used for training. Data sets used are: \texttt{iris}, \texttt{balance} and \texttt{ecoli}. Data set characteristics were presented before in Table, Chapter \ref{ch:evaluation}. 
+
+\begin{table}[h]
+\centering\begin{tabular}{lccccc}
+\toprule
+	 &     & Train score  & \multicolumn{2}{c}{Test scores} & Baseline \\
+\cmidrule(r){3-3} \cmidrule(r){4-5} \cmidrule(r){6-6}
+Data set & $d$ & $f(A)$ & $1$-NN & NCA & Eucl. \\
+\midrule
+  \texttt{balance}&$2$&$92.86 \pm 0.47$&$90.78 \pm 0.53$&$90.61 \pm 0.55$&\\ 
+  \texttt{balance}&$D$&$95.36 \pm 0.38$&$93.40 \pm 0.47$&$93.04 \pm 0.51$&$76.18$\\ 
+  \texttt{ionosphere}&$2$&$98.31 \pm 0.14$&$79.86 \pm 0.75$&$79.74 \pm 0.78$&\\ 
+  \texttt{ionosphere}&$D$&$72.07 \pm 0.71$&$86.22 \pm 0.64$&$72.87 \pm 0.71$&$85.38$\\ 
+  \texttt{iris}&$2$&$99.38 \pm 0.11$&$94.94 \pm 0.39$&$94.72 \pm 0.39$&\\ 
+  \texttt{iris}&$D$&$99.48 \pm 0.10$&$95.10 \pm 0.44$&$95.15 \pm 0.44$&$95.53$\\ 
+  \texttt{wine}&$2$&$99.15 \pm 0.14$&$92.4 \pm 1.0$&$92.4 \pm 1.0$&\\ 
+  \texttt{wine}&$D$&$98.95 \pm 0.15$&$95.36 \pm 0.51$&$95.36 \pm 0.51$&$74.53$\\ 
+\bottomrule
+\end{tabular}
+\caption{Replicating experiments in paper. Scores are averaged over 40 runs.}
+\end{table}
+
+\begin{figure}
+	  \centering
+	  \subfigure[NCA projection after random initialization]{\label{fig:iris-init-2}\includegraphics[width=0.47\textwidth]{images/iris-init-2}}
+	  \subfigure[NCA projection after PCA initialization]{\label{fig:iris-init-4}\includegraphics[width=0.47\textwidth]{images/iris-init-4}}
+	  \subfigure[NCA projection after LDA initialization]{\label{fig:iris-init-6}\includegraphics[width=0.47\textwidth]{images/iris-init-6}}
+	  \subfigure[NCA projection after RCA initialization]{\label{fig:iris-init-8}\includegraphics[width=0.47\textwidth]{images/iris-init-8}}
+	  \caption{\small Results on \texttt{iris} data set.}
+	  \label{fig:iris-init}
+\end{figure}
+
+\begin{figure}
+	  \centering
+	  \subfigure[NCA projection after random initialization]{\label{fig:balance-init-2}\includegraphics[width=0.47\textwidth]{images/balance-init-2}}
+	  \subfigure[NCA projection after PCA initialization]{\label{fig:balance-init-4}\includegraphics[width=0.47\textwidth]{images/balance-init-4}}
+	  \subfigure[NCA projection after LDA initialization]{\label{fig:balance-init-6}\includegraphics[width=0.47\textwidth]{images/balance-init-6}}
+	  \subfigure[NCA projection after RCA initialization]{\label{fig:balance-init-8}\includegraphics[width=0.47\textwidth]{images/balance-init-8}}
+	  \caption{\small Results on \texttt{balance} data set.}
+	  \label{fig:balance-init}
+\end{figure}
+
+\begin{figure}
+	  \centering
+	  \subfigure[NCA projection after random initialization]{\label{fig:ecoli-init-2}\includegraphics[width=0.47\textwidth]{images/ecoli-init-2}}
+	  \subfigure[NCA projection after PCA initialization]{\label{fig:ecoli-init-4}\includegraphics[width=0.47\textwidth]{images/ecoli-init-4}}
+	  \subfigure[NCA projection after LDA initialization]{\label{fig:ecoli-init-6}\includegraphics[width=0.47\textwidth]{images/ecoli-init-6}}
+	  \subfigure[NCA projection after RCA initialization]{\label{fig:ecoli-init-8}\includegraphics[width=0.47\textwidth]{images/ecoli-init-8}}
+	  \caption{\small Results on \texttt{ecoli} data set.}
+	  \label{fig:ecoli-init}
+\end{figure}
+
+\section{NCA with compact support kernels}
+\label{app:sec:nca-cs}
+
+\begin{landscape}
+  \begin{table}
+    \centering\begin{tabular}{lrcccccc}
+      \toprule
+      &     & \multicolumn{2}{c}{NCA}  & \multicolumn{2}{c}{NCA CS} & \multicolumn{2}{c}{NCA CS BACK}\\
+      \cmidrule(r){3-4} \cmidrule(r){5-6} \cmidrule(r){7-8}
+      Data set & $d$ & $1$-NN & NCA & $1$-NN & NCA & $1$-NN & NCA \\
+      \midrule
+      \texttt{balance}&$2$&$92.74 \pm 0.57$&$92.29 \pm 0.56$&$87.90 \pm 0.68$&$89.04 \pm 0.52$&$89.9 \pm 1.3$&$91.04 \pm 0.94$\\ 
+      &$3$&$94.81 \pm 0.52$&$94.87 \pm 0.53$&$89.60 \pm 0.76$&$90.08 \pm 0.60$&$65.2 \pm 3.8$&$87.85 \pm 0.53$\\ 
+      &$4$&$95.16 \pm 0.39$&$95.32 \pm 0.33$&$90.82 \pm 0.62$&$92.07 \pm 0.54$&$67.2 \pm 3.4$&$86.91 \pm 0.30$\\ 
+      \midrule
+      \texttt{glass}&$2$&$53.6 \pm 1.4$&$54.2 \pm 1.5$&$55.8 \pm 1.1$&$57.2 \pm 1.7$&$58.5 \pm 1.2$&$59.4 \pm 1.5$\\ 
+      &$3$&$61.8 \pm 1.1$&$60.9 \pm 1.2$&$63.2 \pm 1.4$&$56.3 \pm 1.8$&$61.5 \pm 1.2$&$63.5 \pm 1.1$\\ 
+      &$4$&$62.7 \pm 1.4$&$62.2 \pm 1.5$&$62.0 \pm 1.4$&$54.5 \pm 1.6$&$65.2 \pm 1.2$&$65.2 \pm 1.0$\\ 
+      &$5$&$64.5 \pm 1.2$&$63.46 \pm 0.97$&$64.9 \pm 1.1$&$57.1 \pm 1.3$&$67.5 \pm 1.2$&$67.2 \pm 1.3$\\ 
+      &$9$&$66.5 \pm 1.8$&$65.5 \pm 1.8$&$68.9 \pm 1.5$&$57.8 \pm 1.5$&$68.2 \pm 1.6$&$64.1 \pm 1.3$\\ 
+      \midrule
+      \texttt{ionosphere}&$2$&$86.23 \pm 0.80$&$86.18 \pm 0.75$&$82.83 \pm 0.74$&$85.33 \pm 0.93$&$85.90 \pm 0.74$&$84.20 \pm 0.74$\\ 
+      &$3$&$87.69 \pm 0.62$&$87.64 \pm 0.62$&$85.42 \pm 0.62$&$83.44 \pm 0.69$&$88.11 \pm 0.74$&$84.91 \pm 0.52$\\ 
+      &$4$&$87.64 \pm 0.55$&$87.64 \pm 0.57$&$86.08 \pm 0.90$&$83.6 \pm 1.1$&$88.73 \pm 0.92$&$83.7 \pm 1.1$\\ 
+      &$5$&$89.39 \pm 0.70$&$89.39 \pm 0.70$&$88.87 \pm 0.61$&$81.46 \pm 0.76$&$86.65 \pm 0.86$&$82.08 \pm 0.98$\\ 
+      &$33$&$87.97 \pm 0.68$&$87.97 \pm 0.68$&$86.56 \pm 0.92$&$66.09 \pm 0.95$&$87.26 \pm 0.45$&$84.76 \pm 0.83$\\ 
+      \bottomrule
+    \end{tabular}
+  \caption{luil}
+  \end{table}
+
+  \begin{table}
+  \centering
+    \begin{tabular}{lrcccccc}
+    \toprule
+	    &     & \multicolumn{2}{c}{NCA}  & \multicolumn{2}{c}{NCA CS} & \multicolumn{2}{c}{NCA CS BACK}\\
+    \cmidrule(r){3-4} \cmidrule(r){5-6} \cmidrule(r){7-8}
+    Data set & $d$ & $1$-NN & NCA & $1$-NN & NCA & $1$-NN & NCA \\
+    \midrule
+    \texttt{iris}&$2$&$94.44 \pm 0.51$&$94.11 \pm 0.48$&$95.22 \pm 0.59$&$94.78 \pm 0.72$&$95.22 \pm 0.67$&$95.11 \pm 0.60$\\ 
+    &$3$&$95.44 \pm 0.73$&$95.00 \pm 0.75$&$95.33 \pm 0.93$&$95.0 \pm 1.0$&$94.89 \pm 0.80$&$94.2 \pm 1.1$\\ 
+    &$4$&$96.56 \pm 0.46$&$96.44 \pm 0.46$&$95.56 \pm 0.54$&$95.67 \pm 0.53$&$95.2 \pm 1.0$&$93.11 \pm 0.95$\\ 
+    \midrule
+    \texttt{wine}&$2$&$96.67 \pm 0.38$&$96.57 \pm 0.38$&$97.04 \pm 0.51$&$96.94 \pm 0.44$&$97.22 \pm 0.48$&$97.59 \pm 0.46$\\ 
+    &$3$&$96.39 \pm 0.48$&$96.39 \pm 0.48$&$96.48 \pm 0.63$&$95.93 \pm 0.65$&$97.22 \pm 0.53$&$97.50 \pm 0.40$\\ 
+    &$4$&$96.20 \pm 0.40$&$96.48 \pm 0.41$&$98.06 \pm 0.36$&$98.06 \pm 0.28$&$98.24 \pm 0.33$&$98.89 \pm 0.30$\\ 
+    &$5$&$96.57 \pm 0.60$&$96.57 \pm 0.60$&$96.20 \pm 0.71$&$95.00 \pm 0.81$&$97.78 \pm 0.43$&$97.87 \pm 0.40$\\ 
+    &$13$&$96.20 \pm 0.48$&$96.20 \pm 0.48$&$95.09 \pm 0.70$&$92.59 \pm 0.92$&$94.63 \pm 0.81$&$98.43 \pm 0.30$\\ 
+    \midrule
+    \texttt{yeast}&$2$&$42.37 \pm 0.81$&$43.20 \pm 0.84$&$42.57 \pm 0.63$&$48.31 \pm 0.90$&$44.38 \pm 0.66$&$48.24 \pm 0.79$\\ 
+    &$3$&$48.06 \pm 0.67$&$48.30 \pm 0.65$&$46.63 \pm 0.72$&$51.6 \pm 1.0$&$47.33 \pm 0.61$&$50.67 \pm 0.55$\\ 
+    &$4$&$49.06 \pm 0.47$&$49.14 \pm 0.47$&$49.26 \pm 0.51$&$53.06 \pm 0.94$&$49.93 \pm 0.36$&$53.08 \pm 0.30$\\ 
+    &$5$&$50.09 \pm 0.39$&$50.09 \pm 0.38$&$50.16 \pm 0.59$&$52.96 \pm 0.93$&$49.79 \pm 0.62$&$54.54 \pm 0.56$\\ 
+    &$8$&$50.66 \pm 0.52$&$50.70 \pm 0.52$&$50.93 \pm 0.44$&$54.89 \pm 0.43$&$48.73 \pm 0.65$&$56.93 \pm 0.62$\\ 
+    \bottomrule
+    \end{tabular}
+  \caption{lals}
+  \end{table}
+
+\end{landscape}

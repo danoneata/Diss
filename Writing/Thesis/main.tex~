@@ -44,7 +44,7 @@
 %% Taught MSc -- specify a particular degree instead. If none is specified,
 %% "MSc in Informatics" is used.
 % \documentclass[msc,cogsci]{infthesis}
-\documentclass[msc,ai,logo,notimes,draft]{infthesis}  % for the MSc in Informatics
+\documentclass[msc,ai,logo,notimes]{infthesis}  % for the MSc in Informatics
 
 %% Undergraduate project -- specify the degree course and project type
 %% separately
@@ -128,7 +128,11 @@ Igor, my faithful lab assistant. DP IM.
 \include{chapters/chap2}
 \include{chapters/chap3}
 \include{chapters/chap4}
-% \include{chap2}
+\include{chapters/chap5}
+\appendix
+% \include{appendix/code}
+\include{appendix/results}
+% \include{appendix/derivations}
 %% ... etc ...
 
 %%%%%%%%

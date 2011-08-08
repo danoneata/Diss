@@ -269,6 +269,23 @@ f(\AB_{t},\mathcal{D})}{\partial\AB}$}
 \subsection{Initialization}
 \label{subsec:initialization}
 
+    \begin{figure}
+	  \centering
+	  \subfigure[Initial random projection]{\label{fig:init-1}\includegraphics[width=0.49\textwidth]{images/wine-init-1}}
+	  \subfigure[NCA projection after random initialization]{\label{fig:init-2}\includegraphics[width=0.49\textwidth]{images/wine-init-2}}
+
+	  
+	  \subfigure[Initial projection using PCA]{\label{fig:init-3}\includegraphics[width=0.49\textwidth]{images/wine-init-3}}
+	  \subfigure[NCA projection after PCA initialization]{\label{fig:init-4}\includegraphics[width=0.49\textwidth]{images/wine-init-4}}
+
+	  
+	  \subfigure[Initial projection using LDA]{\label{fig:init-7}\includegraphics[width=0.49\textwidth]{images/wine-init-5}}
+	  \subfigure[NCA projection after LDA initialization]{\label{fig:init-8}\includegraphics[width=0.49\textwidth]{images/wine-init-6}}
+	  
+	  \caption{\small Results for different initializations (random, PCA and LDA) on \texttt{wine} data set. The images on the left side represent the projections of the data set using the initial $\AB$. The images on the right side are data set projection with the final $\AB$. Above each figure there is presented the LOOCV score which is normalized to 100.}
+	  \label{fig:init}
+    \end{figure}
+
     Initialization is important because the function $f(\AB)$ is not convex. The quality of the final solution relies on the starting point of the optimisation algorithm. A general rule of thumb is to try multiple initial seeds and select that final $\AB$ that gives the highest score.
 
     We have already mentioned random initialization in subsection \ref{subsec:optimization}. Beside this, we can linear transformations that are cheap to compute. Such examples include  principal component analysis (PCA; \citealp{pearson1901}), linear discriminant analysis (LDA; \citealp{fisher1936}) and relevant component analysis (RCA; \citealp{bar2003}). For completeness, we give here the equations and also include further notes:
@@ -363,15 +380,21 @@ usually guarantees a better initial projection.
 \subsection{Regularization}
 \label{subsec:regularization}
 
-  NCA original objective function has the tendency to increase the scale of the linear projection $\AB$. A point is happy if it has a neighbour from the same class as him and if they are very far away from the rest. So NCA favours 1 nearest neighbour. In practice, this is not however the optimal thing to do. \citet{butman2008} and \citet{singh2010} suggested the introduction of a regularization term to prevent degeneracy
+  Although the original paper \citep{goldberger2004} claimed that there were no problems with overfitting, we observed that NCA objective function has the tendency to increase the scale of the linear projection~$\AB$. \citet{butman2008} pointed out that this is especially problematic for data sets whose size~$N$ is significantly smaller than the dimensionality~$D$. In such a case, the linear transformation~$\AB$ can be chosen to project each point~$\xB_i$ to a pre-specified a location~$\yB_i$. The values of $\AB$ are obtained by solving the linear system:
+  \begin{align}
+    \AB\xB_i = \yB_i, \quad i = \{1,\cdots,N\}.
+  \end{align}
 
-\begin{align}
-            g(\AB) = f(\AB) - \lambda \sum_{i=1}^d\sum_{j=1}^D A_{ij}^2.\\
-            \frac{\partial g}{\partial \AB} = \frac{\partial f}{\partial \AB} -
-2\lambda\AB.
-        \end{align}
+  Because the system has more equations $dN$ than unknowns $dD$, it has exact solutions. If we set the same positions $\yB_i$ for points in the same class, we can virtually increase the scale of the projection to infinity and get an error-free classification. This degeneracy can be corrected with the help of regularization. We alter the objective function by subtracting a regularization term proportional with the magnitude of $\AB$. This gives:
+  \begin{align}
+    g(\AB) = f(\AB) - \lambda \sum_{i=1}^d\sum_{j=1}^D A_{ij}^2.\\
+            \frac{\partial g}{\partial \AB} = \frac{\partial f}{\partial \AB} - 2\lambda\AB,
+  \end{align}
+  where $\lambda$ is a positive constant that is tuned via cross-validation.
 
-  Because we use 
+  Another effect of a large scale linear projection $\AB$ is the fact that only the nearest neighbour is considered for each point. This is not usually the optimal thing to do, so regularization is also used to prevent this \citep{singh2010}.
+
+  In our implementation, we use ``early stopping'' technique which has a similar effect to regularization. 
 
 % \begin{itemize}
 %     \item NCA favours 1NN and large scale linear projections
@@ -387,26 +410,58 @@ usually guarantees a better initial projection.
 \subsection{Doing classification}
 \label{subsec:doing-classification}
 
-\begin{itemize}
-    \item We optimize the objective function
-        \ref{eq:nca-cc-kde-obj}. We found that for large data
-        sets it is better to do classification using the
-        probabilistic based approach: given a query point
-        $\xB^*$ we assign to the most probable class $c =
-        \operatorname{argmax}_cp(c|\xB^*)$.
-\end{itemize}
+  For testing, \citet{goldberger2004} considered only $k$NN decision rule. Since we are optimizing a particular function~$f(\AB)$, another sensible tool for classification is an NCA based function. If we are using the probabilistic interpretation, section \ref{sec:cc-kde}, a query point~$\xB_i$ is labelled with most probable class~$c$:
+  \begin{align}
+     c = \operatorname{argmax}_cp(c|\xB_i).
+  \end{align}
+
+  This can be re-written in NCA specific notation:
+  \begin{align}
+    c = \operatorname{argmax}_c\frac{\sum_{j\in c}p_{ij}}{\sum_k p_{ik}}.
+    \label{eq:nca-cls}
+  \end{align}
+
+  In our experiments, $1$NN and the NCA classification rule described by equation \eqref{eq:nca-cls} give very similar results if we train $\AB$ using the un-regularized function~$f(\AB)$. On the cases where we used early stopping, the NCA classification rule yielded better performances, see chapter \ref{ch:evaluation}. In this case, $k$NN with $k>1$ should also perform better than simple $1$NN.
 
 \subsection{Dimensionality annealing}
 \label{subsec:dimensionality-annealing}
 
-\begin{itemize}
-    \item
+  Dimensionality annealing is an approach to learning a low-rank metric in an way that avoids local optima (Hinton and Murray, oral communciation). We start with a full rank projection $\AB$ and gradually reduce the rank by introducing regularization terms on the lines of $\AB$.
+
+   The new objective function and its gradient are given by the following equations:
     \begin{align}
-            g(\AB) = f(\AB) - \sum_{i=1}^D\lambda_i\sum_{j=1}^D A_{ij}^2.\\
+            g(\AB) = f(\AB) - \sum_{i=1}^d\lambda_i\sum_{j=1}^D A_{ij}^2\\
             \frac{\partial g}{\partial \AB} = \frac{\partial f}{\partial \AB} - 2\begin{pmatrix}
                               \lambda_1A_{11} &  \cdots & \lambda_1A_{1D} \\
                               \vdots  &   \ddots & \vdots  \\
                               \lambda_dA_{d1} & \cdots & \lambda_dA_{dD}
                              \end{pmatrix}.
-        \end{align}
-\end{itemize}
+     \end{align}
+
+  The algorithm we propose
+  \begin{algorithm} 
+	\caption{Dimensionality annealing} 
+	\label{alg:dimensionality-annealing}  
+	\begin{algorithmic} [1]                 % enter the algorithmic environment
+		\REQUIRE Data set $\mathcal{D}=\{\xB_1,\cdots,\xB_N\}$, initial linear
+transformation $\AB\in\mathbb{R}^{D\times D}$ and low dimension~$d$.
+		\FOR {$i=1,\cdots,D-d$}
+		  \FOR {$j=1,\dots,P$}
+		    \STATE {Select dimension $d$ to anneal}
+		    \STATE {Increase regularization coefficient $\lambda_d \leftarrow \lambda_d + \Delta\lambda$}
+		    \STATE {Optimize function $g$: $\AB = \AB + \eta \frac{\partial g(\AB,\mathcal{D},\lambdaB)}{\partial \AB}$}
+		  \ENDFOR
+		\ENDFOR
+	\end{algorithmic}
+\end{algorithm}
+
+  The dimension $d$ to anneal can be selected in various ways:
+    \begin{itemize}
+     \item Minimum variance in our data set
+     \item Minimum variance in the projected data set
+     \item Minimum variance of $\AB$.
+    \end{itemize}
+
+    The function optimization can be done either using GA or using CG. We used CG for a small number iterations, typically 1 to 3.
+
+    After algorithm is finished we can run until convergence CG on the provided $\AB$.

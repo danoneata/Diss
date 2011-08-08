@@ -8,18 +8,23 @@
 \contentsline {section}{\numberline {3.3}Practical notes}{12}
 \contentsline {subsection}{\numberline {3.3.1}Optimization methods}{12}
 \contentsline {subsection}{\numberline {3.3.2}Initialization}{13}
-\contentsline {subsection}{\numberline {3.3.3}Numerical issues}{14}
-\contentsline {subsection}{\numberline {3.3.4}Regularization}{16}
-\contentsline {subsection}{\numberline {3.3.5}Doing classification}{16}
-\contentsline {subsection}{\numberline {3.3.6}Dimensionality annealing}{16}
-\contentsline {chapter}{\numberline {4}Reducing the computational cost}{17}
-\contentsline {section}{\numberline {4.1}Sub-sampling}{17}
-\contentsline {section}{\numberline {4.2}Mini-batches}{18}
-\contentsline {section}{\numberline {4.3}Stochastic learning}{20}
-\contentsline {section}{\numberline {4.4}Approximate computations}{22}
-\contentsline {subsection}{\numberline {4.4.1}$k$-d trees}{23}
-\contentsline {subsection}{\numberline {4.4.2}Approximate kernel density estimation}{26}
-\contentsline {subsection}{\numberline {4.4.3}Approximate KDE for NCA}{28}
-\contentsline {section}{\numberline {4.5}Exact computations}{28}
-\contentsline {section}{\numberline {4.6}NCA with compact support kernels and background distribution}{30}
-\contentsline {chapter}{Bibliography}{33}
+\contentsline {subsection}{\numberline {3.3.3}Numerical issues}{15}
+\contentsline {subsection}{\numberline {3.3.4}Regularization}{17}
+\contentsline {subsection}{\numberline {3.3.5}Doing classification}{17}
+\contentsline {subsection}{\numberline {3.3.6}Dimensionality annealing}{18}
+\contentsline {chapter}{\numberline {4}Reducing the computational cost}{20}
+\contentsline {section}{\numberline {4.1}Sub-sampling}{20}
+\contentsline {section}{\numberline {4.2}Mini-batches}{21}
+\contentsline {section}{\numberline {4.3}Stochastic learning}{23}
+\contentsline {section}{\numberline {4.4}Approximate computations}{25}
+\contentsline {subsection}{\numberline {4.4.1}$k$-d trees}{26}
+\contentsline {subsection}{\numberline {4.4.2}Approximate kernel density estimation}{29}
+\contentsline {subsection}{\numberline {4.4.3}Approximate KDE for NCA}{31}
+\contentsline {section}{\numberline {4.5}Exact computations}{31}
+\contentsline {section}{\numberline {4.6}NCA with compact support kernels and background distribution}{33}
+\contentsline {chapter}{\numberline {5}Evaluation}{36}
+\contentsline {section}{\numberline {5.1}NCA with compact support kernels}{36}
+\contentsline {chapter}{\numberline {A}Further results}{38}
+\contentsline {section}{\numberline {A.1}Initialization}{38}
+\contentsline {section}{\numberline {A.2}NCA with compact support kernels}{38}
+\contentsline {chapter}{Bibliography}{44}
