@@ -1,4 +1,8 @@
-function cv_score = nca_cv_score(A, X, c, X_cv, c_cv)
+function cv_score = nca_cv_score(A, X, c, X_cv, c_cv, approx)
+  
+  if ~exist('approx','var'),
+    approx = 1;
+  end
 
   cv_score = 0;
 
@@ -8,22 +12,42 @@ function cv_score = nca_cv_score(A, X, c, X_cv, c_cv)
   
   AX = A*X;
   AX_cv = A*X_cv;
+  
+  if approx,
+    k = 100;
     
-  for i=1:N_cv,
-    % Compute denominator---sum of the distances between the current 
-    % point x_i and all the other points x_k, k~=i:
-    dist_all = exp( -sum( bsxfun(@minus,AX_cv(:,i),AX).^2, 1 ) );
-    sum_dist_all = sum(dist_all);
+    [idxs_k dist_all] = knnsearch(AX', AX_cv', 'k', k);
+    idxs_k = idxs_k'; dist_all = dist_all';
 
-    % Compute numerator---sum of the distances between the current 
-    % point x_i and its neighbours x_j:
-    dist_neigh = dist_all(c==c_cv(i));
-    sum_dist_neigh = sum(dist_neigh);
-   
-    p_i = sum_dist_neigh / sum_dist_all;
+    K = exp(-dist_all.^2);
+    Ksum = sum(K, 1);
+    K = bsxfun(@rdivide, K, Ksum);
+    K = max(K, eps);
+    
+    for i=1:length(c_cv),
+      idxs_neigh = c_cv(i)==c(idxs_k(:,i));
+      p = sum(K(idxs_neigh,i));
 
-    % Update function value:
-    cv_score = cv_score + max(p_i,eps);
+      % Update function value:
+      cv_score = cv_score + p;
+    end
+  else
+    for i=1:N_cv,
+      % Compute denominator---sum of the distances between the current 
+      % point x_i and all the other points x_k, k~=i:
+      dist_all = exp( -sum( bsxfun(@minus,AX_cv(:,i),AX).^2, 1 ) );
+      sum_dist_all = sum(dist_all);
+
+      % Compute numerator---sum of the distances between the current 
+      % point x_i and its neighbours x_j:
+      dist_neigh = dist_all(c==c_cv(i));
+      sum_dist_neigh = sum(dist_neigh);
+
+      p_i = sum_dist_neigh / sum_dist_all;
+
+      % Update function value:
+      cv_score = cv_score + max(p_i,eps);
+    end
   end
 
 end
