@@ -54,9 +54,9 @@ function [f, df] = nca_obj_o1(A, X, c, idxs)
       ii = idxs(i);
       
       x_ik = bsxfun(@minus,X(:,ii),X); 
-      Ax_ik = A*x_ik;
-      x_ij = reshape(x_ik(C==c(ii)),D,[]);
-      Ax_ij = A*x_ij;
+      Ax_ik = bsxfun(@minus,AX(:,ii),AX);
+      x_ij = x_ik(:,c==c(ii));
+      Ax_ij = Ax_ik(:,c==c(ii));
 
       % Update gradient value:
 %       df = df + p(i) * bsxfun(@times, kern_all(:,i)', x_ik) * x_ik' / kern_sum(i) ...
