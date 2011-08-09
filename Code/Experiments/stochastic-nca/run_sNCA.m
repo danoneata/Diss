@@ -37,8 +37,8 @@ function [mapping, to_plot] = run_sNCA(obj, X, c, d, opts)
     obj = 'nca_obj_o1';
   end
   
-  if ~exist('opts','var') || numel(opts) ~= 6,
-    opts = [0 50 0.05 0.5 50 3000];
+  if ~exist('opts','var') || numel(opts) ~= 7,
+    opts = [0 50 0.05 0.5 50 3000 30];
   end
   
   % Size of mini-batches:
@@ -48,6 +48,7 @@ function [mapping, to_plot] = run_sNCA(obj, X, c, d, opts)
   lambda = opts(4);
   ct = opts(5);
   max_iter = opts(6);
+  window_length = opts(7);
   
   % Split data into training set and cross validation set:
   [X, c, X_cv, c_cv] = split_data(X,c,p);
@@ -62,7 +63,6 @@ function [mapping, to_plot] = run_sNCA(obj, X, c, d, opts)
   it = 1;
   
   % Variables for cross-validation error:
-  window_length = 50;
   score_best = -Inf;
   it_best = 0;
   score_cv = zeros(1,max_iter);
@@ -73,7 +73,7 @@ function [mapping, to_plot] = run_sNCA(obj, X, c, d, opts)
   % Initialize projection matrix:
   A = initA(init_type,X,c,D,d);
   
-%   lambda = tune_learning_rate(A, X, c, X_cv, c_cv, obj, m)
+  [lambda, ct] = tune_learning_rate(A, X, c, X_cv, c_cv, obj, m)
 %   score_total = zeros(1,max_iter);
 
   while epsilon > 0 && it <= max_iter && ~converged,
@@ -88,6 +88,7 @@ function [mapping, to_plot] = run_sNCA(obj, X, c, d, opts)
       % Get score on cross-validation set:
       A_ = reshape(A,d,D);
       score_cv(it) = nca_cv_score(A_, X, c, X_cv, c_cv)/N_cv;
+      %NN_score(X, c, X_cv, c_cv, A_);
       
       % Monitor cross-validation error:
       if score_cv(it) > score_best,
@@ -144,13 +145,64 @@ function A = initA(sw,X,c,D,d)
   A = A(:);
 end
 
-function [lambda,ct] = tune_learning_rate(Ainit, X, c, X_cv, cv, obj, m);
+function [lambda,ct] = tune_learning_rate(Ainit, X, c, X_cv, cv, obj, m)
 
-%   lambda_prop = 0.001;
-%   score_best = -Inf;
-%   
-  [yy] = rpc(reshape(Ainit,[],size(X,1))*X, m);
-  [dummy, df] = feval(obj, Ainit, X(yy==1), c(yy==1));
+  score = zeros(1,7);
+  ct_prop = zeros(1,7);
+  N = size(X,2);
+
+  idxs = randperm(N);
+  [dummy, df] = feval(obj, Ainit, X, c, idxs(1:m));
+  disp('Initialization score: ');
+  (- dummy / m)
+  
+  disp('Starting exponential search for hyperparameters');
+  
+  lambda = 1;
+  ct_prop(1) = 0.1;
+  
+  score(1) = -Inf;
+  i = 1;
+  
+  while 1,
+    i = i + 1;
+    ct_prop(i) = ct_prop(i-1)*5;
+    epsilon = lambda / (ct_prop(i) + 1);
+    Aprop = Ainit - df*epsilon;
+    score(i) = nca_cv_score(Aprop, X, c, X_cv, cv) / size(X_cv,2);
+    if ct_prop(i) > 1e3,
+      break;
+    end
+  end
+  
+  [score_sort, idxs_sort] = sort(score,'descend');
+  ct = ct_prop(idxs_sort(1));
+  
+  if abs(idxs_sort(1)-idxs_sort(2)) == 1,
+    disp('Starting linear search for hyperparameters');
+    
+    score_best = score_sort(1);
+    ct_sort = ct_prop(idxs_sort);
+    delta = abs(ct_sort(2) - ct_sort(1)) / 5;
+    
+    if ct_sort(1) < ct_sort(2),
+      ct_min = ct_sort(1);
+      ct_max = ct_sort(2);
+    else
+      ct_min = ct_sort(2);
+      ct_max = ct_sort(1);
+    end
+    for ct_ = ct_min:delta:ct_max,
+      epsilon = lambda / (ct_ + 1);
+      Aprop = Ainit - df*epsilon;
+      score_ = nca_cv_score(Aprop, X, c, X_cv, cv) / size(X_cv,2);
+      if score_ > score_best,
+        ct = ct_;
+        score_best = score_;
+      end
+    end
+  end
+  
 % %   
 %   while lambda_prop <= 10,
 %     ct_prop = 0.01;
@@ -183,6 +235,6 @@ function [lambda,ct] = tune_learning_rate(Ainit, X, c, X_cv, cv, obj, m);
 %     lambda_prop = lambda_prop*10;
 %   end
 
-  lambda = abs( mean(abs(Ainit)) - 0.5 ) * 20 / mean( abs( df(:) ) );
+%   lambda = abs( mean(abs(Ainit)) - 0.5 ) * 20 / mean( abs( df(:) ) );
 
 end
