@@ -1,0 +1,30 @@
+\chapter{MATLAB code}
+\lstset{language=Matlab,
+   keywords={break,case,catch,continue,else,elseif,end,for,function,global,if,otherwise,persistent,return,switch,try,while},
+   basicstyle=\ttfamily,
+   keywordstyle=\color{blue},
+   commentstyle=\color{dkgreen},
+   stringstyle=\color{red},	
+   backgroundcolor=\color{white},
+   tabsize=2,
+   showspaces=false,
+   showstringspaces=true}
+% All this appendix uses make syntax
+
+\section{NCA objective function}
+\label{app:code-nca-obj}
+{\singlespace \small
+\lstinputlisting{src/nca-obj.m}
+}
+
+Notes: 
+\begin{enumerate}
+  \item \texttt{square\_dist} computes the pairwise distances between two $D$-dimensional sets of points. The function was written by Iain Murray and it can be found in his \textsc{Matlab} Toolbox, available at the following URL: \protect\url{http://homepages.inf.ed.ac.uk/imurray2/code/imurray-matlab/square_dist.m}.
+  \item This implementation is suitable for rather small data sets whose pairwise distance matrix can fit in the RAM. If you are dealing with large data sets, it is better to iterate through the data set and compute the distances successively: from a point to the rest of the data set. 
+\end{enumerate}
+
+\section{Objective function for stochastic learning}
+\label{app:code-snca-obj}
+{\singlespace \small
+\lstinputlisting{src/snca.m}
+}

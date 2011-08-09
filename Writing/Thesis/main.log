@@ -1,4 +1,4 @@
-This is pdfTeXk, Version 3.141592-1.40.3 (Web2C 7.5.6) (format=pdflatex 2010.9.2)  8 AUG 2011 23:56
+This is pdfTeXk, Version 3.141592-1.40.3 (Web2C 7.5.6) (format=pdflatex 2010.9.2)  9 AUG 2011 23:18
 entering extended mode
  %&-line parsing enabled.
 **main.tex
@@ -310,27 +310,61 @@ Package: courier 2005/04/12 PSNFSS-v9.2a (WaS)
 )
 (/usr/share/texmf/tex/latex/graphics/lscape.sty
 Package: lscape 2000/10/22 v3.01 Landscape Pages (DPC)
+)
+(/usr/share/texmf/tex/latex/listings/listings.sty
+\lst@mode=\count130
+\lst@gtempboxa=\box56
+\lst@token=\toks24
+\lst@length=\count131
+\lst@currlwidth=\dimen150
+\lst@column=\count132
+\lst@pos=\count133
+\lst@lostspace=\dimen151
+\lst@width=\dimen152
+\lst@newlines=\count134
+\lst@lineno=\count135
+\c@lstlisting=\count136
+\lst@maxwidth=\dimen153
+
+(/usr/share/texmf/tex/latex/listings/lstpatch.sty
+File: lstpatch.sty 2004/10/17 1.3b (Carsten Heinz)
+)
+(/usr/share/texmf/tex/latex/listings/lstmisc.sty
+File: lstmisc.sty 2004/09/07 1.3 (Carsten Heinz)
+\c@lstnumber=\count137
+\lst@skipnumbers=\count138
+\lst@framebox=\box57
+)
+(/usr/share/texmf/tex/latex/listings/listings.cfg
+File: listings.cfg 2004/09/05 1.3 listings configuration
+))
+Package: listings 2004/10/17 1.3b (Carsten Heinz)
+
+(/usr/share/texmf/tex/latex/graphics/color.sty
+Package: color 2005/11/14 v1.0j Standard LaTeX Color (DPC)
+
+(/usr/share/texmf/tex/latex/config/color.cfg
+File: color.cfg 2007/01/18 v1.5 color configuration of teTeX/TeXLive
+)
+Package color Info: Driver file: pdftex.def on input line 130.
 ) (./main.aux
 (./chapters/chap1.aux) (./chapters/chap2.aux) (./chapters/chap3.aux)
-(./chapters/chap4.aux
-
-LaTeX Warning: Label `alg:mini-batches' multiply defined.
-
-) (./chapters/chap5.aux) (./appendix/results.aux))
+(./chapters/chap4.aux) (./chapters/chap5.aux) (./appendix/code.aux)
+(./appendix/results.aux))
 \openout1 = `main.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 94.
-LaTeX Font Info:    ... okay on input line 94.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 94.
-LaTeX Font Info:    ... okay on input line 94.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 94.
-LaTeX Font Info:    ... okay on input line 94.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 94.
-LaTeX Font Info:    ... okay on input line 94.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 94.
-LaTeX Font Info:    ... okay on input line 94.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 94.
-LaTeX Font Info:    ... okay on input line 94.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 97.
+LaTeX Font Info:    ... okay on input line 97.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 97.
+LaTeX Font Info:    ... okay on input line 97.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 97.
+LaTeX Font Info:    ... okay on input line 97.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 97.
+LaTeX Font Info:    ... okay on input line 97.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 97.
+LaTeX Font Info:    ... okay on input line 97.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 97.
+LaTeX Font Info:    ... okay on input line 97.
 -------------------- Geometry parameters
 paper: a4paper
 landscape: --
@@ -370,18 +404,17 @@ driver: pdftex
 
 (1in=72.27pt, 1cm=28.45pt)
 -----------------------
-
-(/usr/share/texmf/tex/context/base/supp-pdf.tex
+ (/usr/share/texmf/tex/context/base/supp-pdf.tex
 [Loading MPS to PDF converter (version 2006.09.02).]
-\scratchcounter=\count130
-\scratchdimen=\dimen150
-\scratchbox=\box56
-\nofMPsegments=\count131
-\nofMParguments=\count132
-\MPscratchCnt=\count133
-\MPscratchDim=\dimen151
-\MPnumerator=\count134
-\everyMPtoPDFconversion=\toks24
+\scratchcounter=\count139
+\scratchdimen=\dimen154
+\scratchbox=\box58
+\nofMPsegments=\count140
+\nofMParguments=\count141
+\MPscratchCnt=\count142
+\MPscratchDim=\dimen155
+\MPnumerator=\count143
+\everyMPtoPDFconversion=\toks25
 ) (/usr/share/texmf/tex/latex/ragged2e/ragged2e.sty
 Package: ragged2e 2003/03/25 v2.04 ragged2e Package (MS)
 
@@ -404,7 +437,9 @@ LaTeX Info: Redefining \selectfont on input line 125.
 \RaggedRightParindent=\skip73
 \JustifyingParindent=\skip74
 )
-Package caption Info: float package v1.3 (or newer) detected on input line 94.
+Package caption Info: float package v1.3 (or newer) detected on input line 97.
+Package caption Info: listings package v1.2 (or newer) detected on input line 9
+7.
 
 <images/thesis-shield.pdf, id=1, 364.36125pt x 369.38pt>
 File: images/thesis-shield.pdf Graphic file (type pdf)
@@ -455,7 +490,7 @@ LaTeX Warning: Reference `sec:background' on page 2 undefined on input line 14.
 )
 
 LaTeX Font Warning: Font shape `OT1/cmss/m/it' in size <12> not available
-(Font)              Font shape `OT1/cmss/m/sl' tried instead on input line 128.
+(Font)              Font shape `OT1/cmss/m/sl' tried instead on input line 131.
 
 
 [2] [3]
@@ -539,7 +574,12 @@ LaTeX Warning: Float too large for page by 16.19264pt on input line 287.
 
 [13] [14 <./images/wine-init-1.pdf> <./images/wine-init-2.pdf> <./images/wine-i
 nit-3.pdf> <./images/wine-init-4.pdf> <./images/wine-init-5.pdf> <./images/wine
--init-6.pdf>] [15] [16] [17]) [18] [19]
+-init-6.pdf>] [15] [16] [17]
+
+LaTeX Warning: Reference `alg;dim-anneal-select-dim' on page 18 undefined on in
+put line 457.
+
+[18]) [19]
 \openout2 = `chapters/chap4.aux'.
 
  (./chapters/chap4.tex
@@ -587,105 +627,141 @@ File: images/nca-cs-back.pdf Graphic file (type pdf)
 
 (./chapters/chap5.tex
 Chapter 5.
-) [36
+[36
 
 
 
-] [37]
+] [37] [38] [39]) [40]
+\openout2 = `appendix/code.aux'.
+
+ (./appendix/code.tex
+Appendix A.
+(/usr/share/texmf/tex/latex/listings/lstlang1.sty
+File: lstlang1.sty 2004/09/05 1.3 listings language file
+) (./src/nca-obj.m [41
+
+
+
+]
+Overfull \hbox (21.05853pt too wide) in paragraph at lines 51--52
+[][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][] 
+ []
+
+)
+Overfull \hbox (42.10954pt too wide) in paragraph at lines 22--23
+\OT1/pcr/m/n/12 homepages . inf . ed . ac . uk / imurray2 / code / imurray-[]ma
+tlab / square _
+ []
+
+(./src/snca.m
+Overfull \hbox (14.48848pt too wide) in paragraph at lines 2--3
+[][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][
+][][][][] 
+ []
+
+[42]
+Overfull \hbox (14.48848pt too wide) in paragraph at lines 4--5
+[][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][
+][][][][][][][][][][][][][][][][][][][][][][][][][][][][] 
+ []
+
+[43]
+Overfull \hbox (21.05853pt too wide) in paragraph at lines 59--60
+[][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][] 
+ []
+
+)) [44]
 \openout2 = `appendix/results.aux'.
 
  (./appendix/results.tex
-Appendix A.
-<images/iris-init-2.pdf, id=287, 355.3275pt x 301.125pt>
+Appendix B.
+<images/iris-init-2.pdf, id=309, 355.3275pt x 301.125pt>
 File: images/iris-init-2.pdf Graphic file (type pdf)
 
 <use images/iris-init-2.pdf>
-<images/iris-init-4.pdf, id=288, 361.35pt x 298.11375pt>
+<images/iris-init-4.pdf, id=310, 361.35pt x 298.11375pt>
 File: images/iris-init-4.pdf Graphic file (type pdf)
 
 <use images/iris-init-4.pdf>
-<images/iris-init-6.pdf, id=289, 361.35pt x 298.11375pt>
+<images/iris-init-6.pdf, id=311, 361.35pt x 298.11375pt>
 File: images/iris-init-6.pdf Graphic file (type pdf)
 
 <use images/iris-init-6.pdf>
-<images/iris-init-8.pdf, id=290, 361.35pt x 298.11375pt>
+<images/iris-init-8.pdf, id=312, 361.35pt x 298.11375pt>
 File: images/iris-init-8.pdf Graphic file (type pdf)
 
 <use images/iris-init-8.pdf>
-<images/balance-init-2.pdf, id=291, 355.3275pt x 301.125pt>
+<images/balance-init-2.pdf, id=313, 355.3275pt x 301.125pt>
 File: images/balance-init-2.pdf Graphic file (type pdf)
 
 <use images/balance-init-2.pdf>
-<images/balance-init-4.pdf, id=292, 355.3275pt x 301.125pt>
+<images/balance-init-4.pdf, id=314, 355.3275pt x 301.125pt>
 File: images/balance-init-4.pdf Graphic file (type pdf)
 
 <use images/balance-init-4.pdf>
-<images/balance-init-6.pdf, id=293, 361.35pt x 298.11375pt>
+<images/balance-init-6.pdf, id=315, 361.35pt x 298.11375pt>
 File: images/balance-init-6.pdf Graphic file (type pdf)
 
 <use images/balance-init-6.pdf>
-<images/balance-init-8.pdf, id=294, 361.35pt x 298.11375pt>
+<images/balance-init-8.pdf, id=316, 361.35pt x 298.11375pt>
 File: images/balance-init-8.pdf Graphic file (type pdf)
 
 <use images/balance-init-8.pdf>
-<images/ecoli-init-2.pdf, id=295, 355.3275pt x 301.125pt>
+<images/ecoli-init-2.pdf, id=317, 355.3275pt x 301.125pt>
 File: images/ecoli-init-2.pdf Graphic file (type pdf)
 
 <use images/ecoli-init-2.pdf>
-<images/ecoli-init-4.pdf, id=296, 355.3275pt x 301.125pt>
+<images/ecoli-init-4.pdf, id=318, 355.3275pt x 301.125pt>
 File: images/ecoli-init-4.pdf Graphic file (type pdf)
 
 <use images/ecoli-init-4.pdf>
-<images/ecoli-init-6.pdf, id=297, 355.3275pt x 301.125pt>
+<images/ecoli-init-6.pdf, id=319, 355.3275pt x 301.125pt>
 File: images/ecoli-init-6.pdf Graphic file (type pdf)
 
 <use images/ecoli-init-6.pdf>
-<images/ecoli-init-8.pdf, id=298, 355.3275pt x 301.125pt>
+<images/ecoli-init-8.pdf, id=320, 355.3275pt x 301.125pt>
 File: images/ecoli-init-8.pdf Graphic file (type pdf)
 
-<use images/ecoli-init-8.pdf> [38
+<use images/ecoli-init-8.pdf> [45
 
 
 
-] [39 <./images/iris-init-2.pdf> <./images/iris-init-4.pdf> <./images/iris-init
--6.pdf> <./images/iris-init-8.pdf>] [40 <./images/balance-init-2.pdf> <./images
+] [46 <./images/iris-init-2.pdf> <./images/iris-init-4.pdf> <./images/iris-init
+-6.pdf> <./images/iris-init-8.pdf>] [47 <./images/balance-init-2.pdf> <./images
 /balance-init-4.pdf> <./images/balance-init-6.pdf> <./images/balance-init-8.pdf
->] [41 <./images/ecoli-init-2.pdf> <./images/ecoli-init-4.pdf> <./images/ecoli-
+>] [48 <./images/ecoli-init-2.pdf> <./images/ecoli-init-4.pdf> <./images/ecoli-
 init-6.pdf> <./images/ecoli-init-8.pdf>]
-[42] [43]) (./main.bbl
+[49] [50] [51] [52]) (./main.bbl
 Missing character: There is no â in font cmti12!
 Missing character: There is no € in font cmti12!
 Missing character: There is no ” in font cmti12!
 Missing character: There is no â in font cmti12!
 Missing character: There is no € in font cmti12!
 Missing character: There is no ™ in font cmti12!
- [44
+ [53
 
 
 
 
-] [45])
+] [54])
 
 Package natbib Warning: There were undefined citations.
 
-[46] (./main.aux (./chapters/chap1.aux) (./chapters/chap2.aux)
+[55] (./main.aux (./chapters/chap1.aux) (./chapters/chap2.aux)
 (./chapters/chap3.aux) (./chapters/chap4.aux) (./chapters/chap5.aux)
-(./appendix/results.aux))
+(./appendix/code.aux) (./appendix/results.aux))
 
 LaTeX Warning: There were undefined references.
 
-
-LaTeX Warning: There were multiply-defined labels.
-
  ) 
 Here is how much of TeX's memory you used:
- 4731 strings out of 256216
- 64624 string characters out of 1917073
- 129553 words of memory out of 1500000
- 7829 multiletter control sequences out of 10000+200000
+ 6074 strings out of 256216
+ 84112 string characters out of 1917073
+ 188329 words of memory out of 1500000
+ 9135 multiletter control sequences out of 10000+200000
  24196 words of font info for 89 fonts, out of 1200000 for 2000
  645 hyphenation exceptions out of 8191
- 42i,17n,40p,1647b,569s stack positions out of 5000i,500n,6000p,200000b,15000s
+ 42i,17n,42p,1647b,1526s stack positions out of 5000i,500n,6000p,200000b,15000s
 {/usr/share/texmf/fonts/enc/dvips/base/8r.enc}</usr/share/texmf/fonts/type1/b
 luesky/cm/cmbx10.pfb></usr/share/texmf/fonts/type1/bluesky/cm/cmbx12.pfb></usr/
 share/texmf/fonts/type1/bluesky/cm/cmbx8.pfb></usr/share/texmf/fonts/type1/blue
@@ -705,9 +781,9 @@ ype1/bluesky/cm/cmsy10.pfb></usr/share/texmf/fonts/type1/bluesky/cm/cmsy6.pfb><
 /bluesky/cm/cmti12.pfb></usr/share/texmf/fonts/type1/public/cmex/fmex8.pfb></us
 r/share/texmf/fonts/type1/bluesky/ams/msbm10.pfb></usr/share/texmf/fonts/type1/
 urw/courier/ucrr8a.pfb>
-Output written on main.pdf (52 pages, 685885 bytes).
+Output written on main.pdf (61 pages, 712462 bytes).
 PDF statistics:
- 463 PDF objects out of 1000 (max. 8388607)
+ 492 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 131072)
  141 words of extra memory for PDF output out of 10000 (max. 10000000)
 

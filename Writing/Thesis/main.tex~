@@ -67,6 +67,9 @@
 \usepackage{subfigure}
 \usepackage{amssymb}
 \usepackage{courier}
+\usepackage{lscape}
+\usepackage{listings}
+\usepackage{color}
 % \usepackage{hyperref}
 
 \newcommand{\tr}{^\textrm{T}}
@@ -130,7 +133,7 @@ Igor, my faithful lab assistant. DP IM.
 \include{chapters/chap4}
 \include{chapters/chap5}
 \appendix
-% \include{appendix/code}
+\include{appendix/code}
 \include{appendix/results}
 % \include{appendix/derivations}
 %% ... etc ...

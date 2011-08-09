@@ -23,8 +23,12 @@
 \contentsline {section}{\numberline {4.5}Exact computations}{31}
 \contentsline {section}{\numberline {4.6}NCA with compact support kernels and background distribution}{33}
 \contentsline {chapter}{\numberline {5}Evaluation}{36}
-\contentsline {section}{\numberline {5.1}NCA with compact support kernels}{36}
-\contentsline {chapter}{\numberline {A}Further results}{38}
-\contentsline {section}{\numberline {A.1}Initialization}{38}
-\contentsline {section}{\numberline {A.2}NCA with compact support kernels}{38}
-\contentsline {chapter}{Bibliography}{44}
+\contentsline {section}{\numberline {5.1}Method comparison}{37}
+\contentsline {section}{\numberline {5.2}Approximate computations}{39}
+\contentsline {chapter}{\numberline {A}MATLAB code}{41}
+\contentsline {section}{\numberline {A.1}NCA objective function}{41}
+\contentsline {section}{\numberline {A.2}Objective function for stochastic learning}{42}
+\contentsline {chapter}{\numberline {B}Further results}{45}
+\contentsline {section}{\numberline {B.1}Initialization}{45}
+\contentsline {section}{\numberline {B.2}NCA with compact support kernels}{45}
+\contentsline {chapter}{Bibliography}{53}

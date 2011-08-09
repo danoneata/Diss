@@ -5,6 +5,7 @@ A level-1 auxiliary file: chapters/chap2.aux
 A level-1 auxiliary file: chapters/chap3.aux
 A level-1 auxiliary file: chapters/chap4.aux
 A level-1 auxiliary file: chapters/chap5.aux
+A level-1 auxiliary file: appendix/code.aux
 A level-1 auxiliary file: appendix/results.aux
 The style file: apalike.bst
 Database file #1: bibliography/thesis.bib
@@ -18,7 +19,7 @@ Warning--empty journal in hinneburg2000
 Warning--empty publisher in omohundro1989
 You've used 31 entries,
             1935 wiz_defined-function locations,
-            658 strings with 8198 characters,
+            659 strings with 8215 characters,
 and the built_in function-call counts, 11629 in all, are:
 = -- 1159
 > -- 388

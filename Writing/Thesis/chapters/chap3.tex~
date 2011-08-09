@@ -426,9 +426,7 @@ usually guarantees a better initial projection.
 \subsection{Dimensionality annealing}
 \label{subsec:dimensionality-annealing}
 
-  Dimensionality annealing is an approach to learning a low-rank metric in an way that avoids local optima (Hinton and Murray, oral communciation). We start with a full rank projection $\AB$ and gradually reduce the rank by introducing regularization terms on the lines of $\AB$.
-
-   The new objective function and its gradient are given by the following equations:
+  Dimensionality annealing is an approach to learning a low-rank metric in an way that avoids local optima (Hinton and Murray, oral communication). We start with a full rank projection $\AB$ and gradually reduce the rank by introducing regularization terms on the lines of $\AB$. Compared with the classical regularization procedure, subsection \ref{subsec:regularization}, here we use a regularization term on each of the dimension $d$. The new objective function and its gradient are given by the following equations:
     \begin{align}
             g(\AB) = f(\AB) - \sum_{i=1}^d\lambda_i\sum_{j=1}^D A_{ij}^2\\
             \frac{\partial g}{\partial \AB} = \frac{\partial f}{\partial \AB} - 2\begin{pmatrix}
@@ -438,7 +436,8 @@ usually guarantees a better initial projection.
                              \end{pmatrix}.
      \end{align}
 
-  The algorithm we propose
+  A large value of $\lambda_d$ will impose a small magnitude of $\AB$ on dimension $d$. We increase $\lambda_d$ slowly; this permits for the rest of the values of $\AB$ to readjust. We clarify these steps in algorithm \ref{alg:dimensionality-annealing}.
+
   \begin{algorithm} 
 	\caption{Dimensionality annealing} 
 	\label{alg:dimensionality-annealing}  
@@ -446,8 +445,8 @@ usually guarantees a better initial projection.
 		\REQUIRE Data set $\mathcal{D}=\{\xB_1,\cdots,\xB_N\}$, initial linear
 transformation $\AB\in\mathbb{R}^{D\times D}$ and low dimension~$d$.
 		\FOR {$i=1,\cdots,D-d$}
+		  \STATE {Select dimension $d$ to anneal} \label{alg:dim-anneal-select-dim}
 		  \FOR {$j=1,\dots,P$}
-		    \STATE {Select dimension $d$ to anneal}
 		    \STATE {Increase regularization coefficient $\lambda_d \leftarrow \lambda_d + \Delta\lambda$}
 		    \STATE {Optimize function $g$: $\AB = \AB + \eta \frac{\partial g(\AB,\mathcal{D},\lambdaB)}{\partial \AB}$}
 		  \ENDFOR
@@ -455,13 +454,15 @@ transformation $\AB\in\mathbb{R}^{D\times D}$ and low dimension~$d$.
 	\end{algorithmic}
 \end{algorithm}
 
-  The dimension $d$ to anneal can be selected in various ways:
+  There are several notes to be made. There are alternatives for selecting the dimension $d$ we want to anneal, step \ref{alg;dim-anneal-select-dim} from algorithm \ref{alg:dimensionality-annealing}. We can choose $d$ to be the direction that has:
     \begin{itemize}
-     \item Minimum variance in our data set
-     \item Minimum variance in the projected data set
-     \item Minimum variance of $\AB$.
+     \item minimum variance in our data set $\{\AB\xB_i\}_{i=1}^N$
+     \item minimum variance in the projected data set $\{\AB\xB_i\}_{i=1}^N$
+     \item smallest magnitude in $\AB$.
     \end{itemize}
 
-    The function optimization can be done either using GA or using CG. We used CG for a small number iterations, typically 1 to 3.
+    The function optimization step can be done either by gradient ascent or conjugate gradients. It is possible to do conjugate gradients for a small number of iterations, typically 2 or 3.
 
-    After algorithm 
+    After a dimension is annealed, we reach the end of the inner for loop, we can remove that particular dimension; for example set the elements on the $d$ row equal to 0.
+
+    After algorithm is finished we can run until convergence CG on the provided $\AB$.

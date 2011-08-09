@@ -1,0 +1,18 @@
+\section{MATLAB Code}
+\lstset{language=Matlab,
+   keywords={break,case,catch,continue,else,elseif,end,for,function,
+      global,if,otherwise,persistent,return,switch,try,while},
+   basicstyle=\ttfamily,
+   keywordstyle=\color{blue},
+   commentstyle=\color{red},
+   stringstyle=\color{dkgreen},	
+   backgroundcolor=\color{white},
+   tabsize=4,
+   showspaces=false,
+   showstringspaces=false}
+% All this appendix uses make syntax
+
+Each exercise has asociated a script file. In the same folder with the script, there must be copied the function/functions used for that particular exercise and also the images. \underline{Note:} The files containing the functions must be named as the function. In order to view the results, only the script needs to be run.
+\subsection{Applying two DFTs in succesion}
+\label{app:A}
+\lstinputlisting{src/ScriptA.m}

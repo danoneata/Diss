@@ -1,0 +1,26 @@
+\chapter{Code}
+\lstset{language=Matlab,
+   keywords={break,case,catch,continue,else,elseif,end,for,function,global,if,otherwise,persistent,return,switch,try,while},
+   basicstyle=\ttfamily,
+   keywordstyle=\color{blue},
+   commentstyle=\color{dkgreen},
+   stringstyle=\color{red},	
+   backgroundcolor=\color{white},
+   tabsize=2,
+   showspaces=false,
+   showstringspaces=true}
+% All this appendix uses make syntax
+
+\section{MATLAB code of NCA objective function}
+\label{app:code}
+{\singlespace
+\lstinputlisting{src/nca-obj.m}
+}
+
+Notes: 
+\begin{enumerate}
+  \item \texttt{square\_dist} computes the pairwise distances between two $D$-dimensional sets of points. The function was written by Iain Murray and it can be found in his \textsc{Matlab} Toolbox, available at the following URL: \protect\url{http://homepages.inf.ed.ac.uk/imurray2/code/imurray-matlab/square_dist.m}.
+  \item 
+\end{enumerate}
+
+
