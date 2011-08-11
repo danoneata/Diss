@@ -1,34 +1,34 @@
 \contentsline {chapter}{\numberline {1}Introduction}{1}
 \contentsline {chapter}{\numberline {2}Background}{4}
 \contentsline {section}{\numberline {2.1}Theoretical background}{4}
-\contentsline {section}{\numberline {2.2}Related methods}{6}
-\contentsline {chapter}{\numberline {3}Neighbourhood component analysis}{8}
-\contentsline {section}{\numberline {3.1}General presentation}{8}
-\contentsline {section}{\numberline {3.2}Class-conditional kernel density estimation interpretation}{10}
-\contentsline {section}{\numberline {3.3}Practical notes}{12}
-\contentsline {subsection}{\numberline {3.3.1}Optimization methods}{12}
-\contentsline {subsection}{\numberline {3.3.2}Initialization}{13}
-\contentsline {subsection}{\numberline {3.3.3}Numerical issues}{15}
-\contentsline {subsection}{\numberline {3.3.4}Regularization}{17}
-\contentsline {subsection}{\numberline {3.3.5}Doing classification}{17}
-\contentsline {subsection}{\numberline {3.3.6}Dimensionality annealing}{18}
-\contentsline {chapter}{\numberline {4}Reducing the computational cost}{20}
-\contentsline {section}{\numberline {4.1}Sub-sampling}{20}
-\contentsline {section}{\numberline {4.2}Mini-batches}{21}
-\contentsline {section}{\numberline {4.3}Stochastic learning}{23}
-\contentsline {section}{\numberline {4.4}Approximate computations}{25}
-\contentsline {subsection}{\numberline {4.4.1}$k$-d trees}{26}
-\contentsline {subsection}{\numberline {4.4.2}Approximate kernel density estimation}{29}
-\contentsline {subsection}{\numberline {4.4.3}Approximate KDE for NCA}{31}
-\contentsline {section}{\numberline {4.5}Exact computations}{31}
-\contentsline {section}{\numberline {4.6}NCA with compact support kernels and background distribution}{33}
-\contentsline {chapter}{\numberline {5}Evaluation}{36}
-\contentsline {section}{\numberline {5.1}Method comparison}{37}
-\contentsline {section}{\numberline {5.2}Approximate computations}{39}
-\contentsline {chapter}{\numberline {A}MATLAB code}{41}
-\contentsline {section}{\numberline {A.1}NCA objective function}{41}
-\contentsline {section}{\numberline {A.2}Objective function for stochastic learning}{42}
-\contentsline {chapter}{\numberline {B}Further results}{45}
-\contentsline {section}{\numberline {B.1}Initialization}{45}
-\contentsline {section}{\numberline {B.2}NCA with compact support kernels}{45}
-\contentsline {chapter}{Bibliography}{53}
+\contentsline {section}{\numberline {2.2}Related methods}{7}
+\contentsline {chapter}{\numberline {3}Neighbourhood component analysis}{9}
+\contentsline {section}{\numberline {3.1}General presentation}{9}
+\contentsline {section}{\numberline {3.2}Class-conditional kernel density estimation interpretation}{11}
+\contentsline {section}{\numberline {3.3}Practical notes}{13}
+\contentsline {subsection}{\numberline {3.3.1}Optimization methods}{13}
+\contentsline {subsection}{\numberline {3.3.2}Initialization}{15}
+\contentsline {subsection}{\numberline {3.3.3}Numerical issues}{17}
+\contentsline {subsection}{\numberline {3.3.4}Regularization}{18}
+\contentsline {subsection}{\numberline {3.3.5}Doing classification}{19}
+\contentsline {subsection}{\numberline {3.3.6}Dimensionality annealing}{20}
+\contentsline {chapter}{\numberline {4}Reducing the computational cost}{22}
+\contentsline {section}{\numberline {4.1}Sub-sampling}{22}
+\contentsline {section}{\numberline {4.2}Mini-batches}{23}
+\contentsline {section}{\numberline {4.3}Stochastic learning}{25}
+\contentsline {section}{\numberline {4.4}Approximate computations}{27}
+\contentsline {subsection}{\numberline {4.4.1}$k$-d trees}{28}
+\contentsline {subsection}{\numberline {4.4.2}Approximate kernel density estimation}{31}
+\contentsline {subsection}{\numberline {4.4.3}Approximate KDE for NCA}{33}
+\contentsline {section}{\numberline {4.5}Exact computations}{33}
+\contentsline {section}{\numberline {4.6}NCA with compact support kernels and background distribution}{35}
+\contentsline {chapter}{\numberline {5}Evaluation}{38}
+\contentsline {section}{\numberline {5.1}Mini-batches methods comparison}{39}
+\contentsline {section}{\numberline {5.2}Approximate computations}{41}
+\contentsline {chapter}{\numberline {A}MATLAB code}{43}
+\contentsline {section}{\numberline {A.1}NCA objective function}{43}
+\contentsline {section}{\numberline {A.2}Objective function for stochastic learning}{44}
+\contentsline {chapter}{\numberline {B}Further results}{47}
+\contentsline {section}{\numberline {B.1}Initialization}{47}
+\contentsline {section}{\numberline {B.2}NCA with compact support kernels}{47}
+\contentsline {chapter}{Bibliography}{55}

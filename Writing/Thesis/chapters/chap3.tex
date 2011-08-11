@@ -217,10 +217,12 @@ f(\AB_{t},\mathcal{D})}{\partial\AB}$}
 
 	The learning rate can be either fixed or adaptive. For the first case, choosing the correct value for $\eta$ is critical. If $\eta$ is set too large, the algorithm diverges. On the other hand, a small $\eta$ results in slow convergence. 
 
-	Usually, a variable learning rate $\eta$ is preferred since its more flexible. The ``bold driver'' is a heuristic for modifying $\eta$ during training.
+	Usually, a variable learning rate $\eta$ is preferred since it is more flexible. The ``bold driver'' is a heuristic for automatically modifying $\eta$ during training. The idea is to gradually increase the learning rate after each iteration as long as the objective function keeps improving. Then we go back to the previous position and start decreasing the learning rate until a new increase in the function is found. This procedure is described in algorithm. The parameters indicate how much the learning rate is adjusted at each step. Usually, $\rho=1.1$ and $\sigma=0.5$.
+	
+	Another way is to change the learning rate~$\eta$ using a decreasing rule proportional to the number of current iteration: $\eta=\frac{\eta_0}{t+t_0}$. Now we have two parameters instead of one. Intuitively, $\eta_0$ can be regarded as the initial learning rate and $t_0$ is the number of iterations after which $\eta_0$ starts to drop off. Using a learning rate of such form is especially motivated in the stochastic gradient case. If $\eta\propto 1/t$, the algorithm converges to the true minimum as $t$ goes to infinity. However, in practice the converges is very slow; so setting the constant $\eta_0$ and~$t_0$ is important for reaching a good solution in a short time. Leon Bottou recommends to set $\eta_0$ to be regularization value and select $t_0$ such that the update will result in a sensible new value for $\AB$. Since we did not use regularization, we followed some of the tricks presented in \citep{lecun1998}. We fixed the value for $\eta_0$ and we did an exponential search for $t_0$ using a cross validation set.
 
 % 	A popular choice for an 
-	 \item Stopping criterion. 
+	 \item Convergence. We set a maximum number of iterations. Also we use ``early stopping'': we monitor the performance of the new $\AB$ on a cross validation set. If the objective function did not increase for more than a preset number of iterations we stop and return to the previous best solution. This avoids overfitting.
 	\end{enumerate}
 
 

@@ -92,6 +92,12 @@ Gray, A. and Moore, A. (2003).
   tractability}.
 \newblock In {\em SIAM International Conference on Data Mining}, volume 2003.
 
+\bibitem[Hastie and Tibshirani, 1996]{hastie1996}
+Hastie, T. and Tibshirani, R. (1996).
+\newblock Discriminant adaptive nearest neighbor classification.
+\newblock {\em IEEE Transactions on Pattern Analysis and Machine Intelligence},
+  18:607--616.
+
 \bibitem[Hinneburg et~al., 2000]{hinneburg2000}
 Hinneburg, E., Aggarwal, C., Keim, D., and Hinneburg, A. (2000).
 \newblock {What is the nearest neighbor in high dimensional spaces?}
@@ -107,6 +113,12 @@ Lang, D. (2009).
 \newblock {\em Astrometry.net: {A}utomatic recognition and calibration of
   astronomical images}.
 \newblock PhD thesis, University of Toronto.
+
+\bibitem[LeCun et~al., 1998]{lecun1998}
+LeCun, Y., Bottou, L., Orr, G., and Muller, K. (1998).
+\newblock Efficient backprop.
+\newblock In Orr, G. and K., M., editors, {\em Neural Networks: Tricks of the
+  trade}. Springer.
 
 \bibitem[Mitchell, 1997]{mitchell1997}
 Mitchell, T.~M. (1997).
@@ -124,6 +136,12 @@ Moore, A. (2000).
 \newblock {\em {The anchors hierarchy: Using the triangle inequality to survive
   high dimensional data}}.
 \newblock Citeseer.
+
+\bibitem[Moore and Lee, 1994]{moore1994}
+Moore, A. and Lee, M. (1994).
+\newblock {Efficient algorithms for minimizing cross validation error}.
+\newblock In {\em Proceedings of the Eleventh International Conference on
+  Machine Learning}, pages 190--198. Citeseer.
 
 \bibitem[Omohundro, 1989]{omohundro1989}
 Omohundro, S. (1989).
@@ -144,6 +162,12 @@ Russell, S.~J., Norvig, P., Candy, J.~F., Malik, J.~M., and Edwards, D.~D.
 Shen, Y., Ng, A., and Seeger, M. (2006).
 \newblock {Fast gaussian process regression using kd-trees}.
 \newblock {\em Advances in neural information processing systems}, 18:1225.
+
+\bibitem[Shental et~al., 2002]{shental2002}
+Shental, N., Hertz, T., Weinshall, D., and Pavel, M. (2002).
+\newblock {Adjustment learning and relevant component analysis}.
+\newblock In {\em Proceedings of the 7th European Conference on Computer
+  Vision-Part IV}, pages 776--792. Springer.
 
 \bibitem[Singh-Miller, 2010]{singh2010}
 Singh-Miller, N. (2010).
@@ -169,5 +193,10 @@ Xing, E., Ng, A., Jordan, M., and Russell, S. (2003).
   side-information}.
 \newblock In {\em Advances in Neural Information Processing Systems}, pages
   521--528.
+
+\bibitem[Yang and Jin, 2006]{yang2006}
+Yang, L. and Jin, R. (2006).
+\newblock {Distance metric learning: A comprehensive survey}.
+\newblock {\em Michigan State Universiy}, pages 1--51.
 
 \end{thebibliography}
