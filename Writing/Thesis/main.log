@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-1.40.10 (MiKTeX 2.8) (preloaded format=pdflatex 2010.6.8)  11 AUG 2011 15:48
+This is pdfTeX, Version 3.1415926-1.40.10 (MiKTeX 2.8) (preloaded format=pdflatex 2010.6.8)  12 AUG 2011 00:29
 entering extended mode
 **main.tex
 (D:\Diss\Writing\Thesis\main.tex
@@ -511,11 +511,16 @@ Chapter 3.
 
 
 
-] [10] <images/mog.pdf, id=84, 170.6375pt x 175.65625pt>
-File: images/mog.pdf Graphic file (type pdf)
+] [10]
 
-<use images/mog.pdf> [11 <D:/Diss/Writing/Thesis/images/mog.pdf>] [12] [13]
-[14] <images/wine-init-1.pdf, id=111, 355.3275pt x 301.125pt>
+Package natbib Warning: Citation `rall1981' on page 11 undefined on input line 
+59.
+
+<images/mog.pdf, id=84, 170.6375pt x 175.65625pt>
+File: images/mog.pdf Graphic file (type pdf)
+ <use images/mog.pdf> [11]
+[12 <D:/Diss/Writing/Thesis/images/mog.pdf>] [13] [14]
+<images/wine-init-1.pdf, id=111, 355.3275pt x 301.125pt>
 File: images/wine-init-1.pdf Graphic file (type pdf)
 
 <use images/wine-init-1.pdf>
@@ -540,17 +545,18 @@ File: images/wine-init-6.pdf Graphic file (type pdf)
 
 <use images/wine-init-6.pdf>
 
-LaTeX Warning: Float too large for page by 15.19264pt on input line 289.
+LaTeX Warning: Float too large for page by 15.19264pt on input line 293.
 
 [15] [16 <D:/Diss/Writing/Thesis/images/wine-init-1.pdf> <D:/Diss/Writing/Thesi
 s/images/wine-init-2.pdf> <D:/Diss/Writing/Thesis/images/wine-init-3.pdf> <D:/D
 iss/Writing/Thesis/images/wine-init-4.pdf> <D:/Diss/Writing/Thesis/images/wine-
 init-5.pdf> <D:/Diss/Writing/Thesis/images/wine-init-6.pdf>] [17] [18] [19]
+[20]
 
-LaTeX Warning: Reference `alg;dim-anneal-select-dim' on page 20 undefined on in
-put line 459.
+LaTeX Warning: Reference `alg;dim-anneal-select-dim' on page 21 undefined on in
+put line 463.
 
-[20]) [21] (D:\Diss\Writing\Thesis\chapters/chap4.tex
+) [21] (D:\Diss\Writing\Thesis\chapters/chap4.tex
 Chapter 4.
 [22
 
@@ -597,12 +603,33 @@ Chapter 5.
 
 
 
-] [39] [40] [41]) [42] (D:\Diss\Writing\Thesis\appendix/code.tex
+] [39] [40] <images/usps-acc-time.pdf, id=292, 331.2375pt x 268.00125pt>
+File: images/usps-acc-time.pdf Graphic file (type pdf)
+
+<use images/usps-acc-time.pdf>
+<images/magic-acc-time.pdf, id=293, 331.2375pt x 268.00125pt>
+File: images/magic-acc-time.pdf Graphic file (type pdf)
+
+<use images/magic-acc-time.pdf>
+<images/mnist-acc-time.pdf, id=294, 331.2375pt x 268.00125pt>
+File: images/mnist-acc-time.pdf Graphic file (type pdf)
+
+<use images/mnist-acc-time.pdf>
+
+LaTeX Warning: Float too large for page by 47.80348pt on input line 162.
+
+[41] [42 <D:/Diss/Writing/Thesis/images/usps-acc-time.pdf> <D:/Diss/Writing/The
+sis/images/magic-acc-time.pdf> <D:/Diss/Writing/Thesis/images/mnist-acc-time.pd
+f>] <images/nca-cs-nnzs.pdf, id=326, 337.26pt x 264.99pt>
+File: images/nca-cs-nnzs.pdf Graphic file (type pdf)
+
+<use images/nca-cs-nnzs.pdf>) [43 <D:/Diss/Writing/Thesis/images/nca-cs-nnzs.pd
+f>] (D:\Diss\Writing\Thesis\appendix/code.tex
 Appendix A.
 ("D:\Programs\MiKTeX 2.8\tex\latex\listings\lstlang1.sty"
 File: lstlang1.sty 2004/09/05 1.3 listings language file
 )
-(D:\Diss\Writing\Thesis\src/nca-obj.m [43
+(D:\Diss\Writing\Thesis\src/nca-obj.m [44
 
 
 
@@ -623,96 +650,96 @@ Overfull \hbox (14.48848pt too wide) in paragraph at lines 2--3
 ][][][][] 
  []
 
-[44]
+[45]
 Overfull \hbox (14.48848pt too wide) in paragraph at lines 4--5
 [][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][
 ][][][][][][][][][][][][][][][][][][][][][][][][][][][][] 
  []
 
-[45]
+[46]
 Overfull \hbox (21.05853pt too wide) in paragraph at lines 59--60
 [][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][] 
  []
 
-)) [46] (D:\Diss\Writing\Thesis\appendix/results.tex
+)) [47] (D:\Diss\Writing\Thesis\appendix/results.tex
 Appendix B.
-<images/iris-init-2.pdf, id=311, 355.3275pt x 301.125pt>
+<images/iris-init-2.pdf, id=349, 355.3275pt x 301.125pt>
 File: images/iris-init-2.pdf Graphic file (type pdf)
 
 <use images/iris-init-2.pdf>
-<images/iris-init-4.pdf, id=312, 361.35pt x 298.11375pt>
+<images/iris-init-4.pdf, id=350, 361.35pt x 298.11375pt>
 File: images/iris-init-4.pdf Graphic file (type pdf)
 
 <use images/iris-init-4.pdf>
-<images/iris-init-6.pdf, id=313, 361.35pt x 298.11375pt>
+<images/iris-init-6.pdf, id=351, 361.35pt x 298.11375pt>
 File: images/iris-init-6.pdf Graphic file (type pdf)
 
 <use images/iris-init-6.pdf>
-<images/iris-init-8.pdf, id=314, 361.35pt x 298.11375pt>
+<images/iris-init-8.pdf, id=352, 361.35pt x 298.11375pt>
 File: images/iris-init-8.pdf Graphic file (type pdf)
 
 <use images/iris-init-8.pdf>
-<images/balance-init-2.pdf, id=315, 355.3275pt x 301.125pt>
+<images/balance-init-2.pdf, id=353, 355.3275pt x 301.125pt>
 File: images/balance-init-2.pdf Graphic file (type pdf)
 
 <use images/balance-init-2.pdf>
-<images/balance-init-4.pdf, id=316, 355.3275pt x 301.125pt>
+<images/balance-init-4.pdf, id=354, 355.3275pt x 301.125pt>
 File: images/balance-init-4.pdf Graphic file (type pdf)
 
 <use images/balance-init-4.pdf>
-<images/balance-init-6.pdf, id=317, 361.35pt x 298.11375pt>
+<images/balance-init-6.pdf, id=355, 361.35pt x 298.11375pt>
 File: images/balance-init-6.pdf Graphic file (type pdf)
 
 <use images/balance-init-6.pdf>
-<images/balance-init-8.pdf, id=318, 361.35pt x 298.11375pt>
+<images/balance-init-8.pdf, id=356, 361.35pt x 298.11375pt>
 File: images/balance-init-8.pdf Graphic file (type pdf)
 
 <use images/balance-init-8.pdf>
-<images/ecoli-init-2.pdf, id=319, 355.3275pt x 301.125pt>
+<images/ecoli-init-2.pdf, id=357, 355.3275pt x 301.125pt>
 File: images/ecoli-init-2.pdf Graphic file (type pdf)
 
 <use images/ecoli-init-2.pdf>
-<images/ecoli-init-4.pdf, id=320, 355.3275pt x 301.125pt>
+<images/ecoli-init-4.pdf, id=358, 355.3275pt x 301.125pt>
 File: images/ecoli-init-4.pdf Graphic file (type pdf)
 
 <use images/ecoli-init-4.pdf>
-<images/ecoli-init-6.pdf, id=321, 355.3275pt x 301.125pt>
+<images/ecoli-init-6.pdf, id=359, 355.3275pt x 301.125pt>
 File: images/ecoli-init-6.pdf Graphic file (type pdf)
 
 <use images/ecoli-init-6.pdf>
-<images/ecoli-init-8.pdf, id=322, 355.3275pt x 301.125pt>
+<images/ecoli-init-8.pdf, id=360, 355.3275pt x 301.125pt>
 File: images/ecoli-init-8.pdf Graphic file (type pdf)
 
-<use images/ecoli-init-8.pdf> [47
+<use images/ecoli-init-8.pdf> [48
 
 
 
-] [48 <D:/Diss/Writing/Thesis/images/iris-init-2.pdf> <D:/Diss/Writing/Thesis/i
+] [49 <D:/Diss/Writing/Thesis/images/iris-init-2.pdf> <D:/Diss/Writing/Thesis/i
 mages/iris-init-4.pdf> <D:/Diss/Writing/Thesis/images/iris-init-6.pdf> <D:/Diss
 /Writing/Thesis/images/iris-init-8.pdf>]
-[49 <D:/Diss/Writing/Thesis/images/balance-init-2.pdf> <D:/Diss/Writing/Thesis/
+[50 <D:/Diss/Writing/Thesis/images/balance-init-2.pdf> <D:/Diss/Writing/Thesis/
 images/balance-init-4.pdf> <D:/Diss/Writing/Thesis/images/balance-init-6.pdf> <
-D:/Diss/Writing/Thesis/images/balance-init-8.pdf>] [50 <D:/Diss/Writing/Thesis/
+D:/Diss/Writing/Thesis/images/balance-init-8.pdf>] [51 <D:/Diss/Writing/Thesis/
 images/ecoli-init-2.pdf> <D:/Diss/Writing/Thesis/images/ecoli-init-4.pdf> <D:/D
 iss/Writing/Thesis/images/ecoli-init-6.pdf> <D:/Diss/Writing/Thesis/images/ecol
-i-init-8.pdf>] [51] [52] [53] [54]) (D:\Diss\Writing\Thesis\main.bbl
+i-init-8.pdf>] [52] [53] [54] [55]) (D:\Diss\Writing\Thesis\main.bbl
 Missing character: There is no â in font cmti12!
 Missing character: There is no € in font cmti12!
 Missing character: There is no ” in font cmti12!
 Missing character: There is no â in font cmti12!
 Missing character: There is no € in font cmti12!
 Missing character: There is no ™ in font cmti12!
- [55
+ [56
 
 
 
 
 ]
-[56])
+[57])
 
 Package natbib Warning: There were undefined citations.
 
-[57] (D:\Diss\Writing\Thesis\main.aux
+[58] (D:\Diss\Writing\Thesis\main.aux
 (D:\Diss\Writing\Thesis\chapters/chap1.aux)
 (D:\Diss\Writing\Thesis\chapters/chap2.aux)
 (D:\Diss\Writing\Thesis\chapters/chap3.aux)
@@ -725,11 +752,11 @@ LaTeX Warning: There were undefined references.
 
  ) 
 Here is how much of TeX's memory you used:
- 6926 strings out of 495285
- 100052 string characters out of 3180831
- 217807 words of memory out of 3000000
- 9904 multiletter control sequences out of 15000+200000
- 24187 words of font info for 89 fonts, out of 3000000 for 9000
+ 6956 strings out of 495285
+ 100711 string characters out of 3180831
+ 218113 words of memory out of 3000000
+ 9929 multiletter control sequences out of 15000+200000
+ 24543 words of font info for 90 fonts, out of 3000000 for 9000
  14 hyphenation exceptions out of 8191
  43i,17n,42p,1647b,1524s stack positions out of 5000i,500n,10000p,200000b,50000s
 {D:/Programs/MiKTeX 2.8/fonts/enc/dvips/fontname/8r.enc}<D:/Programs/MiKTeX 2
@@ -750,15 +777,16 @@ pfb><D:/Programs/MiKTeX 2.8/fonts/type1/public/amsfonts/cm/cmr8.pfb><D:/Program
 s/MiKTeX 2.8/fonts/type1/public/amsfonts/cm/cmss10.pfb><D:/Programs/MiKTeX 2.8/
 fonts/type1/public/amsfonts/cm/cmss12.pfb><D:/Programs/MiKTeX 2.8/fonts/type1/p
 ublic/amsfonts/cm/cmssbx10.pfb><D:/Programs/MiKTeX 2.8/fonts/type1/public/amsfo
-nts/cm/cmssi12.pfb><D:/Programs/MiKTeX 2.8/fonts/type1/public/amsfonts/cm/cmsy1
-0.pfb><D:/Programs/MiKTeX 2.8/fonts/type1/public/amsfonts/cm/cmsy6.pfb><D:/Prog
-rams/MiKTeX 2.8/fonts/type1/public/amsfonts/cm/cmsy8.pfb><D:/Programs/MiKTeX 2.
-8/fonts/type1/public/amsfonts/cm/cmti12.pfb><D:/Programs/MiKTeX 2.8/fonts/type1
-/public/amsfonts/symbols/msbm10.pfb><D:/Programs/MiKTeX 2.8/fonts/type1/urw/cou
-rier/ucrr8a.pfb>
-Output written on main.pdf (63 pages, 1047327 bytes).
+nts/cm/cmssi10.pfb><D:/Programs/MiKTeX 2.8/fonts/type1/public/amsfonts/cm/cmssi
+12.pfb><D:/Programs/MiKTeX 2.8/fonts/type1/public/amsfonts/cm/cmsy10.pfb><D:/Pr
+ograms/MiKTeX 2.8/fonts/type1/public/amsfonts/cm/cmsy6.pfb><D:/Programs/MiKTeX 
+2.8/fonts/type1/public/amsfonts/cm/cmsy8.pfb><D:/Programs/MiKTeX 2.8/fonts/type
+1/public/amsfonts/cm/cmti12.pfb><D:/Programs/MiKTeX 2.8/fonts/type1/public/amsf
+onts/symbols/msbm10.pfb><D:/Programs/MiKTeX 2.8/fonts/type1/urw/courier/ucrr8a.
+pfb>
+Output written on main.pdf (64 pages, 1100236 bytes).
 PDF statistics:
- 482 PDF objects out of 1000 (max. 8388607)
+ 523 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
- 151 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 171 words of extra memory for PDF output out of 10000 (max. 10000000)
 

@@ -81,9 +81,34 @@ The methods were compared in this section on the top 3 largest data sets as numb
 \begin{description}
   \item[Subsampling.] {
     For this method we trained NCA on a subset of $n=3000$ samples. We used conjugate gradients for optimization and for initialization RCA linear transformation. We observe that the training scores are significantly better than the train performance, especially on \texttt{usps} data set. As previously mentioned, the thinning effect is a cause for this.
+    \begin{table}
+    	\centering
+    	\begin{tabular}{lccc}
+    	\toprule
+    	Data set & Train & $1$NN & NCA \\
+    	\cmidrule(r){2-2}\cmidrule(r){3-3}\cmidrule(r){4-4} 
+    	 \texttt{usps}&$99.112 \pm 0.099$&$89.30 \pm 0.18$&$89.41 \pm 0.16$\\
+    	 \texttt{magic}&$82.71 \pm 0.41$&$79.25 \pm 0.45$&$80.22 \pm 0.72$\\
+    	 \texttt{mnist}&$96.867$&$82.130$&$82.470$\\
+    	 \bottomrule
+    	\end{tabular}
+    \end{table}
   }
   \item[Mini-batches.] {
-    To get significant gradients we used quite large mini-batches $n=2000$. The points in a batch are selected via recursive projection clustering (RPC) algorithm. We trained the metric using gradient ascent with early stopping. The learning rate had a the form $\frac{\eta}{t+t_0}$. We fixed $\eta=1$ and tuned parameter $t_0$ using cross validation across an exponential scale; also finer tuning is done across a linear scale. We used $5\%$ of the training set for cross validation and we  monitor the accuracy on the cross validation set at each iteration. If the performance does not increase for $25$ iterations, we stop the learning process. 
+    To get significant gradients we used large mini-batches $n=2000$. The points in a batch are selected via recursive projection clustering (RPC) algorithm. We trained the metric using gradient ascent with early stopping. The learning rate had a the form $\frac{\eta}{t+t_0}$. We fixed $\eta=1$ and tuned parameter $t_0$ using cross validation across an exponential scale; also finer tuning is done across a linear scale. We used $5\%$ of the training set for cross validation and we  monitor the accuracy on the cross validation set at each iteration. If the performance does not increase for $25$ iterations, we stop the learning process. 
+    \begin{table}
+        	\centering
+        	\begin{tabular}{lccc}
+        	\toprule
+        	Data set & Train & $1$NN & NCA \\
+        	\cmidrule(r){2-2}\cmidrule(r){3-3}\cmidrule(r){4-4} 
+        	 \texttt{usps}&$92.00 \pm 0.43$&$91.26 \pm 0.17$&$92.37 \pm 0.17$\\
+        	 \texttt{magic}&$80.04 \pm 0.48$&$79.14 \pm 0.52$&$79.8 \pm 1.1$\\
+        	 \texttt{mnist}&$87.47 \pm 0.49$&$87.52 \pm 0.36$&$89.88 \pm 0.25$\\
+        	 \bottomrule
+        	\end{tabular}
+    \end{table}
+    
   }
   \item[Stochastic learning.] {
     We considered $n=50$ neighbours to look at for each iteration. The learning procedure is similar to the one applied for the mini-batches method: gradient ascent with early stopping. The same observation as before apply here. 
@@ -112,8 +137,29 @@ The methods were compared in this section on the top 3 largest data sets as numb
       \end{tabular}
       \caption{\small Stochastic NCA results on small data sets.}
     \end{table}
+        \begin{table}
+            	\centering
+            	\begin{tabular}{lccc}
+            	\toprule
+            	Data set & Train & $1$NN & NCA \\
+            	\cmidrule(r){2-2}\cmidrule(r){3-3}\cmidrule(r){4-4} 
+            	\texttt{usps}&$90.23  \pm 0.50$&$90.68 \pm 0.22$&$92.64 \pm 0.17$\\
+            	\texttt{magic}&$78.39 \pm 0.25$&$79.76 \pm 0.13$&$84.49 \pm 0.12$\\
+            	\texttt{mnist}&$85.97 \pm 0.37$&$86.07 \pm 0.43$&$89.35 \pm 0.39$\\
+            	
+            	 \bottomrule
+            	\end{tabular}
+        \end{table}
     }
 \end{description}
+\begin{figure}
+	  \centering
+	  \subfigure[\texttt{usps}]{\label{fig:usps}\includegraphics[width=0.61\textwidth]{images/usps-acc-time}}
+	  \subfigure[\texttt{magic}]{\label{fig:magic}\includegraphics[width=0.61\textwidth]{images/magic-acc-time}}
+	  \subfigure[\texttt{mnist}]{\label{fig:mnist}\includegraphics[width=0.61\textwidth]{images/mnist-acc-time}}
+	  \caption{\small Time \textsl{vs.} accuracy plots on larger data sets.}
+	  \label{fig:time-accuracy}
+\end{figure}
 
 
 \section{Approximate computations}
@@ -123,12 +169,17 @@ For KDE, demonstrate how $k$-d trees work better in low dimensions. Also show th
 
 Present fraction of points pruned.
 
-Present results of KDE in terms accuracy. Argue that a reliable speeding can be achieved via a C impementation. We have investigated this using C code and found that is KDE is done fast enough.
+Present results of KDE in terms accuracy. Argue that a reliable speeding can be achieved via a C implementation. We have investigated this using C code and found that is KDE is done fast enough.
 
 %\includegraphics[width=\textwidth]{images/kd-tree-evol}
 
 \subsection*{NCA with compact support kernels}
 \label{subsec:eval-nca-cs}
+
+\begin{figure}
+	\centering
+	\includegraphics[width=0.6\textwidth]{images/nca-cs-nnzs}
+\end{figure}
 
 Demonstrate performance in terms of accuracy. Present also average fraction of points that lie outside the kernel. Test it on large data sets.
 
