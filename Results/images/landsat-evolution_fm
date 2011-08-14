@@ -1,0 +1,8 @@
+% Fragmaster-Datei für das Parabel-Beispiel
+% fmopt: width=10cm
+%\usepackage{amsmath}
+
+\psfrag{Dimension}[c][c]{Dimension $d$}
+\psfrag{Accuracy}[c][c]{Accuracy (\%)} 
+%\psfrag{randomprojection}[c][c]{Random projection}
+%\psfrag{ncaprojection}[bl][bl]{NCA projection}
