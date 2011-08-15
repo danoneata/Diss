@@ -151,6 +151,19 @@
 	keywords = {distance metric learning}
 }
 
+@article{weinberger2009,
+	author = {Weinberger, K.Q. and Saul, L.K.},
+	issn = {1532-4435},
+	journal = {The Journal of Machine Learning Research},
+	pages = {207--244},
+	publisher = {JMLR. org},
+	title = {{Distance metric learning for large margin nearest neighbor classification}},
+	url = {http://portal.acm.org/citation.cfm?id=1577078},
+	volume = {10},
+	year = {2009},
+	keywords = {distance metric learning, nearest neighbor}
+}
+
 @inproceedings{goldberger2004,
   	title={{Neighbourhood components analysis}},
   	booktitle = {Advances in Neural Information Processing Systems},
@@ -677,28 +690,5 @@ astronomical images},
   year={1994}
 }
 
-@INPROCEEDINGS{weinberger2009,
-    author = {Kilian Q. Weinberger and John Blitzer and Lawrence K. Saul},
-    title = {Distance metric learning for large margin nearest neighbor classification},
-    booktitle = {In NIPS},
-    year = {2006},
-    publisher = {MIT Press}
-}
 
-@inproceedings{weinberger2008,
- author = {Weinberger, Kilian Q. and Saul, Lawrence K.},
- title = {Fast solvers and efficient implementations for distance metric learning},
- booktitle = {Proceedings of the 25th international conference on Machine learning},
- series = {ICML '08},
- year = {2008},
- isbn = {978-1-60558-205-4},
- location = {Helsinki, Finland},
- pages = {1160--1167},
- numpages = {8},
- url = {http://doi.acm.org/10.1145/1390156.1390302},
- doi = {http://doi.acm.org/10.1145/1390156.1390302},
- acmid = {1390302},
- publisher = {ACM},
- address = {New York, NY, USA},
-} 
 
