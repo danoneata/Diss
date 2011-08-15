@@ -183,12 +183,13 @@
 }
 
 @inproceedings{fisher1936,
-	author = {Fisher, R.A. and Others},
+	author = {Fisher, R.A.},
 	booktitle = {Annals of Eugenics},
 	pages = {179--188},
 	title = {{The use of multiple measurements in taxonomic problems.}},
 	url = {http://digital.library.adelaide.edu.au/dspace/bitstream/2440/15227/1/138.pdf},
 	volume = {7},
+	pages={179--188},
 	year = {1936}
 }
 
@@ -658,10 +659,59 @@ astronomical images},
   organization={IEEE}
 }
 
-@book{bishop1995neural,
+@book{bishop1995,
   title={Neural networks for pattern recognition},
   author={Bishop, C.M.},
   year={1995},
   publisher={Oxford university press}
 }
+
+@article{rall1981,
+  title={{Automatic differentiation: Techniques and applications}},
+  author={Rall, L.B.},
+  year={1981},
+  publisher={Springer}
+}
+
+@article{vogl1988,
+  title={Accelerating the convergence of the back-propagation method},
+  author={Vogl, T.P. and Mangis, JK and Rigler, AK and Zink, WT and Alkon, DL},
+  journal={Biological Cybernetics},
+  volume={59},
+  number={4},
+  pages={257--263},
+  year={1988},
+  publisher={Springer}
+}
+
+@article{shewchuk1994,
+  title={An Introduction to the Conjugate Gradient Method Without the Agonizing Pain},
+  author={Shewchuk, J.R.},
+  year={1994}
+}
+
+@INPROCEEDINGS{weinberger2009,
+    author = {Kilian Q. Weinberger and John Blitzer and Lawrence K. Saul},
+    title = {Distance metric learning for large margin nearest neighbor classification},
+    booktitle = {In NIPS},
+    year = {2006},
+    publisher = {MIT Press}
+}
+
+@inproceedings{weinberger2008,
+ author = {Weinberger, Kilian Q. and Saul, Lawrence K.},
+ title = {Fast solvers and efficient implementations for distance metric learning},
+ booktitle = {Proceedings of the 25th international conference on Machine learning},
+ series = {ICML '08},
+ year = {2008},
+ isbn = {978-1-60558-205-4},
+ location = {Helsinki, Finland},
+ pages = {1160--1167},
+ numpages = {8},
+ url = {http://doi.acm.org/10.1145/1390156.1390302},
+ doi = {http://doi.acm.org/10.1145/1390156.1390302},
+ acmid = {1390302},
+ publisher = {ACM},
+ address = {New York, NY, USA},
+} 
 

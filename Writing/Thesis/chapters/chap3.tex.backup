@@ -1,22 +1,22 @@
 \chapter{Neighbourhood component analysis}
 \label{ch:nca}
-
-	Neighbourhood Component Analysis (NCA; \citealp{goldberger2004}) learns a Mahalanobis metric that improves the performance of $k$ nearest neighbours ($k$NN). From a practical point of view, NCA  is regarded as a desirable additional step before doing classification with $k$NN. It improves the classification accuracy and it is also provides good low-dimensional representation of the data.
+	This chapter can be regarded as a self-contained tutorial on neighbourhood component analysis (NCA; \citealp{goldberger2004}). Much of the material is especially useful for the reader interested in applying the algorithm in practice. We start with a review of the NCA method (section \ref{sec:general-presentation}). Next we recast the NCA model into a class conditional kernel density estimation problem (section \ref{sec:cc-kde}). This new formulation will prove useful later when we want to alter the model in a principled way (section \ref{sec:nca-cs-back}). Lastly, in section \ref{sec:practical-notes} we present the learnt lessons from our experience with NCA. Both section \ref{sec:cc-kde} and \ref{sec:practical-notes} offer new insights into the NCA method and they also bring together related ideas from previous work.
 
 \section{General presentation}
 \label{sec:general-presentation}
+	Neighbourhood component analysis learns a Mahalanobis metric that improves the performance of $k$ nearest neighbours ($k$NN). From a practical point of view, NCA  is regarded as a desirable additional step before doing classification with $k$NN. It improves the classification accuracy and it is also provides good low-dimensional representation of the data.
 
 	Because the goal is to enhance the $k$NN performance, the first idea \citet{goldberger2004}
-	had was to maximize the leave one out cross validation performance with respect to a linear projection $\AB$. The procedure can be described as follows: apply the linear transformation $\AB$ to the whole data set, then take each 
-	point $\AB\xB_i$ and classify it using $k$NN on the transformed data set $\{\AB\xB_j\}_{j=1}^N$. The matrix $\AB$ that achieves the highest number of correct classifications will be used for testing. Unfortunately, any objective function based on the $k$ nearest neighbours
+	had was to maximize the leave one out cross validation performance with respect to a linear projection~$\AB$. The procedure can be described as follows: apply the linear transformation~$\AB$ to the whole data set, then take each 
+	point~$\AB\xB_i$ and classify it using $k$NN on the transformed data set~$\{\AB\xB_j\}_{j=1}^N$. The matrix~$\AB$ that achieves the highest number of correct classifications will be used for testing. However, finding the optimal $\AB$ is not easy. Any objective function based on the $k$ nearest neighbours
 	is piecewise constant and discontinuous and, hence, hard to optimize. The reason is that there does
 	not exist an exact correlation between $\AB$ and the neighbours
 	of a given point: a small perturbation in $\AB$ might cause strong changes or, conversely, 
 	it might leave the neighbours unchanged.
 	
 	The authors' solution lies in the concept of \textit{stochastic} nearest
-	neighbours. Remember that in the classical scenario, a query point gets the label of the closest point. In the stochastic nearest neighbour 
-	case, the query point inherits the label of a neighbour with a probability that is inverse proportional with the distance. The stochastic function is reminiscent of the softmax activation used for neural networks or the generalized logistic function. So $p_{ij}$ is the probability that the point $\xB_j$ is selected as the nearest neighbour of the point $\xB_i$ and it is given by:
+	neighbours. Remember that in the classical $1$NN scenario, a query point gets the label of the closest point. In the stochastic nearest neighbour 
+	case, the query point inherits the label of a neighbour with a probability that is inverse proportional with the distance. The stochastic function is reminiscent of the generalized logistic function or of the softmax activation used for neural networks. Let $p_{ij}$ denote the probability that the point~$j$ is selected as the nearest neighbour of the point~$i$. The value of $p_{ij}$ is given by:
 	\begin{align}
 		p_{ij} = \frac{
 						\exp(-d_{ij}^2)
@@ -24,12 +24,12 @@
 						\sum_{\substack{k=1 \\k\neq i}}^N\exp(-d_{ik}^2)
 					  },
 	\label{eq:stochastic-neighbour}
-	\end{align} where $d_{ij} = d(\AB\xB_i;\AB\xB_j) = (\xB_i-\xB_j)\tr\AB\tr\AB(\xB_i-\xB_j)$; also we set $p_{ii}=0$: point~$\xB_i$ cannot pick itself as the nearest neighbour.
-	Now we can construct a continuous objective function using the stochastic assignments~$p_{ij}$ which are differentiable with respect to~$\AB$.
+	\end{align} where $d_{ij}$ represents the distance between point~$i$ and point~$j$ in the projected space, i.e. $d_{ij} = d(\AB\xB_i;\AB\xB_j) = (\xB_i-\xB_j)\tr\AB\tr\AB(\xB_i-\xB_j)$. Also we have to set $p_{ii}=0$: point~$i$ cannot pick itself as the nearest neighbour since we assume its label is not known.
 	
-	A suitable quantity to maximize is the probability of each point of getting correctly classified. A point $\xB_i$ is correctly classified when it is selected by a point $\xB_j$ that has the same label as $\xB_i$:
+	Now we can construct a continuous objective function using the stochastic assignments~$p_{ij}$ which are differentiable with respect to~$\AB$. A suitable quantity to optimize is the probability of each point of getting correctly classified. Point~$i$ is correctly classified when it is selected by a point~$j$ that has the same label as~$i$:
 	\begin{align}
 		p_i = \sum_{j\in c_i} p_{ij}.
+		\label{eq:nca-p-i}
 	\end{align}
 	
 	The objective function considers each point in the data set and incorporates their probability of belonging to the true class:
@@ -44,20 +44,38 @@
 	\end{align}
 	The score given by the objective function can be interpreted as the expected number of the correctly classified points.
 	
-	We maximise $f(\AB)$ using an iterative gradient based solver such as gradient ascent, conjugate gradients or delta-bar-delta, see Subsection \ref{subsec:optimization}. For the optimisation, we need the numerical expression of the gradient. If we differentiate with respect to $\AB$, we obtain:
+	To obtain the best linear projection~$\AB$, we maximise $f(\AB)$ using an iterative gradient based solver such as gradient ascent, conjugate gradients or delta-bar-delta (subsection \ref{subsec:optimization}). For these methods, we can use the analytical expression of the gradient. If we differentiate with respect to $\AB$, we obtain:
 	\begin{align}
-	  \frac{\partial f}{\partial
-	\AB}=2\AB\sum_{i=1}^{N}\left(p_i\sum_{k=1}^Np_{ik}\xB_{ik}\xB_{ik}^{\textrm{T}} -
+	  \frac{\partial f}{\partial	\AB}=2\AB\sum_{i=1}^{N}\left(p_i\sum_{k=1}^Np_{ik}\xB_{ik}\xB_{ik}^{\textrm{T}} -
 	\sum_{j\in c_i}p_{ij}\xB_{ij}\xB_{ij}^{\textrm{T}} \right)\label{eq:nca-grad},
 	\end{align}
-	where $\xB_{ij} = \xB_i - \xB_j$. The interested reader can find the derivation of the gradient in the appendix. 
-	
-	It is useful to note that NCA's objective function is not convex. So care must be taken to avoid poor local optima. The choice of initialization and of the optimization method affect the quality of the final solution. Section \ref{sec:practical-notes} discusses these and other practical issues. On the other hand, the non-convexity property has its advantage. It allows NCA to get good results on more complicated data sets that are not non convex. 
+	where $\xB_{ij} = \xB_i - \xB_j$. The interested reader can find the derivation in the appendix. 
 
-	Another important aspect is the computational cost of the method. For each point, we need to compute all the pairwise distances $d_{ij}$ which has the cost of $\mathcal{O}(dN^2)$. But prior to that, we have to compute the point projections $\{\AB\xB_i\}_{i=1}^N$; this operation is done in $\mathcal{O}(dDN)$ flops. So the total cost of evaluating the objective function $f(\AB)$ is  $\mathcal{O}(dDN+dN^2)$. Chapter \ref{ch:reducing} treats NCA's computational drawback; there are presented different ideas of speeding up the computations.
+	At test time, we use the learnt matrix~$\AB$ to transform the points before doing classification with $k$NN. Given a query point $\xB^*$, we assign it the label~$c_j$ of the closest point~$j$ in the projected space, where $j = \operatorname{argmin}_{i}d(\AB\xB^*,\AB\xB_i)$.
+
+	\subsection*{Further remarks}
 	
-	The general scenario in which NCA is applied can be described by the training and testing steps:
-	describe algorithm.
+	There are some interesting observations that can be made about NCA. It is useful to note that NCA model is still valid even if we set the matrix $\AB$ to be rectangular, i.e. $\AB\in\mathbb{R}^{d\times D}$, with $d<D$. In this case the linear transformation $\AB$ is equivalent to a low dimensional projection. Restricting $\AB$ to be non-square gives rise to a couple of advantages. Firstly, the optimization process is less prone to overfitting since a rectangular matrix has fewer parameters than a square one. Secondly, the low dimensional representation of the data set reduces the memory requirements and the computational cost at test time. In this thesis we concentrate mostly on low-rank metrics partly motivated by the above reasons, but also because many techniques that are subsequently developed (chapter \ref{ch:reducing}) work best in low dimensions.
+
+	%equations \eqref{eq:stochastic-neighbour} to \eqref{eq:nca-grad} are still valid, since the distances $d_{ij}$ correspond to distances between points in a low dimensional space.
+
+	We need to underline that NCA's objective function is not convex. The first consequence is that the parameter space is peppered with local optima and care must be taken to avoid poor solutions. Factors such as the choice of initialization or the optimization procedure affect the quality of the final result. Section \ref{sec:practical-notes} discusses these practical issues in detail. The other side of non-convexity is that it allows NCA to cope well with data sets that have multi-modal classes. This is an important advantage over classical methods such as principal component analysis, linear discriminant analysis or relevant component analysis. All of these assume that the data is normally distributed which harms the classification performance on complicated data sets.
+% property has its advantage. It allows NCA to get good results on more complicated data sets that are not non convex. 
+
+	Another important characteristic of NCA is its computational cost. For each point, we need to calculate the distances to all the other points. So the number of operations is quadratic in the number of data points. The evaluation of the objective function is done in two steps. First we find the point projections $\{\AB\xB_i\}_{i=1}^N$; this operation has $\mathcal{O}(dDN)$ cost. Next we compute all the distances~$d_{ij}$ in the low dimensional space; this is done in $\mathcal{O}(dN^2)$ flops. The total cost is then $\mathcal{O}(dDN+dN^2)$. Another way of evaluating the function~$f$ is to parametrize it in terms of the Mahalanobis metric $\SB=\AB\tr\AB$. Then we can compute the distances in the $D$-dimensional space in $\mathcal{O}(DN^2)$ flops. This option is slower than the previous case for $d<D$ and $D\ll N$.
+
+	Since the optimization is based on the gradient, we are also interested in its cost. The evaluation of gradient given in the original paper and in equation~\eqref{eq:nca-grad} scales in $D^2N^2$. We improve this by ``pushing'' the matrix $\AB$ into the sum as in \citep{singh2010}:
+	\begin{align}
+	  \frac{\partial f}{\partial	\AB}=2\sum_{i=1}^{N}\left(p_i\sum_{k=1}^Np_{ik}(\AB\xB_{ik})\xB_{ik}^{\textrm{T}} -
+	\sum_{j\in c_i}p_{ij}(\AB\xB_{ij})\xB_{ij}^{\textrm{T}} \right)\label{eq:nca-grad-alt},
+	\end{align}
+
+	If we consider that the projections $\AB\xB_i$ were already calculated for the function evaluation, the gradient has a cost of $\mathcal{O}(dDN^2)$. However, in theory, evaluating the gradient should have the same complexity as evaluating the objective function. Automatic differentiation (AD; \citealp{rall1981}) is a technique that achieve this theoretical result. AD uses the chain rule to derivative the objective function and split the gradient into elementary functions that can be readily computed. So instead of evaluating the complicated analytical gradient, we work on a series of cheap operations. This method is very useful in practice and there exist libraries for this in most programming languages. In our implementation we used the analytical differentiation, because we were not aware of AD until recently.
+	
+	The computational drawback represents an important setback in applying NCA in practice. For example, \citet{weinberger2007} reported that the method ran out of memory on large data sets and \citet{weizman2007} used only 10\% of an hyper-spectral data set to train the NCA classifier. We present a number of solutions to this problem in chapter \ref{ch:reducing}. 
+	
+% 	The general scenario in which NCA is applied can be described by the training and testing steps:
+% 	describe algorithm.
 	%\begin{itemize}
 	%   \item
 	%\end{itemize}
@@ -67,32 +85,26 @@
 	
 	\begin{figure}
 	  \centering
-	  \subfigure[Illustration of the class as a mixture of
-	Gaussians.]{\label{fig:mog}\includegraphics[width=6cm]{images/mog}}
-	%\subfigure[The projection $\AB$ applied to the whole data set
-	%$\mathcal{D}$.]{\label{fig:sub-sampling-2}\includegraphics[width=0.48\textwidth]{images/sub-sample-2}}
-	  \caption{Formulating NCA as a class-conditional kernel density estimation
-	framework.}
+	  \includegraphics[width=6cm]{images/mog}
+	  \caption{NCA as a class-conditional kernel density estimation
+	model. The figure represents a schematic illustration of a mixture of Gaussians. The red circles denote isotropic Gaussians. These are centred onto the points that belong to a certain class. A point~$i$ is generated by either of the components of the class with a probability inverse proportional with the distance.}
 	  \label{fig:kde}
 	\end{figure}
 	
-	In this section we will present NCA into a class-conditional kernel density
-	estimation framework. This interpretation will allow us to understand what are
-	the assumptions behind NCA. Moreover, this also offers the possibility of
-	altering the model in a suitable way that is efficient for computations. We will
-	see this in the sections \ref{sec:approximate} and \ref{sec:exact-computations}.
-	Similar ideas were previously presented by and , but the following were derived
-	independently and they offer different insights. The following interpretation
+	In this section we recast NCA into a class-conditional kernel density
+	estimation framework. This interpretation will allow us to understand the assumptions behind NCA method. After this we are in position to alter the model in a suitable way that is efficient for computations (sections \ref{sec:approximate} and \ref{sec:exact-computations}).
+	Similar ideas were previously presented by \citet{weinberger2007} and \citet{singh2010}, but the following were derived
+	independently and they offer different insights. Our following interpretation
 	was inspired by the probabilistic $k$NN presented by \citet{barber2011}.
 	
 	We start with the basic assumption that each class can be modelled by a mixture
 	of Gaussians. For each of the $N_c$ data points in class $c$ we consider a
-	Gaussian ``bump'' centred around it. From a generative perspective, we can view
-	that each point $\xB_j$ can generate a point $\xB_i$ with a probability given by
-	an isotropic normal distribution with variance $\sigma^2$:
+	Gaussian ``bump'' centred around it (figure \ref{fig:kde}). From a generative perspective, we can imagine
+	that each point~$j$ can generate a point~$i$ with a probability given by
+	an isotropic normal distribution with variance~$\sigma^2$:
 	\begin{align}
 	    p(\xB_i|\xB_j) &= \mathcal{N}(\xB_i|\xB_j, \sigma^2\mathrm{I}_D) \\
-	                   &= \frac{1}{(2\pi)^{D/2}}\exp \left\{-\frac{1}{2\sigma^2}
+	                   &= \frac{1}{(2\pi)^{D/2}\sigma^D}\exp \left\{-\frac{1}{2\sigma^2}
 	(\xB_i - \xB_j)^\mathrm{T}(\xB_i - \xB_j)\right\}.
 	\end{align}
 	
@@ -103,21 +115,23 @@
 	\xB_j)^\mathrm{T}\AB^\mathrm{T}\AB(\xB_i - \xB_j)\right\}.
 	\end{align}
 	
-	We can note that this is similar to the $p_{ij}$ from NCA. Both
+	We note that this is similar to the $p_{ij}$ from NCA. Both
 	$p(\AB\xB_i|\AB\xB_j)$ and $p_{ij}$ are directly proportional with the same
 	quantity.
 	
 	Using the mixture of Gaussians assumption, we have that the probability of a
 	point of being generated by class $c$ is equal to the sum of all Gaussians in
-	class $c$:
+	class~$c$:
 	\begin{align}
-	    p(\xB_i|c) &= \frac{1}{N_c}\sum_{\xB_j \in c} p(\xB_i|\xB_j)\\
+	    p(\xB_i|c) &= \frac{1}{N_c}\sum_{\xB_j \in c} p(\xB_i|\xB_j)
+		\label{eq:p-x-c}
+		\\
 	               &= \frac{1}{N_c}\sum_{\xB_j \in c} \mathcal{N}(\xB_i|\xB_j,
 	\mathrm{I}_D).
 	\end{align}
 	
-	However, we are interested on the inverse probability, given a point $\xB_i$
-	what is the probability of $\xB_i$ belonging to class $c$. We can obtain an
+	However, we are interested in the inverse probability, given a point $\xB_i$
+	what is the probability of $\xB_i$ belonging to class $c$. We obtain the
 	expression for $p(c|\xB_i)$ using Bayes' theorem:
 	\begin{align}
 	    p(c|\xB_i) = \frac{p(\xB_i|c)p(c)}{p(c|\xB_i)} =
@@ -125,9 +139,9 @@
 	    \label{eq:nca-cc-kde-bayes}
 	\end{align}
 	
-	Now if further consider the classes to be equal probable (which might a
+	Now if further consider the classes to be equal probable (which is a
 	reasonable assumption if we have no a priori information) we arrive at result
-	that resembles the expression of $p_i$ (see equation):
+	that resembles the expression of $p_i$ (equation~\eqref{eq:nca-p-i}):
 	\begin{align}
 	%   &p(c|\xB_i) = \frac{p(\xB_i|c)}{\sum_{c} p(\xB_i|c)}\\
 	    p(c|\AB\xB_i) = \frac{
@@ -143,15 +157,15 @@
 	\end{align}
 	
 	%In the numerator we have the sum of
-	We are interested in predicting the correct class of the point $\xB_i$. So we
-	try to find that linear transformation $\AB$ that maximises the class
-	conditional probability of this point $p(c_i|\xB_i)$ to its true class $c_i$.
+	We are interested in predicting the correct class of the point~$i$. So we
+	try to find that linear transformation~$\AB$ that maximises the class
+	conditional probability of this point $p(c_i|\AB\xB_i)$ to its true class~$c_i$.
 	\begin{align}
 	    f(\AB) = \sum_i p(c_i|\AB\xB_i).
 	    \label{eq:nca-cc-kde-obj}
 	\end{align}.
 	
-	The gradient of the objective function is the following:
+	As in section \ref{sec:general-presentation}, we can optimize the function using the gradient information. The gradient is the following:
 	\begin{align}
 	    \frac{\partial f}{\partial \AB} =
 	      \sum_i \left\{
@@ -175,24 +189,31 @@
 	             \right \}.
 	    \label{eq:nca-cc-kde-grad}
 	\end{align}
+
+	The main advantage of the above formulation is that we can construct different models simply by modifying the class-conditional probability (equation~\eqref{eq:p-x-c}). Once $p(\xB_i|c)$ is altered in a suitable way, we use Bayes rule in conjuction equations~\eqref{eq:nca-cc-kde-obj} and~\eqref{eq:nca-cc-kde-grad} to get the new function and its corresponding gradient. We optimize for parameter $\AB$ exactly in the same way as for classical NCA.
 	
+	Examples of this technique are in sections \ref{sec:exact-computations} and \ref{sec:nca-cs-back}. There the alterations allowed considerable speed-ups as we shall see in chapter \ref{ch:evaluation}. 
+
+	Other benefits of CC-KDE model are the possibility to incorporate prior information about the class distributions~$p(c)$ and the possibility to classify a point~$\xB^*$ using $p(c|\AB\xB^*)$ (subsection \ref{subsec:doing-classification}).
 
 \section{Practical notes}
 \label{sec:practical-notes}
 
-	This section provides some practical advice for the questions 
-	that can be raised while implementing NCA. 
-	While NCA is not that hard to implement, there is needed certain care
+	While NCA is not that hard to implement (appendix~\ref{app:code-nca-obj}), there is needed certain care
 	in order to achieve good solutions.
+	In this section we try to answer some of the questions 
+	that can be raised when implementing NCA. 	
 
 \subsection{Optimization methods}
 \label{subsec:optimization}
 
-	The function $f(\AB)$, equation \ref{eq:nca-obj}, can be maximised using any gradient based optimizer. We considered two popular approaches for our implementation: gradient ascent and conjugate gradients. These are only briefly presented here. The interested reader is pointed to \citet{bishop1995}.
+	The function $f(\AB)$, equation~\eqref{eq:nca-obj}, can be maximised using any gradient based optimizer. We considered two popular approaches for our implementation: gradient ascent and conjugate gradients. These are only briefly presented here. The interested reader is pointed to \citep{bishop1995}.
 
 	\subsubsection*{Gradient ascent}
 
-	Gradient ascent is one of the simplest optimisation methods. It is an iterative algorithm that aims to find the maximum of a function by following the gradient direction at each step. The entire procedure is summarized by algorithm \ref{alg:gd}.
+	Gradient ascent is one of the simplest optimisation methods. It is an iterative algorithm that aims to find the maximum of a function by following the gradient direction at each step. The entire procedure is summarized by algorithm~\ref{alg:gd}. 
+
+	Besides this version, an alternative is to compute the gradient on a fewer points and not on the entire data set. This variant is known as stochastic gradient ascent and it has the advantage to be much faster than the batch version. Different alterations of the stochastic gradient ascent were tried in chapter~\ref{ch:reducing} to reduce the computational cost.
       
 	\begin{algorithm} 
 		\caption{Gradient ascent (batch version)} 
@@ -210,23 +231,35 @@ f(\AB_{t},\mathcal{D})}{\partial\AB}$}
 		\end{algorithmic}
 	\end{algorithm}
 
-	There are three aspects we need to carefully consider:
-	\begin{enumerate}
-	 \item The algorithm starts the search in the parameter space from the an initial parameter~$\AB_0$. Different values for $\AB_0$ will give different final solutions. In the NCA context, initialization is related to finding a good initial linear transformation; this is discussed  separately in subsection \ref{subsec:initialization}. For the moment, we can assume the values of $\AB_0$ are randomly chosen.
-	 \item The parameter $\eta$ is called \textit{step size} or, in neural networks related literature, it also known as \textit{learning rate}. As name suggests, $\eta$ controls how much we move the parameter in the gradient direction. 
+	For the algorithm~\ref{alg:gd}, there are three aspects we need to carefully consider:
+	\begin{description}
+	 \item[Initialization.] The algorithm starts the search in the parameter space from the an initial parameter~$\AB_0$. Different values for $\AB_0$ will give different final solutions. In the NCA context, initialization is related to finding a good initial linear transformation; this is discussed  separately in subsection~\ref{subsec:initialization}. For the moment, we can assume the values of $\AB_0$ are randomly chosen.
+	 \item[Learning rate.] The parameter $\eta$ is called \textit{step size} or, in neural networks related literature, it also known as \textit{learning rate}. As name suggests, $\eta$ controls how much we move the parameters in the gradient direction. 
 
 	The learning rate can be either fixed or adaptive. For the first case, choosing the correct value for $\eta$ is critical. If $\eta$ is set too large, the algorithm diverges. On the other hand, a small $\eta$ results in slow convergence. 
 
-	Usually, a variable learning rate $\eta$ is preferred since its more flexible. The ``bold driver'' is a heuristic for modifying $\eta$ during training.
+	Usually, a variable learning rate $\eta$ is preferred since it is more flexible. The ``bold driver'' \citep{vogl1988} is a reasonable heuristic for automatically modifying $\eta$ during training. The idea is to gradually increase the learning rate after each iteration as long as the objective function keeps improving. Then we go back to the previous position and start decreasing the learning rate until a new increase in the function is found. This procedure is described in algorithm. The parameters indicate how much the learning rate is adjusted at each step. Usually, $\rho=1.1$ and $\sigma=0.5$.
+	
+	Another way is to change the learning rate~$\eta$ using a decreasing rule proportional to the number of current iteration: $\eta=\frac{\eta_0}{t+t_0}$. Now we have two parameters instead of one. Intuitively, $\eta_0$ can be regarded as the initial learning rate and $t_0$ as the number of iterations after which $\eta_0$ starts to drop off. Using a learning rate of such form is especially motivated in the stochastic gradient case. If $\eta\propto 1/t$, the algorithm converges to the true minimum as $t$ goes to infinity. However, in practice the convergence is very slow; so setting the constants~$\eta_0$ and~$t_0$ is important for reaching a good solution in a short time. Leon Bottou\footnote{Oral communication: \url{http://videolectures.net/mmdss07_bottou_lume/}} recommends to set $\eta_0$ to be the regularization value and then select $t_0$ such that the resulted update will modify $\AB$ with a sensible amount. Since we did not use regularization, we followed some of the tricks presented in \citep{lecun1998}. We fixed the value for $\eta_0$ and we did an exponential search for $t_0$ using a cross validation set.
 
 % 	A popular choice for an 
-	 \item Stopping criterion. 
-	\end{enumerate}
+	 \item[Convergence.] The gradient ascent algorithm can be stopped either when we hit a maximum number of iterations or when the learning rate~$\eta$ falls below a certain threshold. Also we can look at the variation in the objective function. If the value of the objective function stops improving we can halt the algorithm. Another popular choice to check convergence is ``early stopping''. We monitor the performance of the new $\AB$ on a cross validation set. If the objective function did not increase for more than a preset number of iterations we stop and return to the previous best solution. This solution prevents overfitting since we stop when we achieve a minimum on a test error and not on the training error. We illustrate this in figure \ref{fig:early-stopping}.
+	\end{description}
+	
+	\begin{figure}
+	 \centering\includegraphics[width=0.59\textwidth]{images/early-stopping}
+	 \caption{This figure illustrates the early stopping procedure. During training we keep a small part of the data set apart, for cross-validation. On this cross-validation data set we compute the error function at each iteration. When the error function stops decreasing we stop the learning procedure and return to the parameter that achieved the best value. This figure resulted while applying NCA on the \texttt{mnist} data set. The best value was obtained at iteration 98, as indicated by the red dot.}
+	 \label{fig:early-stopping}
+	\end{figure}
 
 
-% 	The notation $\frac{\partial f(\AB_t,\mathcal{D})}{\partial \AB}$
+	Gradient ascent has known convergence problems and determining good learning rates is often difficult. But it has the advantage of being quite flexible, especially in the stochastic optimization scenario, where we can select any noisy estimate of the gradient in order to replace the total gradient.
 
 	\subsubsection*{Conjugate gradients}
+	
+	Conjugate gradient (CG) method solves some of the convergence issues. Instead of selecting the search directions to be the gradient directions, CG method selects the next direction depending on both the previous directions and on the curvature of surface. This permits this method to reach the maximum of a quadratic energy function in only two iterations. Also CG eliminates the manual set-up for the learning rates. As \citet{bishop1995} notes, the CG can be regarded as a more complex version of gradient ascent for which the parameters are automatically chosen. The details of the conjugate gradient method are out of the scope of this thesis; however, a gentle introduction into the subject is given by \citet{shewchuk1994}.
+
+	In practice is considerably easier to use an existing implementation of CG (for example, Carl E. Rasmussen's \texttt{minimize.m}\footnote{Source code can be found at the following URL: \url{http://www.gaussianprocess.org/gpml/code/matlab/util/minimize.m}}). On the other hand, if no code is available, it might be worth to time spending implementing GA with ``bold driver''.
 	
 
 % \begin{itemize}
@@ -322,7 +355,7 @@ usually guarantees a better initial projection.
                 Because for NCA we restrict ourselves to
                 fully labelled data, the within-chunklet
                 covariance is the within-class covariance
-                $\SB_W$, Equation \ref{eq:lda-2}. The
+                $\SB_W$, equation~\eqref{eq:lda-2}. The
                 whitening transformation is then
                 $\AB=\SB_W^{-1/2}$.
         \end{itemize}
@@ -334,8 +367,8 @@ usually guarantees a better initial projection.
         highest eigenvalues associated.
 
         From our experiments, we conclude that a good
-        initialization reflects in a good solution and a better convergence; this benefits are more evident
-        large data sets. As advertised in , we found RCA to work the best. Figure depicts initialization effects on a small data set.
+        initialization reflects in a good solution and a better convergence; this benefits are more evident on
+        large data sets. As advertised in \citep{butman2008}, we found RCA to work the best. Figure \ref{fig:init} depicts initialization effects on a small data set. More illustrations are in the appendix \ref{app:sec:initialization}. Occasionally random initialization gives better final scores than the other fancier techniques (figure \ref{fig:balance-init}). 
 
 \subsection{Numerical issues}
 \label{subsec:numerical-issues}
@@ -421,7 +454,7 @@ usually guarantees a better initial projection.
     \label{eq:nca-cls}
   \end{align}
 
-  In our experiments, $1$NN and the NCA classification rule described by equation \eqref{eq:nca-cls} give very similar results if we train $\AB$ using the un-regularized function~$f(\AB)$. On the cases where we used early stopping, the NCA classification rule yielded better performances, see chapter \ref{ch:evaluation}. In this case, $k$NN with $k>1$ should also perform better than simple $1$NN.
+  In our experiments, $1$NN and the NCA classification rule described by equation~\eqref{eq:nca-cls} give very similar results if we train $\AB$ using the un-regularized function~$f(\AB)$. On the cases where we used early stopping, the NCA classification rule yielded better performances, see chapter \ref{ch:evaluation}. In this case, $k$NN with $k>1$ should also perform better than simple $1$NN.
 
 \subsection{Dimensionality annealing}
 \label{subsec:dimensionality-annealing}
@@ -463,6 +496,6 @@ transformation $\AB\in\mathbb{R}^{D\times D}$ and low dimension~$d$.
 
     The function optimization step can be done either by gradient ascent or conjugate gradients. It is possible to do conjugate gradients for a small number of iterations, typically 2 or 3.
 
-    
+    After a dimension is annealed, we reach the end of the inner for loop, we can remove that particular dimension; for example set the elements on the $d$ row equal to 0.
 
-    After algorithm is finished we can run until convergence CG on the provided $\AB$.
+    A further idea would be to run conjugate gradients until convergence initialized with low dimensional $\AB$ returned by algorithm \ref{alg:dimensionality-annealing}.

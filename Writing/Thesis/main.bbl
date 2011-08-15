@@ -59,8 +59,8 @@ Deng, K. and Moore, A. (1995).
 \newblock In {\em Proceedings of the Twelfth International Joint Conference on
   Artificial Intellingence}, pages 1233--1239, San Francisco. Morgan Kaufmann.
 
-\bibitem[Fisher and Others, 1936]{fisher1936}
-Fisher, R. and Others (1936).
+\bibitem[Fisher, 1936]{fisher1936}
+Fisher, R. (1936).
 \newblock {The use of multiple measurements in taxonomic problems.}
 \newblock In {\em Annals of Eugenics}, volume~7, pages 179--188.
 
@@ -152,6 +152,10 @@ Pearson, K. (1901).
 \newblock {On lines and planes of closest fit to systems of points in space}.
 \newblock {\em Philosophical Magazine Series 6}, 2(11):559--572.
 
+\bibitem[Rall, 1981]{rall1981}
+Rall, L. (1981).
+\newblock {Automatic differentiation: Techniques and applications}.
+
 \bibitem[Russell et~al., 1996]{russell1996}
 Russell, S.~J., Norvig, P., Candy, J.~F., Malik, J.~M., and Edwards, D.~D.
   (1996).
@@ -169,23 +173,47 @@ Shental, N., Hertz, T., Weinshall, D., and Pavel, M. (2002).
 \newblock In {\em Proceedings of the 7th European Conference on Computer
   Vision-Part IV}, pages 776--792. Springer.
 
+\bibitem[Shewchuk, 1994]{shewchuk1994}
+Shewchuk, J. (1994).
+\newblock An introduction to the conjugate gradient method without the
+  agonizing pain.
+
 \bibitem[Singh-Miller, 2010]{singh2010}
 Singh-Miller, N. (2010).
 \newblock {\em Neighborhood Analysis Methods in Acoustic Modeling for Automatic
   Speech Recognition}.
 \newblock PhD thesis, Massachusetts Institute of Technology.
 
-\bibitem[Weinberger and Saul, 2009]{weinberger2009}
-Weinberger, K. and Saul, L. (2009).
-\newblock {Distance metric learning for large margin nearest neighbor
-  classification}.
-\newblock {\em The Journal of Machine Learning Research}, 10:207--244.
+\bibitem[Vogl et~al., 1988]{vogl1988}
+Vogl, T., Mangis, J., Rigler, A., Zink, W., and Alkon, D. (1988).
+\newblock Accelerating the convergence of the back-propagation method.
+\newblock {\em Biological Cybernetics}, 59(4):257--263.
 
 \bibitem[Weinberger and Tesauro, 2007]{weinberger2007}
 Weinberger, K. and Tesauro, G. (2007).
 \newblock {Metric learning for kernel regression}.
 \newblock In {\em Eleventh international conference on artificial intelligence
   and statistics}, pages 608--615.
+
+\bibitem[Weinberger et~al., 2006]{weinberger2009}
+Weinberger, K.~Q., Blitzer, J., and Saul, L.~K. (2006).
+\newblock Distance metric learning for large margin nearest neighbor
+  classification.
+\newblock In {\em In NIPS}. MIT Press.
+
+\bibitem[Weinberger and Saul, 2008]{weinberger2008}
+Weinberger, K.~Q. and Saul, L.~K. (2008).
+\newblock Fast solvers and efficient implementations for distance metric
+  learning.
+\newblock In {\em Proceedings of the 25th international conference on Machine
+  learning}, ICML '08, pages 1160--1167, New York, NY, USA. ACM.
+
+\bibitem[Weizman and Goldberger, 2007]{weizman2007}
+Weizman, L. and Goldberger, J. (2007).
+\newblock A classification-based linear projection of labeled hyperspectral
+  data.
+\newblock In {\em Geoscience and Remote Sensing Symposium, 2007. IGARSS 2007.
+  IEEE International}, pages 3202--3205. IEEE.
 
 \bibitem[Xing et~al., 2003]{xing2003}
 Xing, E., Ng, A., Jordan, M., and Russell, S. (2003).
