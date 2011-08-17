@@ -151,19 +151,6 @@
 	keywords = {distance metric learning}
 }
 
-@article{weinberger2009,
-	author = {Weinberger, K.Q. and Saul, L.K.},
-	issn = {1532-4435},
-	journal = {The Journal of Machine Learning Research},
-	pages = {207--244},
-	publisher = {JMLR. org},
-	title = {{Distance metric learning for large margin nearest neighbor classification}},
-	url = {http://portal.acm.org/citation.cfm?id=1577078},
-	volume = {10},
-	year = {2009},
-	keywords = {distance metric learning, nearest neighbor}
-}
-
 @inproceedings{goldberger2004,
   	title={{Neighbourhood components analysis}},
   	booktitle = {Advances in Neural Information Processing Systems},
@@ -454,7 +441,7 @@ astronomical images},
 }
 
 
-@article{fix1989,
+@article{fix1951,
   	title={{Discriminatory analysis. Nonparametric discrimination: Consistency properties}},
   	author={Fix, E. and Hodges, J.L.},
   	journal={International Statistical Review/Revue Internationale de Statistique},

@@ -1,16 +1,16 @@
 \chapter{Evaluation}
 \label{ch:evaluation}
 
-In this chapter we present the evaluation of the methods proposed in the previous part, chapter~\ref{ch:reducing}. We should mention that we did not include in all the results in this chapter to prevent cluttering. Further experimentations can be found in appendix. First we present individual results for each of the methods. We also give details about the methodology and the parameter choices. The final comparison is illustrated at the end of this subsection using an error \textit{vs.} time representation.
+This chapter contains the evaluation of the methods proposed in the previous part, chapter~\ref{ch:reducing}. In section~\ref{sec:setup}, we present the data sets and the methodology used for testing. We give details about the parameter choices and set baseline scores obtains by either classical NCA or simple linear projections, such as PCA, LDA or RCA. Results for each individual method are presented in sections~\ref{sec:method-comparison} and~\ref{sec:eval-nca-approx}. A comparison of the methods is shown in subsection~\ref{subsec:eval-comparison} using a accuracy vs. time plots.
 
-The methods were compared in this section on the top 3 largest data sets as number of points $N$.
+We should mention that we did not include all the results in this chapter to prevent cluttering. Further experimentations can be found in appendix~\ref{app:results}.
 
 \section{Evaluation setup}
 \label{sec:setup}
 
 The evaluation was done in terms of two metrics: accuracy and speed. An additional and more subjective criterion is to judge a method by visualizing low dimensional representations of various data sets. We provided 2D plots of the projected data where suitable.
 
-The data sets selected for testing are listed in table~\ref{tab:datasets}. We note that the used data vary both as number of samples~$N$ and as dimensionality~$D$. Even if we concentrate on large amounts of data, we need small data sets to assess the performance of new models. The methods' speed was tested on the large data sets (\texttt{usps}, \texttt{magic} and \texttt{mnist}). However, this diversity of the data sets' size and complexity made it difficult to find the optimal selection of parameters. We are aware that there is ``no free lunch'' in accurately solving widely different problems with a fixed model. When concentrating on a single task it is often advised to include prior knowledge into the model. Also it is easier to make minor tweaks of the parameters to boost the performance.
+The data sets selected for testing are listed in table~\ref{tab:datasets}. We note that the used data vary both as number of samples~$N$ and as dimensionality~$D$. Even if we concentrate on large amounts of data, we need small data sets to assess the performance of the new models. The methods' speed was tested on the large data sets (\texttt{usps}, \texttt{magic} and \texttt{mnist}). However, the diversity in size and complexity made it difficult to find the optimal selection of parameters. We are aware that there is ``no free lunch'' in accurately solving widely different problems with a fixed model. When concentrating on a single task it is often advised to include prior knowledge into the model. Also it is easier to make minor tweaks of the parameters to boost the performance.
 
 \begin{table}%`
   \centering
@@ -40,19 +40,20 @@ The data sets selected for testing are listed in table~\ref{tab:datasets}. We no
     \label{tab:datasets}
 \end{table}
 
-For evaluation we used $70\%$ of the data set for training and the rest of $30\%$ was kept for testing. We made exceptions for two data sets: \texttt{landsat} and \texttt{mnist}. These are commonly already split in training and testing sets.
+For evaluation we used $70\%$ of the data set for training and the rest of $30\%$ was kept for testing. We made exceptions for two data sets: \texttt{landsat} and \texttt{mnist}. These are commonly already split in training and testing sets. We report standard errors for the mean accuracy averaged over different splits.
 
-The methods we test are: sub-sampling (SS; section~\ref{sec:sub-sampling}), mini-batches (MB; section~\ref{sec:mini-batches}), stochastic learning (SL; section~\ref{sec:stochastic-learning}). For stochastic learning we included the two approximated methods: the fast kernel density estimation idea (SL-KDE; section~\ref{sec:approximate}) and compact support version of NCA (SL-CS; section~\ref{sec:exact-computations}). Each method has particular parameters that we discuss in its corresponding subsection.
+The methods we test are: sub-sampling (SS; section~\ref{sec:sub-sampling}), mini-batches (MB; section~\ref{sec:mini-batches}), stochastic learning (SL; section~\ref{sec:stochastic-learning}). For stochastic learning we included the two approximated methods: the fast kernel density estimation idea (SL-KDE; section~\ref{sec:approximate}) and compact support version of NCA (SL-CS; section~\ref{sec:exact-computations}). Each method has particular parameters that we discuss in its corresponding subsection. There are some common parameters for all the methods. These choices are related to the NCA implementation and, for convenience, we remind them here. We experimented with three optimization methods: gradient ascent with ``bold driver'' heuristic, conjugate gradients and variants of stochastic gradient ascent with early stopping. For initialization we used the techniques described in subsection~\ref{subsec:initialization}: random initialization, PCA, LDA or RCA. At test time, we did classification using $1$-NN or using an NCA based function as described in subsection~\ref{subsec:doing-classification}. However, we usually present scores using both classification rules.
 
-There are some common parameters for all the methods. These choices are related to NCA implementation and, for convenience, we remind them here. We experimented with three optimization methods: gradient ascent with ``bold driver'' heuristic, conjugate gradients and variants of stochastic gradient ascent with early stopping. For initialization we used the techniques described in subsection~\ref{subsec:initialization}: random initialization, PCA, LDA or RCA. At test time, we did classification using $1$-NN or using an NCA based function as in subsection~\ref{subsec:doing-classification}. However, we usually present scores using both classification rules.
-
-The experiments were carried in \textsc{Matlab} and most of the implementations are the authors' own work. There are some exceptions however. We used Carl E. Rasmussen's \texttt{minimize.m} for conjugate gradient optimization. The RCA implementation was downloaded from \url{http://www.openu.ac.il/home/shental/}. Also we used functions from Iain Murray's \textsc{Matlab} toolbox. 
+The experiments were carried in \textsc{Matlab} and most of the implementations are the authors' own work. There are some exceptions however. We used Carl E. Rasmussen's \texttt{minimize.m} for conjugate gradient optimization.\footnote{This is available for download at $<$\url{http://www.gaussianprocess.org/gpml/code/matlab/util/minimize.m}$>$.}
+ The RCA implementation was provided by Noam Shental on his web-page.\footnote{The code was downloaded from $<$\url{http://www.openu.ac.il/home/shental/}$>$.}
+ Also we used functions from Iain Murray's \textsc{Matlab} toolbox.\footnote{Iain Murray's toolbox is available at $<$\url{http://homepages.inf.ed.ac.uk/imurray2/code/imurray-matlab/}$>$.} Finally, we inspected previous implementations of NCA,\footnote{Implementations of NCA are provided by Laurens van der Maaten in his \textsc{Matlab} Toolbox for Dimensionality Reduction $<$\url{http://homepage.tudelft.nl/19j49/Matlab_Toolbox_for_Dimensionality_Reduction.html}$>$ and by Charless C. Fowlkes on his website $<$\url{http://www.ics.uci.edu/~fowlkes/software/nca/}$>$.}
+ even if we did not explicitly made use of them.
 
 \section{Baseline}
 \label{sec:baseline} 
 
 We started by implementing the standard NCA algorithm (appendix \ref{app:code-nca-obj}). This consists the main baseline against which we compare new models.  
-For our first series of experiments, we tried to replicate the work in the original article \citep{goldberger2004}. We encountered some difficulties since no information about their implementation was provided in the paper. Our results are presented in table \ref{table:eval-baseline}. We randomly initialized the matrix $\AB$ and optimized it using conjugate gradients. The scores are averaged over 40 runs. We note that the results are similar to those of \citet{goldberger2004}. 
+For our first series of experiments, we tried to replicate the work in the original article \citep{goldberger2004}. We encountered some difficulties since no information about their implementation was provided in the paper. Our results are presented in table \ref{table:eval-baseline} (scores are averaged over 40 runs). We randomly initialized the matrix~$\AB$ and optimized it using conjugate gradients (CG) method. This was the easiest thing to do since no parameter tuning is need for CG. We note that the results are similar to those of \citet{goldberger2004}; for \texttt{ionosphere} data set we obtained slightly worse results.
 
 \begin{table}
   \centering\begin{tabular}{lrcccc}
@@ -78,6 +79,19 @@ For our first series of experiments, we tried to replicate the work in the origi
   \label{table:eval-baseline}
 \end{table}
 
+\begin{table}
+  \centering\begin{tabular}{lccc}
+  \toprule
+  Data set & PCA & LDA & RCA \\
+  \cmidrule(r){2-4}
+\texttt{usps}&$73.47 \pm 0.13$&$87.44 \pm 0.12$&$87.42 \pm 0.13$\\ 
+\texttt{magic}&$77.097 \pm 0.080$&$76.17 \pm 0.29$&$77.574 \pm 0.078$\\ 
+\texttt{mnist}&$70.13$&$9.96$&$79.11$\\
+\bottomrule
+  \end{tabular}
+  \caption{\small Accuracy of three linear transformation techniques applied on the large data sets. We used $1$-NN for classification. Scores are averaged over 20 runs, except for \texttt{mnist} data set. We reduced each data set dimensionality to $d=5$.}
+  \label{table:eval-baseline-large-data-sets}
+\end{table}
 % We used as a baseline a standard NCA implementation . 
 % This allowed us to have a baseline to compare the new models against, table \ref{table:eval-baseline}.
 % We started testing NCA on small data sets.  This can also be viewed as a replication of the work in the original article \citet{goldberger2004}. The authors did not provide us with any information about their implementation. For our first series of experiments, we used random initialization and we optimized the function using conjugate gradients. The results are averaged over 40 runs. We also considered the score obtained in the original space. We computed this using leave one out cross validation using the Euclidean metric. The results are quite similar to those presented in the original paper.  
@@ -86,69 +100,72 @@ For our first series of experiments, we tried to replicate the work in the origi
 
 However, in order to achieve a robust implementation of NCA we had to carry out additional experiments. The learnt lessons were summarized in section~\ref{sec:practical-notes}. We will further see the influence of the implementation tricks in the next part (section~\ref{sec:method-comparison}). Results were shown in section~\ref{sec:practical-notes} and are also attached at the end of the thesis, appendix~\ref{app:results}:
 \begin{itemize}
- \item Tables~\ref{table:comp-opts-1} and~\ref{table:comp-opts-2} compare two the optimization methods: conjugate gradients and gradient ascent with ``bold driver'' heuristic. We observe that the two methods give close scores on most of data sets. 
+ \item Tables~\ref{table:comp-opts-1} and~\ref{table:comp-opts-2} compare two of the optimization methods: conjugate gradients and gradient ascent with ``bold driver'' heuristic. We observe that the two methods give close scores on most of data sets. However, the gradient ascent takes longer until it reaches convergence.
  \item Figures~\ref{fig:iris-init}, \ref{fig:balance-init} and~\ref{fig:ecoli-init} illustrate the initialization effect on three data sets: \texttt{iris}, \texttt{balance} and \texttt{ecoli}. RCA seems to be the best option for initialization and we used it in most of our comparisons. However, random projection can also be sometimes surprisingly good as we see in figure~\ref{fig:iris-init-2}. 
 \end{itemize}
+
+We could not apply NCA on large data sets (\texttt{usps}, \texttt{magic}, and \texttt{mnist}) since it would have taken far too long. We decided to use as a baseline the linear transformations that we also use for initialization (PCA, LDA and RCA). The results are averaged over different splits of training and testing set and they are listed in table \ref{table:eval-baseline-large-data-sets}. For \texttt{mnist} data set we have scores of classic NCA \citep{singh2010}. For $d=5$ the accuracy obtained was $91.1\%$ using $k$NN classifier and $90.9\%$ using NCA classifier. For the classification procedure \citeauthor{singh2010} learnt the optimal value for $k$ using cross-validation.
 
 \section{Mini-batches methods}
 \label{sec:method-comparison}
 
-  We tested the methods on \texttt{usps}, \texttt{magic}, and \texttt{mnist}. We chosen to reduce the dimensionality to $d=5$. The decision is partially motivated by the fact NCA is very effective for reducing the data dimensionality to small values, somewhere around $5$ to $15$. A more principled approach would have been to develop of model choosing algorithm: start with a projection to $d=2$ dimensions and then increase the number of dimensions until the score stops improving. This can be illustrated for \texttt{landasat} data set.
+ The mini-batches methods are compared on the larger data sets: \texttt{usps}, \texttt{magic}, and \texttt{mnist}. We chosen to reduce the dimensionality to $d=5$. The decision is partially motivated by the fact NCA is very effective for reducing the data dimensionality to small values, somewhere around $5$ to $15$. A more principled approach would have been to develop a model choosing algorithm: start with a projection to $d=2$ dimensions and then increase the number of dimensions until the score stops improving. The idea is similar to the ``early stopping'' procedure and it is illustrated for \texttt{landsat} data set in figure \ref{fig:landsat-evolution}.
 
   \begin{figure}
    \centering\includegraphics[width=0.6\textwidth]{images/landsat-evolution}
-   \caption{Evolution of test accuracy as dimensionality increases. We see that NCA operates well in low dimensions. This approach can be used for selecting an optimal dimension to which we project the data.}
+   \caption{Evolution of test accuracy as dimensionality increases on \texttt{landsat} data set. We see that NCA operates almost as well in low dimensions ($d=6,\cdots,10$) as in high dimensions ($d>25$). This approach can be used for selecting a suitable dimension to which we project the data.}
+   \label{fig:landsat-evolution}
   \end{figure}
 
 
   \subsection{Sub-sampling}
   \label{subsec:eval-sub-sampling}
 
-    For sub-sampling (SS) we trained NCA on a subset of $n=3000$ samples of the original data. We used conjugate gradients for optimization and RCA linear transformation for initialization. As previously mentioned in section \ref{sec:sub-sampling} the sub-sampled data has a thinner distribution than the original data which helps the method to obtain good scores at training. But the test performance is hindered because we do not use the true distribution. This is especially evident for the digits data \texttt{usps} and \texttt{mnist} (table \ref{tab:ss}). 
+    For sub-sampling we trained NCA on a subset of $n=3000$ samples of the original data. We used conjugate gradients for optimization and RCA linear transformation for initialization. As previously mentioned in section \ref{sec:sub-sampling}, the sub-sampled data has a thinner distribution than the original data which helps the method to obtain good scores at training. But the test performance is hindered because we do not use the true distribution. This is especially evident for the digits data \texttt{usps} and \texttt{mnist} (table \ref{tab:ss}). 
     \begin{table}
     	\centering
     	\begin{tabular}{lccc}
     	\toprule
     	Data set & Train & $1$-NN & NCA \\
-    	\cmidrule(r){2-2}\cmidrule(r){3-3}\cmidrule(r){4-4} 
+    	\cmidrule(r){2-2}\cmidrule(r){3-4}
     	 \texttt{usps}&$99.112 \pm 0.099$&$89.30 \pm 0.18$&$89.41 \pm 0.16$\\
     	 \texttt{magic}&$82.71 \pm 0.41$&$79.25 \pm 0.45$&$80.22 \pm 0.72$\\
     	 \texttt{mnist}&$96.867$&$82.130$&$82.470$\\
     	 \bottomrule
     	\end{tabular}
 	\label{tab:ss}
-	\caption{Accuracy scores of sub-sampling method on three large data sets. We used RCA for initialization and CGs for optimization. We used a subset of $n=3000$ data points for training and the whole data set for testing.}
+	\caption{Accuracy scores for SS method on the larger data sets. We used RCA for initialization and CGs for optimization. We used a subset of $n=3000$ data points for training and the whole data set for testing.}
     \end{table}
 
     \subsection{Mini-batches}
     \label{subsec:eval-mini-batches}
 
-    We trained NCA using gradient ascent on mini-batches as described in section~\ref{sec:mini-batches}. For the learning rate, we used an update rule of the form $\frac{\eta}{t+t_0}$. We fixed $\eta=1$ and tuned the other free parameter $t_0$ using cross validation across an exponential scale from $0.1$ to $1000$. After that, a finer tuning was done on a linear scale around the best value of $t_0$. We used $5\%$ of the training set for cross validation to monitor the accuracy score at each iteration. If the performance on the cross validation set does not increase for $25$ iterations, we stop the learning process and return to the previously best parameter.
+    We trained NCA using the gradient ascent variant with clustered mini-batches (section~\ref{sec:mini-batches}). For the learning rate, we used an update rule of the form $\frac{\eta}{t+t_0}$. We fixed $\eta=1$ and tuned the other free parameter $t_0$ using cross validation across an exponential scale from $0.1$ to $1000$. After that, a finer tuning was done on a linear scale around the best value of $t_0$. We used $5\%$ of the training set for cross validation to monitor the accuracy score at each iteration. If the performance on the cross validation set does not increase for $25$ iterations, we stop the learning process and return to the previously best parameter.
 
     To get significant gradients we used large mini-batches $n=2000$. The points in a batch are selected via recursive projection clustering (RPC) algorithm. The clustering was done in the low dimensional space, after projecting the points with the current linear transformation matrix~$\AB$.
-    The results obtained by mini-batches method can be found in table \ref{tab:mb}. 
+    The results obtained by mini-batches method can be found in table \ref{tab:mb}. We note similar scores on \texttt{magic} and better results on the other two data sets.
 
     \begin{table}
         	\centering
         	\begin{tabular}{lccc}
         	\toprule
         	Data set & Train & $1$-NN & NCA \\
-        	\cmidrule(r){2-2}\cmidrule(r){3-3}\cmidrule(r){4-4} 
+        	\cmidrule(r){2-2}\cmidrule(r){3-4}
         	 \texttt{usps}&$92.00 \pm 0.43$&$91.26 \pm 0.17$&$92.37 \pm 0.17$\\
         	 \texttt{magic}&$80.04 \pm 0.48$&$79.14 \pm 0.52$&$79.8 \pm 1.1$\\
         	 \texttt{mnist}&$87.47 \pm 0.49$&$87.52 \pm 0.36$&$89.88 \pm 0.25$\\
         	 \bottomrule
         	\end{tabular}
 		\label{tab:mb}
-		\caption{Accuracy scores of the mini-batches method on three large data sets. We used RCA for initialization and the mini-batches for clustered in the low-dimensional space using RPC. The size of a mini-batch was of maximum $n=2000$ data points.}
+		\caption{Accuracy scores for MB method on the larger data sets. We used RCA for initialization and the mini-batches were clustered in the low-dimensional space using RPC. The size of a mini-batch was of maximum $n=2000$ data points.}
     \end{table}
 
     \subsection{Stochastic learning}
     \label{subsec:eval-stochastic-learning}
 
-    This method was trained using a similar algorithm as before. We used the same parameters and early stopping. We considered $n=50$ neighbours to look at for each iteration and computed their contributions with respect to the whole data set. 
+    This method was trained using the variant of stochastic gradient ascent presented in section \ref{sec:stochastic-learning}. We used the same parameters as in the previous section. We considered $n=50$ neighbours to look at for each iteration and computed their contributions with respect to the whole data set. 
 
-    Besides the results on the large data sets (table \ref{tab:sl-2}), we also present the performance of this method when used for small data sets (table \ref{tab:sl-1}). We mostly observe similar results as the baseline NCA. The most important remark is that the classification done using NCA objective function is better than $1$-NN classification. This observation also applies for the large data sets results. More results for this method are in appendix.
+    Besides the results on the large data sets (table \ref{tab:sl-2}), we also present the performance of this method when used for small data sets (table \ref{tab:sl-1}). We note a considerable improvement on the \texttt{magic} data set compared to the previous two methods. For small data sets, we observe similar results as the baseline NCA. The most important remark is that the classification done using NCA objective function is better than $1$-NN classification. This observation also applies for the large data sets results. More results for this method are in appendix, tables \ref{app:table:nca-sl-small-1} and \ref{app:table:nca-sl-small-2}. 
 
     \begin{table}
       \centering\begin{tabular}{lrccc}
@@ -171,7 +188,7 @@ However, in order to achieve a robust implementation of NCA we had to carry out 
       \bottomrule
       \end{tabular}
       \label{tab:sl-1}
-      \caption{Stochastic learning results on small data sets. We used RCA for initialization. The scores are averaged after 20 iterations.}
+      \caption{Accuracy scores for SL method on the small data sets. We used RCA for initialization. The scores are averaged after 20 iterations.}
     \end{table}
 
         \begin{table}
@@ -179,44 +196,101 @@ However, in order to achieve a robust implementation of NCA we had to carry out 
             	\begin{tabular}{lccc}
             	\toprule
             	Data set & Train & $1$-NN & NCA \\
-            	\cmidrule(r){2-2}\cmidrule(r){3-3}\cmidrule(r){4-4} 
+            	\cmidrule(r){2-2}\cmidrule(r){3-4}
             	\texttt{usps}&$90.23  \pm 0.50$&$90.68 \pm 0.22$&$92.64 \pm 0.17$\\
             	\texttt{magic}&$78.39 \pm 0.25$&$79.76 \pm 0.13$&$84.49 \pm 0.12$\\
             	\texttt{mnist}&$85.97 \pm 0.37$&$86.07 \pm 0.43$&$89.35 \pm 0.39$\\
             	 \bottomrule
             	\end{tabular}
 		\label{tab:sl-2}
-		\caption{Accuracy scores of stochastic learning method on three large data sets. We used RCA for initialization. At each iteration we consider $n=50$ data points.}
+		\caption{Accuracy scores for SS method on the larger data sets. We used RCA for initialization. At each iteration we consider $n=50$ data points.}
         \end{table}
 
     \subsection{Comparison}
     \label{subsec:eval-comparison}
 
-    To easily compare the 3 presented methods, we provide time-accuracy plots on the large data sets. We did not compute time for smaller data sets, since the classical NCA was usually fast enough. We also included in the plots the method based on the compact support kernels; we discuss its individual scores in the next subsection. 
+    To easily compare the 3 presented methods, we provide time-accuracy plots (figure \ref{fig:time-accuracy}). We did not compute time for smaller data sets, since the classical NCA was usually fast enough. We also included in the plots the method based on the compact support kernels (we discuss its individual scores in subsection \ref{subsec:eval-nca-cs}). 
 
-    The differences in time varied strongly for the 4 methods so we had to use a logarithmic scale on the time. For each method we had also plotted its covariance matrix, but because of the logarithmic axis this looks deformed. In the plot the best methods are placed in the top left corner. 
+    In terms of accuracy, all of the NCA variants improve the accuracy over PCA, LDA or RCA\@. SS gives comparable results to the other two only on \texttt{magic} data set. This data set has only two classes and a sub-sampled data set does not remove too much information of the decision boundaries. MB and SL are similar in accuracy. We note the proposed methods obtain a slightly worse score than classic NCA on \texttt{mnist}. The performance reported in \citep{singh2010} was around $91\%$, while the mean accuracy for MB and SL is about $90\%$. 
 
-    We note that the performance and the time spent varies quite heavily even for the same method. The number of iterations it takes for a method to converge is quite varied. There is a certain trade-off between time and accuracy, especially for the digits data sets. The stochastic learning and the mini batches seem to behave similarly. We could not also run the classic NCA, because of its cost. However, \citet{singh2010} did also experiment on \texttt{mnist} and she reported error of about $9\%$ for $d=5$.
+    The differences in time varied strongly. We used a logarithmic scale on the time to better discriminate the plotted scores. For each method we show the equidensity contours of the Gaussian distribution. The contours are ellipses, but because of the logarithmic axis they look deformed. 
 
+    The time spent varies even for the same method because the number of iterations until convergence depends on random parameters. There is a certain trade-off between time and accuracy, especially for the digits data sets.
+
+    We show also low dimensional representations of data for $d=2$ for two of the data sets: \texttt{usps} (figure \ref{fig:usps-projection}) and \texttt{magic} (figure \ref{fig:magic-projection}). 
+    
       \begin{figure}
 		\centering
 		\subfigure[\texttt{usps}]{\label{fig:usps}\includegraphics[width=0.61\textwidth]{images/usps-acc-time}}
 		\subfigure[\texttt{magic}]{\label{fig:magic}\includegraphics[width=0.61\textwidth]{images/magic-acc-time}}
 		\subfigure[\texttt{mnist}]{\label{fig:mnist}\includegraphics[width=0.61\textwidth]{images/mnist-acc-time}}
-		\caption{\small Time \textsl{vs.} accuracy plots on larger data sets.}
+		\caption{\small Time \textsl{vs.} accuracy plots on larger data sets for four of the proposed methods. For SS we plotted the $1$-NN score, while for the other three the points inidicate the NCA score.}
 		\label{fig:time-accuracy}
       \end{figure}
 
+     \begin{figure}
+		 \centering
+			  \subfigure[NCA MB]{\label{fig:nca-mb-usps}\includegraphics[width=0.45\textwidth]{images/usps-test-mb}}
+			    \hspace{0.02\textwidth}
+			 \subfigure[NCA SL]{\label{fig:nca-sl-usps}\includegraphics[width=0.45\textwidth]{images/usps-test-snca}}
+		\caption{Two dimensional projections of \texttt{usps} data set using two variants of NCA learning. The linear transformation was learnt on a training set, and here is plotted the projection of a testing set.}
+		\label{fig:usps-projection}
+	\end{figure}
+
+     \begin{figure}
+		 \centering
+			  \subfigure[NCA MB]{\label{fig:nca-mb-magic}\includegraphics[width=0.45\textwidth]{images/magic-test-mb}}
+			    \hspace{0.02\textwidth}
+			 \subfigure[NCA SL]{\label{fig:nca-sl-magic}\includegraphics[width=0.45\textwidth]{images/magic-test-snca-cs}}
+		\caption{Two dimensional projections of \texttt{magic} data set using two variants of NCA learning. The linear transformation was learnt on a training set, and here is plotted the projection of a testing set.}
+		\label{fig:magic-projection}
+	\end{figure}
 
 \section{Approximate computations}
 \label{sec:eval-nca-approx}
 
-Although the following methods can be applied on classic NCA, we tested them in conjunction with the stochastic learning procedure to further boost the speed of the method. In fact, we think that there is no worry to prefer the stochastic learning against the classical procedure.
+The following methods can be applied on classic NCA, but we tested them in conjunction with the stochastic learning procedure to further boost the speed. 
+
+For approximate computations we also tried a more simplistic approach, similar to that of \citet{weinberger2007}: we selected only the first $100$ neighbours for each point and discarded those points whose contribution~$p_{ij}$ is less than $\exp(-30)$. This simple approach gave surprinsingly good score, although we do not present them here.
 
 \subsection{NCA with $k$-d trees}
 \label{subsec:eval-nca-k-d-trees}
 
-For the class-conditional density estimation we used a similar algorithm to that described in section \ref{sec:approximate}. Our implementation of $k$-d trees was done in \texttt{MATLAB} and it was pretty slow for this reason. The lack of vectorization when recursively computing the objective function and the gradient made the code slower than in the classical version. We also experimented with kernel density code written in C and mex-ed in \texttt{MATLAB}. From our experience we think that such an approach would be suitable and it would provide speed-ups. Doing simple kernel density estimation with a C written code is even faster than doing it in \texttt{MATLAB}. Unfortunately, the short time did not permit us to finish this implementation. However, we can demonstrate that  NCA with $k$-d trees achieves good results even if we discard a large number of the points. Table show results for this method on the three large data sets. We also present how the accuracy and the average number of prunings depends on the maximum error imposed. 
+For the class-conditional kernel density estimation idea we used the algorithm described in section \ref{sec:approximate}. Our $k$-d tree implementation was done in \textsc{Matlab} and, for this reason, it was pretty slow. The code was slower than the simple SL version, because the we cannot vectorize the recursive computation of the objective function and its gradient. We experimented with kernel density code written in C and mex-ed in \textsc{Matlab} and we think that such an approach can improve the speed. Doing simple kernel density estimation with a C written code proved to be even faster than doing it in \textsc{Matlab}. The short time did not permit us to finalize this approach. We demonstrate that SL with $k$-d trees achieves good results even if we discard a large number of the points. Table \ref{tab:nca-sl-k-d-trees} shows results for this method on the large data sets. We also present how the accuracy and the average number of prunings depend on the maximum error imposed (table \ref{tab:nca-sl-k-d-trees-landsat}). 
+
+\begin{table}
+  \centering
+ 	\begin{tabular}{lcccc}
+ 	\toprule
+ 	$\epsilon_{\max}$ & Train & $1$-NN & NCA & Visited points\\
+ 	\cmidrule(r){2-2}\cmidrule(r){3-4}\cmidrule(r){5-5}
+$0$&$87.05 \pm 0.66$&$86.30 \pm 0.32$&$87.87 \pm 0.24$&$80.0 \pm 5.9$\\
+$10^{-50}$&$87.50 \pm 0.31$&$86.26 \pm 0.24$&$87.88 \pm 0.20$&$55.1 \pm 5.2$\\
+$10^{-20}$&$85.49 \pm 0.89$&$86.32 \pm 0.28$&$87.87 \pm 0.26$&$45.7 \pm 4.1$\\
+$10^{-5}$&$87.29 \pm 0.49$&$85.95 \pm 0.19$&$87.63 \pm 0.29$&$22.8 \pm 2.7$\\
+$0.01$&$87.34 \pm 0.76$&$86.14 \pm 0.29$&$87.90 \pm 0.24$&$22.1 \pm 4.2$\\
+$0.1$&$86.70 \pm 0.39$&$86.12 \pm 0.29$&$88.09 \pm 0.19$&$20.0 \pm 2.0$\\
+\bottomrule
+  \end{tabular}
+  \caption{NCA SL + $k$-d trees on \texttt{landsat}. $\epsilon_{\max}$ denotes the maximum error that we accept while approximating the density for a point given a class~$p(\xB|c)$. Visited points indicates the fraction of points that are used for computing the function and the gradient.}
+  \label{tab:nca-sl-k-d-trees-landsat}
+\end{table}
+
+
+\begin{table}
+  \centering
+ 	\begin{tabular}{lccc}
+ 	\toprule
+ 	Data set & Train & $1$-NN & NCA \\
+ 	\cmidrule(r){2-2}\cmidrule(r){3-4}
+ 	\texttt{usps}&$89.68 \pm 0.51$&$90.57 \pm 0.20$&$92.67 \pm 0.15$\\
+\texttt{magic}&$78.09 \pm 0.37$&$79.68 \pm 0.30$&$84.50 \pm 0.21$\\
+\texttt{mnist}&$84.4 \pm 1.4$&$85.5 \pm 1.0$&$88.98 \pm 0.75$\\
+  \bottomrule
+  \end{tabular}
+  \caption{NCA SL + $k$-d trees on large data sets. For these experiments we set $\epsilon_{\max}=0.1$.}
+  \label{tab:nca-sl-k-d-trees}
+\end{table}
 
 \subsection{NCA with compact support kernels}
 \label{subsec:eval-nca-cs}
@@ -224,28 +298,38 @@ For the class-conditional density estimation we used a similar algorithm to that
 \begin{figure}
 	\centering
 	\includegraphics[width=0.6\textwidth]{images/nca-cs-nnzs}
+	\caption{This figure illustrates how the fraction of the points inspected varies during the learning procedure. When we use random initialization, there are inspected only $0.1\%$ of the points. If RCA is used to initialize the learning algorithm a fraction of about $10\%$ is used.}
+	\label{fig:nca-cs-nnzs}
 \end{figure}
+\begin{figure}
+		 \centering
+			  \subfigure[NCA SL CS randomly initialized]{\label{fig:nca-sl-cs-rand}\includegraphics[width=0.45\textwidth]{images/nca-cs-nnzs-rand}}
+			    \hspace{0.02\textwidth}
+			 \subfigure[NCA SL CS with RCA initialization]{\label{fig:nca-sl-cs-rca}\includegraphics[width=0.45\textwidth]{images/nca-cs-nnzs-rca}}
+		\caption{Illustration of final projections using two different initializations for NCA SL CS.}
+		\label{fig:landsat-projection}
+	\end{figure}
 
 \begin{table}
             	\centering
             	\begin{tabular}{lccc}
             	\toprule
             	Data set & Train & $1$-NN & NCA \\
-            	\cmidrule(r){2-2}\cmidrule(r){3-3}\cmidrule(r){4-4} 
+            	\cmidrule(r){2-2}\cmidrule(r){3-4}
 \texttt{usps}&$85.16 \pm 0.33$&$87.02 \pm 0.44$&$89.85 \pm 0.30$\\ 
-  \midrule
 \texttt{magic}&$76.92 \pm 0.56$&$79.09 \pm 0.42$&$82.92 \pm 0.36$\\ 
-  \midrule
 \texttt{mnist}&$80.55 \pm 0.28$&$81.96 \pm 0.26$&$86.36 \pm 0.18$\\ 
   \bottomrule
   \end{tabular}
+  \caption{Accuracy scores for NCA SL CS method on the larger data sets.}
+  \label{tab:nca-cs-scores}
 \end{table}
 
-The compact support version of NCA was easy to implement and it is very fast as we already saw in section \ref{subsec:eval-comparison}. Usually only a small fraction of the points is inspected. In figure, we see how this fraction evolves with the learning process. In the first iterations there might be larger number of points, but soon this drops off and stabilizes. It might be tempting to start with all the points very close together to ensure that no point is outside the compact support of any other point. This approach has however two drawbacks. Since all the points are in the support of all the other points it means the first iteration will be quadratic in the number of the points. In fact, the first iteration can be easily as expensive as the whole learning process. A second issues is that the gradients will be very large and might ``throw away'' points out of the existing support. More reliable is an initialization with the linear transformation such as RCA. This provides a more stable evolution. We also see that the final projection looks better in the second case.
+The compact support version of NCA is easy to implement and it is very fast as we already saw in section \ref{subsec:eval-comparison}. Usually only a small fraction of the points is inspected. In figure \ref{fig:nca-cs-nnzs}, we see how this fraction evolves with the learning process. In the first iterations there might be a larger number of points, but soon this drops off and stabilizes. It might be tempting to start with all the points very close together to ensure that no point is outside the compact support of any other point. This approach has however two drawbacks. Since all the points are in the support of all the other points it means the first iteration will not present any gain in speed. In fact, the first iteration can be easily as expensive as the whole learning process. A second issue is that the gradients will be very large and might ``throw away'' points out of the existing support. More reliable is an initialization with the linear transformation such as RCA. This provides a more stable evolution. We also see that the final projection looks better in the second case (figure \ref{fig:landsat-projection}).
 
-Results that demonstrate performance in terms of accuracy on small data sets are attached in appendix. The comparison in there is against the classical NCA and the extended version of NCA with compact support kernels and background distribution. The results on the large data set are available in table. 
+Results that demonstrate performance in terms of accuracy on small data sets are attached in appendix, tables \ref{app:tab:nca-cs-scores-1} and \ref{app:tab:nca-cs-scores-2}. The comparison has as baseline the classical NCA and the extended version of NCA with compact support kernels and background distribution (NCA CS BACK). The results on the large data set are available in table \ref{tab:nca-cs-scores}. 
 
 \section{Recommendations}
 \label{sec:eval-recommendations}
 
-When dealing with a large data set, we suggest to first try NCA CS with stochastic learning. This method has the advantage of being easy to implement and very fast even for large data sets. However, the speed does come at a cost. We note a slight decrease in accuracy for most experimentations. Nonetheless, this is very good to get an idea of how well NCA can perform on a given data set. If one is pleased with the score, it can use the classic NCA with stochastic learning and hope to get an improvement of a couple of percentages in accuracy.
+When dealing with a large data set, we suggest to first try NCA SL CS. This method has the advantage of being easy to implement and very fast even for large data sets. However, the speed does come at a cost. We note a slight decrease in accuracy for most experimentations. Nonetheless, applying NCA SL CS first gives us an idea of how well NCA can perform on a given data set. If one is pleased with the score, it can use the classic NCA SL or the more sophisticated NCA SL + $k$-d tree and hope to get an improvement of a couple of percentages in accuracy. However all the methods offer better scores than the eigendecomposition based methods.

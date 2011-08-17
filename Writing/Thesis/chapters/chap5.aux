@@ -13,54 +13,91 @@
 \newlabel{sec:baseline}{{5.2}{44}}
 \@writefile{lot}{\contentsline {table}{\numberline {5.2}{\ignorespaces \relax \fontsize  {10.95}{13.6}\selectfont  \abovedisplayskip 11\p@ plus3\p@ minus6\p@ \abovedisplayshortskip \z@ plus3\p@ \belowdisplayshortskip 6.5\p@ plus3.5\p@ minus3\p@ \def \leftmargin \leftmargini \parsep 5\p@ plus2.5\p@ minus\p@ \topsep 10\p@ plus4\p@ minus6\p@ \itemsep 5\p@ plus2.5\p@ minus\p@ {\leftmargin \leftmargini \topsep 9\p@ plus3\p@ minus5\p@ \parsep 4.5\p@ plus2\p@ minus\p@ \itemsep \parsep }\belowdisplayskip \abovedisplayskip Accuracy of standard NCA on four small data sets. Scores are averaged over 40 runs. The second column presents the dimensionality\nobreakspace  {}$d$ the data set is reduced to. The last column shows the leave one out cross validation performance on the data set using Euclidean metric.}}{45}}
 \newlabel{table:eval-baseline}{{5.2}{45}}
-\@writefile{toc}{\contentsline {section}{\numberline {5.3}Mini-batches methods}{45}}
-\newlabel{sec:method-comparison}{{5.3}{45}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {5.3.1}Sub-sampling}{45}}
-\newlabel{subsec:eval-sub-sampling}{{5.3.1}{45}}
-\@writefile{lof}{\contentsline {figure}{\numberline {5.1}{\ignorespaces Evolution of test accuracy as dimensionality increases. We see that NCA operates well in low dimensions. This approach can be used for selecting an optimal dimension to which we project the data.}}{46}}
-\newlabel{fig:landsat-evolution}{{5.1}{46}}
-\newlabel{tab:ss}{{5.3.1}{46}}
-\@writefile{lot}{\contentsline {table}{\numberline {5.3}{\ignorespaces Accuracy scores of sub-sampling method on three large data sets. We used RCA for initialization and CGs for optimization. We used a subset of $n=3000$ data points for training and the whole data set for testing.}}{46}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {5.3.2}Mini-batches}{46}}
-\newlabel{subsec:eval-mini-batches}{{5.3.2}{46}}
-\newlabel{tab:mb}{{5.3.2}{47}}
-\@writefile{lot}{\contentsline {table}{\numberline {5.4}{\ignorespaces Accuracy scores of the mini-batches method on three large data sets. We used RCA for initialization and the mini-batches for clustered in the low-dimensional space using RPC. The size of a mini-batch was of maximum $n=2000$ data points.}}{47}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {5.3.3}Stochastic learning}{47}}
-\newlabel{subsec:eval-stochastic-learning}{{5.3.3}{47}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {5.3.4}Comparison}{47}}
-\newlabel{subsec:eval-comparison}{{5.3.4}{47}}
-\newlabel{tab:sl-1}{{5.3.3}{48}}
-\@writefile{lot}{\contentsline {table}{\numberline {5.5}{\ignorespaces Stochastic learning results on small data sets. We used RCA for initialization. The scores are averaged after 20 iterations.}}{48}}
-\newlabel{tab:sl-2}{{5.3.3}{48}}
-\@writefile{lot}{\contentsline {table}{\numberline {5.6}{\ignorespaces Accuracy scores of stochastic learning method on three large data sets. We used RCA for initialization. At each iteration we consider $n=50$ data points.}}{48}}
+\@writefile{lot}{\contentsline {table}{\numberline {5.3}{\ignorespaces \relax \fontsize  {10.95}{13.6}\selectfont  \abovedisplayskip 11\p@ plus3\p@ minus6\p@ \abovedisplayshortskip \z@ plus3\p@ \belowdisplayshortskip 6.5\p@ plus3.5\p@ minus3\p@ \def \leftmargin \leftmargini \parsep 5\p@ plus2.5\p@ minus\p@ \topsep 10\p@ plus4\p@ minus6\p@ \itemsep 5\p@ plus2.5\p@ minus\p@ {\leftmargin \leftmargini \topsep 9\p@ plus3\p@ minus5\p@ \parsep 4.5\p@ plus2\p@ minus\p@ \itemsep \parsep }\belowdisplayskip \abovedisplayskip Accuracy of three linear transformation techniques applied on the large data sets. We used $1$-NN for classification. Scores are averaged over 20 runs, except for \texttt  {mnist} data set. We reduced each data set dimensionality to $d=5$.}}{45}}
+\newlabel{table:eval-baseline-large-data-sets}{{5.3}{45}}
 \citation{singh2010}
-\@writefile{toc}{\contentsline {section}{\numberline {5.4}Approximate computations}{49}}
-\newlabel{sec:eval-nca-approx}{{5.4}{49}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {5.4.1}NCA with $k$-d trees}{49}}
-\newlabel{subsec:eval-nca-k-d-trees}{{5.4.1}{49}}
-\newlabel{fig:usps}{{5.2(a)}{50}}
-\newlabel{sub@fig:usps}{{(a)}{50}}
-\newlabel{fig:magic}{{5.2(b)}{50}}
-\newlabel{sub@fig:magic}{{(b)}{50}}
-\newlabel{fig:mnist}{{5.2(c)}{50}}
-\newlabel{sub@fig:mnist}{{(c)}{50}}
-\@writefile{lof}{\contentsline {figure}{\numberline {5.2}{\ignorespaces \relax \fontsize  {10.95}{13.6}\selectfont  \abovedisplayskip 11\p@ plus3\p@ minus6\p@ \abovedisplayshortskip \z@ plus3\p@ \belowdisplayshortskip 6.5\p@ plus3.5\p@ minus3\p@ \def \leftmargin \leftmargini \parsep 5\p@ plus2.5\p@ minus\p@ \topsep 10\p@ plus4\p@ minus6\p@ \itemsep 5\p@ plus2.5\p@ minus\p@ {\leftmargin \leftmargini \topsep 9\p@ plus3\p@ minus5\p@ \parsep 4.5\p@ plus2\p@ minus\p@ \itemsep \parsep }\belowdisplayskip \abovedisplayskip Time \textsl  {vs.} accuracy plots on larger data sets.}}{50}}
-\@writefile{lof}{\contentsline {subfigure}{\numberline{(a)}{\ignorespaces {\texttt {usps}}}}{50}}
-\@writefile{lof}{\contentsline {subfigure}{\numberline{(b)}{\ignorespaces {\texttt {magic}}}}{50}}
-\@writefile{lof}{\contentsline {subfigure}{\numberline{(c)}{\ignorespaces {\texttt {mnist}}}}{50}}
-\newlabel{fig:time-accuracy}{{5.2}{50}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {5.4.2}NCA with compact support kernels}{51}}
-\newlabel{subsec:eval-nca-cs}{{5.4.2}{51}}
-\@writefile{toc}{\contentsline {section}{\numberline {5.5}Recommendations}{52}}
-\newlabel{sec:eval-recommendations}{{5.5}{52}}
+\citation{singh2010}
+\@writefile{toc}{\contentsline {section}{\numberline {5.3}Mini-batches methods}{46}}
+\newlabel{sec:method-comparison}{{5.3}{46}}
+\@writefile{lof}{\contentsline {figure}{\numberline {5.1}{\ignorespaces Evolution of test accuracy as dimensionality increases on \texttt  {landsat} data set. We see that NCA operates almost as well in low dimensions ($d=6,\cdots  ,10$) as in high dimensions ($d>25$). This approach can be used for selecting a suitable dimension to which we project the data.}}{47}}
+\newlabel{fig:landsat-evolution}{{5.1}{47}}
+\newlabel{tab:ss}{{5.3.1}{47}}
+\@writefile{lot}{\contentsline {table}{\numberline {5.4}{\ignorespaces Accuracy scores for SS method on the larger data sets. We used RCA for initialization and CGs for optimization. We used a subset of $n=3000$ data points for training and the whole data set for testing.}}{47}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {5.3.1}Sub-sampling}{47}}
+\newlabel{subsec:eval-sub-sampling}{{5.3.1}{47}}
+\newlabel{tab:mb}{{5.3.2}{48}}
+\@writefile{lot}{\contentsline {table}{\numberline {5.5}{\ignorespaces Accuracy scores for MB method on the larger data sets. We used RCA for initialization and the mini-batches were clustered in the low-dimensional space using RPC. The size of a mini-batch was of maximum $n=2000$ data points.}}{48}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {5.3.2}Mini-batches}{48}}
+\newlabel{subsec:eval-mini-batches}{{5.3.2}{48}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {5.3.3}Stochastic learning}{48}}
+\newlabel{subsec:eval-stochastic-learning}{{5.3.3}{48}}
+\citation{singh2010}
+\newlabel{tab:sl-1}{{5.3.3}{49}}
+\@writefile{lot}{\contentsline {table}{\numberline {5.6}{\ignorespaces Accuracy scores for SL method on the small data sets. We used RCA for initialization. The scores are averaged after 20 iterations.}}{49}}
+\newlabel{tab:sl-2}{{5.3.3}{49}}
+\@writefile{lot}{\contentsline {table}{\numberline {5.7}{\ignorespaces Accuracy scores for SS method on the larger data sets. We used RCA for initialization. At each iteration we consider $n=50$ data points.}}{49}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {5.3.4}Comparison}{49}}
+\newlabel{subsec:eval-comparison}{{5.3.4}{49}}
+\citation{weinberger2007}
+\@writefile{toc}{\contentsline {section}{\numberline {5.4}Approximate computations}{50}}
+\newlabel{sec:eval-nca-approx}{{5.4}{50}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {5.4.1}NCA with $k$-d trees}{50}}
+\newlabel{subsec:eval-nca-k-d-trees}{{5.4.1}{50}}
+\newlabel{fig:usps}{{5.2(a)}{51}}
+\newlabel{sub@fig:usps}{{(a)}{51}}
+\newlabel{fig:magic}{{5.2(b)}{51}}
+\newlabel{sub@fig:magic}{{(b)}{51}}
+\newlabel{fig:mnist}{{5.2(c)}{51}}
+\newlabel{sub@fig:mnist}{{(c)}{51}}
+\@writefile{lof}{\contentsline {figure}{\numberline {5.2}{\ignorespaces \relax \fontsize  {10.95}{13.6}\selectfont  \abovedisplayskip 11\p@ plus3\p@ minus6\p@ \abovedisplayshortskip \z@ plus3\p@ \belowdisplayshortskip 6.5\p@ plus3.5\p@ minus3\p@ \def \leftmargin \leftmargini \parsep 5\p@ plus2.5\p@ minus\p@ \topsep 10\p@ plus4\p@ minus6\p@ \itemsep 5\p@ plus2.5\p@ minus\p@ {\leftmargin \leftmargini \topsep 9\p@ plus3\p@ minus5\p@ \parsep 4.5\p@ plus2\p@ minus\p@ \itemsep \parsep }\belowdisplayskip \abovedisplayskip Time \textsl  {vs.} accuracy plots on larger data sets for four of the proposed methods. For SS we plotted the $1$-NN score, while for the other three the points inidicate the NCA score.}}{51}}
+\@writefile{lof}{\contentsline {subfigure}{\numberline{(a)}{\ignorespaces {\texttt {usps}}}}{51}}
+\@writefile{lof}{\contentsline {subfigure}{\numberline{(b)}{\ignorespaces {\texttt {magic}}}}{51}}
+\@writefile{lof}{\contentsline {subfigure}{\numberline{(c)}{\ignorespaces {\texttt {mnist}}}}{51}}
+\newlabel{fig:time-accuracy}{{5.2}{51}}
+\newlabel{fig:nca-mb-usps}{{5.3(a)}{52}}
+\newlabel{sub@fig:nca-mb-usps}{{(a)}{52}}
+\newlabel{fig:nca-sl-usps}{{5.3(b)}{52}}
+\newlabel{sub@fig:nca-sl-usps}{{(b)}{52}}
+\@writefile{lof}{\contentsline {figure}{\numberline {5.3}{\ignorespaces Two dimensional projections of \texttt  {usps} data set using two variants of NCA learning. The linear transformation was learnt on a training set, and here is plotted the projection of a testing set.}}{52}}
+\@writefile{lof}{\contentsline {subfigure}{\numberline{(a)}{\ignorespaces {NCA MB}}}{52}}
+\@writefile{lof}{\contentsline {subfigure}{\numberline{(b)}{\ignorespaces {NCA SL}}}{52}}
+\newlabel{fig:usps-projection}{{5.3}{52}}
+\newlabel{fig:nca-mb-magic}{{5.4(a)}{52}}
+\newlabel{sub@fig:nca-mb-magic}{{(a)}{52}}
+\newlabel{fig:nca-sl-magic}{{5.4(b)}{52}}
+\newlabel{sub@fig:nca-sl-magic}{{(b)}{52}}
+\@writefile{lof}{\contentsline {figure}{\numberline {5.4}{\ignorespaces Two dimensional projections of \texttt  {magic} data set using two variants of NCA learning. The linear transformation was learnt on a training set, and here is plotted the projection of a testing set.}}{52}}
+\@writefile{lof}{\contentsline {subfigure}{\numberline{(a)}{\ignorespaces {NCA MB}}}{52}}
+\@writefile{lof}{\contentsline {subfigure}{\numberline{(b)}{\ignorespaces {NCA SL}}}{52}}
+\newlabel{fig:magic-projection}{{5.4}{52}}
+\@writefile{lot}{\contentsline {table}{\numberline {5.8}{\ignorespaces NCA SL + $k$-d trees on \texttt  {landsat}. $\epsilon _{\qopname  \relax m{max}}$ denotes the maximum error that we accept while approximating the density for a point given a class\nobreakspace  {}$p(\mathbf  {x}|c)$. Visited points indicates the fraction of points that are used for computing the function and the gradient.}}{53}}
+\newlabel{tab:nca-sl-k-d-trees-landsat}{{5.8}{53}}
+\@writefile{lot}{\contentsline {table}{\numberline {5.9}{\ignorespaces NCA SL + $k$-d trees on large data sets. For these experiments we set $\epsilon _{\qopname  \relax m{max}}=0.1$.}}{53}}
+\newlabel{tab:nca-sl-k-d-trees}{{5.9}{53}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {5.4.2}NCA with compact support kernels}{53}}
+\newlabel{subsec:eval-nca-cs}{{5.4.2}{53}}
+\@writefile{lof}{\contentsline {figure}{\numberline {5.5}{\ignorespaces This figure illustrates how the fraction of the points inspected varies during the learning procedure. When we use random initialization, there are inspected only $0.1\%$ of the points. If RCA is used to initialize the learning algorithm a fraction of about $10\%$ is used.}}{54}}
+\newlabel{fig:nca-cs-nnzs}{{5.5}{54}}
+\newlabel{fig:nca-sl-cs-rand}{{5.6(a)}{54}}
+\newlabel{sub@fig:nca-sl-cs-rand}{{(a)}{54}}
+\newlabel{fig:nca-sl-cs-rca}{{5.6(b)}{54}}
+\newlabel{sub@fig:nca-sl-cs-rca}{{(b)}{54}}
+\@writefile{lof}{\contentsline {figure}{\numberline {5.6}{\ignorespaces Illustration of final projections using two different initializations for NCA SL CS.}}{54}}
+\@writefile{lof}{\contentsline {subfigure}{\numberline{(a)}{\ignorespaces {NCA SL CS randomly initialized}}}{54}}
+\@writefile{lof}{\contentsline {subfigure}{\numberline{(b)}{\ignorespaces {NCA SL CS with RCA initialization}}}{54}}
+\newlabel{fig:landsat-projection}{{5.6}{54}}
+\@writefile{lot}{\contentsline {table}{\numberline {5.10}{\ignorespaces Accuracy scores for NCA SL CS method on the larger data sets.}}{54}}
+\newlabel{tab:nca-cs-scores}{{5.10}{54}}
+\@writefile{toc}{\contentsline {section}{\numberline {5.5}Recommendations}{55}}
+\newlabel{sec:eval-recommendations}{{5.5}{55}}
 \@setckpt{chapters/chap5}{
-\setcounter{page}{53}
+\setcounter{page}{56}
 \setcounter{equation}{0}
 \setcounter{enumi}{2}
 \setcounter{enumii}{0}
 \setcounter{enumiii}{0}
 \setcounter{enumiv}{0}
-\setcounter{footnote}{0}
+\setcounter{footnote}{4}
 \setcounter{mpfootnote}{0}
 \setcounter{part}{0}
 \setcounter{chapter}{5}
@@ -69,8 +106,8 @@
 \setcounter{subsubsection}{0}
 \setcounter{paragraph}{0}
 \setcounter{subparagraph}{0}
-\setcounter{figure}{2}
-\setcounter{table}{6}
+\setcounter{figure}{6}
+\setcounter{table}{10}
 \setcounter{NAT@ctr}{0}
 \setcounter{parentequation}{0}
 \setcounter{float@type}{16}

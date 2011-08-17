@@ -1,0 +1,15 @@
+\chapter{Conclusions}
+\label{ch:conclusions}
+ 
+In chapter~\ref{ch:introduction} we motivated the need for metric learning in the general context of $k$NN, while section~\ref{sec:theoretical-background} advocated for metric learning using more exact mathematical arguments. We showed the equivalence between Mahalanobis metrics and linear transformation which we used for the rest of the thesis. Section~\ref{sec:related-methods} presented some of the related work in Mahalanobis metric learning.
+
+The focus of this thesis is the NCA method. Chapter~\ref{ch:nca} explores NCA in detail and presents our experience with the method. The theoretical aspect is reviewed in section~\ref{sec:general-presentation} and we also discuss the complexity issues in more detail than they were previously treated. Our main contributions start from section~\ref{sec:cc-kde} which shows a novel interpretation of NCA\@. The class-conditional kernel density estimation, offers certain advantages (like the possibility of integrating class distribution into the model) and opens a new range of methods. In section~\ref{sec:practical-notes} we give practical advice on applying NCA.  Initializing the optimization process with a cheap linear transformation such as LDA or RCA usually results in good final solutions. For the optimization technique there does not seem to be a generally valid answer. Using either regularization or early stopping in conjunction with a NCA-based classification function can boost further the performance. Dimensionality annealing has the premises of an interesting idea, yet we need to further experiment.
+
+Chapter~\ref{ch:reducing} investigates methods for reducing the computational cost. The classical mini-batches method is modified to work better in a low-rank metric scenario. To do this we used cheap ways of clustering the points in low dimensions and then applied NCA on successive clusters (section~\ref{sec:mini-batches}). We evaluated these methods in an empirical setting (chapter~\ref{ch:evaluation}) and 
+
+\section{Further directions}
+\label{sec:further-directions}
+
+This projected involved many possible directions. Unfortunately, in the short time allocated we could only look at a part of the whole picture and we left some open paths. We aim to further some of the work in the near future. We plan to further investigate the automatic differentiation procedure and see whether will imply a memory blow-up or it prove to be a better idea than symbolic differentiation. Also we aim to implement a robust and efficient NCA $k$-d tree code. Further experimentation can be done in the dimensionality annealing idea since it seems a promising technique and we could not allocate more to it because it was not the main aim of the project. 
+
+Further refinements of our work are still possible. It would be interested to try a dual tree \citep{gray2003} inspired algorithm in the mini batch context. Also we could try this approach on other distance metric learning methods, with different objective functions (e.g., \citealp{xing2003}). Although this implies losing the convexity. Who is afraid of non-convexity anyway?

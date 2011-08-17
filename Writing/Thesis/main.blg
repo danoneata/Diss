@@ -5,6 +5,7 @@ A level-1 auxiliary file: chapters/chap2.aux
 A level-1 auxiliary file: chapters/chap3.aux
 A level-1 auxiliary file: chapters/chap4.aux
 A level-1 auxiliary file: chapters/chap5.aux
+A level-1 auxiliary file: chapters/chap6.aux
 A level-1 auxiliary file: appendix/code.aux
 A level-1 auxiliary file: appendix/results.aux
 The style file: apalike.bst
@@ -13,51 +14,50 @@ Warning--entry type for "chalupka2011" isn't style-file defined
 --line 115 of file bibliography/thesis.bib
 Warning--I'm ignoring fisher1936's extra "pages" field
 --line 357 of file bibliography/thesis.bib
-Warning--I didn't find a database entry for "fix1951"
 Warning--empty journal in cover1967
 Warning--empty journal in hinneburg2000
 Warning--empty publisher in omohundro1989
 Warning--empty journal in rall1981
 Warning--empty journal in shewchuk1994
-You've used 41 entries,
+You've used 42 entries,
             1935 wiz_defined-function locations,
-            709 strings with 9742 characters,
-and the built_in function-call counts, 16130 in all, are:
-= -- 1618
-> -- 548
-< -- 44
-+ -- 184
-- -- 176
-* -- 1205
-:= -- 2717
-add.period$ -- 128
-call.type$ -- 41
-change.case$ -- 283
-chr.to.int$ -- 41
-cite$ -- 46
-duplicate$ -- 721
-empty$ -- 1192
-format.name$ -- 239
-if$ -- 3283
+            718 strings with 10067 characters,
+and the built_in function-call counts, 16816 in all, are:
+= -- 1695
+> -- 572
+< -- 45
++ -- 192
+- -- 184
+* -- 1265
+:= -- 2817
+add.period$ -- 132
+call.type$ -- 42
+change.case$ -- 293
+chr.to.int$ -- 42
+cite$ -- 47
+duplicate$ -- 748
+empty$ -- 1241
+format.name$ -- 250
+if$ -- 3431
 int.to.chr$ -- 1
 int.to.str$ -- 0
 missing$ -- 44
-newline$ -- 205
-num.names$ -- 125
-pop$ -- 311
+newline$ -- 210
+num.names$ -- 128
+pop$ -- 318
 preamble$ -- 1
-purify$ -- 292
+purify$ -- 301
 quote$ -- 0
-skip$ -- 553
+skip$ -- 575
 stack$ -- 0
-substring$ -- 1075
-swap$ -- 144
-text.length$ -- 15
+substring$ -- 1144
+swap$ -- 154
+text.length$ -- 16
 text.prefix$ -- 0
 top$ -- 0
-type$ -- 232
+type$ -- 240
 warning$ -- 5
-while$ -- 134
+while$ -- 141
 width$ -- 0
-write$ -- 527
-(There were 8 warnings)
+write$ -- 542
+(There were 7 warnings)

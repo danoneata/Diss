@@ -64,6 +64,13 @@ Fisher, R. (1936).
 \newblock {The use of multiple measurements in taxonomic problems.}
 \newblock In {\em Annals of Eugenics}, volume~7, pages 179--188.
 
+\bibitem[Fix and Hodges, 1989]{fix1951}
+Fix, E. and Hodges, J. (1989).
+\newblock {Discriminatory analysis. Nonparametric discrimination: Consistency
+  properties}.
+\newblock {\em International Statistical Review/Revue Internationale de
+  Statistique}, 57(3):238--247.
+
 \bibitem[Friedman et~al., 1977]{friedman1977}
 Friedman, J.~H., Bentley, J.~L., and Finkel, R.~A. (1977).
 \newblock An algorithm for finding best matches in logarithmic expected time.
@@ -108,6 +115,13 @@ Holte, R. (1993).
   datasets}.
 \newblock {\em Machine learning}, 11(1):63--90.
 
+\bibitem[Keller et~al., 2006]{keller2006}
+Keller, P., Mannor, S., and Precup, D. (2006).
+\newblock Automatic basis function construction for approximate dynamic
+  programming and reinforcement learning.
+\newblock In {\em Proceedings of the 23rd international conference on Machine
+  learning}, pages 449--456. ACM.
+
 \bibitem[Lang, 2009]{lang2009}
 Lang, D. (2009).
 \newblock {\em Astrometry.net: {A}utomatic recognition and calibration of
@@ -130,12 +144,6 @@ Moore, A. (1991).
 \newblock A tutorial on kd-trees.
 \newblock Extract from PhD Thesis.
 \newblock Available from \url{http://www.cs.cmu.edu/~awm/papers.html}.
-
-\bibitem[Moore, 2000]{moore2000}
-Moore, A. (2000).
-\newblock {\em {The anchors hierarchy: Using the triangle inequality to survive
-  high dimensional data}}.
-\newblock Citeseer.
 
 \bibitem[Moore and Lee, 1994]{moore1994}
 Moore, A. and Lee, M. (1994).

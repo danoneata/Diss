@@ -1,14 +1,14 @@
 \chapter{Further results}
 \label{app:results}
 
-\section{Initialization}
-\label{app:sec:initialization}
-
-This section provides examples of NCA projections on various data sets using different initializations. This is particularly useful to contrast the importance of initializations. Also it shows how NCA typically performs on small sized data sets. 
+% \section{Initialization}
+% \label{app:sec:initialization}
+% 
+% This section provides examples of NCA projections on various data sets using different initializations. This is particularly useful to contrast the importance of initializations. Also it shows how NCA typically performs on small sized data sets. 
 
 % The objective function is maximized using conjugate gradients and the entire data sets are used for training. Data sets used are: \texttt{iris}, \texttt{balance} and \texttt{ecoli}. Data set characteristics were presented before in Table, Chapter \ref{ch:evaluation}. 
 
-\begin{figure}
+\begin{figure}[h]
 	  \centering
 	  \subfigure[NCA projection after random initialization]{\label{fig:iris-init-2}\includegraphics[width=0.47\textwidth]{images/iris-init-2}}
 	  \subfigure[NCA projection after PCA initialization]{\label{fig:iris-init-4}\includegraphics[width=0.47\textwidth]{images/iris-init-4}}
@@ -41,8 +41,8 @@ This section provides examples of NCA projections on various data sets using dif
 \begin{table}
   \centering\begin{tabular}{lrccc}
 	    \toprule
-            	Data set & $d$ & Train & $1$NN & NCA \\
-            \cmidrule(r){3-3}\cmidrule(r){4-4} \cmidrule(r){5-5}
+            	Data set & $d$ & Train & $1$-NN & NCA \\
+            \cmidrule(r){3-3}\cmidrule(r){4-5}
              \texttt{balance}&$2$&$88.35 \pm 0.83$&$87.37 \pm 0.49$&$90.45 \pm 0.38$\\ 
 &$3$&$94.0 \pm 1.0$&$94.44 \pm 0.80$&$95.11 \pm 0.56$\\ 
 &$D=4$&$94.70 \pm 0.87$&$95.32 \pm 0.34$&$96.14 \pm 0.29$\\ 
@@ -70,13 +70,15 @@ This section provides examples of NCA projections on various data sets using dif
 &$D=13$&$99.25 \pm 0.62$&$96.85 \pm 0.41$&$96.85 \pm 0.41$\\ 
 \bottomrule
      \end{tabular}
+     \caption{Accuracy scores of NCA trained using stochastic learning on small and medium sized data sets. The scores are averaged over 20 repeats. RCA was used for initialization.}
+     \label{app:table:nca-sl-small-1}
 \end{table}
 
 \begin{table}
   \centering\begin{tabular}{lrccc}
   \toprule
-   Data set & $d$ & Train & $1$NN & NCA \\
-    \cmidrule(r){3-3}\cmidrule(r){4-4} \cmidrule(r){5-5}
+   Data set & $d$ & Train & $1$-NN & NCA \\
+    \cmidrule(r){3-3}\cmidrule(r){4-5}
     \texttt{yeast}&$2$&$42.83 \pm 0.93$&$45.85 \pm 0.41$&$53.90 \pm 0.47$\\ 
     &$3$&$47.30 \pm 0.85$&$46.49 \pm 0.48$&$54.37 \pm 0.40$\\ 
     &$4$&$50.1 \pm 1.2$&$48.69 \pm 0.68$&$54.50 \pm 0.63$\\ 
@@ -106,11 +108,13 @@ This section provides examples of NCA projections on various data sets using dif
     &$D=4$&$66.0 \pm 3.1$&$71.44 \pm 0.56$&$75.4 \pm 2.9$\\ 
     \bottomrule
    \end{tabular}
+        \caption{Accuracy scores of NCA trained using stochastic learning on small and medium sized data sets. The scores are averaged over 20 repeats. RCA was used for initialization.}
+        \label{app:table:nca-sl-small-2}
 \end{table}
 
 
-\section{NCA with compact support kernels}
-\label{app:sec:nca-cs}
+% \section{NCA with compact support kernels}
+% \label{app:sec:nca-cs}
 
 \begin{landscape}
 
@@ -195,7 +199,8 @@ This section provides examples of NCA projections on various data sets using dif
       &$33$&$87.97 \pm 0.68$&$87.97 \pm 0.68$&$86.56 \pm 0.92$&$66.09 \pm 0.95$&$87.26 \pm 0.45$&$84.76 \pm 0.83$\\ 
       \bottomrule
     \end{tabular}
-  \caption{luil}
+  \caption{Accuracy scores for the compact support versions of NCA.}
+  \label{app:tab:nca-cs-scores-1}
   \end{table}
 
   \begin{table}
@@ -223,7 +228,8 @@ This section provides examples of NCA projections on various data sets using dif
     &$8$&$50.66 \pm 0.52$&$50.70 \pm 0.52$&$50.93 \pm 0.44$&$54.89 \pm 0.43$&$48.73 \pm 0.65$&$56.93 \pm 0.62$\\ 
     \bottomrule
     \end{tabular}
-  \caption{lals}
+  \caption{Accuracy scores for the compact support versions of NCA.}
+  \label{app:tab:nca-cs-scores-2}
   \end{table}
 \end{landscape}
 

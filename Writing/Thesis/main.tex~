@@ -70,7 +70,7 @@
 \usepackage{lscape}
 \usepackage{listings}
 \usepackage{color}
-% \usepackage{hyperref}
+%\usepackage{hyperref}
 
 \newcommand{\tr}{^\textrm{T}}
 \newcommand{\ie}{\textit{i.e.}}
@@ -133,8 +133,9 @@
 \include{chapters/chap3}
 \include{chapters/chap4}
 \include{chapters/chap5}
+\include{chapters/chap6}
 \appendix
-%\include{appendix/code}
+\include{appendix/code}
 \include{appendix/results}
 % \include{appendix/derivations}
 %% ... etc ...

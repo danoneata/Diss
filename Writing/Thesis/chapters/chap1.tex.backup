@@ -32,6 +32,6 @@ These methods can achieve further speedings if we use approximations of the obje
 
 An alternative for the approximation method is to change the model such that it allows exact and efficient computations. In the kernel density estimation model, we can use compact support kernels instead of the standard Gaussian functions. The expense is reduced because only the points that lie in the compact support are used for estimating the density (section \ref{sec:exact-computations}).
 
-We evaluate the proposed techniques in terms of accuracy and speed  (chapter \ref{ch:evaluation}). Also we provide low dimensional representations of the projected data. The results are promising showing that we can obtain considerable speed-ups for large data sets while retaining almost the same accuracy as in the classic case. For small and medium sized data sets the accuracy and the time spent are similar to the standard NCA.
+
 
 %, we could interpret NCA as a class-conditional kernel-density estimate and then use different types of kernels instead of the Gaussian ones; we will focus especially on kernels with compact support, because they do not introduce approximation errors and computations can be done more efficiently than in the previous case. 
