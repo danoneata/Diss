@@ -1,4 +1,4 @@
-This is pdfTeXk, Version 3.141592-1.40.3 (Web2C 7.5.6) (format=pdflatex 2010.9.2)  17 AUG 2011 02:21
+This is pdfTeXk, Version 3.141592-1.40.3 (Web2C 7.5.6) (format=pdflatex 2011.7.19)  18 AUG 2011 22:07
 entering extended mode
  %&-line parsing enabled.
 **main.tex
@@ -447,26 +447,26 @@ File: images/thesis-shield.pdf Graphic file (type pdf)
 
 <use images/thesis-shield.pdf> [1
 
-{/usr/share/texmf/fonts/map/pdftex/updmap/pdftex.map} <./images/thesis-shield.p
-df>] [1
+{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map} <./images/thesis-shield.pdf
+>] [1
 
-] (./main.toc
-LaTeX Font Info:    Try loading font information for U+msa on input line 3.
+] [2] [3] (./main.toc
+LaTeX Font Info:    Try loading font information for U+msa on input line 2.
 
 (/usr/share/texmf/tex/latex/amsfonts/umsa.fd
 File: umsa.fd 2002/01/19 v2.2g AMS font definitions
 )
-LaTeX Font Info:    Try loading font information for U+msb on input line 3.
+LaTeX Font Info:    Try loading font information for U+msb on input line 2.
 
 (/usr/share/texmf/tex/latex/amsfonts/umsb.fd
 File: umsb.fd 2002/01/19 v2.2g AMS font definitions
-) [2
+) [4
 
 ])
 \tf@toc=\write3
 \openout3 = `main.toc'.
 
- [3]
+ [5]
 \openout2 = `chapters/chap1.aux'.
 
  (./chapters/chap1.tex
@@ -478,9 +478,9 @@ Chapter 1.
 ]
 
 LaTeX Font Warning: Font shape `OT1/cmss/m/it' in size <12> not available
-(Font)              Font shape `OT1/cmss/m/sl' tried instead on input line 27.
+(Font)              Font shape `OT1/cmss/m/sl' tried instead on input line 32.
 
-[2]) [3]
+[2] [3]) [4]
 \openout2 = `chapters/chap2.aux'.
 
  (./chapters/chap2.tex
@@ -501,19 +501,19 @@ Underfull \hbox (badness 10000) in paragraph at lines 20--20
 
  []
 
-[4
+[5
 
 
 
-] <images/face-recog.pdf, id=43, 496.59428pt x 541.76303pt>
+] <images/face-recog.pdf, id=52, 496.59428pt x 541.76303pt>
 File: images/face-recog.pdf Graphic file (type pdf)
 
 <use images/face-recog.pdf>
-<images/expression-recog.pdf, id=44, 496.59428pt x 541.76303pt>
+<images/expression-recog.pdf, id=53, 496.59428pt x 541.76303pt>
 File: images/expression-recog.pdf Graphic file (type pdf)
 
-<use images/expression-recog.pdf> [5]
-<images/mahalanobis.pdf, id=51, 334.24875pt x 268.00125pt>
+<use images/expression-recog.pdf> [6]
+<images/mahalanobis.pdf, id=60, 334.24875pt x 268.00125pt>
 File: images/mahalanobis.pdf Graphic file (type pdf)
 
 <use images/mahalanobis.pdf>
@@ -521,199 +521,199 @@ Underfull \hbox (badness 1270) in paragraph at lines 95--95
 []\OT1/cmr/m/n/10 (a) Ma-ha-lanobis met-ric in the orig-i-nal
  []
 
-<images/euclidean.pdf, id=52, 340.27126pt x 261.97874pt>
+<images/euclidean.pdf, id=61, 340.27126pt x 261.97874pt>
 File: images/euclidean.pdf Graphic file (type pdf)
 
-<use images/euclidean.pdf> [6 <./images/face-recog.pdf> <./images/expression-re
-cog.pdf>] [7 <./images/mahalanobis.pdf> <./images/euclidean.pdf>]) [8]
+<use images/euclidean.pdf> [7 <./images/face-recog.pdf> <./images/expression-re
+cog.pdf>] [8 <./images/mahalanobis.pdf> <./images/euclidean.pdf>]) [9]
 \openout2 = `chapters/chap3.aux'.
 
 
 (./chapters/chap3.tex
 Chapter 3.
-[9
+[10
 
 
 
-] [10] [11] <images/mog.pdf, id=90, 170.6375pt x 175.65625pt>
+] [11] [12] <images/mog.pdf, id=99, 170.6375pt x 175.65625pt>
 File: images/mog.pdf Graphic file (type pdf)
 
-<use images/mog.pdf> [12] [13 <./images/mog.pdf>] [14] [15] [16]
-<images/early-stopping.pdf, id=121, 280.04625pt x 211.79124pt>
+<use images/mog.pdf> [13] [14 <./images/mog.pdf>] [15] [16] [17]
+<images/early-stopping.pdf, id=130, 280.04625pt x 211.79124pt>
 File: images/early-stopping.pdf Graphic file (type pdf)
 
-<use images/early-stopping.pdf> [17]
-<images/wine-init-1.pdf, id=125, 355.3275pt x 301.125pt>
+<use images/early-stopping.pdf> [18] [19 <./images/early-stopping.pdf>]
+<images/wine-init-1.pdf, id=147, 355.3275pt x 301.125pt>
 File: images/wine-init-1.pdf Graphic file (type pdf)
 
 <use images/wine-init-1.pdf>
-<images/wine-init-2.pdf, id=126, 355.3275pt x 301.125pt>
+<images/wine-init-2.pdf, id=148, 355.3275pt x 301.125pt>
 File: images/wine-init-2.pdf Graphic file (type pdf)
 
 <use images/wine-init-2.pdf>
-<images/wine-init-3.pdf, id=127, 355.3275pt x 301.125pt>
+<images/wine-init-3.pdf, id=149, 355.3275pt x 301.125pt>
 File: images/wine-init-3.pdf Graphic file (type pdf)
 
 <use images/wine-init-3.pdf>
-<images/wine-init-4.pdf, id=128, 355.3275pt x 301.125pt>
+<images/wine-init-4.pdf, id=150, 355.3275pt x 301.125pt>
 File: images/wine-init-4.pdf Graphic file (type pdf)
 
 <use images/wine-init-4.pdf>
-<images/wine-init-5.pdf, id=129, 355.3275pt x 301.125pt>
+<images/wine-init-5.pdf, id=151, 355.3275pt x 301.125pt>
 File: images/wine-init-5.pdf Graphic file (type pdf)
 
 <use images/wine-init-5.pdf>
-<images/wine-init-6.pdf, id=130, 355.3275pt x 301.125pt>
+<images/wine-init-6.pdf, id=152, 355.3275pt x 301.125pt>
 File: images/wine-init-6.pdf Graphic file (type pdf)
 
 <use images/wine-init-6.pdf>
 
-LaTeX Warning: Float too large for page by 16.19264pt on input line 337.
+LaTeX Warning: Float too large for page by 16.19264pt on input line 336.
 
-[18 <./images/early-stopping.pdf>] [19] [20 <./images/wine-init-1.pdf> <./image
-s/wine-init-2.pdf> <./images/wine-init-3.pdf> <./images/wine-init-4.pdf> <./ima
-ges/wine-init-5.pdf> <./images/wine-init-6.pdf>]
-
-LaTeX Warning: Reference `app:sec:initialization' on page 21 undefined on input
- line 386.
-
-[21] [22] [23] [24] <images/sa-1.pdf, id=198, 454.69875pt x 375.4025pt>
+[20] [21 <./images/wine-init-1.pdf> <./images/wine-init-2.pdf> <./images/wine-i
+nit-3.pdf> <./images/wine-init-4.pdf> <./images/wine-init-5.pdf> <./images/wine
+-init-6.pdf>] [22] [23] [24] [25]
+<images/sa-1.pdf, id=208, 454.69875pt x 375.4025pt>
 File: images/sa-1.pdf Graphic file (type pdf)
-
-<use images/sa-1.pdf> <images/sa-2.pdf, id=199, 454.69875pt x 377.41pt>
+ <use images/sa-1.pdf>
+<images/sa-2.pdf, id=209, 454.69875pt x 377.41pt>
 File: images/sa-2.pdf Graphic file (type pdf)
-
-<use images/sa-2.pdf>
-Underfull \hbox (badness 1448) in paragraph at lines 523--523
+ <use images/sa-2.pdf>
+Underfull \hbox (badness 1448) in paragraph at lines 517--517
 [] \OT1/cmss/m/n/12 Fig-ure 3.4: |Ex-am-ple of ap-ply-ing the di-men-sion-al-it
 y an-neal-ing pro-ce-dure to
  []
 
-) [25 <./images/sa-1.pdf> <./images/sa-2.pdf>]
+) [26 <./images/sa-1.pdf> <./images/sa-2.pdf>] [27]
 \openout2 = `chapters/chap4.aux'.
 
  (./chapters/chap4.tex
 Chapter 4.
-[26
+[28
 
 
 
-] <images/sub-sample-1.pdf, id=216, 334.24875pt x 268.00125pt>
+] <images/sub-sample-1.pdf, id=229, 334.24875pt x 268.00125pt>
 File: images/sub-sample-1.pdf Graphic file (type pdf)
 
 <use images/sub-sample-1.pdf>
-<images/sub-sample-2.pdf, id=217, 334.24875pt x 268.00125pt>
+<images/sub-sample-2.pdf, id=230, 334.24875pt x 268.00125pt>
 File: images/sub-sample-2.pdf Graphic file (type pdf)
 
-<use images/sub-sample-2.pdf> [27 <./images/sub-sample-1.pdf> <./images/sub-sam
-ple-2.pdf>] [28] [29] [30]
-<images/contributions.pdf, id=238, 407.5225pt x 300.12125pt>
+<use images/sub-sample-2.pdf> [29 <./images/sub-sample-1.pdf> <./images/sub-sam
+ple-2.pdf>] [30] [31] [32] [33]
+<images/contributions.pdf, id=254, 407.5225pt x 300.12125pt>
 File: images/contributions.pdf Graphic file (type pdf)
 
-<use images/contributions.pdf> [31 <./images/contributions.pdf>]
-<images/kdtree-1.pdf, id=265, 296.10625pt x 252.945pt>
+<use images/contributions.pdf> [34 <./images/contributions.pdf>]
+<images/kdtree-1.pdf, id=281, 296.10625pt x 252.945pt>
 File: images/kdtree-1.pdf Graphic file (type pdf)
 
 <use images/kdtree-1.pdf>
-<images/kdtree-2.pdf, id=266, 296.10625pt x 252.945pt>
+<images/kdtree-2.pdf, id=282, 296.10625pt x 252.945pt>
 File: images/kdtree-2.pdf Graphic file (type pdf)
 
 <use images/kdtree-2.pdf>
-<images/kdtree-3.pdf, id=267, 296.10625pt x 252.945pt>
+<images/kdtree-3.pdf, id=283, 296.10625pt x 252.945pt>
 File: images/kdtree-3.pdf Graphic file (type pdf)
 
 <use images/kdtree-3.pdf>
-<images/kdtree-4.pdf, id=268, 296.10625pt x 252.945pt>
+<images/kdtree-4.pdf, id=284, 296.10625pt x 252.945pt>
 File: images/kdtree-4.pdf Graphic file (type pdf)
 
-<use images/kdtree-4.pdf> [32] [33 <./images/kdtree-1.pdf> <./images/kdtree-2.p
-df> <./images/kdtree-3.pdf> <./images/kdtree-4.pdf>] [34] [35] [36] [37]
-[38] <images/nca-cs-back.pdf, id=304, 168.63pt x 186.6975pt>
+<use images/kdtree-4.pdf> [35] [36 <./images/kdtree-1.pdf> <./images/kdtree-2.p
+df> <./images/kdtree-3.pdf> <./images/kdtree-4.pdf>] [37] [38] [39]
+Overfull \hbox (5.01263pt too wide) in paragraph at lines 460--461
+[]\OT1/cmr/m/n/12 To ob-tain the gra-di-ent of this new ob-jec-tive func-tion w
+e can use equa-tion [].
+ []
+
+[40] [41] [42] <images/nca-cs-back.pdf, id=323, 168.63pt x 186.6975pt>
 File: images/nca-cs-back.pdf Graphic file (type pdf)
 
-<use images/nca-cs-back.pdf> [39] [40 <./images/nca-cs-back.pdf>]) [41]
+<use images/nca-cs-back.pdf> [43] [44 <./images/nca-cs-back.pdf>]) [45]
 \openout2 = `chapters/chap5.aux'.
 
 
 (./chapters/chap5.tex
 Chapter 5.
-[42
+[46
 
 
 
-] [43]
+] [47]
 Underfull \hbox (badness 10000) in paragraph at lines 49--49
 [][]\OT1/cmr/m/n/10 Iain Mur-ray's tool-box is avail-able at $\OML/cmm/m/it/10 
 <$$\OT1/pcr/m/n/10 http : / / homepages . inf . ed . ac . uk /
  []
 
-[44] [45] <images/landsat-evolution.pdf, id=346, 282.05376pt x 217.81375pt>
+[48] [49] <images/landsat-evolution.pdf, id=365, 282.05376pt x 217.81375pt>
 File: images/landsat-evolution.pdf Graphic file (type pdf)
 
-<use images/landsat-evolution.pdf> [46] [47 <./images/landsat-evolution.pdf>]
-[48] [49] <images/usps-acc-time.pdf, id=367, 331.2375pt x 268.00125pt>
+<use images/landsat-evolution.pdf> [50] [51 <./images/landsat-evolution.pdf>]
+[52] [53] <images/usps-acc-time.pdf, id=386, 331.2375pt x 268.00125pt>
 File: images/usps-acc-time.pdf Graphic file (type pdf)
 
 <use images/usps-acc-time.pdf>
-<images/magic-acc-time.pdf, id=368, 331.2375pt x 268.00125pt>
+<images/magic-acc-time.pdf, id=387, 331.2375pt x 268.00125pt>
 File: images/magic-acc-time.pdf Graphic file (type pdf)
 
 <use images/magic-acc-time.pdf>
-<images/mnist-acc-time.pdf, id=369, 331.2375pt x 268.00125pt>
+<images/mnist-acc-time.pdf, id=388, 331.2375pt x 268.00125pt>
 File: images/mnist-acc-time.pdf Graphic file (type pdf)
 
 <use images/mnist-acc-time.pdf>
 
 LaTeX Warning: Float too large for page by 84.97954pt on input line 229.
 
-<images/usps-test-mb.pdf, id=370, 334.24875pt x 268.00125pt>
+<images/usps-test-mb.pdf, id=389, 334.24875pt x 268.00125pt>
 File: images/usps-test-mb.pdf Graphic file (type pdf)
 
 <use images/usps-test-mb.pdf>
-<images/usps-test-snca.pdf, id=371, 334.24875pt x 268.00125pt>
+<images/usps-test-snca.pdf, id=390, 334.24875pt x 268.00125pt>
 File: images/usps-test-snca.pdf Graphic file (type pdf)
 
 <use images/usps-test-snca.pdf>
-<images/magic-test-mb.pdf, id=372, 334.24875pt x 268.00125pt>
+<images/magic-test-mb.pdf, id=391, 334.24875pt x 268.00125pt>
 File: images/magic-test-mb.pdf Graphic file (type pdf)
 
 <use images/magic-test-mb.pdf>
-<images/magic-test-snca-cs.pdf, id=373, 340.27126pt x 261.97874pt>
+<images/magic-test-snca-cs.pdf, id=392, 340.27126pt x 261.97874pt>
 File: images/magic-test-snca-cs.pdf Graphic file (type pdf)
 
-<use images/magic-test-snca-cs.pdf> [50] [51 <./images/usps-acc-time.pdf> <./im
-ages/magic-acc-time.pdf> <./images/mnist-acc-time.pdf>] [52 <./images/usps-test
+<use images/magic-test-snca-cs.pdf> [54] [55 <./images/usps-acc-time.pdf> <./im
+ages/magic-acc-time.pdf> <./images/mnist-acc-time.pdf>] [56 <./images/usps-test
 -mb.pdf> <./images/usps-test-snca.pdf> <./images/magic-test-mb.pdf> <./images/m
-agic-test-snca-cs.pdf>] <images/nca-cs-nnzs.pdf, id=424, 337.26pt x 264.99pt>
+agic-test-snca-cs.pdf>] <images/nca-cs-nnzs.pdf, id=442, 337.26pt x 264.99pt>
 File: images/nca-cs-nnzs.pdf Graphic file (type pdf)
 
 <use images/nca-cs-nnzs.pdf>
-<images/nca-cs-nnzs-rand.pdf, id=425, 334.24875pt x 283.0575pt>
+<images/nca-cs-nnzs-rand.pdf, id=443, 334.24875pt x 283.0575pt>
 File: images/nca-cs-nnzs-rand.pdf Graphic file (type pdf)
 
 <use images/nca-cs-nnzs-rand.pdf>
-<images/nca-cs-nnzs-rca.pdf, id=426, 339.2675pt x 283.0575pt>
+<images/nca-cs-nnzs-rca.pdf, id=444, 339.2675pt x 283.0575pt>
 File: images/nca-cs-nnzs-rca.pdf Graphic file (type pdf)
 
-<use images/nca-cs-nnzs-rca.pdf> [53] [54 <./images/nca-cs-nnzs.pdf> <./images/
-nca-cs-nnzs-rand.pdf> <./images/nca-cs-nnzs-rca.pdf>]) [55]
+<use images/nca-cs-nnzs-rca.pdf> [57] [58 <./images/nca-cs-nnzs.pdf> <./images/
+nca-cs-nnzs-rand.pdf> <./images/nca-cs-nnzs-rca.pdf>]) [59]
 \openout2 = `chapters/chap6.aux'.
 
 
 (./chapters/chap6.tex
 Chapter 6.
-[56
+[60
 
 
 
-]) [57]
+] [61]) [62]
 \openout2 = `appendix/code.aux'.
 
  (./appendix/code.tex
 Appendix A.
 (/usr/share/texmf/tex/latex/listings/lstlang1.sty
 File: lstlang1.sty 2004/09/05 1.3 listings language file
-) (./src/nca-obj.m [58
+) (./src/nca-obj.m [63
 
 
 
@@ -728,98 +728,104 @@ Overfull \hbox (42.10954pt too wide) in paragraph at lines 22--23
 tlab / square _
  []
 
-) [59]
+) [64]
 \openout2 = `appendix/results.aux'.
 
  (./appendix/results.tex
 Appendix B.
-<images/iris-init-2.pdf, id=466, 355.3275pt x 301.125pt>
+<images/iris-init-2.pdf, id=487, 355.3275pt x 301.125pt>
 File: images/iris-init-2.pdf Graphic file (type pdf)
 
 <use images/iris-init-2.pdf>
-<images/iris-init-4.pdf, id=467, 361.35pt x 298.11375pt>
+<images/iris-init-4.pdf, id=488, 361.35pt x 298.11375pt>
 File: images/iris-init-4.pdf Graphic file (type pdf)
 
 <use images/iris-init-4.pdf>
-<images/iris-init-6.pdf, id=468, 361.35pt x 298.11375pt>
+<images/iris-init-6.pdf, id=489, 361.35pt x 298.11375pt>
 File: images/iris-init-6.pdf Graphic file (type pdf)
 
 <use images/iris-init-6.pdf>
-<images/iris-init-8.pdf, id=469, 361.35pt x 298.11375pt>
+<images/iris-init-8.pdf, id=490, 361.35pt x 298.11375pt>
 File: images/iris-init-8.pdf Graphic file (type pdf)
 
 <use images/iris-init-8.pdf>
-<images/balance-init-2.pdf, id=470, 355.3275pt x 301.125pt>
+<images/balance-init-2.pdf, id=491, 355.3275pt x 301.125pt>
 File: images/balance-init-2.pdf Graphic file (type pdf)
 
 <use images/balance-init-2.pdf>
-<images/balance-init-4.pdf, id=471, 355.3275pt x 301.125pt>
+<images/balance-init-4.pdf, id=492, 355.3275pt x 301.125pt>
 File: images/balance-init-4.pdf Graphic file (type pdf)
 
 <use images/balance-init-4.pdf>
-<images/balance-init-6.pdf, id=472, 361.35pt x 298.11375pt>
+<images/balance-init-6.pdf, id=493, 361.35pt x 298.11375pt>
 File: images/balance-init-6.pdf Graphic file (type pdf)
 
 <use images/balance-init-6.pdf>
-<images/balance-init-8.pdf, id=473, 361.35pt x 298.11375pt>
+<images/balance-init-8.pdf, id=494, 361.35pt x 298.11375pt>
 File: images/balance-init-8.pdf Graphic file (type pdf)
 
 <use images/balance-init-8.pdf>
-<images/ecoli-init-2.pdf, id=474, 355.3275pt x 301.125pt>
+<images/ecoli-init-2.pdf, id=495, 355.3275pt x 301.125pt>
 File: images/ecoli-init-2.pdf Graphic file (type pdf)
 
 <use images/ecoli-init-2.pdf>
-<images/ecoli-init-4.pdf, id=475, 355.3275pt x 301.125pt>
+<images/ecoli-init-4.pdf, id=496, 355.3275pt x 301.125pt>
 File: images/ecoli-init-4.pdf Graphic file (type pdf)
 
 <use images/ecoli-init-4.pdf>
-<images/ecoli-init-6.pdf, id=476, 355.3275pt x 301.125pt>
+<images/ecoli-init-6.pdf, id=497, 355.3275pt x 301.125pt>
 File: images/ecoli-init-6.pdf Graphic file (type pdf)
 
 <use images/ecoli-init-6.pdf>
-<images/ecoli-init-8.pdf, id=477, 355.3275pt x 301.125pt>
+<images/ecoli-init-8.pdf, id=498, 355.3275pt x 301.125pt>
 File: images/ecoli-init-8.pdf Graphic file (type pdf)
 
-<use images/ecoli-init-8.pdf> [60
+<use images/ecoli-init-8.pdf> [65
 
 
 
  <./images/iris-init-2.pdf> <./images/iris-init-4.pdf> <./images/iris-init-6.pd
-f> <./images/iris-init-8.pdf>] [61 <./images/balance-init-2.pdf> <./images/bala
+f> <./images/iris-init-8.pdf>] [66 <./images/balance-init-2.pdf> <./images/bala
 nce-init-4.pdf> <./images/balance-init-6.pdf> <./images/balance-init-8.pdf>] [6
-2 <./images/ecoli-init-2.pdf> <./images/ecoli-init-4.pdf> <./images/ecoli-init-
-6.pdf> <./images/ecoli-init-8.pdf>] [63]
-[64] [65] [66] [67] [68]) (./main.bbl
+7 <./images/ecoli-init-2.pdf> <./images/ecoli-init-4.pdf> <./images/ecoli-init-
+6.pdf> <./images/ecoli-init-8.pdf>] [68]
+[69] [70] [71] [72] [73]) (./main.bbl
 Missing character: There is no â in font cmti12!
 Missing character: There is no € in font cmti12!
 Missing character: There is no ” in font cmti12!
 Missing character: There is no â in font cmti12!
 Missing character: There is no € in font cmti12!
 Missing character: There is no ™ in font cmti12!
- [69
+ [74
 
 
 
 
-] [70]) [71] (./main.aux
-(./chapters/chap1.aux) (./chapters/chap2.aux) (./chapters/chap3.aux)
-(./chapters/chap4.aux) (./chapters/chap5.aux) (./chapters/chap6.aux)
-(./appendix/code.aux) (./appendix/results.aux)
+] [75]
+Underfull \hbox (badness 6078) in paragraph at lines 173--177
+[]\OT1/cmr/m/n/12 Rasmussen, C. E. (2010).  GPML Mat-lab code.  $\OT1/pcr/m/n/1
+2 http : / / www .
+ []
 
-Package natbib Warning: Citation(s) may have changed.
-(natbib)                Rerun to get citations correct.
 
-)
+Underfull \hbox (badness 4048) in paragraph at lines 207--213
+[]\OT1/cmr/m/n/12 van der Maaten, L. (2010).  Mat-lab tool-box for di-men-sion-
+al-ity re-
+ []
 
-LaTeX Warning: There were undefined references.
+[76]) [77] (./main.aux (./chapters/chap1.aux) (./chapters/chap2.aux)
+(./chapters/chap3.aux) (./chapters/chap4.aux) (./chapters/chap5.aux)
+(./chapters/chap6.aux) (./appendix/code.aux) (./appendix/results.aux))
+
+LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
 
  ) 
 Here is how much of TeX's memory you used:
- 6232 strings out of 256216
- 87777 string characters out of 1917073
- 186859 words of memory out of 1500000
- 9270 multiletter control sequences out of 10000+200000
- 24853 words of font info for 91 fonts, out of 1200000 for 2000
+ 6236 strings out of 256216
+ 87849 string characters out of 1917072
+ 186861 words of memory out of 1500000
+ 9275 multiletter control sequences out of 10000+200000
+ 24497 words of font info for 90 fonts, out of 1200000 for 2000
  645 hyphenation exceptions out of 8191
  42i,17n,42p,1454b,1526s stack positions out of 5000i,500n,6000p,200000b,15000s
 {/usr/share/texmf/fonts/enc/dvips/base/8r.enc}</usr/share/texmf/fonts/type1/b
@@ -835,15 +841,15 @@ mr12.pfb></usr/share/texmf/fonts/type1/bluesky/cm/cmr6.pfb></usr/share/texmf/fo
 nts/type1/bluesky/cm/cmr7.pfb></usr/share/texmf/fonts/type1/bluesky/cm/cmr8.pfb
 ></usr/share/texmf/fonts/type1/bluesky/cm/cmss10.pfb></usr/share/texmf/fonts/ty
 pe1/bluesky/cm/cmss12.pfb></usr/share/texmf/fonts/type1/bluesky/cm/cmssbx10.pfb
-></usr/share/texmf/fonts/type1/bluesky/cm/cmssi10.pfb></usr/share/texmf/fonts/t
-ype1/bluesky/cm/cmssi12.pfb></usr/share/texmf/fonts/type1/bluesky/cm/cmsy10.pfb
-></usr/share/texmf/fonts/type1/bluesky/cm/cmsy6.pfb></usr/share/texmf/fonts/typ
-e1/bluesky/cm/cmsy8.pfb></usr/share/texmf/fonts/type1/bluesky/cm/cmti12.pfb></u
-sr/share/texmf/fonts/type1/public/cmex/fmex8.pfb></usr/share/texmf/fonts/type1/
-bluesky/ams/msbm10.pfb></usr/share/texmf/fonts/type1/urw/courier/ucrr8a.pfb>
-Output written on main.pdf (75 pages, 1833807 bytes).
+></usr/share/texmf/fonts/type1/bluesky/cm/cmssi12.pfb></usr/share/texmf/fonts/t
+ype1/bluesky/cm/cmsy10.pfb></usr/share/texmf/fonts/type1/bluesky/cm/cmsy6.pfb><
+/usr/share/texmf/fonts/type1/bluesky/cm/cmsy8.pfb></usr/share/texmf/fonts/type1
+/bluesky/cm/cmti12.pfb></usr/share/texmf/fonts/type1/public/cmex/fmex8.pfb></us
+r/share/texmf/fonts/type1/bluesky/ams/msbm10.pfb></usr/share/texmf/fonts/type1/
+urw/courier/ucrr8a.pfb>
+Output written on main.pdf (83 pages, 1844099 bytes).
 PDF statistics:
- 656 PDF objects out of 1000 (max. 8388607)
+ 677 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 131072)
  231 words of extra memory for PDF output out of 10000 (max. 10000000)
 

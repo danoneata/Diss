@@ -1,9 +1,10 @@
 \chapter{Reducing the computational cost}
 \label{ch:reducing}
 
-As emphasized in Section \ref{sec:general-presentation}, Neighbourhood Component Analysis (NCA) is a computationaly expensive method. The evaluation of its objective function is quadratic in the size of the data set. Given that the optimization is done iteratively, NCA becomes prohibitively slow when applied on large data sets. There is only little previous work that uses NCA for large scaled applications. One example is \citet{singh2010}, who paralelizes the computations across multiple computers and adopts various heuristics to prune terms of the objective function and the gradient.
+As emphasized in Section \ref{sec:general-presentation}, neighbourhood component analysis (NCA) is a computationally expensive method. The evaluation of its objective function is quadratic in the size of the data set. Given that the optimization is done iteratively, NCA becomes prohibitively slow when applied on large data sets. There is only little previous work that uses NCA for large scaled applications. One example is \citet{singh2010}, who parallelizes the computations across multiple computers and adopts various heuristics to prune terms of the objective function and the gradient.
 
-This chapter aims to complete the existing work. We present a series of methods that can imporve NCA's speed. Most of these ideas are new in the context of NCA. They are also quite versatile. Each method proposes a new objective function and can be regarded as an indepenent model on its own.
+This chapter aims to continue the existing work and to present a series of methods that can improve NCA's speed. Most of these ideas are new in the context of NCA. We start with simple approaches like sub-sampling (section~\ref{sec:sub-sampling}) and mini-batch methods (sections~\ref{sec:mini-batches} and~\ref{sec:stochastic-learning}). For further speed-ups, we proceed with more sophisticated ideas (starting from section~\ref{sec:approximate}). 
+%They are also quite versatile. Each method proposes a new objective function and can be regarded as an independent model on its own.
 
 % \begin{itemize}
 % 	\item As mentioned in section , evaluating the objective function needs
@@ -26,13 +27,13 @@ the original data set $\mathcal{D}$:
  \[
  	\mathcal{D}_n = \{ \xB_{i_1},\cdots,\xB_{i_n} \} \subseteq \mathcal{D}.
  \]
- If $n$ is the size of the sub-set then the cost of the gradient is reduced to
+ If $n$ is the size of the sub-set then the cost of the gradient, equation~\eqref{eq:nca-grad-alt}, is reduced to
 $\mathcal{O}(dDn^2)$. After the projection matrix $\AB$ is learnt, we apply it to the whole data set $\{\xB_i\}_{i=1}^N$. Then all the new data points $\{\AB\xB_i\}_{i=1}^N$ are used for
-classification. The cost of the classification is $\mathcal{O}(dN)$; it is only linear in the total number of points $N$.
+classification. The cost of the classification is $\mathcal{O}(dN)$ which is linear in the total number of points $N$.
 
-While easy to implement, this method discards a lot of information available.
+While easy to implement, this method discards a lot of the information available.
 Also it is affected by the fact the sub-sampled data has a thinner density
-than the real data. The distances between the randomly selected points are larger than they are in the full data set. This causes the scale of the projection matrix $\AB$ not to be large enough, Figure \ref{fig:sub-sampling}. 
+than the real data. The distances between the randomly selected points are larger than they are in the full data set. This causes the scale of the projection matrix $\AB$ not to be large enough. In figure \ref{fig:sub-sampling} we illustrate that a seemingly perfect linear transformation of the sub-sampled data set does not correspond to a good transformation of the entire data set.
 
 \begin{figure}
   \centering
@@ -40,11 +41,10 @@ than the real data. The distances between the randomly selected points are large
 $\mathcal{D}_n$.]{\label{fig:sub-sampling-1}\includegraphics[width=0.48\textwidth]{images/sub-sample-1}}
 \subfigure[The projection $\AB$ applied to the whole data set
 $\mathcal{D}$.]{\label{fig:sub-sampling-2}\includegraphics[width=0.48\textwidth]{images/sub-sample-2}}
-  \caption{Result of sub-sampling method on \texttt{wine}. There were used one
-third of the original data set for training, \textit{i.e.}, $n = N/3$. We note
-that the points that belong to the sub-set $\mathcal{D}_n$ are perfectly
-separated. But after applying the metric to the whole data there appear
-different misclassifications. The effects are even more acute if we use smaller
+  \caption[Associated problems with sub-sampling method]{Result of sub-sampling method on \texttt{wine}. One
+third of the original data set were used for training, i.e., $n = N/3$. We note
+that the points that belong to the sub-set~$\mathcal{D}_n$ are perfectly
+separated. But after applying the metric to the whole data, misclassification errors appear. The effects are more acute if we use smaller
 sub-sets.}
   \label{fig:sub-sampling}
 \end{figure}
@@ -52,13 +52,15 @@ sub-sets.}
 \section{Mini-batches}
 \label{sec:mini-batches}
 
-The next obvious idea is to use sub-sets in an iterative manner, similarly to the
+The next obvious idea is to use sub-sets of data in an iterative manner, similarly to the
 stochastic gradient descent method: split the data into mini-batches and train
 on them successively. Again the cost for one evaluation of the gradient will be
-$\mathcal{O}(dDn^2)$ if the mini-batch consists of $n$ points.
+$\mathcal{O}(dDn^2)$ if the mini-batch consists of $n$ points. 
+
+A possible way of using mini-batches for NCA learning is summarized by algorithm \ref{alg:mini-batches}. We remind that important characteristics of the algorithm (such as convergence, the learning rate or initialization) were discussed in sections~\ref{subsec:optimization} and~\ref{subsec:initialization}.
 
 \begin{algorithm} 
-	\caption{Training algorithm using mini-batches formed by clustering} 
+	\caption{NCA learning algorithm using mini-batches (NCA MB)} 
 	\label{alg:mini-batches}  
 	\begin{algorithmic} [1]                 % enter the algorithmic environment
 		\REQUIRE Data set $\mathcal{D}=\{\xB_1,\cdots,\xB_N\}$ and initial linear
@@ -79,27 +81,27 @@ f(\AB,\mathcal{M}_i)}{\partial\AB}$.}
 \end{algorithm}
 
 There are different possibilities for splitting the data-set:
-\begin{enumerate}
-	\item Random selection. In this case the points are assigned randomly to each
-mini-batch and after one pass through the whole data set another random
-allocation is done. As in section \ref{sec:sub-sampling}, this suffers from the
-thin distribution problem. In order to alleviate this and achieve convergence,
-large-sized mini-batches should be used (similar to Laurens van der Maaten's
-implementation). The algorithm is similar to Algorithm \ref{alg:mini-batches},
+\begin{description}
+	\item[Random selection.] In this case the points are assigned randomly to each
+mini-batch. After one pass through the whole data set, we repeat the random
+allocation procedure. As in section \ref{sec:sub-sampling}, this suffers from the
+thin distribution problem. In order to alleviate this problem and achieve convergence,
+we should use large-sized mini-batches (as in the NCA
+implementation of \citealp{maaten-online}). The algorithm is similar to algorithm \ref{alg:mini-batches},
 but lines 2 and 3 will be replaced with a simple random selection.
 	
-	\item Clustering. Constructing mini-batches by clustering ensures that the
+	\item[Clustering.] Constructing mini-batches by clustering ensures that the
 point density in each mini-batch is conserved. In order to maintain a low
-computational cost, we consider cheap clustering methods, \textit{e.g.},
+computational cost, we consider cheap clustering methods, e.g.,
 farthest point clustering (FPC; \citealp{gonzalez1985}) and recursive projection
 clustering (RPC; \citealp{chalupka2011}).  
 	
 	FPC gradually selects cluster centres until it reaches the desired number of
 clusters $K$. The point which is the farthest away from all the current centres
-is selected as new centre. The precise algorithm is presented below.
+is selected as the new centre. The precise procedure is given by algorithm \ref{alg:fpc}.
 	
 	\begin{algorithm} 
-		\caption{Farthest point clustering} 
+		\caption{Farthest point clustering (FPC; \citealp{gonzalez1985})} 
 		\label{alg:fpc}  
 		\begin{algorithmic}[1]                    % enter the algorithmic environment
 			\REQUIRE Data set $\mathcal{D}=\{\xB_1,\cdots,\xB_N\}$ and $K$ number of
@@ -124,14 +126,13 @@ drawbacks: too large mini-batches will maintain high cost, while on too small
 clusters there is not too much to learn.
 	
 	An alternative is RPC which was especially designed to mitigate this problem.
-It constructs the clusters similarly to how the $k$-d trees are build, Subsection \ref{subsec:k-d-trees}. However instead of splitting the data set across axis aligned
-direction it chooses the splitting directions randomly, Algorithm
-\ref{alg:rpc}. So, because it uses the median value it will result in similar
+It constructs the clusters similarly to how the $k$-d trees are build, (subsection~\ref{subsec:k-d-trees}). But instead of splitting the data set across axis aligned
+directions it chooses the splitting directions randomly (algorithm~\ref{alg:rpc}). Because RPC uses the median value it will result in similar
 sized clusters and we can easily control the dimension of each cluster. 
 % The complexity of this algorithm is $\mathcal{O}()$.
 	
 	\begin{algorithm} 
-		\caption{Recursive projection clustering} 
+		\caption{Recursive projection clustering (RPC; \citealp{chalupka2011})} 
 		\label{alg:rpc}  
 		\begin{algorithmic}[1]                    % enter the algorithmic environment
 			\REQUIRE Data set $\mathcal{D}=\{\xB_1,\cdots,\xB_N\}$ and $n$ size of
@@ -142,24 +143,21 @@ clusters.
 			\ELSE
 				\STATE {Randomly select two points $\xB_j$ and $\xB_k$ from $\mathcal{D}$.}
 				\STATE {Project all data points onto the line defined by $\xB_j$ and
-$\xB_k$. (Give equation?)}
+$\xB_k$.}
 				\STATE {Select the median value $\tilde{\xB}$ from the projected points.}
-				\STATE {Recurse on the data points above and below $\tilde{\xB}$:
+				\STATE {Recurs on the data points above and below $\tilde{\xB}$:
 $\text{RPC}(\mathcal{D}_{>\tilde{\xB}})$ and
 $\text{RPC}(\mathcal{D}_{\le\tilde{\xB}})$.}
 %							$\mathcal{D}_{>\tilde{\xB}}=\{\xB\in\mathcal{D}|\xB>\tilde{\xB}\}$
 			\ENDIF
 		\end{algorithmic}
 	\end{algorithm}
-	
-	Note that we are re-clustering in the transformed space after one sweep through
-the whole data set. There are also other alternatives. For example, we could
-cluster in the original space. This can be done either only once or periodically. However the proposed variant has the advantage of a good
-behaviour for a low-rank projection matrix $\AB$. Not only that is cheaper, but
-the clusters resulted in low dimensions by using RPC are closer to the real
-clusters then applying the same method in a high dimensional space. 
-	
-\end{enumerate}
+\end{description}
+
+	In algorithm~\ref{alg:mini-batches}, we are re-clustering in the transformed space after one sweep through
+the whole data set. There are other alternatives. For example, we could
+cluster in the original space, either once or periodically. The proposed variant works well in the case of a low-rank projection matrix~$\AB$: we obtain better clusters using RPC on low dimensional data sets than on high dimensional data sets.
+%First it is cheaper, but the clusters resulted in low dimensions by using RPC are closer to the real clusters then applying the same method in a high dimensional space. 
 
 %\begin{center}
 %	\begin{table}
@@ -188,31 +186,37 @@ clusters then applying the same method in a high dimensional space.
 \section{Stochastic learning}
 \label{sec:stochastic-learning}
 
-The following technique is theoretically justified by stochastic approximation
-arguments. The main idea is to get an unbiased estimator of the gradient by
-looking only at a few points and how they relate to the entire data set.
+The following technique is theoretically justified by stochastic approximation arguments. The main idea is to get an unbiased estimator of the gradient by
+looking only at a few points and how they relate to the entire data set. More precisely, at each iteration we randomly select $n$ data points and find their stochastic nearest neighbours assignments using \textit{entire} data. We maximize the probability of these $n$ points of belonging to the true class:
+\begin{align}
+ 	f_\text{NCA-SL}(\AB) &= \sum_{l=1}^n p_{i_l},
+\end{align}
+where $i_1,\cdots,i_n$ denote the indices of the randomly selected points and $p_i$ is the average probability of the point $i$ of getting correctly classified:
+\begin{align}
+ p_i &= \sum_{\substack{j=1\\j\in c_i}}^Np_{ij}.
+\end{align}
 
-More precisely, in the classical learning setting, we update our parameter $\AB$
+The gradient of the new objective function is given by:
+\begin{align}
+	\frac{\hat{\partial f}}{\partial \AB}&=\frac{\partial f_\text{NCA-SL}}{\partial \AB} = \sum_{l=1}^{n} \frac{\partial
+p_{i_l}}{\partial \AB}\\
+	&=2\sum_{l=1}^{n}\left(p_{i_l}\sum_{k=1}^Np_{{i_l}k}(\AB\xB_{{i_l}k})\xB_{{i_l}k}^{\textrm{T}} -
+	\sum_{j\in c_{i_l}}p_{{i_l}j}(\AB\xB_{{i_l}j})\xB_{{i_l}j}^{\textrm{T}} \right).
+	\label{eq:snca-grad}
+\end{align}
+
+In the classical learning setting, we update our parameter $\AB$
 after we have considered each point $\xB_i$ in the data set. In the stochastic
 learning procedure, we update $\AB$ more frequently by considering only $n$
 randomly selected points. As in the previous case, we still need to compute
 the soft assignments $\{p_i\}_{i=1}^n$ using \textit{all} the $N$ points. To stress this further, this solution differs from the mini-batch approach. For the previous method, the contributions $\{p_i\}_{i=1}^n$ are calculated 
-only between the $n$ points that belong to the mini-batch. 
+only between the $n$ points that belong to the mini-batch.
 
-The objective function that we need to optimize at each iteration and its
-gradient are given by the next equations:
-\begin{align}
-	f_\text{sNCA}(\AB) &= \sum_{l=1}^n p_{i_l}\\
-	\frac{\hat{\partial f}}{\partial \AB}=\frac{\partial f_\text{sNCA}}{\partial \AB} &= \sum_{l=1}^{n} \frac{\partial
-p_{l_i}}{\partial \AB},
-	\label{eq:snca-grad}
-\end{align}
-where $p_i = \sum_{\substack{k=1\\k\in c_i}p_{ij}}$
 This means that the theoretical cost of the stochastic learning method scales with $nN$.
 
 	\begin{algorithm} 
-		\caption{Stochastic learning for NCA (sNCA)} 
-		\label{alg:sNCA}  
+		\caption{Stochastic learning for NCA (NCA SL)} 
+		\label{alg:nca-sl}  
 		\begin{algorithmic}[1]                    
 			\REQUIRE Data set $\mathcal{D}=\{\xB_1,\cdots,\xB_N\}$, $n$ number of points
 to consider for the gradient estimation, $\AB$ initial linear transformation.
@@ -220,8 +224,8 @@ to consider for the gradient estimation, $\AB$ initial linear transformation.
 				\STATE Split data $\mathcal{D}$ into groups $\mathcal{M}_i$ of size $n$.\
 				\FORALL {$\mathcal{M}_i$}
 					\STATE {Update parameter using gradient given by Equation
-\ref{eq:snca-grad}: \STATE $\AB\leftarrow \AB + \eta\frac{\partial
-f_\text{sNCA}(\AB,\mathcal{M}_i)}{\partial\AB}$.}
+\ref{eq:snca-grad}:\\ $\AB\leftarrow \AB + \eta\frac{\partial
+f_\text{NCA-SL}(\AB,\mathcal{M}_i)}{\partial\AB}$.}
 					\STATE {Update learning rate $\eta$.}
 				\ENDFOR
 			\UNTIL {convergence.}
@@ -231,6 +235,8 @@ f_\text{sNCA}(\AB,\mathcal{M}_i)}{\partial\AB}$.}
 This method comes with an additional facility. It can be used for on-line learning. Given a
 new point $\xB_{N+1}$ we update $\AB$ using the derivative $\frac{\partial
 p_{N+1}}{\partial \AB}$.
+
+\section*{Summary}
 
 \section{Approximate computations}
 \label{sec:approximate}
@@ -270,7 +276,7 @@ We correct those drawbacks by making use of the KDE formulation of NCA (see
 Section \ref{sec:cc-kde}) and adapting existing ideas for fast KDE
 \citep{deng1995,gray2003} to our particular application. We will use a class of
 accelerated methods that are based on data partitioning structures
-(\textit{e.g.}, $k$-d trees, ball trees). As we shall shortly see, these provide
+(e.g., $k$-d trees, ball trees). As we shall shortly see, these provide
 us with means to quickly find only the neighbours $\xB_j$ that give significant
 values $p_{ij}$ for any query point $\xB_i$. 
 %Hence, we will be able to compute an approximated value of the true
@@ -467,7 +473,7 @@ using approximated KDE Algorithm:}
 				\ENDFOR
 				\STATE Compute soft probability $\hat{p}_i \equiv \hat{p}(c|\AB\xB_i) =
 \frac{\hat{p}(\AB\xB_i|c_i)}{\sum_{c}\hat{p}(\AB\xB_i|c)}$.
-				\STATE Compute gradient $\frac{\partial}{\partial \AB} \hat{p}$ using
+				\STATE Compute gradient $\frac{\partial}{\partial \AB} \hat{p}_i$ using
 Equation \ref{eq:nca-cc-kde-grad}.
 				\STATE Update function value and gradient value.
 			\ENDFOR

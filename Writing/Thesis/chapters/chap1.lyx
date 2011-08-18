@@ -1,0 +1,704 @@
+#LyX file created by tex2lyx 1.6.10
+\lyxformat 264
+\begin_document
+\begin_header
+\textclass article
+\language english
+\inputencoding auto
+\font_roman default
+\font_sans default
+\font_typewriter default
+\font_default_family default
+\font_sc false
+\font_osf false
+\font_sf_scale 100
+\font_tt_scale 100
+\graphics default
+\paperfontsize default
+\spacing single
+\papersize default
+\use_geometry false
+\use_amsmath 1
+\use_esint 1
+\cite_engine basic
+\use_bibtopic false
+\paperorientation portrait
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation indent
+\defskip medskip
+\quotes_language english
+\papercolumns 1
+\papersides 1
+\paperpagestyle default
+\tracking_changes false
+\output_changes false
+\end_header
+
+\begin_body
+
+\begin_layout Standard
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Standard
+
+
+\backslash
+chapter{Introduction}
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset LatexCommand label
+name "ch:introduction"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+
+\begin_inset Formula $k$
+\end_inset
+
+ nearest neighbours (
+\begin_inset Formula $k$
+\end_inset
+
+NN) is one of the oldest and simplest classification methods. It has its origins in an unpublished technical report by 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Standard
+
+
+\backslash
+citet{fix1951}
+\end_layout
+
+\end_inset
+
+ and since then it became standard textbook material 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Standard
+
+
+\backslash
+citep{russell1996,mitchell1997,bishop2006}
+\end_layout
+
+\end_inset
+
+. In the last 50 years, 
+\begin_inset Formula $k$
+\end_inset
+
+NN was present in most of the machine learning related fields (pattern recognition, statistical classification, data mining, information retrieval, data compression) and it plays a role in many applications (e.g., face recognition, plagiarism detection, vector quantization).
+\end_layout
+
+\begin_layout Standard
+
+The idea behind 
+\begin_inset Formula $k$
+\end_inset
+
+NN is intuitive and straightforward: classify a given point according to a majority vote of its neighbours; the selected class is the one that is the most represented amongst the 
+\begin_inset Formula $k$
+\end_inset
+
+ nearest neighbours. This is easy to implement and it usually represents a good way to approach new problems or data sets. Despite its simplicity 
+\begin_inset Formula $k$
+\end_inset
+
+NN is still a powerful tool, performing surprisingly well in practice 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Standard
+
+
+\backslash
+citep{holte1993}
+\end_layout
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+
+Yet there are also other characteristics that make 
+\begin_inset Formula $k$
+\end_inset
+
+NN an interesting method. First of all, 
+\begin_inset Formula $k$
+\end_inset
+
+NN makes no assumptions about the underlying structure of the data. No a priori knowledge is needed beforehand, but we let the data 
+\begin_inset Quotes eld
+\end_inset
+
+speak for itself
+\begin_inset Quotes erd
+\end_inset
+
+. The accuracy increases with the number of points in the data set and, in fact, it approaches Bayes optimality as the cardinality of the training set goes to infinity and 
+\begin_inset Formula $k$
+\end_inset
+
+ is sufficiently large 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Standard
+
+
+\backslash
+citep{cover1967}
+\end_layout
+
+\end_inset
+
+. Secondly, 
+\begin_inset Formula $k$
+\end_inset
+
+NN is able to represent complex functions with non-linear decision boundaries by using only simple local approximations 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Standard
+
+% (this behaviour is hardly captured by any parametric method). 
+\end_layout
+
+\begin_layout Standard
+
+
+\end_layout
+
+\end_inset
+
+Lastly, 
+\begin_inset Formula $k$
+\end_inset
+
+NN operates in a 
+\begin_inset Quotes eld
+\end_inset
+
+lazy
+\begin_inset Quotes erd
+\end_inset
+
+ fashion. The training data set is just stored and its use is delayed until testing. The quasi-inexistent training 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Standard
+
+%
+\backslash
+footnote{There can be a training step in which the parameter $k$ is tuned via cross-validation or we can we imagine different technique being applied for dimensionality reduction}
+\end_layout
+
+\begin_layout Standard
+
+
+\end_layout
+
+\end_inset
+
+ allows to easily add new training examples.
+\end_layout
+
+\begin_layout Standard
+
+
+\begin_inset Formula $k$
+\end_inset
+
+NN has some drawbacks that influence both the computational performance and the quality of its predictions. Since 
+\begin_inset Formula $k$
+\end_inset
+
+NN has to store all the exemplars, the memory requirements are directly proportional with the number of instances in the training set. The cardinality of the data also influences the method's speed. All computations are done at testing time, making 
+\begin_inset Formula $k$
+\end_inset
+
+NN painfully slow when applied on large data sets. 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Standard
+
+%The cost of classification is also linear in the cardinality of the training set because all the computations are done at testing. and it is often prohibitive for large data sets. 
+\end_layout
+
+\begin_layout Standard
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+The accuracy of 
+\begin_inset Formula $k$
+\end_inset
+
+NN is closely related to how we define what 
+\begin_inset Quotes eld
+\end_inset
+
+close
+\begin_inset Quotes erd
+\end_inset
+
+ and 
+\begin_inset Quotes eld
+\end_inset
+
+far
+\begin_inset Quotes erd
+\end_inset
+
+ mean for our data set and task. Mathematically, the notion of dissimilarity is incorporated into 
+\begin_inset Formula $k$
+\end_inset
+
+NN by using different distance metrics. Usually the standard Euclidean metric is not satisfactory and the aim is to find that particular metric that gives the best results on our data set for a given task (section\InsetSpace ~
+
+\begin_inset LatexCommand ref
+reference "sec:theoretical-background"
+
+\end_inset
+
+). 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Standard
+
+%However, more important are the issues related to the accuracy. On one hand, there is not clear how we should choose a dissimilarity metric and how notions as ``close''/``far'' are defined for our data set. This is non-trivial and usually the standard Euclidean metric is not satisfactory (see Subsection 
+\backslash
+ref{subsec:distance-metrics}, for a more detailed discussion). On the other hand, there  
+\end_layout
+
+\begin_layout Standard
+
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Standard
+
+%All these problems are even more acute nowadays when we have to operate on huge sets of data with many attributes (e.g., images, videos, DNA sequences, etc.). 
+\end_layout
+
+\begin_layout Standard
+
+
+\end_layout
+
+\end_inset
+
+There is an entire literature that tries to come up with possible solutions (section\InsetSpace ~
+
+\begin_inset LatexCommand ref
+reference "sec:related-methods"
+
+\end_inset
+
+).
+\end_layout
+
+\begin_layout Standard
+
+This thesis focuses on neighbourhood component analysis (NCA; 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Standard
+
+
+\backslash
+citealp{goldberger2004}
+\end_layout
+
+\end_inset
+
+). NCA method learns the metric that maximizes the expected number of correctly classified points (section\InsetSpace ~
+
+\begin_inset LatexCommand ref
+reference "sec:general-presentation"
+
+\end_inset
+
+). Using the NCA metric with 
+\begin_inset Formula $k$
+\end_inset
+
+NN usually improves the performance over simple 
+\begin_inset Formula $k$
+\end_inset
+
+NN, since we use the label information to construct a suitable metric that selects the relevant attributes. If we restrict the metric to be low ranked we can find its associated linear projection. A low dimensional representation of the original data reduces the storage needs and the computational expense at test time . Also it alleviates some of the concerns that have been raised regarding the usefulness of nearest neighbours methods for high dimensional data 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Standard
+
+
+\backslash
+citep{beyer1999, hinneburg2000}
+\end_layout
+
+\end_inset
+
+. The curse of dimensionality arises for 
+\begin_inset Formula $k$
+\end_inset
+
+NN, because the distances become indiscernible for many dimensions. For a given distribution the maximum and the minimum distance between points become equal in the limit of dimensions. NCA proves to be an elegant answer for the above issues and, consequently, it was successfully used in a variety of applications: face recognition 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Standard
+
+
+\backslash
+citep{butman2008}
+\end_layout
+
+\end_inset
+
+, hyper-spectral image classification 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Standard
+
+
+\backslash
+citep{weizman2007}
+\end_layout
+
+\end_inset
+
+, acoustic modelling 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Standard
+
+
+\backslash
+citep{singh2010}
+\end_layout
+
+\end_inset
+
+ and even reinformcent learning 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Standard
+
+
+\backslash
+citep{keller2006}
+\end_layout
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+
+However, the method introduces a consistent training time. The objective function needs the pairwise distances of the points, so the function evaluation is quadratic in the number of data points. Also the optimization process is iterative. For large data sets, NCA training becomes prohibitively slow. For example, 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Standard
+
+
+\backslash
+citet{weinberger2009}
+\end_layout
+
+\end_inset
+
+ reported that the original implementation ran out of RAM and 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Standard
+
+
+\backslash
+citet{weizman2007}
+\end_layout
+
+\end_inset
+
+ had to use only 10% of the data set in order to successfully train the model. There is only little previous work that uses NCA for large scaled applications. One example is 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Standard
+
+
+\backslash
+citep{singh2010}
+\end_layout
+
+\end_inset
+
+, who parallelizes the computations across multiple computers and adopts various heuristics to prune terms of the objective function and the gradient. 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Standard
+
+%One elegant answer is provided by 
+\backslash
+citet{goldberger2004}. They proposed a new method, Neighbourhood Component Analysis (NCA), that copes with the drawbacks in a unified manner by learning a low-rank metric. This reduces both the storage and the computational cost, because the algorithm uses the data set projected into a lower subspace, with fewer attributes needed. Also the accuracy is improved, because the label information is used for constructing a proper metric that selects the relevant attributes. However, NCA introduces a consistent training time, because we now have an objective function whose gradient is quadratic in the number of data points that is optimized using iterative methods. 
+\end_layout
+
+\begin_layout Standard
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+The main aim of this project is to reduce NCA training time without significant loses in accuracy (chapter 
+\begin_inset LatexCommand ref
+reference "ch:reducing"
+
+\end_inset
+
+). We start our investigation with the most simple ideas: use only a subset of the data set (section 
+\begin_inset LatexCommand ref
+reference "sec:sub-sampling"
+
+\end_inset
+
+) or train the metric on different mini-batches subsampled from the data set (section 
+\begin_inset LatexCommand ref
+reference "sec:mini-batches"
+
+\end_inset
+
+). This last idea can be further refined by using clustered mini-batches. Also we present an alternative mini-batch algorithm (section 
+\begin_inset LatexCommand ref
+reference "sec:stochastic-learning"
+
+\end_inset
+
+) that decreases the theoretical cost.
+\end_layout
+
+\begin_layout Standard
+
+These methods can achieve further speedings if we use approximations of the objective function. Simple approximation ideas (such as ignoring the points which are farther away than a certain distance from the current point) were mentioned in the original paper 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Standard
+
+
+\backslash
+citep{goldberger2004}
+\end_layout
+
+\end_inset
+
+ and they are re-iterated by 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Standard
+
+
+\backslash
+citet{weinberger2007}
+\end_layout
+
+\end_inset
+
+ and 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Standard
+
+
+\backslash
+citet{singh2010}
+\end_layout
+
+\end_inset
+
+. We present a more principled approach that borrows ideas from fast kernel density estimation problems 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Standard
+
+
+\backslash
+citep{deng1995,gray2003,gray2003b}
+\end_layout
+
+\end_inset
+
+. We first recast NCA into a class-conditional kernel density estimation framework (section 
+\begin_inset LatexCommand ref
+reference "sec:cc-kde"
+
+\end_inset
+
+) and next we present how fast density estimation is done using a space partitioning structure, such as 
+\begin_inset Formula $k$
+\end_inset
+
+-d trees (section 
+\begin_inset LatexCommand ref
+reference "sec:approximate"
+
+\end_inset
+
+). Similar work of fast metric learning is 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Standard
+
+
+\backslash
+citep{weinberger2008}
+\end_layout
+
+\end_inset
+
+ and it uses ball trees 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Standard
+
+
+\backslash
+citep{omohundro1989}
+\end_layout
+
+\end_inset
+
+ to accelerate a different distance metric technique, large margin nearest neighbour (LMNN; 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Standard
+
+
+\backslash
+citealp{weinberger2009}
+\end_layout
+
+\end_inset
+
+). However, LMNN is different from NCA and the way in which ball trees are applied also differs from our approach. 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Standard
+
+%$k$-d trees 
+\backslash
+citep{bentley1975} group together near points and can be used to quickly select only those points that have significant contribution. These sort of  have been successfully applied for speeding up $k$NN at query time 
+\backslash
+citep{friedman1977} and we will use them in a similar manner for NCA's testing operations. 
+\end_layout
+
+\begin_layout Standard
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+An alternative for the approximation method is to change the model such that it allows exact and efficient computations. In the kernel density estimation model, we can use compact support kernels instead of the standard Gaussian functions. The expense is reduced because only the points that lie in the compact support are used for estimating the density (section 
+\begin_inset LatexCommand ref
+reference "sec:exact-computations"
+
+\end_inset
+
+).
+\end_layout
+
+\begin_layout Standard
+
+We evaluate the proposed techniques in terms of accuracy and speed (chapter 
+\begin_inset LatexCommand ref
+reference "ch:evaluation"
+
+\end_inset
+
+). Also we provide low dimensional representations of the projected data. The results are promising showing that we can obtain considerable speed-ups for large data sets while retaining almost the same accuracy as in the classic case. For small and medium sized data sets the accuracy and the time spent are similar to the standard NCA.
+\end_layout
+
+\begin_layout Standard
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Standard
+
+%, we could interpret NCA as a class-conditional kernel-density estimate and then use different types of kernels instead of the Gaussian ones; we will focus especially on kernels with compact support, because they do not introduce approximation errors and computations can be done more efficiently than in the previous case. 
+\end_layout
+
+\begin_layout Standard
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_body
+\end_document

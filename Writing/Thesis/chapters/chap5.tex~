@@ -1,7 +1,7 @@
 \chapter{Evaluation}
 \label{ch:evaluation}
 
-This chapter contains the evaluation of the methods proposed in the previous part, chapter~\ref{ch:reducing}. In section~\ref{sec:setup}, we present the data sets and the methodology used for testing. We give details about the parameter choices and set baseline scores obtains by either classical NCA or simple linear projections, such as PCA, LDA or RCA. Results for each individual method are presented in sections~\ref{sec:method-comparison} and~\ref{sec:eval-nca-approx}. A comparison of the methods is shown in subsection~\ref{subsec:eval-comparison} using a accuracy vs. time plots.
+This chapter contains the evaluation of the methods proposed in the previous part, chapter~\ref{ch:reducing}. In section~\ref{sec:setup}, we present the data sets and the methodology used for testing. We give details about the parameter choices and set baseline scores obtains by either classical NCA or simple linear projections, such as PCA, LDA or RCA. Results for each individual method are presented in sections~\ref{sec:method-comparison} and~\ref{sec:eval-nca-approx}. A comparison of the methods is shown in subsection~\ref{subsec:eval-comparison} using accuracy versus time plots.
 
 We should mention that we did not include all the results in this chapter to prevent cluttering. Further experimentations can be found in appendix~\ref{app:results}.
 
@@ -224,7 +224,7 @@ We could not apply NCA on large data sets (\texttt{usps}, \texttt{magic}, and \t
 		\subfigure[\texttt{usps}]{\label{fig:usps}\includegraphics[width=0.61\textwidth]{images/usps-acc-time}}
 		\subfigure[\texttt{magic}]{\label{fig:magic}\includegraphics[width=0.61\textwidth]{images/magic-acc-time}}
 		\subfigure[\texttt{mnist}]{\label{fig:mnist}\includegraphics[width=0.61\textwidth]{images/mnist-acc-time}}
-		\caption{\small Time \textsl{vs.} accuracy plots on larger data sets for four of the proposed methods. For SS we plotted the $1$-NN score, while for the other three the points inidicate the NCA score.}
+		\caption{\small Time vs. accuracy plots on larger data sets for four of the proposed methods. For SS we plotted the $1$-NN score, while for the other three the points inidicate the NCA score.}
 		\label{fig:time-accuracy}
       \end{figure}
 

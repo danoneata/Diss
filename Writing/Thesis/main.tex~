@@ -44,7 +44,7 @@
 %% Taught MSc -- specify a particular degree instead. If none is specified,
 %% "MSc in Informatics" is used.
 % \documentclass[msc,cogsci]{infthesis}
-\documentclass[msc,ai,logo,notimes]{infthesis}  % for the MSc in Informatics
+\documentclass[msc,ai,logo,notimes,twoside]{infthesis}  % for the MSc in Informatics
 
 %% Undergraduate project -- specify the degree course and project type
 %% separately
@@ -70,10 +70,11 @@
 \usepackage{lscape}
 \usepackage{listings}
 \usepackage{color}
+%\usepackage{cleveref}
 %\usepackage{hyperref}
 
 \newcommand{\tr}{^\textrm{T}}
-\newcommand{\ie}{\textit{i.e.}}
+\newcommand{\ie}{i.e.}
 \definecolor{dkgreen}{rgb}{0,0.6,0}
 
 %% Information about the title, etc.
@@ -89,8 +90,7 @@
 
 %% Specify the abstract here.
 \abstract{%
-    This doctoral thesis will present the results of my work into the
-    reanimation of lifeless human tissues.
+    
 }
 
 %% Now we start with the actual document.
@@ -103,13 +103,13 @@
 \maketitle
 
 %% Acknowledgements
-% \begin{acknowledgements}
-% Many thanks to my mummy for the numerous packed lunches; and of course to
-% Igor, my faithful lab assistant. DP IM.
-% \end{acknowledgements}
+\begin{acknowledgements}
+ Many thanks to my mummy for the numerous packed lunches; and of course to
+ Igor, my faithful lab assistant. DP IM.
+\end{acknowledgements}
 
 %% Next we need to have the declaration.
-% \standarddeclaration
+\standarddeclaration
 
 %% Finally, a dedication (this is optional -- uncomment the following line if
 %% you want one).
@@ -119,8 +119,8 @@
 \tableofcontents
 
 %% If you want a list of figures or tables, uncomment the appropriate line(s)
-% \listoffigures
-% \listoftables
+%\listoffigures
+%\listoftables
 
 \end{preliminary}
 

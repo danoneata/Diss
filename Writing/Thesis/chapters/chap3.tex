@@ -1,32 +1,32 @@
 \chapter{Neighbourhood component analysis}
 \label{ch:nca}
-	This chapter can be regarded as a self-contained tutorial on neighbourhood component analysis (NCA; \citealp{goldberger2004}). Much of the material is especially useful for the reader interested in applying the algorithm in practice. We start with a review of the NCA method (section \ref{sec:general-presentation}). Next we recast the NCA model into a class conditional kernel density estimation problem (section \ref{sec:cc-kde}). This new formulation will prove useful later when we want to alter the model in a principled way (section \ref{sec:nca-cs-back}). Lastly, in section \ref{sec:practical-notes} we present the learnt lessons from our experience with NCA. Both section \ref{sec:cc-kde} and \ref{sec:practical-notes} offer new insights into the NCA method and they also bring together related ideas from previous work.
+	This chapter can be regarded as a self-contained tutorial on neighbourhood component analysis (NCA; \citealp{goldberger2004}). Much of the material is especially useful for the reader interested in applying the algorithm in practice. We start with a review of the NCA method (section \ref{sec:general-presentation}). Next we recast the NCA model into a class conditional kernel density estimation problem (section \ref{sec:cc-kde}). This new formulation will prove useful later when we want to alter the model in a principled way (section \ref{sec:nca-cs-back}). Lastly, in section \ref{sec:practical-notes} we present the lessons learnt from our experience with NCA. Both sections \ref{sec:cc-kde} and \ref{sec:practical-notes} offer new insights into the NCA method and they also bring together related ideas from previous work.
 
 \section{General presentation}
 \label{sec:general-presentation}
-	Neighbourhood component analysis learns a Mahalanobis metric that improves the performance of $k$ nearest neighbours ($k$NN). From a practical point of view, NCA  is regarded as a desirable additional step before doing classification with $k$NN. It improves the classification accuracy and it is also provides good low-dimensional representation of the data.
+	Neighbourhood component analysis learns a Mahalanobis metric that improves the performance of $k$ nearest neighbours ($k$NN). From a practical point of view, NCA  is regarded as a desirable additional step before doing classification with $k$NN. It improves the classification accuracy and it can provide a low-dimensional representation of the data.
 
-	Because the goal is to enhance the $k$NN performance, the first idea \citet{goldberger2004}
+	Because the goal is to enhance $k$NN's performance, the first idea \citet{goldberger2004}
 	had was to maximize the leave one out cross validation performance with respect to a linear projection~$\AB$. The procedure can be described as follows: apply the linear transformation~$\AB$ to the whole data set, then take each 
-	point~$\AB\xB_i$ and classify it using $k$NN on the transformed data set~$\{\AB\xB_j\}_{j=1}^N$. The matrix~$\AB$ that achieves the highest number of correct classifications will be used for testing. However, finding the optimal $\AB$ is not easy. Any objective function based on the $k$ nearest neighbours
+	point~$\AB\xB_i$ and classify it using $k$NN on the remainder of the transformed data set~$\{\AB\xB_j\}_{j\neq i}$. The matrix~$\AB$ that achieves the highest number of correct classifications will be used for testing. However, finding the optimal $\AB$ is not easy. Any objective function based on the $k$ nearest neighbours
 	is piecewise constant and discontinuous and, hence, hard to optimize. The reason is that there does
-	not exist an exact correlation between $\AB$ and the neighbours
+	not exist a direct relation between $\AB$ and the neighbours
 	of a given point: a small perturbation in $\AB$ might cause strong changes or, conversely, 
 	it might leave the neighbours unchanged.
 	
 	The authors' solution lies in the concept of \textit{stochastic} nearest
-	neighbours. Remember that in the classical $1$NN scenario, a query point gets the label of the closest point. In the stochastic nearest neighbour 
-	case, the query point inherits the label of a neighbour with a probability that is inverse proportional with the distance. The stochastic function is reminiscent of the generalized logistic function or of the softmax activation used for neural networks. Let $p_{ij}$ denote the probability that the point~$j$ is selected as the nearest neighbour of the point~$i$. The value of $p_{ij}$ is given by:
+	neighbours. Remember that in the classical $1$-NN scenario, a query point gets the label of the closest point. In the stochastic nearest neighbour 
+	case, the query point inherits the label of a neighbour with a probability that decreases with distance. The stochastic function is reminiscent of the generalized logistic function or of the softmax activation used for neural networks. Let $p_{ij}$ denote the probability that the point~$j$ is selected as the nearest neighbour of the point~$i$. The value of $p_{ij}$ is given by:
 	\begin{align}
 		p_{ij} = \frac{
 						\exp(-d_{ij}^2)
 					  }{
-						\sum_{\substack{k=1 \\k\neq i}}^N\exp(-d_{ik}^2)
+						\sum_{\substack{k\neq i}}\exp(-d_{ik}^2)
 					  },
 	\label{eq:stochastic-neighbour}
 	\end{align} where $d_{ij}$ represents the distance between point~$i$ and point~$j$ in the projected space, i.e. $d_{ij} = d(\AB\xB_i;\AB\xB_j) = (\xB_i-\xB_j)\tr\AB\tr\AB(\xB_i-\xB_j)$. Also we have to set $p_{ii}=0$: point~$i$ cannot pick itself as the nearest neighbour since we assume its label is not known.
 	
-	Now we can construct a continuous objective function using the stochastic assignments~$p_{ij}$ which are differentiable with respect to~$\AB$. A suitable quantity to optimize is the probability of each point of getting correctly classified. Point~$i$ is correctly classified when it is selected by a point~$j$ that has the same label as~$i$:
+	Now we can construct a continuous objective function using the stochastic assignments~$p_{ij}$ which are differentiable with respect to~$\AB$. A suitable quantity to optimize is the average probability of each point getting correctly classified. Point~$i$ is correctly classified when it is selected by a point~$j$ that has the same label as~$i$:
 	\begin{align}
 		p_i = \sum_{j\in c_i} p_{ij}.
 		\label{eq:nca-p-i}
@@ -55,11 +55,11 @@
 
 	\subsection*{Further remarks}
 	
-	There are some interesting observations that can be made about NCA. It is useful to note that NCA model is still valid even if we set the matrix $\AB$ to be rectangular, i.e. $\AB\in\mathbb{R}^{d\times D}$, with $d<D$. In this case the linear transformation $\AB$ is equivalent to a low dimensional projection. Restricting $\AB$ to be non-square gives rise to a couple of advantages. Firstly, the optimization process is less prone to overfitting since a rectangular matrix has fewer parameters than a square one. Secondly, the low dimensional representation of the data set reduces the memory requirements and the computational cost at test time. In this thesis we concentrate mostly on low-rank metrics partly motivated by the above reasons, but also because many techniques that are subsequently developed (chapter \ref{ch:reducing}) work best in low dimensions.
+	There are some interesting observations that can be made about NCA. It is useful to note that equations \eqref{eq:stochastic-neighbour} to \eqref{eq:nca-grad} hold and NCA model can still be applied even if we set the matrix $\AB$ to be rectangular, i.e. $\AB\in\mathbb{R}^{d\times D}$, with $d<D$.  In this case the linear transformation $\AB$ is equivalent to a low dimensional projection. Restricting $\AB$ to be non-square gives rise to a couple of advantages. Firstly, the optimization process is less prone to overfitting since a rectangular matrix has fewer parameters than a square one. Secondly, the low dimensional representation of the data set reduces the memory requirements and the computational cost at test time. In this thesis we concentrate mostly on low-rank metrics partly motivated by the above reasons, but also because many techniques that are subsequently developed (chapter \ref{ch:reducing}) work best in low dimensions.
 
 	%equations \eqref{eq:stochastic-neighbour} to \eqref{eq:nca-grad} are still valid, since the distances $d_{ij}$ correspond to distances between points in a low dimensional space.
 
-	We need to underline that NCA's objective function is not convex. The first consequence is that the parameter space is peppered with local optima and care must be taken to avoid poor solutions. Factors such as the choice of initialization or the optimization procedure affect the quality of the final result. Section \ref{sec:practical-notes} discusses these practical issues in detail. The other side of non-convexity is that it allows NCA to cope well with data sets that have multi-modal classes. This is an important advantage over classical methods such as principal component analysis, linear discriminant analysis or relevant component analysis. All of these assume that the data is normally distributed which harms the classification performance on complicated data sets.
+	We need to underline that NCA's objective function is not convex. The first consequence is that the parameter space is peppered with local optima and care must be taken to avoid poor solutions. Factors such as the choice of initialization or the optimization procedure affect the quality of the final result. Section \ref{sec:practical-notes} discusses these practical issues in detail. The other side of non-convexity is that it allows NCA to cope well with data sets that have multi-modal class densities. This is an important advantage over classical methods such as principal component analysis, linear discriminant analysis or relevant component analysis. All of these assume that the data is normally distributed which harms the classification performance on complicated data sets.
 % property has its advantage. It allows NCA to get good results on more complicated data sets that are not non convex. 
 
 	Another important characteristic of NCA is its computational cost. For each point, we need to calculate the distances to all the other points. So the number of operations is quadratic in the number of data points. The evaluation of the objective function is done in two steps. First we find the point projections $\{\AB\xB_i\}_{i=1}^N$; this operation has $\mathcal{O}(dDN)$ cost. Next we compute all the distances~$d_{ij}$ in the low dimensional space; this is done in $\mathcal{O}(dN^2)$ flops. The total cost is then $\mathcal{O}(dDN+dN^2)$. Another way of evaluating the function~$f$ is to parametrize it in terms of the Mahalanobis metric $\SB=\AB\tr\AB$. Then we can compute the distances in the $D$-dimensional space in $\mathcal{O}(DN^2)$ flops. This option is slower than the previous case for $d<D$ and $D\ll N$.
@@ -86,7 +86,7 @@
 	\begin{figure}
 	  \centering
 	  \includegraphics[width=6cm]{images/mog}
-	  \caption{NCA as a class-conditional kernel density estimation
+	  \caption[NCA as a class-conditional kernel density estimation model]{NCA as a class-conditional kernel density estimation
 	model. The figure represents a schematic illustration of a mixture of Gaussians. The red circles denote isotropic Gaussians. These are centred onto the points that belong to a certain class. A point~$i$ is generated by either of the components of the class with a probability inverse proportional with the distance.}
 	  \label{fig:kde}
 	\end{figure}
@@ -139,7 +139,7 @@
 	    \label{eq:nca-cc-kde-bayes}
 	\end{align}
 	
-	Now if further consider the classes to be equal probable (which is a
+	Now if we further consider the classes to be equal probable (which is a
 	reasonable assumption if we have no a priori information) we arrive at result
 	that resembles the expression of $p_i$ (equation~\eqref{eq:nca-p-i}):
 	\begin{align}
@@ -163,7 +163,7 @@
 	\begin{align}
 	    f(\AB) = \sum_i p(c_i|\AB\xB_i).
 	    \label{eq:nca-cc-kde-obj}
-	\end{align}.
+	\end{align}
 	
 	As in section \ref{sec:general-presentation}, we can optimize the function using the gradient information. The gradient is the following:
 	\begin{align}
@@ -199,8 +199,7 @@
 \section{Practical notes}
 \label{sec:practical-notes}
 
-	While NCA is not that hard to implement (appendix~\ref{app:code-nca-obj}), there is needed certain care
-	in order to achieve good solutions.
+	While NCA is not that hard to implement (appendix~\ref{app:code-nca-obj}), certain care is needed in order to achieve good solutions.
 	In this section we try to answer some of the questions 
 	that can be raised when implementing NCA. 	
 
@@ -213,7 +212,7 @@
 
 	Gradient ascent is one of the simplest optimisation methods. It is an iterative algorithm that aims to find the maximum of a function by following the gradient direction at each step. The entire procedure is summarized by algorithm~\ref{alg:gd}. 
 
-	Besides this version, an alternative is to compute the gradient on a fewer points and not on the entire data set. This variant is known as stochastic gradient ascent and it has the advantage to be much faster than the batch version. Different alterations of the stochastic gradient ascent were tried in chapter~\ref{ch:reducing} to reduce the computational cost.
+	Besides this version, an alternative is to compute the gradient on a fewer points and not on the entire data set. This variant is known as stochastic gradient ascent and has the advantage of being much faster than the batch version on redundant data sets (redundancy is common in practice and especially in large data sets). Different alterations of the stochastic gradient ascent were tried in chapter~\ref{ch:reducing} to reduce the computational cost.
       
 	\begin{algorithm} 
 		\caption{Gradient ascent (batch version)} 
@@ -234,7 +233,7 @@ f(\AB_{t},\mathcal{D})}{\partial\AB}$}
 	For the algorithm~\ref{alg:gd}, there are three aspects we need to carefully consider:
 	\begin{description}
 	 \item[Initialization.] The algorithm starts the search in the parameter space from the an initial parameter~$\AB_0$. Different values for $\AB_0$ will give different final solutions. In the NCA context, initialization is related to finding a good initial linear transformation; this is discussed  separately in subsection~\ref{subsec:initialization}. For the moment, we can assume the values of $\AB_0$ are randomly chosen.
-	 \item[Learning rate.] The parameter $\eta$ is called \textit{step size} or, in neural networks related literature, it also known as \textit{learning rate}. As name suggests, $\eta$ controls how much we move the parameters in the gradient direction. 
+	 \item[Learning rate.] The parameter $\eta$ is called the \textit{step size} or, in the neural networks literature, it also known as the \textit{learning rate}. As name suggests, $\eta$ controls how much we move the parameters in the gradient direction. 
 
 	The learning rate can be either fixed or adaptive. For the first case, choosing the correct value for $\eta$ is critical. If $\eta$ is set too large, the algorithm diverges. On the other hand, a small $\eta$ results in slow convergence. 
 
@@ -257,15 +256,15 @@ f(\AB_{t},\mathcal{D})}{\partial\AB}$}
 % 		\end{algorithmic}
 % 	\end{algorithm}
 	
-	Another way is to change the learning rate~$\eta$ using a decreasing rule proportional to the number of current iteration: $\eta=\frac{\eta_0}{t+t_0}$. Now we have two parameters instead of one. Intuitively, $\eta_0$ can be regarded as the initial learning rate and $t_0$ as the number of iterations after which $\eta_0$ starts to drop off. Using a learning rate of such form is especially motivated in the stochastic gradient case. If $\eta\propto 1/t$, the algorithm converges to the true minimum as $t$ goes to infinity. However, in practice the convergence is very slow; so setting the constants~$\eta_0$ and~$t_0$ is important for reaching a good solution in a short time. Leon Bottou\footnote{Oral communication: \url{http://videolectures.net/mmdss07_bottou_lume/}} recommends to set $\eta_0$ to be the regularization value and then select $t_0$ such that the resulted update will modify $\AB$ with a sensible amount. Since we did not use regularization, we followed some of the tricks presented in \citep{lecun1998}. We fixed the value for $\eta_0$ and we did an exponential search for $t_0$ using a cross validation set. 
+	Another way is to change the learning rate~$\eta$ using a decreasing rule proportional to the number of current iteration: $\eta=\frac{\eta_0}{t+t_0}$. Now we have two parameters instead of one. Intuitively, $\eta_0/t_0$ can be regarded as the initial learning rate and $t_0$ as the number of iterations after which $\eta_0$ starts to drop off. Using a learning rate of such form is especially motivated in the stochastic gradient case. If $\eta\propto 1/t$, the algorithm converges to the true minimum as $t$ goes to infinity. However, in practice the convergence is very slow; so setting the constants~$\eta_0$ and~$t_0$ is important for reaching a good solution in a short time. Leon Bottou\footnote{Oral communication: \url{http://videolectures.net/mmdss07_bottou_lume/}} recommends setting $\eta_0$ to be the regularization value and then select $t_0$ such that the resulting update will modify~$\AB$ by a sensible amount. Since we did not use regularization, we followed some of the tricks presented in \citep{lecun1998}. We fixed the value for $\eta_0$ and searched for $t_0$ on an exponential scale from $0.1$ to $1000$. We kept that value of $t_0$ that achieved the highest accuracy on a cross-validation set.
 
 % 	A popular choice for an 
-	 \item[Convergence.] The gradient ascent algorithm can be stopped either when we hit a maximum number of iterations or when the learning rate~$\eta$ falls below a certain threshold. Also we can look at the variation in the objective function. If the value of the objective function stops improving we can halt the algorithm. Another popular choice to check convergence is ``early stopping''. We monitor the performance of the new $\AB$ on a cross validation set. If the objective function did not increase for more than a preset number of iterations we stop and return to the previous best solution. This solution prevents overfitting since we stop when we achieve a minimum on a test error and not on the training error. We illustrate this in figure \ref{fig:early-stopping}.
+	 \item[Convergence.] The gradient ascent algorithm can be stopped either when we hit a maximum number of iterations or when the learning rate~$\eta$ falls below a certain threshold. Also we can look at the variation in the objective function. If the value of the objective function stops improving we can halt the algorithm. Another popular choice to check convergence is ``early stopping''. We monitor the performance of the new $\AB$ on a cross validation set. If the objective function does not improve the best score for more than a pre-set number of iterations we stop and return to the previous best solution. This solution prevents overfitting since we stop when we achieve a minimum on a test error and not on the training error. We illustrate this in figure \ref{fig:early-stopping}.
 	\end{description}
 	
 	\begin{figure}
 	 \centering\includegraphics[width=0.59\textwidth]{images/early-stopping}
-	 \caption{This figure illustrates the early stopping procedure. During training we keep a small part of the data set apart, for cross-validation. On this cross-validation data set we compute the error function at each iteration. When the error function stops decreasing we stop the learning procedure and return to the parameter that achieved the best value. This figure resulted while applying NCA on the \texttt{mnist} data set. The best value was obtained at iteration 98, as indicated by the red dot.}
+	 \caption[Illustration of the ``early-stopping'' technique]{This figure illustrates the early stopping procedure. During training we keep a small part of the data set apart, for cross-validation. On this cross-validation data set we compute the error function at each iteration. When the error function stops decreasing we stop the learning procedure and return to the parameter that achieved the best value. This figure resulted while applying NCA on the \texttt{mnist} data set. The best value was obtained at iteration 98, as indicated by the red dot.}
 	 \label{fig:early-stopping}
 	\end{figure}
 
@@ -274,9 +273,9 @@ f(\AB_{t},\mathcal{D})}{\partial\AB}$}
 
 	\subsubsection*{Conjugate gradients}
 	
-	Conjugate gradient (CG) method solves some of the convergence issues. Instead of selecting the search directions to be the gradient directions, CG method selects the next direction depending on both the previous directions and on the curvature of surface. This permits this method to reach the maximum of a quadratic energy function in only two iterations. Also CG eliminates the manual set-up for the learning rates. As \citet{bishop1995} notes, the CG can be regarded as a more complex version of gradient ascent that automatically chooses the parameters. The details of the conjugate gradient method are out of the scope of this thesis; a gentle introduction into the subject is given by \citet{shewchuk1994}.
+	The conjugate gradient (CG; \citealp{hestenes1952}) method solves some of the convergence issues. Instead of selecting the search directions to be the gradient directions, the CG method selects the next direction depending on both the previous directions and on the curvature of the surface. CG reaches the maximum of a quadratic energy function in a number of iterations equal to the number of dimensions the function has the support on. Also CG eliminates the manual set-up for the learning rates. As \citet{bishop1995} notes, CG can be regarded as a more complex version of gradient ascent that automatically chooses the parameters. The details of the conjugate gradient method are out of the scope of this thesis; a gentle introduction into the subject is given by \citet{shewchuk1994}.
 
-	In practice it is considerably easier to  use an existing implementation of CG (for example, Carl E. Rasmussen's \texttt{minimize.m}\footnote{Source code can be found at the following URL: \url{http://www.gaussianprocess.org/gpml/code/matlab/util/minimize.m}}) than trying to find the optimal parameters for the learning rate for gradient ascent. For small and medium-sized data sets, ``bold driver'' heuristic gives comparable scores to the more fancier CG method (tables \ref{table:comp-opts-1} and \ref{table:comp-opts-2}).
+	In practice it is considerably easier to  use an existing implementation of CG (for example, \texttt{minimize.m} by \citealp{rasmussen-online}) than trying to find the optimal parameters for the learning rate for gradient ascent. For small and medium-sized data sets, the ``bold driver'' heuristic gives comparable scores to the more sophisticated CG method (tables \ref{table:comp-opts-1} and \ref{table:comp-opts-2}).
 	
 
 % \begin{itemize}
@@ -332,13 +331,13 @@ f(\AB_{t},\mathcal{D})}{\partial\AB}$}
 	  \subfigure[Initial projection using LDA]{\label{fig:init-7}\includegraphics[width=0.49\textwidth]{images/wine-init-5}}
 	  \subfigure[NCA projection after LDA initialization]{\label{fig:init-8}\includegraphics[width=0.49\textwidth]{images/wine-init-6}}
 	  
-	  \caption{\small Results for different initializations (random, PCA and LDA) on \texttt{wine} data set. The images on the left side represent the projections of the data set using the initial $\AB$. The images on the right side are data set projection with the final $\AB$. Above each figure there is presented the LOOCV score which is normalized to 100.}
+	  \caption[Effects of initialization on \texttt{wine} data set]{\small Results for different initializations (random, PCA and LDA) on \texttt{wine} data set. The images on the left side represent the projections of the data set using the initial $\AB$. The images on the right side are data set projection with the final $\AB$. Above each figure there is presented the LOOCV score which is normalized to 100.}
 	  \label{fig:init}
     \end{figure}
 
-    Initialization is important because the function $f(\AB)$ is not convex. The quality of the final solution relies on the starting point of the optimisation algorithm. A general rule of thumb is to try multiple initial seeds and select that final $\AB$ that gives the highest score.
+    Initialization is important because the function $f(\AB)$ is not convex. The quality of the final solution relies on the starting point of the optimisation algorithm. A general rule of thumb is to try multiple initial seeds and select the final $\AB$ that gives the highest score.
 
-    We have already mentioned random initialization in subsection \ref{subsec:optimization}. Beside this, we can try linear transformations that are cheap to compute. Such examples include  principal component analysis (PCA; \citealp{pearson1901}), linear discriminant analysis (LDA; \citealp{fisher1936}) and relevant component analysis (RCA; \citealp{bar2003}). For completeness, we give here the equations and also include further notes:
+    We have already mentioned random initialization in subsection \ref{subsec:optimization}. If the projection is full-rank, $\AB\in\mathbb{R}^{D\times D}$, another obvious initializations is the identity matrix $\AB=\mathrm{I}_D$. Beside these, we can try linear transformations that are cheap to compute. Such examples include  principal component analysis (PCA; \citealp{pearson1901}), linear discriminant analysis (LDA; \citealp{fisher1936}) and relevant component analysis (RCA; \citealp{bar2003}). For completeness, we give here the equations and also include further notes:
         \begin{itemize}
             \item  PCA finds an orthogonal linear
                 transformation of the data. This is
@@ -349,6 +348,9 @@ f(\AB_{t},\mathcal{D})}{\partial\AB}$}
                     \SB = \frac{1}{N}\sum_{i=1}^N (\xB-\muB)(\xB-\muB)\tr.
                     \label{eq:pca-1}
                 \end{align}
+                The projection~$\AB$ is then given by $\SB^{-1/2}$. If we want to learn a low-rank projection, $\AB \in \mathbb{R}^{d\times D},d<D$, we construct $\AB$ using only the top $d$ most
+        discriminative eigenvectors, \ie, those eigenvectors that have the
+        highest eigenvalues associated. 
 
             \item LDA finds a linear transformation $\AB$ by maximizing the
 variance between classes $\SB_B$ relative to the amount of within-class variance
@@ -367,7 +369,7 @@ of the eigenvectors of $\SB_W^{-1}\SB_B$.
 usually guarantees a better initial projection.
 
             \item RCA finds a linear transformation~$\AB$
-                that decorelates the points within a chunklet, i.e. it makes the within-chunklet covariance to the identity matrix.
+                that decorrelates the points within a chunklet, i.e. it makes the within-chunklet covariance equal to the identity matrix.
                 Because for NCA we restrict ourselves to
                 fully labelled data, the within-chunklet
                 covariance is the within-class covariance~$\SB_W$, equation~\eqref{eq:lda-2}. The
@@ -375,37 +377,30 @@ usually guarantees a better initial projection.
                 $\AB=\SB_W^{-1/2}$.
         \end{itemize}
 
-        If the projection is full-rank, $\AB\in\mathbb{R}^{D\times D}$, other obvious initializations are the identity matrix $\AB=\mathrm{I}_D$ and the Mahalanobis linear transformation $\AB=\SB^{-1/2}$.
-
-	If we want to learn a low-rank projection, $\AB \in \mathbb{R}^{d\times D},d<D$, then we can still use the eigendecomposition based methods. We construct $\AB$ using only the top $d$ most
-        discriminative eigenvectors, \ie, those eigenvectors that have the
-        highest eigenvalues associated.
-
         From our experiments, we conclude that a good
-        initialization reflects in a good solution and a better convergence; this benefits are more evident on
-        large data sets. As advertised in \citep{butman2008}, we found RCA to work the best. Figure \ref{fig:init} depicts initialization effects on a small data set. More illustrations are in the appendix \ref{app:sec:initialization}. Occasionally random initialization gives better final scores than the other techniques (figure \ref{fig:balance-init}). 
+        initialization results in a good solution and a faster convergence; these benefits are more evident on
+        large data sets. As advertised by \citet{butman2008}, we found RCA to work the best. Occasionally random initialization gives better final scores than the other techniques (figure \ref{fig:balance-init}). Figure \ref{fig:init} depicts initialization effects on a small data set. More illustrations are shown in appendix \ref{app:results}. 
 
 \subsection{Numerical issues}
 \label{subsec:numerical-issues}
 
 	Numerical problems can easily appear when computing the soft assignments $p_i$. If a point
         $\xB_i$ is far away from the rest of the points, the stochastic probabilities $p_{ij}, \forall j,$ are all 0 in numerical precision. Consequently, the result $p_i$ is undetermined: $\frac{0}{0}$. 
-	To make an idea of how far $\xB_i$ has to be for this to happen, let us consider an example in \textsc{Matlab}. The answer to 
+	To give an idea of how far $\xB_i$ has to be for this to happen, let us consider an example in \textsc{Matlab}. The answer to 
         \texttt{exp(-d\^{}2)} is \texttt{0} whenever \texttt{d} exceeds \texttt{30} units.
 	This is problematic in practice, since distances larger than 30 often appear. Some common cases include data sets that contain outliers or data sets that present a large scale. 
 
-	The large scale effect can be partially alleviated if we initialize $\AB$ with small values. This is idea was used by Laurens van der Maaten in his implementation: \texttt{A = 0.01*randn(d,D)}. However, this does not guarantee to compensate the scale variation for any data set.
+	The large scale effect can be partially alleviated if we initialize $\AB$ with small values. This idea was used by \citet{maaten-online} in his NCA implementation: \texttt{A = 0.01*randn(d,D)}. However, this fixed coefficient of \texttt{0.01} does not reduce the scale variation of any data set enough to guarantee no numerical issues.
 
 % 	projection $\AB$ does not compensate for the scale
 
 	A more robust solution is to normalize the
-        data, \ie, centre and making it unit variance:
+        data, i.e., centre and make it have unit marginal variances:
         \begin{align}
             x_{ij} \leftarrow \frac{x_{ij} - \mu_j}{\sigma_j}, \quad i =
 	    \{1,\cdots,N\},\; j = \{1,\cdots,D\}.
         \end{align}
-        In this case, we have to store the initial mean and variance of the data
-        and, at test time, transform the test data accordingly: subtract the mean and scale it using the variance coefficients. The variance scaling can be regarded as a linear transformation. We can combine this transformation with the learnt transformation $\AB$ and get:
+        In this case, we have to store the initial mean and variance of the data and, at test time, transform the test data accordingly: subtract the mean and scale it using the variance coefficients. The variance scaling can be regarded as a linear transformation. We can combine this transformation with the learnt transformation $\AB$ and get:
         \begin{align}
             \AB_{\text{total}} \leftarrow \AB  \cdot \begin{pmatrix}
                   \sigma_1 &  \cdots & 0 \\
@@ -415,15 +410,15 @@ usually guarantees a better initial projection.
         \end{align}
 
 	
-	In general, data normalization avoids numerical issues for the first iterations. But during training, the scale of $\AB$ increases and data points can be ``thrown'' away. We adopt a rather simplistic approach to avoid any numerical problems: replace $p_i$ with a very small value whenever we are in the $\frac{0}{0}$ case, as in Laurens van der Maaten implementation. In \textsc{Matlab}, this is done using the following command \texttt{max(p\_i,eps)}. 
+	In general, data normalization avoids numerical issues for the first iterations. But during training, the scale of $\AB$ increases and data points can be ``thrown'' away. We adopt a rather simplistic approach to avoid any numerical problems: replace $p_i$ with a very small value whenever we are in the $\frac{0}{0}$ case, as in the implementation of \citet{maaten-online}. In \textsc{Matlab}, this is done using the following command \texttt{max(p\_i,eps)}. 
     
 	A more rigorous way of dealing with this by multiplying both the numerator and denominator of $p_i$ with a certain quantity $\exp(L)$:
 	\begin{align}
 	  p_i = \frac{\sum_{j\in c_i} \exp(L-d_{ij}^2)}{\sum_{k\neq i} \exp(L-d_{ik}^2)},
 	\end{align}
-	where $L = \min_{k\neq i} d_{ik}^2$. This value of $L$ ensures that at least one term in the denominator does not undeflow.
+	where $L = \min_{k\neq i} d_{ik}^2$. This value of $L$ ensures that at least one term in the denominator does not underflow.
 
-	In our implementation, we preferred the first trick because we can vectorize the code. In \texttt{Matlab}, it is important to have vectorized code to achieve better speed-ups. For a C implementation, we recommend the second option.
+%	In our implementation, we preferred the first trick because we can vectorize the code. In \texttt{Matlab}, it is important to have vectorized code to achieve better speed-ups. For a C implementation, we recommend the second option.
 
 \subsection{Regularization}
 \label{subsec:regularization}
@@ -433,7 +428,7 @@ usually guarantees a better initial projection.
     \AB\xB_i = \yB_i, \quad i = \{1,\cdots,N\}.
   \end{align}
 
-  Because the system has more equations $dN$ than unknowns $dD$, it has exact solutions. If we set the same positions $\yB_i$ for points in the same class, we can virtually increase the scale of the projection to infinity and get an error-free classification. This degeneracy can be corrected with the help of regularization. We alter the objective function by subtracting a regularization term proportional with the magnitude of $\AB$. This gives:
+  Because the system has more equations $dN$ than unknowns $dD$, it has exact solutions. If we set the same positions $\yB_i$ for points in the same class, we can virtually increase the scale of the projection to infinity and get an error-free classification. This degeneracy can be corrected with the help of regularization. We alter the objective function by subtracting a regularization term proportional to the magnitude of $\AB$. This gives:
   \begin{align}
     g(\AB) = f(\AB) - \lambda \sum_{i=1}^d\sum_{j=1}^D A_{ij}^2.\\
             \frac{\partial g}{\partial \AB} = \frac{\partial f}{\partial \AB} - 2\lambda\AB,
@@ -445,7 +440,7 @@ usually guarantees a better initial projection.
   In our implementation, we use ``early stopping'' technique which has a similar effect to regularization. 
 
 % \begin{itemize}
-%     \item NCA favours 1NN and large scale linear projections
+%     \item NCA favours $1$-NN and large scale linear projections
 %         $\AB$. This is not usually the optimal thing.
 %     \item We can correct this using regularization, as pointed
 %         out in \citep{singh2010}.
@@ -458,9 +453,10 @@ usually guarantees a better initial projection.
 \subsection{Doing classification}
 \label{subsec:doing-classification}
 
-  For testing, \citet{goldberger2004} considered only $k$NN decision rule. Since we are optimizing a particular function~$f(\AB)$, another sensible tool for classification is an NCA based function. If we are using the probabilistic interpretation (section \ref{sec:cc-kde}) a query point~$\xB_i$ is labelled with most probable class~$c$:
+  For testing, \citet{goldberger2004} considered only the $k$NN decision rule. Since we are optimizing a particular function~$f(\AB)$, another sensible tool for classification is an NCA based function. If we are using the probabilistic interpretation (section \ref{sec:cc-kde}) a query point~$\xB_i$ is labelled with most probable class~$c$:
   \begin{align}
      c = \operatorname{argmax}_cp(c|\xB_i).
+    \label{eq:nca-cls-1}
   \end{align}
 
   This can be re-written in NCA specific notation as:
@@ -469,12 +465,12 @@ usually guarantees a better initial projection.
     \label{eq:nca-cls}
   \end{align}
 
-  In our experiments, $1$NN and the NCA classification rule described by equation~\eqref{eq:nca-cls} give very similar results if we train $\AB$ om the un-regularized function~$f(\AB)$. When we used early stopping, the NCA classification rule yielded better performances (chapter~\ref{ch:evaluation}). In this case, $k$NN with $k>1$ should also perform better than simple $1$NN.
+  In our experiments, $1$-NN and the NCA classification rule described by equation~\eqref{eq:nca-cls} give very similar results if we train $\AB$ on the un-regularized function~$f(\AB)$. When we used early stopping, the NCA classification rule yielded better performances (chapter~\ref{ch:evaluation}). In this case, $k$NN with $k>1$ should also perform better than simple $1$-NN.
 
 \subsection{Dimensionality annealing}
 \label{subsec:dimensionality-annealing}
 
-  Dimensionality annealing is an approach to learning a low-rank metric in an way that avoids local optima (Murray and Hinton, oral communication). We start with a full rank projection $\AB$ and gradually reduce the rank by introducing regularization terms on the lines of $\AB$. Compared with the classical regularization procedure, subsection \ref{subsec:regularization}, here we use a regularization term on each of the dimension $d$. The new objective function and its gradient are given by the following equations:
+  Dimensionality annealing is an approach to learning a low-rank metric in an way that avoids local optima (Hinton via Murray, oral communication). We start with a full rank projection $\AB$ and gradually reduce the rank by introducing regularization terms on the lines of $\AB$. Compared with the classical regularization procedure, subsection \ref{subsec:regularization}, here we use a regularization term on each dimension $d$. The new objective function and its gradient are given by the following equations:
     \begin{align}
             g(\AB) = f(\AB) - \sum_{i=1}^d\lambda_i\sum_{j=1}^D A_{ij}^2\\
             \frac{\partial g}{\partial \AB} = \frac{\partial f}{\partial \AB} - 2\begin{pmatrix}
@@ -484,7 +480,7 @@ usually guarantees a better initial projection.
                              \end{pmatrix}.
      \end{align}
 
-  A large value of $\lambda_d$ will impose a small magnitude of $\AB$ on dimension $d$. We increase $\lambda_d$ slowly; this permits for the rest of the values of $\AB$ to readjust. We clarify these steps in algorithm \ref{alg:dimensionality-annealing}.
+  A large value of $\lambda_d$ will impose a small magnitude of $\AB$ on dimension $d$. We increase $\lambda_d$ slowly; this permits the rest of the values of $\AB$ to readjust. We clarify these steps in algorithm \ref{alg:dimensionality-annealing}.
 
   \begin{algorithm} 
 	\caption{Dimensionality annealing} 
@@ -504,22 +500,26 @@ transformation $\AB\in\mathbb{R}^{D\times D}$ and low dimension~$d$.
 
   There are several notes to be made. There are alternatives for selecting the dimension $d$ we want to anneal, step~2 of algorithm~\ref{alg:dimensionality-annealing}. We can choose $d$ to be the direction that has:
     \begin{itemize}
-     \item minimum variance in our data set $\{\AB\xB_i\}_{i=1}^N$
+     \item minimum variance in our data set $\{\xB_i\}_{i=1}^N$
      \item minimum variance in the projected data set $\{\AB\xB_i\}_{i=1}^N$
      \item smallest magnitude in $\AB$.
     \end{itemize}
 
-    The function optimization step can be done either by gradient ascent or conjugate gradients. It is possible to do conjugate gradients for a small number of iterations, typically 2 or 3.
+    The function optimization step can be done either by gradient ascent or conjugate gradients. It is possible to do conjugate gradients for a small number of iterations, typically 2 or 3. After a dimension is annealed, we reach the end of the inner for loop, then we can remove that particular dimension; for example set the elements on the $d$-th row equal to 0. A further idea would be to run conjugate gradients until convergence initialized with low dimensional $\AB$ returned by algorithm~\ref{alg:dimensionality-annealing}.
 
-    After a dimension is annealed, we reach the end of the inner for loop, we can remove that particular dimension; for example set the elements on the $d$ row equal to 0.
-
-    A further idea would be to run conjugate gradients until convergence initialized with low dimensional $\AB$ returned by algorithm \ref{alg:dimensionality-annealing}.
+    Figure \ref{fig:dimensionality-annealing} shows a successful example of dimensionality annealing. The $2$-D projection given by the dimensionality annealing, figure~\ref{fig:sa-2}, is better than the one provided by simple NCA transformation, figure~\ref{fig:sa-1}. 
 
 \begin{figure}
 		 \centering
 			  \subfigure[Simple NCA transformation]{\label{fig:sa-1}\includegraphics[width=0.45\textwidth]{images/sa-1}}
 			    \hspace{0.02\textwidth}
 			 \subfigure[NCA with dimensionality annealing projection]{\label{fig:sa-2}\includegraphics[width=0.45\textwidth]{images/sa-2}}
-		\caption{Example of applying the dimensionality annealing procedure to \texttt{ionosphere} data set. The method using dimensionality annealing is more visually appealing than the classical approach.}
-		\label{fig:simulated-annealing}
+		\caption[Dimensionality annealing example]{Example of applying the dimensionality annealing procedure to \texttt{ionosphere} data set. The method using dimensionality annealing is more visually appealing than the classical approach.}
+		\label{fig:dimensionality-annealing}
 	\end{figure}
+	
+	
+\section*{Summary}
+
+In this chapter we have concentrated on the classic NCA method presenting its theoretical and practical aspects. In section \ref{sec:cc-kde} we have interpreted NCA into a more flexible framework. This allows us to easily incorporate prior class probabilities~$p(c)$. Usually we can estimate $p(c)=\frac{N_c}{N}$ and this might prove useful for unbalanced class. Furthermore, by modelling the posterior $p(c|\xB)$  and then using decision theory, we can obtain optimal solutions. Regarding the practical side of NCA, there does not seem to exist a technique that clearly dominates the others, but a combination of RCA for initialization and CG for optimization can be applied with little effort on any small and medium-sized data set. For high dimensional data sets, we recommend reguralization or early stopping and then using an NCA-based classification function (equation \ref{eq:nca-cls} or \ref{eq:nca-cls-1}). In the next chapter, we will see how we can apply NCA on large data sets.
+

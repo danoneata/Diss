@@ -4,7 +4,7 @@ img_extIsRegExp=false
 img_extensions=.eps .jpg .jpeg .png .pdf .ps .fig .gif
 kileprversion=2
 kileversion=2.0.86
-lastDocument=chapters/chap6.tex
+lastDocument=chapters/chap4.tex
 masterDocument=
 name=thesis
 pkg_extIsRegExp=false
@@ -154,7 +154,7 @@ order=0
 
 [item:chapters/chap1.tex]
 archive=true
-column=165
+column=41
 encoding=UTF-8
 highlight=LaTeX
 line=32
@@ -174,20 +174,20 @@ order=7
 
 [item:chapters/chap3.tex]
 archive=true
-column=9
+column=64
 encoding=UTF-8
 highlight=LaTeX
-line=500
+line=69
 mode=LaTeX
 open=true
 order=2
 
 [item:chapters/chap4.tex]
 archive=true
-column=78
+column=35
 encoding=UTF-8
 highlight=LaTeX
-line=538
+line=214
 mode=LaTeX
 open=true
 order=1
@@ -204,10 +204,10 @@ order=4
 
 [item:chapters/chap6.tex]
 archive=true
-column=474
+column=161
 encoding=UTF-8
 highlight=LaTeX
-line=12
+line=9
 mode=LaTeX
 open=true
 order=9
@@ -259,7 +259,7 @@ CursorColumn=36
 CursorLine=12
 
 [view-settings,view=0,item:chapters/chap1.tex]
-CursorColumn=165
+CursorColumn=41
 CursorLine=32
 
 [view-settings,view=0,item:chapters/chap2.tex]
@@ -267,20 +267,20 @@ CursorColumn=0
 CursorLine=92
 
 [view-settings,view=0,item:chapters/chap3.tex]
-CursorColumn=9
-CursorLine=500
+CursorColumn=64
+CursorLine=69
 
 [view-settings,view=0,item:chapters/chap4.tex]
-CursorColumn=78
-CursorLine=538
+CursorColumn=35
+CursorLine=214
 
 [view-settings,view=0,item:chapters/chap5.tex]
 CursorColumn=790
 CursorLine=12
 
 [view-settings,view=0,item:chapters/chap6.tex]
-CursorColumn=474
-CursorLine=12
+CursorColumn=161
+CursorLine=9
 
 [view-settings,view=0,item:infthesis.cls]
 CursorColumn=7

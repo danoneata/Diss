@@ -1,0 +1,211 @@
+#LyX file created by tex2lyx 1.6.10
+\lyxformat 264
+\begin_document
+\begin_header
+\textclass article
+\language english
+\inputencoding auto
+\font_roman default
+\font_sans default
+\font_typewriter default
+\font_default_family default
+\font_sc false
+\font_osf false
+\font_sf_scale 100
+\font_tt_scale 100
+\graphics default
+\paperfontsize default
+\spacing single
+\papersize default
+\use_geometry false
+\use_amsmath 1
+\use_esint 1
+\cite_engine basic
+\use_bibtopic false
+\paperorientation portrait
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation indent
+\defskip medskip
+\quotes_language english
+\papercolumns 1
+\papersides 1
+\paperpagestyle default
+\tracking_changes false
+\output_changes false
+\end_header
+
+\begin_body
+
+\begin_layout Standard
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Standard
+
+
+\backslash
+chapter{Conclusions}
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset LatexCommand label
+name "ch:conclusions"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+In chapter\InsetSpace ~
+
+\begin_inset LatexCommand ref
+reference "ch:introduction"
+
+\end_inset
+
+ we motivated the need for metric learning in the general context of 
+\begin_inset Formula $k$
+\end_inset
+
+NN, while section\InsetSpace ~
+
+\begin_inset LatexCommand ref
+reference "sec:theoretical-background"
+
+\end_inset
+
+ advocated for metric learning using more exact mathematical arguments. We showed the equivalence between Mahalanobis metrics and linear transformation which we used for the rest of the thesis. Section\InsetSpace ~
+
+\begin_inset LatexCommand ref
+reference "sec:related-methods"
+
+\end_inset
+
+ presented some of the related work in Mahalanobis metric learning.
+\end_layout
+
+\begin_layout Standard
+
+The focus of this thesis is the NCA method. Chapter\InsetSpace ~
+
+\begin_inset LatexCommand ref
+reference "ch:nca"
+
+\end_inset
+
+ explores NCA in detail and presents our experience with the method. The theoretical aspect is reviewed in section\InsetSpace ~
+
+\begin_inset LatexCommand ref
+reference "sec:general-presentation"
+
+\end_inset
+
+ and we also discuss the complexity issues in more detail than they were previously treated. Our main contributions start from section\InsetSpace ~
+
+\begin_inset LatexCommand ref
+reference "sec:cc-kde"
+
+\end_inset
+
+ which shows a novel interpretation of NCA\SpecialChar \@.
+ The class-conditional kernel density estimation, offers certain advantages (like the possibility of integrating class distribution into the model) and opens a new range of methods. In section\InsetSpace ~
+
+\begin_inset LatexCommand ref
+reference "sec:practical-notes"
+
+\end_inset
+
+ we give practical advice on applying NCA. Initializing the optimization process with a cheap linear transformation such as LDA or RCA usually results in good final solutions. For the optimization technique there does not seem to be a generally valid answer. Using either regularization or early stopping in conjunction with a NCA-based classification function can boost further the performance. Dimensionality annealing has the premises of an interesting idea, yet we need to further experiment.
+\end_layout
+
+\begin_layout Standard
+
+Chapter\InsetSpace ~
+
+\begin_inset LatexCommand ref
+reference "ch:reducing"
+
+\end_inset
+
+ investigates methods for reducing the computational cost. The classical mini-batches method is modified to work better in a low-rank metric scenario. To do this we used cheap ways of clustering the points in low dimensions and then applied NCA on successive clusters (section\InsetSpace ~
+
+\begin_inset LatexCommand ref
+reference "sec:mini-batches"
+
+\end_inset
+
+). We evaluated these methods in an empirical setting (chapter\InsetSpace ~
+
+\begin_inset LatexCommand ref
+reference "ch:evaluation"
+
+\end_inset
+
+) and
+\end_layout
+
+\begin_layout Section
+
+Further directions
+\end_layout
+
+\begin_layout Standard
+
+
+\begin_inset LatexCommand label
+name "sec:further-directions"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+This projected involved many possible directions. Unfortunately, in the short time allocated we could only look at a part of the whole picture and we left some open paths. We aim to further some of the work in the near future. We plan to further investigate the automatic differentiation procedure and see whether will imply a memory blow-up or it prove to be a better idea than symbolic differentiation. Also we aim to implement a robust and efficient NCA 
+\begin_inset Formula $k$
+\end_inset
+
+-d tree code. Further experimentation can be done in the dimensionality annealing idea since it seems a promising technique and we could not allocate more to it because it was not the main aim of the project.
+\end_layout
+
+\begin_layout Standard
+
+Further refinements of our work are still possible. It would be interested to try a dual tree 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Standard
+
+
+\backslash
+citep{gray2003}
+\end_layout
+
+\end_inset
+
+ inspired algorithm in the mini batch context. Also we could try this approach on other distance metric learning methods, with different objective functions (e.g., 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Standard
+
+
+\backslash
+citealp{xing2003}
+\end_layout
+
+\end_inset
+
+). Although this implies losing the convexity. Who is afraid of non-convexity anyway?
+\end_layout
+
+\end_body
+\end_document
