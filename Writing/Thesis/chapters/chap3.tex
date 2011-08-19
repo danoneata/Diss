@@ -507,7 +507,7 @@ transformation $\AB\in\mathbb{R}^{D\times D}$ and low dimension~$d$.
 
     The function optimization step can be done either by gradient ascent or conjugate gradients. It is possible to do conjugate gradients for a small number of iterations, typically 2 or 3. After a dimension is annealed, we reach the end of the inner for loop, then we can remove that particular dimension; for example set the elements on the $d$-th row equal to 0. A further idea would be to run conjugate gradients until convergence initialized with low dimensional $\AB$ returned by algorithm~\ref{alg:dimensionality-annealing}.
 
-    Figure \ref{fig:dimensionality-annealing} shows a successful example of dimensionality annealing. The $2$-D projection given by the dimensionality annealing, figure~\ref{fig:sa-2}, is better than the one provided by simple NCA transformation, figure~\ref{fig:sa-1}. 
+    Figure \ref{fig:dimensionality-annealing} shows a successful example of dimensionality annealing. The two dimensional projection given by the dimensionality annealing technique, figure~\ref{fig:sa-2}, is better than the one provided by simple NCA transformation, figure~\ref{fig:sa-1}. 
 
 \begin{figure}
 		 \centering

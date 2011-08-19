@@ -14,7 +14,7 @@
 	  \subfigure[NCA projection after PCA initialization]{\label{fig:iris-init-4}\includegraphics[width=0.47\textwidth]{images/iris-init-4}}
 	  \subfigure[NCA projection after LDA initialization]{\label{fig:iris-init-6}\includegraphics[width=0.47\textwidth]{images/iris-init-6}}
 	  \subfigure[NCA projection after RCA initialization]{\label{fig:iris-init-8}\includegraphics[width=0.47\textwidth]{images/iris-init-8}}
-	  \caption{\small Results on \texttt{iris} data set.}
+	  \caption{Initialization experiments  on \texttt{iris} data set.}
 	  \label{fig:iris-init}
 \end{figure}
 
@@ -24,7 +24,7 @@
 	  \subfigure[NCA projection after PCA initialization]{\label{fig:balance-init-4}\includegraphics[width=0.47\textwidth]{images/balance-init-4}}
 	  \subfigure[NCA projection after LDA initialization]{\label{fig:balance-init-6}\includegraphics[width=0.47\textwidth]{images/balance-init-6}}
 	  \subfigure[NCA projection after RCA initialization]{\label{fig:balance-init-8}\includegraphics[width=0.47\textwidth]{images/balance-init-8}}
-	  \caption{\small Results on \texttt{balance} data set.}
+	  \caption{Initialization experiments on \texttt{balance} data set.}
 	  \label{fig:balance-init}
 \end{figure}
 
@@ -34,9 +34,71 @@
 	  \subfigure[NCA projection after PCA initialization]{\label{fig:ecoli-init-4}\includegraphics[width=0.47\textwidth]{images/ecoli-init-4}}
 	  \subfigure[NCA projection after LDA initialization]{\label{fig:ecoli-init-6}\includegraphics[width=0.47\textwidth]{images/ecoli-init-6}}
 	  \subfigure[NCA projection after RCA initialization]{\label{fig:ecoli-init-8}\includegraphics[width=0.47\textwidth]{images/ecoli-init-8}}
-	  \caption{\small Results on \texttt{ecoli} data set.}
+	  \caption{Initialization experiments on \texttt{ecoli} data set.}
 	  \label{fig:ecoli-init}
 \end{figure}
+
+
+
+
+
+  \begin{table}
+    \centering\begin{tabular}{lrcccc}
+      \toprule
+      &     & \multicolumn{2}{c}{Conjugate gradients}  & \multicolumn{2}{c}{Bold driver}\\
+      \cmidrule(r){3-4} \cmidrule(r){5-6}
+      Data set & $d$ & $1$-NN & NCA & $1$-NN & NCA \\
+      \midrule
+	\texttt{balance}&$2$&$92.74 \pm 0.57$&$92.29 \pm 0.56$&$92.05 \pm 0.93$&$92.45 \pm 0.81$\\ 
+	&$3$&$94.81 \pm 0.52$&$94.87 \pm 0.53$&$92.79 \pm 0.95$&$92.87 \pm 0.97$\\ 
+	&$4$&$95.16 \pm 0.39$&$95.32 \pm 0.33$&$94.18 \pm 0.76$&$94.36 \pm 0.69$\\ 
+	\midrule
+	\texttt{glass}&$2$&$53.6 \pm 1.4$&$54.2 \pm 1.5$&$58.7 \pm 1.5$&$62.5 \pm 1.4$\\ 
+	&$3$&$61.8 \pm 1.1$&$60.9 \pm 1.2$&$66.3 \pm 1.1$&$67.1 \pm 1.1$\\ 
+	&$4$&$62.7 \pm 1.4$&$62.2 \pm 1.5$&$65.8 \pm 1.0$&$66.6 \pm 1.3$\\ 
+	&$5$&$64.5 \pm 1.2$&$63.46 \pm 0.97$&$66.69 \pm 0.93$&$67.00 \pm 0.87$\\ 
+	&$9$&$66.5 \pm 1.8$&$65.5 \pm 1.8$&$66.0 \pm 1.7$&$65.6 \pm 1.7$\\ 
+	\midrule
+	\texttt{ionosphere}&$2$&$86.23 \pm 0.80$&$86.18 \pm 0.75$&$82.78 \pm 0.98$&$82.78 \pm 0.91$\\ 
+	&$3$&$87.69 \pm 0.62$&$87.64 \pm 0.62$&$86.04 \pm 0.83$&$86.08 \pm 0.85$\\ 
+	&$4$&$87.64 \pm 0.55$&$87.64 \pm 0.57$&$86.51 \pm 0.73$&$86.51 \pm 0.73$\\ 
+	&$5$&$89.39 \pm 0.70$&$89.39 \pm 0.70$&$87.88 \pm 0.64$&$87.88 \pm 0.64$\\ 
+	&$33$&$87.97 \pm 0.68$&$87.97 \pm 0.68$&$88.44 \pm 0.59$&$88.44 \pm 0.59$\\ 
+      \bottomrule
+    \end{tabular}
+  \caption[Accuracy for NCA optimized with conjugate gradient method and gradient ascent with ``bold driver'' heuristic (part 1 of 2)]{Comparison in terms of accuracy between two possible optimization methods for NCA: the conjugate gradient method and the gradient ascent with the ``bold driver'' heuristic. (Part 2 of 2)}
+  \label{table:comp-opts-1}
+  \end{table}
+
+  \begin{table}
+  \centering
+    \begin{tabular}{lrcccc}
+    \toprule
+	    &     & \multicolumn{2}{c}{Conjugate gradient}  & \multicolumn{2}{c}{Bold-driver}\\
+    \cmidrule(r){3-4} \cmidrule(r){5-6}
+    Data set & $d$ & $1$-NN & NCA & $1$-NN & NCA \\
+    \midrule
+      \texttt{iris}&$2$&$94.44 \pm 0.51$&$94.11 \pm 0.48$&$93.67 \pm 0.82$&$93.78 \pm 0.84$\\ 
+      &$3$&$95.44 \pm 0.73$&$95.00 \pm 0.75$&$95.22 \pm 0.72$&$95.33 \pm 0.74$\\ 
+      &$4$&$96.56 \pm 0.46$&$96.44 \pm 0.46$&$95.44 \pm 0.76$&$95.56 \pm 0.77$\\ 
+      \midrule
+      \texttt{wine}&$2$&$96.67 \pm 0.38$&$96.57 \pm 0.38$&$96.30 \pm 0.54$&$96.30 \pm 0.54$\\ 
+      &$3$&$96.39 \pm 0.48$&$96.39 \pm 0.48$&$96.57 \pm 0.59$&$96.57 \pm 0.59$\\ 
+      &$4$&$96.20 \pm 0.40$&$96.48 \pm 0.41$&$97.13 \pm 0.52$&$97.13 \pm 0.52$\\ 
+      &$5$&$96.57 \pm 0.60$&$96.57 \pm 0.60$&$96.76 \pm 0.55$&$96.76 \pm 0.55$\\ 
+      &$13$&$96.20 \pm 0.48$&$96.20 \pm 0.48$&$97.22 \pm 0.48$&$97.22 \pm 0.48$\\ 
+      \midrule
+      \texttt{yeast}&$2$&$42.37 \pm 0.81$&$43.20 \pm 0.84$&$44.65 \pm 0.56$&$46.68 \pm 0.57$\\ 
+      &$3$&$48.06 \pm 0.67$&$48.30 \pm 0.65$&$47.06 \pm 0.53$&$47.95 \pm 0.54$\\ 
+      &$4$&$49.06 \pm 0.47$&$49.14 \pm 0.47$&$49.48 \pm 0.42$&$49.83 \pm 0.38$\\ 
+      &$5$&$50.09 \pm 0.39$&$50.09 \pm 0.38$&$50.16 \pm 0.61$&$50.41 \pm 0.62$\\ 
+      &$8$&$50.66 \pm 0.52$&$50.70 \pm 0.52$&$50.19 \pm 0.58$&$50.28 \pm 0.60$\\ 
+    \bottomrule
+    \end{tabular}
+  \caption[Accuracy for NCA optimized with conjugate gradient method and gradient ascent with ``bold driver'' heuristic (part 2 of 2)]{Comparison in terms of accuracy between two possible optimization methods for NCA: conjugate gradients and gradient ascent with the ``bold driver'' heuristic. (Part 2 of 2)}
+  \label{table:comp-opts-2}
+  \end{table}
+
 
 \begin{table}
   \centering\begin{tabular}{lrccc}
@@ -70,7 +132,7 @@
 &$D=13$&$99.25 \pm 0.62$&$96.85 \pm 0.41$&$96.85 \pm 0.41$\\ 
 \bottomrule
      \end{tabular}
-     \caption{Accuracy scores of NCA trained using stochastic learning on small and medium sized data sets. The scores are averaged over 20 repeats. RCA was used for initialization.}
+     \caption[Accuracy for NCA trained using stochastic learning on small and medium sized data sets (part 1 of 2)]{Accuracy scores of NCA trained using stochastic learning on small and medium sized data sets. The scores are averaged over 20 repeats. RCA was used for initialization. (Part 1 of 2)}
      \label{app:table:nca-sl-small-1}
 \end{table}
 
@@ -108,7 +170,7 @@
     &$D=4$&$66.0 \pm 3.1$&$71.44 \pm 0.56$&$75.4 \pm 2.9$\\ 
     \bottomrule
    \end{tabular}
-        \caption{Accuracy scores of NCA trained using stochastic learning on small and medium sized data sets. The scores are averaged over 20 repeats. RCA was used for initialization.}
+        \caption[Accuracy for NCA trained using stochastic learning on small and medium sized data sets (part 2 of 2)]{Accuracy scores of NCA trained using stochastic learning on small and medium sized data sets. The scores are averaged over 20 repeats. RCA was used for initialization. (Part 2 of 2)}
         \label{app:table:nca-sl-small-2}
 \end{table}
 
@@ -117,64 +179,6 @@
 % \label{app:sec:nca-cs}
 
 \begin{landscape}
-
-  \begin{table}
-    \centering\begin{tabular}{lrcccc}
-      \toprule
-      &     & \multicolumn{2}{c}{Conjugate gradients}  & \multicolumn{2}{c}{Bold driver}\\
-      \cmidrule(r){3-4} \cmidrule(r){5-6}
-      Data set & $d$ & $1$-NN & NCA & $1$-NN & NCA \\
-      \midrule
-	\texttt{balance}&$2$&$92.74 \pm 0.57$&$92.29 \pm 0.56$&$92.05 \pm 0.93$&$92.45 \pm 0.81$\\ 
-	&$3$&$94.81 \pm 0.52$&$94.87 \pm 0.53$&$92.79 \pm 0.95$&$92.87 \pm 0.97$\\ 
-	&$4$&$95.16 \pm 0.39$&$95.32 \pm 0.33$&$94.18 \pm 0.76$&$94.36 \pm 0.69$\\ 
-	\midrule
-	\texttt{glass}&$2$&$53.6 \pm 1.4$&$54.2 \pm 1.5$&$58.7 \pm 1.5$&$62.5 \pm 1.4$\\ 
-	&$3$&$61.8 \pm 1.1$&$60.9 \pm 1.2$&$66.3 \pm 1.1$&$67.1 \pm 1.1$\\ 
-	&$4$&$62.7 \pm 1.4$&$62.2 \pm 1.5$&$65.8 \pm 1.0$&$66.6 \pm 1.3$\\ 
-	&$5$&$64.5 \pm 1.2$&$63.46 \pm 0.97$&$66.69 \pm 0.93$&$67.00 \pm 0.87$\\ 
-	&$9$&$66.5 \pm 1.8$&$65.5 \pm 1.8$&$66.0 \pm 1.7$&$65.6 \pm 1.7$\\ 
-	\midrule
-	\texttt{ionosphere}&$2$&$86.23 \pm 0.80$&$86.18 \pm 0.75$&$82.78 \pm 0.98$&$82.78 \pm 0.91$\\ 
-	&$3$&$87.69 \pm 0.62$&$87.64 \pm 0.62$&$86.04 \pm 0.83$&$86.08 \pm 0.85$\\ 
-	&$4$&$87.64 \pm 0.55$&$87.64 \pm 0.57$&$86.51 \pm 0.73$&$86.51 \pm 0.73$\\ 
-	&$5$&$89.39 \pm 0.70$&$89.39 \pm 0.70$&$87.88 \pm 0.64$&$87.88 \pm 0.64$\\ 
-	&$33$&$87.97 \pm 0.68$&$87.97 \pm 0.68$&$88.44 \pm 0.59$&$88.44 \pm 0.59$\\ 
-      \bottomrule
-    \end{tabular}
-  \caption{Comparison in terms of accuracy between two possible optimization methods for NCA: conjugate gradients and gradient ascent with the ``bold driver'' heuristic}
-  \label{table:comp-opts-1}
-  \end{table}
-
-  \begin{table}
-  \centering
-    \begin{tabular}{lrcccc}
-    \toprule
-	    &     & \multicolumn{2}{c}{Conjugate gradient}  & \multicolumn{2}{c}{Bold-driver}\\
-    \cmidrule(r){3-4} \cmidrule(r){5-6}
-    Data set & $d$ & $1$-NN & NCA & $1$-NN & NCA \\
-    \midrule
-      \texttt{iris}&$2$&$94.44 \pm 0.51$&$94.11 \pm 0.48$&$93.67 \pm 0.82$&$93.78 \pm 0.84$\\ 
-      &$3$&$95.44 \pm 0.73$&$95.00 \pm 0.75$&$95.22 \pm 0.72$&$95.33 \pm 0.74$\\ 
-      &$4$&$96.56 \pm 0.46$&$96.44 \pm 0.46$&$95.44 \pm 0.76$&$95.56 \pm 0.77$\\ 
-      \midrule
-      \texttt{wine}&$2$&$96.67 \pm 0.38$&$96.57 \pm 0.38$&$96.30 \pm 0.54$&$96.30 \pm 0.54$\\ 
-      &$3$&$96.39 \pm 0.48$&$96.39 \pm 0.48$&$96.57 \pm 0.59$&$96.57 \pm 0.59$\\ 
-      &$4$&$96.20 \pm 0.40$&$96.48 \pm 0.41$&$97.13 \pm 0.52$&$97.13 \pm 0.52$\\ 
-      &$5$&$96.57 \pm 0.60$&$96.57 \pm 0.60$&$96.76 \pm 0.55$&$96.76 \pm 0.55$\\ 
-      &$13$&$96.20 \pm 0.48$&$96.20 \pm 0.48$&$97.22 \pm 0.48$&$97.22 \pm 0.48$\\ 
-      \midrule
-      \texttt{yeast}&$2$&$42.37 \pm 0.81$&$43.20 \pm 0.84$&$44.65 \pm 0.56$&$46.68 \pm 0.57$\\ 
-      &$3$&$48.06 \pm 0.67$&$48.30 \pm 0.65$&$47.06 \pm 0.53$&$47.95 \pm 0.54$\\ 
-      &$4$&$49.06 \pm 0.47$&$49.14 \pm 0.47$&$49.48 \pm 0.42$&$49.83 \pm 0.38$\\ 
-      &$5$&$50.09 \pm 0.39$&$50.09 \pm 0.38$&$50.16 \pm 0.61$&$50.41 \pm 0.62$\\ 
-      &$8$&$50.66 \pm 0.52$&$50.70 \pm 0.52$&$50.19 \pm 0.58$&$50.28 \pm 0.60$\\ 
-    \bottomrule
-    \end{tabular}
-  \caption{Comparison in terms of accuracy between two possible optimization methods for NCA: conjugate gradients and gradient ascent with the ``bold driver'' heuristic}
-  \label{table:comp-opts-2}
-  \end{table}
-
   \begin{table}
     \centering\begin{tabular}{lrcccccc}
       \toprule
@@ -199,7 +203,7 @@
       &$33$&$87.97 \pm 0.68$&$87.97 \pm 0.68$&$86.56 \pm 0.92$&$66.09 \pm 0.95$&$87.26 \pm 0.45$&$84.76 \pm 0.83$\\ 
       \bottomrule
     \end{tabular}
-  \caption{Accuracy scores for the compact support versions of NCA.}
+  \caption[Accuracy for NCA, the compact support NCA and the compact support NCA with background distribution (part 1 of 2)]{Accuracy scores for NCA, the compact support NCA and the compact support NCA with background distribution (part 1 of 2).}
   \label{app:tab:nca-cs-scores-1}
   \end{table}
 
@@ -228,7 +232,7 @@
     &$8$&$50.66 \pm 0.52$&$50.70 \pm 0.52$&$50.93 \pm 0.44$&$54.89 \pm 0.43$&$48.73 \pm 0.65$&$56.93 \pm 0.62$\\ 
     \bottomrule
     \end{tabular}
-  \caption{Accuracy scores for the compact support versions of NCA.}
+  \caption[Accuracy for NCA, the compact support NCA and the compact support NCA with background distribution (part 2 of 2)]{Accuracy scores for NCA, the compact support NCA and the compact support NCA with background distribution (part 2 of 2).}
   \label{app:tab:nca-cs-scores-2}
   \end{table}
 \end{landscape}

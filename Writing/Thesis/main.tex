@@ -44,7 +44,7 @@
 %% Taught MSc -- specify a particular degree instead. If none is specified,
 %% "MSc in Informatics" is used.
 % \documentclass[msc,cogsci]{infthesis}
-\documentclass[msc,ai,logo,notimes]{infthesis}  % for the MSc in Informatics
+\documentclass[msc,ai,logo,notimes,twoside]{infthesis}  % for the MSc in Informatics
 
 %% Undergraduate project -- specify the degree course and project type
 %% separately
@@ -90,7 +90,11 @@
 
 %% Specify the abstract here.
 \abstract{%
-    
+  In this thesis we focus on Neighbourhood Component Analysis (NCA; \citealp{goldberger2004}) --- an elegant metric learning framework developed in the context of $k$ nearest neighbours ($k$NN). NCA learns a (low-rank) metric by maximizing the expected number of correctly classified points. The objective function depends on the pairwise distances between the points. Hence, the learning procedure scales quadratically with the number of samples, making the algorithm impractical when applied on large data sets.
+  
+  We propose two families of algorithms for reducing the computational cost of the NCA method. First, we consider ideas inspired by the sub-sampling methods. We investigate a mini-batch method that forms mini-batches by clustering. Our results indicate that this approach works well for medium-sized mini-batches. Next, we present a sub-set learning algorithm that is theoretically justified by stochastic optimization arguments. Our experiments demonstrate that this method offers similar results to classical NCA\@.
+  
+  The second family of algorithms includes variants of approximate methods. We derive these methods by first interpreting NCA as a class-conditional kernel-density estimation (CC-KDE) problem. This formulation offers several advantages: (i) it allows us to adapt existing algorithms for fast kernel-density estimation into the context of NCA and (ii) it offers more flexibility; for example, we develop a compact support version NCA method that achieves considerable speed-ups when combined with the stochastic learning procedure.
 }
 
 %% Now we start with the actual document.
@@ -104,8 +108,9 @@
 
 %% Acknowledgements
 \begin{acknowledgements}
- Many thanks to my mummy for the numerous packed lunches; and of course to
- Igor, my faithful lab assistant. DP IM.
+I would like to thank my supervisor, Iain Murray, for accepting me as his student, for his continuous support and for his patience. I benefited greatly from his careful advice and feedback throughout the development of this project. 
+
+I am grateful to acknowledge that my studies were supported by the ``Dinu Patriciu'' Foundation --- it was a great opportunity that they have offered me.
 \end{acknowledgements}
 
 %% Next we need to have the declaration.
@@ -119,8 +124,9 @@
 \tableofcontents
 
 %% If you want a list of figures or tables, uncomment the appropriate line(s)
-%\listoffigures
-%\listoftables
+\listoffigures
+\listoftables
+\listofalgorithms
 
 \end{preliminary}
 

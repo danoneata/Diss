@@ -232,7 +232,7 @@ randomly selected points and how they relate to the whole training set.
 %This allows us to have significantly modified the parameter after one sweep through the training data. 
 The use of the stochastic gradient is motivated by the fact that at the initial stages we are far from the optimum solution. If we follow a direction that makes an angle smaller than $\pi/2$ with the true gradient, we get closer to the maximum of the function. Estimated gradients often represent a cheap and practical way of optimizing the parameters.
 
-NCA SL also differs from the mini-batches method because for the mini-batches method the contributions $p_i$ are calculated only between the $n$ points that belong to the mini-batch.
+NCA SL also differs from the mini-batcs method because for the mini-batch method the contributions $p_i$ are calculated only between the $n$ points that belong to the mini-batch.
 %As in the previous case, we still need to compute the soft assignments $\{p_i\}_{i=1}^n$ using \textit{all} the $N$ points. To stress this further, this solution differs from the mini-batch approach. 
 
 This stochastic learning method method comes with an additional facility. It can be used for on-line learning. Given a
@@ -241,7 +241,7 @@ p_{N+1}}{\partial \AB}$.
 
 \section*{Interlude}
 
-The algorithms we presented are characterized by sub-sampling the data. These are easy to apply once we decide on the converge conditions and the learning rate update.
+The algorithms we presented are characterized by data sub-sampling. These are easy to apply once we decide on the converge conditions and the learning rate update.
 
 In the following sections we describe variants of algorithms that use approximations. When computing $p_i$ we can ignore some of the individual point contributions $p_{ij}$. While useful on their own, this family of algorithms can achieve better accelerations when combined with the previous methods. 
 
@@ -371,10 +371,10 @@ and $m$ number of points in leaves.
 				\RETURN
 			\ENDIF
 				\STATE {Choose direction $\vec{d}$ using equation
-\ref{eq:splitting-direction}: \texttt{splitting\_direction(i)=}$d$.}
+\eqref{eq:splitting-direction}: \texttt{splitting\_direction(i)=}$d$.}
 % 				\STATE {}
 				\STATE {Find the median value $\tilde{x}_d$ on the direction $\vec{d}$: \texttt{splitting\_value(i)=}$\tilde{x}_d$.}
-				\STATE {Determine the subsets of points that are separated by the resulting splitting plane: $\mathcal{D}_{\le\tilde{\xB}}$ and $\mathcal{D}_{>\tilde{\xB}}$, see equations \ref{eq:subset-left} and \ref{eq:subset-right}.}
+				\STATE {Determine the subsets of points that are separated by the resulting splitting plane: $\mathcal{D}_{\le\tilde{\xB}}$ and $\mathcal{D}_{>\tilde{\xB}}$, see equations \eqref{eq:subset-left} and \eqref{eq:subset-right}.}
 				\STATE {Build left child
 \texttt{build\_kdtree(}$\mathcal{D}_{\le\tilde{\xB}}$\texttt{,2*i)}.}
 				\STATE {Build right child
@@ -428,7 +428,7 @@ approximating each point $\xB_i$ with a fixed $\xB_g$, for example, the mean of 
   \label{eq:approx-rule}
 %\min_jk(\xB_i|\xB_j) + \max_jk(\xB_i|\xB_j)\right).
 \end{align} 
-where $k_{\min}$ and $k_{\max}$ represent the minimum and maximum contributions for any of the data point in the hyper-rectangle. This last option does not introduce any further computational expense. Both the minimum and the maximum contributions are previously calculated to decide whether to prune or not. Also it does not need storing any additional statistic, such as the mean.
+where $k_{\min}$ and $k_{\max}$ represent the minimum and maximum contributions that can arise for the given query point~$\xB_i$ and the bounding box that encloses the group~$G$. This last option does not introduce any further computational expense. Both the minimum and the maximum contributions are previously calculated to decide whether to prune or not. Also it does not need storing any additional statistic, such as the mean.
 
 The error introduced by each approximation is bounded by the following quantity:
 \begin{align}
@@ -447,83 +447,113 @@ We use $k$-d trees to form groups of points $G$ that will be described as hyper-
 \subsection{Approximate KDE for NCA}
 \label{subsec:approx-KDE-for-NCA}
  
-We recall that NCA was formulated as a class-conditional kernel density estimation problem, section \ref{sec:cc-kde}. By combining ideas from the previous two subsections, we can develop an NCA specific approximation algorithm.
+We recall that NCA was formulated as a class-conditional kernel density estimation problem (CC-KDE; section \ref{sec:cc-kde}). By combining ideas from the previous two subsections, we can develop an NCA specific approximation algorithm.
 
-There are some differences from the classical KDE approximation. In this case, we deal with class-conditional probabilities $p(\AB\xB_i|c),\forall c$. So each class $c$ needs to be treated separately: we build a $k$-d tree with the projected data points $\{\AB\xB_j\}_{j\in c}$ and calculate the estimated probability $\hat{p}(\AB\xB_i|c)$ for each class. Another distinction is that for NCA our final interests are the objective function and its gradient. We can easily obtain an approximated version of the objective function by replacing $p(\AB\xB_i|c)$ with the approximated $\hat{p}(\AB\xB_i|c)$ in equation \eqref{eq:nca-cc-kde-obj}:
+There are some differences from the classical KDE approximation. In this case, we deal with class-conditional probabilities $p(\AB\xB_i|c),\forall c$. So each class $c$ needs to be treated separately: we build a $k$-d tree with the projected data points $\{\AB\xB_j\}_{j\in c}$ and calculate the estimated probability $\hat{p}(\AB\xB_i|c)$ for each class. Another distinction is that for NCA our final interests are the objective function and its gradient. Algorithm \ref{alg:cc-kde-nca} presents at a high-level how the NCA objective function and its gradient are computed in the CC-KDE scenario.
+
+	\begin{algorithm}
+		\caption{Approximate NCA} 
+		\label{alg:cc-kde-nca}  
+		\begin{algorithmic}[1]                    % enter the algorithmic environment
+			\REQUIRE Projection matrix $\AB$, data set
+$\mathcal{D}=\{\xB_1,\cdots,\xB_N\}$ and error~$\tau$.
+			\FORALL {classes $c$}
+				\STATE {Build $k$-d tree for the points in class $c$.}
+			\ENDFOR 
+			\FORALL {data points $\xB_i$}
+				\FORALL {classes $c$}
+					\STATE {Compute approximate class-conditional probability $\hat{p}(\AB\xB_i|c)$ and its
+corresponding gradient $\frac{\partial}{\partial \AB} \hat{p}(\AB\xB_i|c)$ 
+using algorithm \ref{alg:approx-cc-kde}}
+%					\STATE {\texttt{[p(c),dp(c)]=NCA\_recursive(kdtree(c))}}
+				\ENDFOR
+				\STATE Compute soft probability $\hat{p}_i \equiv \hat{p}(c|\AB\xB_i) =
+\frac{\hat{p}(\AB\xB_i|c_i)}{\sum_{c}\hat{p}(\AB\xB_i|c)}$.
+				\STATE Update function value (equation \ref{eq:nca-cc-kde-obj}) and gradient value
+				(equation \ref{eq:nca-cc-kde-grad}).
+			\ENDFOR
+		\end{algorithmic}
+	\end{algorithm}
+
+We demonstrate how we can obtain an approximated version of the objective function. We begin by replacing $p(\AB\xB_i|c)$ with the approximated $\hat{p}(\AB\xB_i|c)$ in equation~\eqref{eq:nca-cc-kde-obj}:
 \begin{align}
 	    \hat{f}(\AB) = \sum_{i=1}^{N} \hat{p}(c_i|\AB\xB_i).
 	    \label{eq:nca-cc-kde-obj-approx}
 \end{align}
 
-To obtain the gradient of this new objective function we can use equation~\eqref{eq:nca-cc-kde-grad}. The derivative~$\frac{\partial}{\partial \AB}\hat{p}(\AB\xB|c)$ will be different only for those groups where we do approximations. We remind that each individual contribution is given by a normal distribution:
+To obtain the gradient of this new objective function we use equation~\eqref{eq:nca-cc-kde-grad}. We remind that each individual contribution is given by a normal distribution:
 \begin{align}
   k(\AB\xB|\AB\xB_i) \propto \exp\left\{ -(\AB\xB - \AB\xB_i)\tr(\AB\xB - \AB\xB_i) \right\}.
 \end{align}
 
 So the gradient of each individual contribution with respect to the linear transformation~$\AB$ will be:
 \begin{align}
-  \frac{\partial k(\AB\xB|\AB\xB_i)}{\partial \AB} \propto -2\AB k(\AB\xB|\AB\xB_i)(\xB-\xB_i)(\xB-\xB_i)\tr.
+  \frac{\partial}{\partial \AB} k(\AB\xB|\AB\xB_i) \propto -2\AB\cdot k(\AB\xB|\AB\xB_i)(\xB-\xB_i)(\xB-\xB_i)\tr.
 \end{align}
 
-We see that using the approximation rule from equation~\eqref{eq:approx-rule} can be applied only for the objective function. We cannot use equation~\eqref{eq:approx-rule} to estimate the gradient, because the gradient depends on the positions of the points in original space and we compute $k_{\min}$ and $k_{\max}$ in the projected space. Both the minimum and the maximum contribution have associated a point in the bounding box. But since the bounding box is formed in the low dimensional space using $\{\AB\xB_i\}_{i=1}^N$ we cannot the points 
+Now let us consider the derivative~$\frac{\partial}{\partial \AB}{p}(\AB\xB|c)$ for a group $G$ and  then approximate it using the criterion given in equation~\eqref{eq:approx-rule}. We obtain:
+		\begin{align}
+		  \frac{\partial}{\partial \AB} p(\AB\xB|G)&=\frac{\partial}{\partial \AB} \sum_{j\in G} k(\AB\xB|\AB\xB_j)\notag\\
+			&\approx\frac{\partial}{\partial \AB} \frac{1}{2} \left( k_{\min} + k_{\max} \right)\notag\\
+			& = \frac{1}{2}\left\{ \frac{\partial}{\partial \AB} k(\AB\xB|\AB\xB_c) +
+\frac{\partial}{\partial \AB} k(\AB\xB|\AB\xB_f) \right\}\notag\\
+			& = -\AB\left\{ k_{\max}(\xB-\xB_c)(\xB-\xB_c)\tr +
+			k_{\min}(\xB-\xB_f)(\xB-\xB_f)\tr \right\},
+		\label{eq:nca-kde-approx-pAXc}
+	\end{align}
+		where $\AB\xB_c$ and $\AB\xB_f$ denote the points associated to $k_{\max}$ and~$k_{\min}$. % We can determine $k_{\min}$ and $k_{\max}$ by making use of the fact the kernel function is a monotonic function of the distance: the closest point gives the maximum contribution, while the farthest point the minimum. The  minimum distance
+		We observe that for the gradient computation we need to find these points and then to recover their positions in the original space. The class-conditional approximated gradient is obtained by adding the contributions for all the groups (algorithm~\ref{alg:approx-cc-kde}).
+		%give the closest point in $G$ to the query point $\AB\xB$ and $\AB\xB_f$ is the farthest point in $G$ to $\AB\xB$. 
+		%Here we made use of the fact the kernel function is a monotonic function of the distance. This means that the closest point gives the maximum contribution, while the farthest point the minimum.
+		%We see that equation~\eqref{eq:nca-kde-approx-pAXc} cannot be applied for estimating the gradient of the objective function. The gradient depends on the positions of the points in original space and neither $\AB\xB_c$ nor $\AB\xB_f$ belong to our data set so we cannot recover the positions. Both the minimum and the maximum contribution have associated a point in the bounding box. But since the bounding box is formed in the low dimensional space using $\{\AB\xB_i\}_{i=1}^N$ we cannot the points 
 
-%So, for such a group we obtain:
-%		\begin{align}
-%			\frac{\partial}{\partial \AB} \sum_{j\in G} k(\AB\xB|\AB\xB_j) &\approx
-%\frac{\partial}{\partial \AB} \frac{1}{2} \left\{\min_{j\in G}
-%k(\AB\xB|\AB\xB_j) + \max_{j\in G} k(\AB\xB|\AB\xB_j)\right\}\notag\\
-%			& = \frac{1}{2}\left\{ \frac{\partial}{\partial \AB} k(\AB\xB|\AB\xB_c) %+
-%\frac{\partial}{\partial \AB} k(\AB\xB|\AB\xB_f) \right\},
-	%	\end{align}
-%		where $\AB\xB_c$ denotes the closest point in $G$ to the query point $\AB%\xB$
-%and $\AB\xB_f$ is the farthest point in $G$ to $\AB\xB$. Here we made use of the
-fact the kernel function is a monotonic function of the distance. This means %that the closest
-%point gives the maximum contribution, while the farthest point the
-%minimum.
-	
 	\begin{algorithm}
-		\caption{Approximate NCA objective function and gradient computation} 
-		\label{alg:cc-kde-nca}  
+		\caption{Approximate class-conditional kernel density estimation} 
+		\label{alg:approx-cc-kde}  
 		\begin{algorithmic}[1]                    % enter the algorithmic environment
-			\REQUIRE Projection matrix $\AB$, data set
-$\mathcal{D}=\{\xB_1,\cdots,\xB_N\}$ and error~$\epsilon$.
-			\FORALL {classes $c$}
-				\STATE {Build $k$-d tree for the points in class $c$.}
-			\ENDFOR 
-			\FORALL {data points $\xB_i$}
-				\FORALL {classes $c$}
-					\STATE {Compute estimated probability $\hat{p}(\AB\xB_i|c)$ and the
-corresponding derivatives $\frac{\partial}{\partial \AB} \hat{p}(\AB\xB_i|c)$ 
-using approximated KDE Algorithm:}
-%					\STATE {\texttt{[p(c),dp(c)]=NCA\_recursive(kdtree(c))}}
-				\ENDFOR
-				\STATE Compute soft probability $\hat{p}_i \equiv \hat{p}(c|\AB\xB_i) =
-\frac{\hat{p}(\AB\xB_i|c_i)}{\sum_{c}\hat{p}(\AB\xB_i|c)}$.
-				\STATE Compute gradient $\frac{\partial}{\partial \AB} \hat{p}_i$ using
-equation \eqref{eq:nca-cc-kde-grad}.
-				\STATE Update function value and gradient value.
-			\ENDFOR
+			\REQUIRE Query point $\xB$, projection matrix $\AB$, data set
+$\mathcal{D}=\{\xB_1,\cdots,\xB_N\}$ and error~$\tau$.
+			\STATE Find $d_{\max}$ and $d_{\min}$ from $\xB$ to the current bounding box and then compute $k_{\min}$ and $k_{\max}$.
+			\IF {$N_G(k_{\max}-k_{\min}) \le 2\tau (p_{\text{SoFar}} + N_Gk_{\min})$}
+				\STATE Compute group contribution: {$\hat{p}(\AB\xB|G) = \frac{N_G}{2}\left( k_{\min} + k_{\max} \right)$}
+				\STATE Compute derivative~$\frac{\partial}{\partial\AB}\hat{p}(\AB\xB|G)$ using equation~\eqref{eq:nca-kde-approx-pAXc}
+				\STATE Update accumulated contribution: $p_{\text{SoFar}}\leftarrow p_{\text{SoFar}}+\hat{p}(\AB\xB|G)$
+				\RETURN  $\hat{p}(\AB\xB|G)$ and $\frac{\partial}{\partial\AB}\hat{p}(\AB\xB|G)$.
+			\ENDIF
+			\IF {current node is a leaf}
+				\STATE {Compute probability: $p(\AB\xB|G_\text{leaf})=\sum_{j\in\text{leaf}}k(\AB\xB|\AB\xB_j)$}
+				\STATE {Compute derivative: $\frac{\partial}{\partial \AB} p(\AB\xB|G_\text{leaf})=\frac{\partial}{\partial \AB} \sum_{j\in G_\text{leaf}} k(\AB\xB|\AB\xB_j)$}
+				\STATE {Update $p_\text{SoFar}$}
+				\RETURN  $p(\AB\xB|G_\text{leaf})$ and $\frac{\partial}{\partial\AB}p(\AB\xB|G_\text{leaf})$.
+			\ENDIF
+			\STATE {Recurse on nearest child to $\xB$ and compute the probability and the gradient contributions: 
+					$\hat{p}(\AB\xB|G_{\text{near}})$ and $\frac{\partial}{\partial\AB}\hat{p}(\AB\xB|G_{\text{near}})$}
+			\STATE {Recurse on farthest child to $\xB$ and compute the probability and the gradient contributions: 
+					$\hat{p}(\AB\xB|G_{\text{far}})$ and $\frac{\partial}{\partial\AB}\hat{p}(\AB\xB|G_{\text{far}})$}
+			\RETURN $\hat{p}(\AB\xB|G_{\text{near}}) + \hat{p}(\AB\xB|G_{\text{far}})$ and $\frac{\partial}{\partial\AB}\hat{p}(\AB\xB|G_{\text{near}})+\frac{\partial}{\partial\AB}\hat{p}(\AB\xB|G_{\text{far}})$.
 		\end{algorithmic}
 	\end{algorithm}
-	
 	
 	
 \section{Exact computations}
 \label{sec:exact-computations}
 
 	Exact methods are the counterpart of approximate methods. We can have both efficient and exact computations just by modifying the NCA model. Again, the idea is motivated by the rapid decay of the
-	exponential function. Instead of operating on very small values, we will make them exactly zero. This is achieved by replacing the squared exponential kernel with a compact support function. So, the points that lie outside the support of the kernel are ignored and just a fraction of the total number of points is used for computing the contributions $p_{ij}$. Further gains in speed are obtained if the search for those points is done with $k$-d trees (the range search algorithm is suitable for this task; \citealp{moore1991}).
+	exponential function. Instead of operating on very small values, we will make them exactly zero. This is achieved by replacing the squared exponential kernel with a compact support function. So, the points that lie outside the support of the kernel are ignored and just a fraction of the total number of points is used for computing the contributions~$p_{ij}$. The most significant cost savings come from the fact we do not have to compute the expensive gradient terms for the points that have $p_{ij}=0$. Further gains in speed are obtained if the search for those points is done with $k$-d trees (the range search algorithm is suitable for this task; \citealp{moore1991}).
 	
 	The choice of the compact support kernel is restricted by a single requirement: differentiability. We will use the simplest polynomial function that has this property. This is given by the
 	following expression:
 	\begin{align}
 		k_{\text{CS}}(u)=\begin{cases}
-			c\;(a^2-u^2)^2& \mbox{if } u \in [-a;+a]\\
+			h(a^2-u^2)^2& \mbox{if } u \in [-a;+a]\\
 			0& \mbox{otherwise},\\
 		\end{cases}
 		\label{eq:cs-1}
 	\end{align}
-	where $c$ is a constant that controls the height of the kernel and $a$ is a constant that controls the width of the kernel. In the given context, the kernel will be a function of the distance between two points: $k_{\text{CS}}(u)=k_{\text{CS}}(d_{ij})$, where $d_{ij} = d(\AB\xB_i;\AB\xB_j)$. Note that the constant $a$ can be absorbed by the linear projection $\AB$. This means that the scale of the learnt metric will compensate for the kernel's width. Also the value for $c$ is not important: from equation \eqref{eq:stochastic-neighbours-cs} we see that this reduces. For convenience, we set both $a=1$ and $c=1$. So, we obtain the following simplified version of the kernel:
+	where $h$ is a constant that controls the height of the kernel and $a$ is a constant that controls the width of the kernel. In the given context, the kernel will be a function of the distance between two points: $k_{\text{CS}}(u)=k_{\text{CS}}(d_{ij})$, where $d_{ij} = d(\AB\xB_i;\AB\xB_j)$. 
+	
+	We introduced a general expression for the compact support kernel because later we will need to carefully set the parameters $a$ and $h$ (subsection~\ref{sec:nca-cs-back}). For now, we can consider $a=1$ and $c=1$. We obtain the following simplified version of the kernel:
+%	Note that the constant $a$ can be absorbed by the linear projection $\AB$. This means that the scale of the learnt metric will compensate for the kernel's width. Also the value for $c$ is not important: from equation \eqref{eq:stochastic-neighbours-cs} we see that this reduces. 
 	\begin{align}
 		k_{\text{CS}}(d_{ij})= (1-d_{ij}^2)^2\;\mathrm{I}(\left|d_{ij}\right|\le1),
 	\end{align}
@@ -536,7 +566,7 @@ equation \eqref{eq:nca-cc-kde-grad}.
 		\label{eq:stochastic-neighbours-cs}
 	\end{align}
 	
-	These can be compared to the classical soft assignments given by equation \eqref{eq:stochastic-neighbour}. Next we do not need to change the general form of the objective function: 
+	These can be compared to the classical soft assignments given by equation~\eqref{eq:stochastic-neighbour}. Next we do not need to change the general form of the objective function: 
 	\begin{align}
 		f_\text{CS}(\AB) = \sum_{i}\sum_{j\in c_i} q_{ij}.
 	\end{align}
@@ -562,9 +592,9 @@ equation \eqref{eq:nca-cc-kde-grad}.
 		\label{eq:nca-cs-grad}
 	\end{align}
 	
-	This method can be applied in same way as classic NCA: learn a metric $\AB$ that maximizes the objective function $f_\text{CS}(\AB)$. Since the function is differentiable, any gradient based method is suitable for optimization and can be used on equation \eqref{eq:nca-cs-grad}.
+	This method can be applied in same way as classic NCA: learn a metric $\AB$ that maximizes the objective function $f_\text{CS}(\AB)$. Since the function is differentiable, any gradient based method is suitable for optimization and can be used on equation~\eqref{eq:nca-cs-grad}.
 	
-	There is one concern with the compact support version of NCA. There are situations when a point $\xB_i$ is placed outside the support of any other point in the data set. Intuitively, this means that the point $\xB_i$ is not selected by any point, hence it is not assigned any class label. Also this causes mathematical problems: as in subsection \ref{subsec:numerical-issues}, the contributions $p_{ij}$ will have an indeterminate value $\frac{0}{0}$. Except of the log-sum-exp trick, the advice from subsection \ref{subsec:numerical-issues} can be applied here as well. A more robust way of dealing with this is discussed in the next section.
+	There is one concern with the compact support version of NCA. There are situations when a point $\xB_i$ is placed outside the support of any other point in the data set. Intuitively, this means that the point $\xB_i$ is not selected by any point, hence it is not assigned any class label. Also this causes mathematical problems: as in subsection \ref{subsec:numerical-issues}, the contributions $p_{ij}$ will have an indeterminate value $\frac{0}{0}$. The advice from subsection \ref{subsec:numerical-issues} can be applied here as well. A more robust way of dealing with this is discussed in the next subsection.
 	
 %	The main concern with this method is what happens when points lie outside the
 %	compact support of any other point in the data set. So care must be taken at
@@ -573,12 +603,12 @@ equation \eqref{eq:nca-cc-kde-grad}.
 %	iterations. It might be better to use the principal components for
 %	initialisation. 
 	
-\section{NCA with compact support kernels and background distribution}
+\subsection{NCA with compact support kernels and background distribution}
 \label{sec:nca-cs-back}
 
 	\begin{figure}
 	  \centering\includegraphics[width=6cm]{images/nca-cs-back}
-	  \caption{Neighbourhood component analysis with compact support kernels and
+	  \caption[NCA with compact support kernels and normal background distribution]{Neighbourhood component analysis with compact support kernels and
 	background distribution. The main assumption is that each class is a mixture of
 	compact support distributions $k(\xB|\xB_j)$ plus a normal background
 	distribution $\mathcal{N}(\xB|\muB,\SigmaB)$.}
@@ -587,11 +617,11 @@ equation \eqref{eq:nca-cc-kde-grad}.
 	
 	We extend the previous model to handle cases where points fall outside the support of any other neighbours. The idea is to use  for each class a background distribution that explains the unallocated points. The background distribution should have an infinite support and an obvious example is the normal distribution.
 	
-	To introduce a background distribution in a principled manner, we return to the class conditional kernel density estimation (CC-KDE) formulation of NCA, section \ref{sec:cc-kde}. First, we recast the compact support NCA in the probabilistic framework and consider each class as mixture of compact support distributions: 
+	To introduce a background distribution in a principled manner, we return to the class conditional kernel density estimation (CC-KDE) formulation of NCA (section \ref{sec:cc-kde}). First, we recast the compact support NCA in the probabilistic framework and consider each class as mixture of compact support distributions: 
 	\begin{align}
 		p(\xB_i|c) = \frac{1}{N}\sum_{j\in c} k_\text{CS}(\xB_i|\xB_j),
 	\end{align}
-	where $k_\text{CS}(\xB_i|\xB_j) = k_\text{CS}(d_{ij})$ and is defined by equation \eqref{eq:cs-1}. Because $k_\text{CS}(\xB_i|\xB_j)$ denotes a distribution, it ought to integrate to 1. For $c=\frac{15}{16}$ and $a=1$ the requirement is satisfied.
+	where $k_\text{CS}(\xB_i|\xB_j) = k_\text{CS}(d_{ij})$ and is defined by equation~\eqref{eq:cs-1}. Because $k_\text{CS}(\xB_i|\xB_j)$ denotes a distribution, it ought to integrate to 1. For $h=\frac{15}{16}$ and $a=1$ the requirement is satisfied.
 	
 	We further change the model and incorporate an additional distribution in the class-conditional probability $p(\xB_i|c)$. From a generative perspective this can be interpreted as follows: a point $\xB_i$ is generated by either the compact support distribution from each point $k_\text{CS}(\xB_i|\xB_j)$ or by a class-specific normal distribution $\mathcal{N}(\xB_i|\muB_c,\SigmaB_c)$. So, the distribution $p(\xB_i|c)$ can be written as the sum of these components:
 		\begin{align}
@@ -599,13 +629,13 @@ equation \eqref{eq:nca-cc-kde-grad}.
 	\frac{1}{N_c}\sum_{j\in c} k_\text{CS}(\xB_i|\xB_j),
 			\label{eq:nca-cs-back-1}
 		\end{align}
-	where $\beta$ is the mixing coefficient between the background distribution and
+	where $\beta\in[0,1]$ is the mixing coefficient between the background distribution and
 	the compact support model, $\muB_c$ is the sample mean of the class $c$ and $\SigmaB_c$ is the sample
 	covariance of the class $c$. The constant $\beta$ can be set to $\frac{1}{N_c+1}$. This will give equal weights to the background distribution and to each compact support distribution. It might be better to treat $\beta$ as a parameter and fit it during training. We expect $\beta$ to adapt to the data set: for example, $\beta$ should increase for data sets with convex classes. 
 	
 	To finalize this method, we just need to plug equation \eqref{eq:nca-cs-back-1} into
 	the set of equations \eqref{eq:nca-cc-kde-bayes}, \eqref{eq:nca-cc-kde-obj} and
-	\eqref{eq:nca-cc-kde-grad}. The only difficulty is the gradient computation. We give here only derivatives for each individual component (the full derivations and equations can be found in the Appendix):
+	\eqref{eq:nca-cc-kde-grad}. The only difficulty is the gradient computation. We now give the derivatives for each individual component:
 	\begin{itemize}
 %		\item $\beta = \frac{1}{N_c+1}$ we will give equal weights to the background
 %	distribution as to the compact-support distribution. Setting it too large means
@@ -615,7 +645,7 @@ equation \eqref{eq:nca-cc-kde-grad}.
 %	parameter during the optimization process. The gradient with respect to $\beta$
 %	can be easily derived and it is easy to evaluate it as the quantities required
 %	for this should also be computed for the function evaluation. 
-		\item The gradient of the compact support distribution $k_\text{CS}(\xB_i|\xB_j)$ with respect to $\AB$ is very similar to what is given in equation \eqref{eq:nca-cs-grad-kernel}. The only difference is that in this case we have everything multiplied by the constant $c=\frac{15}{16}$.
+		\item The gradient of the compact support distribution $k_\text{CS}(\xB_i|\xB_j)$ with respect to $\AB$ is very similar to what is given in equation \eqref{eq:nca-cs-grad-kernel}. The only difference is that in this case we have everything multiplied by the constant $h=\frac{15}{16}$.
 		\item For the gradient of the background distribution it is useful to note that projecting the points $\{\xB_i\}_{i=1}^N$
 	into a new space $\{\AB\xB_i\}_{i=1}^N$ will change the sample mean $\muB_c$ to
 	$\AB\muB_c$ and the sample covariance $\SigmaB_c$ to
@@ -635,6 +665,11 @@ equation \eqref{eq:nca-cc-kde-grad}.
 			=  \mathcal{N}(\xB_i|\muB_c,\SigmaB_c) -
 				\frac{1}{N_c}\sum_{j\in c} k_\text{CS}(\xB_i|\xB_j).
 		\end{align}
-		
 	\end{itemize}
-
+	
+	We obtain a suitable the metric~$\AB$ in the standard way, by using a gradient-based optimizer.
+	
+	\section*{Summary}
+	\label{sec:summary}
+	
+	In this chapter we have shown two main families of algorithms that can help reducing the computational cost of NCA\@. First, we have considered mini-batch algorithms. These achieve speed-ups by using sub-sets of the data instead of the whole training set. Second, we have presented algorithms that are based on approximations. In section~\ref{sec:approximate} we saw how the NCA function can be directly approximated using $k$-d trees, while in section~\ref{sec:exact-computations} we propose a different model to get the same effect even if we did not introduce approximation errors. Finally, in subsection~\ref{sec:nca-cs-back} we make the compact support classifier well defined across the whole space by using a Gaussian distribution to represent each class. The next chapter will present the results obtained by evaluating these methods and a comparison between different algorithms.

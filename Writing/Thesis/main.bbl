@@ -25,7 +25,7 @@ Bentley, J.~L. (1975).
 \bibitem[Beyer et~al., 1999]{beyer1999}
 Beyer, K., Goldstein, J., Ramakrishnan, R., and Shaft, U. (1999).
 \newblock {When is ``nearest neighbor'' meaningful?}
-\newblock {\em Database Theory—ICDT’99}, pages 217--235.
+\newblock {\em Database Theory ICDT 99}, pages 217--235.
 
 \bibitem[Bishop, 1995]{bishop1995}
 Bishop, C.~M. (1995).
@@ -47,17 +47,25 @@ Butman, M. and Goldberger, J. (2008).
 Chalupka, K. (2011).
 \newblock Empirical evaluation of {G}aussian {P}rocess approximation
   algorithms.
+\newblock Master's thesis, University of {E}dinburgh.
 
 \bibitem[Cover and Hart, 1967]{cover1967}
 Cover, T. and Hart, P. (1967).
 \newblock Nearest neighbor pattern classification.
-\newblock 13:21-- 27.
+\newblock {\em Information Theory, IEEE Transactions on}, 13:21-- 27.
 
 \bibitem[Deng and Moore, 1995]{deng1995}
 Deng, K. and Moore, A. (1995).
 \newblock Multiresolution instance-based learning.
 \newblock In {\em Proceedings of the Twelfth International Joint Conference on
   Artificial Intellingence}, pages 1233--1239, San Francisco. Morgan Kaufmann.
+
+\bibitem[Dwinnell, 2006]{dwinnell-online}
+Dwinnell, W. (2006).
+\newblock Mahalanobis distance.
+\newblock
+  \url{http://matlabdatamining.blogspot.com/2006/11/mahalanobis-distance.html}.
+\newblock (Date accesed: August 2011).
 
 \bibitem[Fisher, 1936]{fisher1936}
 Fisher, R. (1936).
@@ -113,6 +121,8 @@ Hestenes, M. and Stiefel, E. (1952).
 \bibitem[Hinneburg et~al., 2000]{hinneburg2000}
 Hinneburg, E., Aggarwal, C., Keim, D., and Hinneburg, A. (2000).
 \newblock {What is the nearest neighbor in high dimensional spaces?}
+\newblock In {\em Proceedings of the 26th International Conference on Very
+  Large Data Bases}. Morgan Kaufmann Publishers Inc.
 
 \bibitem[Holte, 1993]{holte1993}
 Holte, R. (1993).
@@ -154,7 +164,7 @@ Moore, A. (1991).
 Moore, A. and Lee, M. (1994).
 \newblock {Efficient algorithms for minimizing cross validation error}.
 \newblock In {\em Proceedings of the Eleventh International Conference on
-  Machine Learning}, pages 190--198. Citeseer.
+  Machine Learning}, pages 190--198.
 
 \bibitem[Omohundro, 1989]{omohundro1989}
 Omohundro, S. (1989).

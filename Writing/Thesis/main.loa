@@ -1,0 +1,9 @@
+\contentsline {algorithm}{\numberline {3.1}{\ignorespaces Gradient ascent (batch version)\relax }}{18}
+\contentsline {algorithm}{\numberline {3.2}{\ignorespaces Dimensionality annealing\relax }}{26}
+\contentsline {algorithm}{\numberline {4.1}{\ignorespaces NCA learning algorithm using mini-batches (NCA MB)\relax }}{31}
+\contentsline {algorithm}{\numberline {4.2}{\ignorespaces Farthest point clustering (FPC; \citealp {gonzalez1985})\relax }}{32}
+\contentsline {algorithm}{\numberline {4.3}{\ignorespaces Recursive projection clustering (RPC; \citealp {chalupka2011})\relax }}{32}
+\contentsline {algorithm}{\numberline {4.4}{\ignorespaces Stochastic learning for NCA (NCA SL)\relax }}{34}
+\contentsline {algorithm}{\numberline {4.5}{\ignorespaces $k$-d tree building algorithm\relax }}{39}
+\contentsline {algorithm}{\numberline {4.6}{\ignorespaces Approximate NCA\relax }}{41}
+\contentsline {algorithm}{\numberline {4.7}{\ignorespaces Approximate class-conditional kernel density estimation\relax }}{43}

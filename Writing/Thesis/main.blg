@@ -1,4 +1,4 @@
-This is BibTeX, Version 0.99c (Web2C 7.5.6)
+This is BibTeX, Version 0.99c (Web2C 7.5.4)
 The top-level auxiliary file: main.aux
 A level-1 auxiliary file: chapters/chap1.aux
 A level-1 auxiliary file: chapters/chap2.aux
@@ -10,54 +10,48 @@ A level-1 auxiliary file: appendix/code.aux
 A level-1 auxiliary file: appendix/results.aux
 The style file: apalike.bst
 Database file #1: bibliography/thesis.bib
-Warning--entry type for "chalupka2011" isn't style-file defined
---line 115 of file bibliography/thesis.bib
-Warning--I'm ignoring fisher1936's extra "pages" field
---line 357 of file bibliography/thesis.bib
-Warning--empty journal in cover1967
-Warning--empty journal in hinneburg2000
 Warning--empty publisher in omohundro1989
 Warning--empty journal in rall1981
 Warning--empty journal in shewchuk1994
-You've used 45 entries,
+You've used 46 entries,
             1935 wiz_defined-function locations,
-            732 strings with 10479 characters,
-and the built_in function-call counts, 17557 in all, are:
-= -- 1773
-> -- 599
-< -- 49
-+ -- 200
-- -- 192
-* -- 1311
-:= -- 2971
-add.period$ -- 143
-call.type$ -- 45
-change.case$ -- 312
-chr.to.int$ -- 45
-cite$ -- 50
-duplicate$ -- 779
-empty$ -- 1280
-format.name$ -- 263
-if$ -- 3567
+            737 strings with 10695 characters,
+and the built_in function-call counts, 17874 in all, are:
+= -- 1809
+> -- 606
+< -- 50
++ -- 202
+- -- 194
+* -- 1327
+:= -- 3032
+add.period$ -- 149
+call.type$ -- 46
+change.case$ -- 318
+chr.to.int$ -- 46
+cite$ -- 49
+duplicate$ -- 795
+empty$ -- 1306
+format.name$ -- 266
+if$ -- 3633
 int.to.chr$ -- 1
 int.to.str$ -- 0
 missing$ -- 44
-newline$ -- 227
-num.names$ -- 137
-pop$ -- 325
+newline$ -- 235
+num.names$ -- 140
+pop$ -- 328
 preamble$ -- 1
-purify$ -- 320
+purify$ -- 326
 quote$ -- 0
-skip$ -- 603
+skip$ -- 611
 stack$ -- 0
-substring$ -- 1155
-swap$ -- 155
+substring$ -- 1167
+swap$ -- 157
 text.length$ -- 17
 text.prefix$ -- 0
 top$ -- 0
-type$ -- 258
-warning$ -- 5
-while$ -- 145
+type$ -- 264
+warning$ -- 3
+while$ -- 147
 width$ -- 0
-write$ -- 585
-(There were 7 warnings)
+write$ -- 605
+(There were 3 warnings)
